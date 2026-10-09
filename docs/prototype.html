@@ -1,0 +1,138 @@
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Gridiron Odds</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: stat-sheet. Left-aligned, single column, data tables with tabular digits; one accent (turf green), gold for the headline pick. */
+:root{
+  --bg:#f4f5f0; --surface:#ffffff; --fg:#161b17; --muted:#5d665f; --line:#d9ddd4;
+  --accent:#1e7a43; --accent-ink:#ffffff; --gold:#b8891a; --away:#9aa39c; --fav-track:#e3e8e0;
+  --display:"Barlow Condensed",Impact,"Arial Narrow",sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1511;--surface:#171f19;--fg:#e8ebe6;--muted:#97a299;--line:#2a342c;--accent:#3fae6c;--accent-ink:#0b130d;--gold:#e0b44a;--away:#4d5950;--fav-track:#232c25;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1511;--surface:#171f19;--fg:#e8ebe6;--muted:#97a299;--line:#2a342c;--accent:#3fae6c;--accent-ink:#0b130d;--gold:#e0b44a;--away:#4d5950;--fav-track:#232c25;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5;padding-block:0 48px;padding-inline:16px;margin:0}
+.wrap{max-width:980px;margin:0 auto}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px;padding-block:28px 16px;border-bottom:3px solid var(--fg)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(40px,7vw,64px);line-height:.9;margin:0;letter-spacing:-.01em;text-transform:uppercase}
+h1 span{color:var(--accent)}
+.sub{color:var(--muted);font-size:14px;max-width:46ch}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.scorecard{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:18px}
+.scorecard div{background:var(--surface);padding:12px 14px}
+.scorecard b{display:block;font-family:var(--display);font-size:30px;line-height:1;font-weight:600;font-variant-numeric:tabular-nums}
+.scorecard small{color:var(--muted);font-size:12.5px}
+nav{display:flex;gap:4px;margin-top:22px;border-bottom:1px solid var(--line)}
+nav button{all:unset;cursor:pointer;font-family:var(--display);font-size:20px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;padding:8px 14px 10px;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-1px}
+nav button[aria-selected="true"]{color:var(--fg);border-color:var(--accent)}
+nav button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+section{padding-block:20px}
+h2{font-family:var(--display);font-size:28px;font-weight:600;text-transform:uppercase;margin:0 0 4px;text-wrap:balance}
+.games{display:grid;gap:10px;margin-top:14px}
+.game{background:var(--surface);border:1px solid var(--line);padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:8px 16px;align-items:center}
+.game .meta{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:4px 14px;font-family:var(--mono);font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.teams{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;grid-column:1/-1}
+.team{font-family:var(--display);font-size:24px;font-weight:600;line-height:1;text-transform:uppercase}
+.team small{display:block;font-family:var(--body);font-size:12px;font-weight:400;text-transform:none;color:var(--muted);margin-top:3px}
+.team.h{text-align:right}
+.team.fav{color:var(--accent)}
+.pct{font-family:var(--mono);font-size:13px;color:var(--muted);text-align:center;white-space:nowrap}
+.bar{grid-column:1/-1;height:10px;background:var(--away);position:relative;overflow:hidden}
+.bar i{position:absolute;right:0;top:0;bottom:0;background:var(--accent)}
+.bar b{position:absolute;left:50%;top:-3px;bottom:-3px;width:2px;background:var(--bg)}
+.bar.final{opacity:.55}
+.mk{grid-column:1/-1;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;font-size:12.5px;color:var(--muted)}
+.mk b{color:var(--fg);font-weight:500}
+.edge{color:var(--gold);font-weight:600}
+.tablewrap{overflow-x:auto;margin-top:14px;border:1px solid var(--line);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-variant-numeric:tabular-nums}
+th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;position:sticky;top:0;background:var(--surface)}
+th:nth-child(-n+2),td:nth-child(-n+2){text-align:left}
+td.t{font-family:var(--display);font-size:19px;font-weight:600;text-transform:uppercase}
+td.t small{font-family:var(--body);font-size:11.5px;font-weight:400;text-transform:none;color:var(--muted);margin-left:6px}
+.up{color:var(--accent)}.dn{color:#b4432e}
+:root[data-theme="dark"] .dn,:root:not([data-theme="light"]) .dn{color:#e26f58}
+.spark{width:84px;height:22px;display:block}
+.spark path{fill:none;stroke:var(--accent);stroke-width:1.6}
+.spark circle{fill:var(--accent)}
+.prose{max-width:66ch}
+.prose p{margin:0 0 12px}
+.prose code{font-family:var(--mono);font-size:13px;background:var(--surface);border:1px solid var(--line);padding:1px 5px}
+.prose h3{font-family:var(--display);font-size:20px;text-transform:uppercase;margin:18px 0 4px;font-weight:600}
+.conf{margin-top:14px;display:flex;gap:4px}
+.conf button{all:unset;cursor:pointer;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border:1px solid var(--line);color:var(--muted)}
+.conf button[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.conf button:focus-visible{outline:2px solid var(--accent)}
+@media (max-width:520px){.team{font-size:20px}.scorecard b{font-size:26px}}
+@media (prefers-reduced-motion:no-preference){.bar i{transition:width .4s ease}}
+</style>
+<div class="wrap">
+<header>
+  <div>
+    <div class="eyebrow" id="updated"></div>
+    <h1>Gridiron <span>Odds</span></h1>
+    <p class="sub">Win probabilities for every NFL game, from an Elo rating model trained on every regular-season and playoff game since 1999. No injuries, no weather, no quarterbacks: just who beat whom, by how much, and where.</p>
+  </div>
+</header>
+<div class="scorecard" id="scorecard"></div>
+<nav role="tablist">
+  <button role="tab" id="tab-week" aria-selected="true" data-tab="week">This week</button>
+  <button role="tab" id="tab-rank" aria-selected="false" data-tab="rank">Power rankings</button>
+  <button role="tab" id="tab-how" aria-selected="false" data-tab="how">How it works</button>
+</nav>
+<section id="week"><h2 id="week-h"></h2><div class="sub">Green bar is the home team's share. Picks in green. Market = vig-free probability implied by the closing moneyline, where one is posted.</div><div class="games" id="games"></div></section>
+<section id="rank" hidden><h2>Power rankings</h2><div class="sub">Elo rating today, change since preseason, and playoff odds from 10,000 simulations of the rest of the schedule.</div>
+<div class="conf" id="conf"><button aria-pressed="true" data-c="ALL">All</button><button aria-pressed="false" data-c="AFC">AFC</button><button aria-pressed="false" data-c="NFC">NFC</button></div>
+<div class="tablewrap"><table><thead><tr><th>#</th><th>Team</th><th>Elo</th><th>vs pre</th><th>Trend</th><th>Record</th><th>Proj W</th><th>Playoffs</th><th>Div</th><th>1 seed</th><th>Super Bowl</th></tr></thead><tbody id="rows"></tbody></table></div></section>
+<section id="how" hidden class="prose"><h2>How it works</h2>
+<p>Every team starts at 1500. After each game the winner takes points from the loser; the amount depends on how surprising the result was and on the margin of victory, discounted when a heavy favorite runs up the score. The gap between two ratings converts to a win probability with the standard Elo curve: a 100-point edge is roughly 64%, 200 points roughly 76%.</p>
+<h3>What's in the model</h3>
+<p>Home field (<code id="p-hfa"></code> Elo points, zero at neutral sites), rest-day difference (<code id="p-rest"></code> points per day), margin-of-victory multiplier, and a preseason reset that pulls every team <code id="p-rev"></code> of the way back toward average. The K-factor is <code id="p-k"></code>. These four were tuned by grid search on 2010 through 2024 to minimize Brier score, then checked once on 2025 as a holdout.</p>
+<h3>How good is it</h3>
+<p id="eval-text"></p>
+<h3>Playoff odds</h3>
+<p>The remaining schedule is simulated 10,000 times using these probabilities. Division winners and wild cards are seeded by record with Elo as a stand-in for the NFL's actual tiebreakers, then a bracket is played out with home field to the higher seed and a neutral Super Bowl.</p>
+<h3>Data</h3>
+<p>Game results, rest days and betting lines from the open <a href="https://github.com/nflverse/nflverse-data">nflverse</a> schedule dataset. Rebuild weekly as results come in.</p>
+</section>
+</div>
+<script>
+const D={"updated":"2026-10-08","week":5,"games":[{"home":"DAL","away":"TB","p_home":0.644,"date":"2026-10-08","time":"20:15","final":true,"home_score":"16","away_score":"24","spread":"9.5","market_home":0.808},{"home":"JAX","away":"PHI","p_home":0.685,"date":"2026-10-11","time":"09:30","final":false,"home_score":"","away_score":"","spread":"7.5","market_home":0.766},{"home":"GB","away":"CHI","p_home":0.421,"date":"2026-10-11","time":"13:00","final":false,"home_score":"","away_score":"","spread":"-1.5","market_home":0.478},{"home":"MIA","away":"CIN","p_home":0.393,"date":"2026-10-11","time":"13:00","final":false,"home_score":"","away_score":"","spread":"-6.5","market_home":0.259},{"home":"NE","away":"LV","p_home":0.728,"date":"2026-10-11","time":"13:00","final":false,"home_score":"","away_score":"","spread":"3.5","market_home":0.637},{"home":"NO","away":"MIN","p_home":0.29,"date":"2026-10-11","time":"13:00","final":false,"home_score":"","away_score":"","spread":"-2.5","market_home":0.437},{"home":"NYJ","away":"CLE","p_home":0.421,"date":"2026-10-11","time":"13:00","final":false,"home_score":"","away_score":"","spread":"2.5","market_home":0.551},{"home":"PIT","away":"IND","p_home":0.601,"date":"2026-10-11","time":"13:00","final":false,"home_score":"","away_score":"","spread":"2.5","market_home":0.572},{"home":"TEN","away":"HOU","p_home":0.313,"date":"2026-10-11","time":"13:00","final":false,"home_score":"","away_score":"","spread":"-7.5","market_home":0.223},{"home":"WAS","away":"NYG","p_home":0.486,"date":"2026-10-11","time":"13:00","final":false,"home_score":"","away_score":"","spread":"3.5","market_home":0.631},{"home":"LAC","away":"DEN","p_home":0.36,"date":"2026-10-11","time":"16:05","final":false,"home_score":"","away_score":"","spread":"-3.5","market_home":0.384},{"home":"ARI","away":"DET","p_home":0.39,"date":"2026-10-11","time":"16:25","final":false,"home_score":"","away_score":"","spread":"-5.5","market_home":0.304},{"home":"SEA","away":"SF","p_home":0.612,"date":"2026-10-11","time":"16:25","final":false,"home_score":"","away_score":"","spread":"3","market_home":0.593},{"home":"ATL","away":"BAL","p_home":0.479,"date":"2026-10-11","time":"20:20","final":false,"home_score":"","away_score":"","spread":"3","market_home":0.604},{"home":"LA","away":"BUF","p_home":0.505,"date":"2026-10-12","time":"20:15","final":false,"home_score":"","away_score":"","spread":"3","market_home":0.609}],"ratings":[{"team":"SEA","name":"Seahawks","conf":"NFC","div":"NFC West","elo":1665,"pre":1653,"record":[3,1,0],"proj_wins":11.9,"playoff":0.956,"div_win":0.492,"seed1":0.311,"sb":0.198},{"team":"SF","name":"49ers","conf":"NFC","div":"NFC West","elo":1626,"pre":1550,"record":[4,0,0],"proj_wins":12.3,"playoff":0.972,"div_win":0.461,"seed1":0.339,"sb":0.134},{"team":"BUF","name":"Bills","conf":"AFC","div":"AFC East","elo":1615,"pre":1588,"record":[3,1,0],"proj_wins":11.3,"playoff":0.939,"div_win":0.732,"seed1":0.274,"sb":0.119},{"team":"JAX","name":"Jaguars","conf":"AFC","div":"AFC South","elo":1610,"pre":1563,"record":[3,1,0],"proj_wins":11.8,"playoff":0.97,"div_win":0.92,"seed1":0.343,"sb":0.123},{"team":"MIN","name":"Vikings","conf":"NFC","div":"NFC North","elo":1607,"pre":1542,"record":[4,0,0],"proj_wins":12.4,"playoff":0.971,"div_win":0.81,"seed1":0.284,"sb":0.11},{"team":"NE","name":"Patriots","conf":"AFC","div":"AFC East","elo":1583,"pre":1588,"record":[2,2,0],"proj_wins":10.3,"playoff":0.814,"div_win":0.266,"seed1":0.07,"sb":0.05},{"team":"LA","name":"Rams","conf":"NFC","div":"NFC West","elo":1578,"pre":1593,"record":[2,2,0],"proj_wins":9.8,"playoff":0.671,"div_win":0.046,"seed1":0.017,"sb":0.031},{"team":"CHI","name":"Bears","conf":"NFC","div":"NFC North","elo":1572,"pre":1527,"record":[3,1,0],"proj_wins":10.3,"playoff":0.756,"div_win":0.143,"seed1":0.031,"sb":0.035},{"team":"DEN","name":"Broncos","conf":"AFC","div":"AFC West","elo":1570,"pre":1595,"record":[2,2,0],"proj_wins":9.9,"playoff":0.73,"div_win":0.32,"seed1":0.046,"sb":0.04},{"team":"KC","name":"Chiefs","conf":"AFC","div":"AFC West","elo":1564,"pre":1485,"record":[4,0,0],"proj_wins":11.3,"playoff":0.911,"div_win":0.637,"seed1":0.159,"sb":0.062},{"team":"BAL","name":"Ravens","conf":"AFC","div":"AFC North","elo":1546,"pre":1533,"record":[3,1,0],"proj_wins":10.3,"playoff":0.764,"div_win":0.531,"seed1":0.066,"sb":0.03},{"team":"DET","name":"Lions","conf":"NFC","div":"NFC North","elo":1517,"pre":1542,"record":[2,2,0],"proj_wins":8.9,"playoff":0.346,"div_win":0.037,"seed1":0.005,"sb":0.005},{"team":"PHI","name":"Eagles","conf":"NFC","div":"NFC East","elo":1514,"pre":1545,"record":[2,2,0],"proj_wins":8.8,"playoff":0.547,"div_win":0.511,"seed1":0.002,"sb":0.012},{"team":"CIN","name":"Bengals","conf":"AFC","div":"AFC North","elo":1503,"pre":1478,"record":[2,2,0],"proj_wins":9.1,"playoff":0.483,"div_win":0.174,"seed1":0.012,"sb":0.01},{"team":"PIT","name":"Steelers","conf":"AFC","div":"AFC North","elo":1502,"pre":1507,"record":[2,2,0],"proj_wins":8.7,"playoff":0.383,"div_win":0.123,"seed1":0.008,"sb":0.008},{"team":"HOU","name":"Texans","conf":"AFC","div":"AFC South","elo":1498,"pre":1591,"record":[0,4,0],"proj_wins":6.8,"playoff":0.083,"div_win":0.014,"seed1":0.0,"sb":0.001},{"team":"ATL","name":"Falcons","conf":"NFC","div":"NFC South","elo":1493,"pre":1476,"record":[2,2,0],"proj_wins":8.3,"playoff":0.558,"div_win":0.546,"seed1":0.003,"sb":0.008},{"team":"IND","name":"Colts","conf":"AFC","div":"AFC South","elo":1477,"pre":1471,"record":[2,2,0],"proj_wins":8.4,"playoff":0.265,"div_win":0.066,"seed1":0.004,"sb":0.004},{"team":"GB","name":"Packers","conf":"NFC","div":"NFC North","elo":1476,"pre":1519,"record":[2,2,0],"proj_wins":7.9,"playoff":0.151,"div_win":0.01,"seed1":0.001,"sb":0.002},{"team":"CAR","name":"Panthers","conf":"NFC","div":"NFC South","elo":1469,"pre":1440,"record":[2,2,0],"proj_wins":7.9,"playoff":0.343,"div_win":0.318,"seed1":0.001,"sb":0.004},{"team":"NYG","name":"Giants","conf":"NFC","div":"NFC East","elo":1468,"pre":1434,"record":[3,1,0],"proj_wins":8.8,"playoff":0.436,"div_win":0.385,"seed1":0.006,"sb":0.006},{"team":"CLE","name":"Browns","conf":"AFC","div":"AFC North","elo":1464,"pre":1431,"record":[3,1,0],"proj_wins":9.3,"playoff":0.448,"div_win":0.172,"seed1":0.017,"sb":0.006},{"team":"LV","name":"Raiders","conf":"AFC","div":"AFC West","elo":1452,"pre":1368,"record":[3,1,0],"proj_wins":8.2,"playoff":0.198,"div_win":0.043,"seed1":0.003,"sb":0.001},{"team":"DAL","name":"Cowboys","conf":"NFC","div":"NFC East","elo":1446,"pre":1459,"record":[2,3,0],"proj_wins":7.1,"playoff":0.093,"div_win":0.074,"seed1":0.0,"sb":0.0},{"team":"TB","name":"Buccaneers","conf":"NFC","div":"NFC South","elo":1442,"pre":1478,"record":[1,4,0],"proj_wins":6.2,"playoff":0.077,"div_win":0.071,"seed1":0.0,"sb":0.0},{"team":"LAC","name":"Chargers","conf":"AFC","div":"AFC West","elo":1430,"pre":1521,"record":[0,4,0],"proj_wins":4.8,"playoff":0.005,"div_win":0.001,"seed1":0.0,"sb":0.0},{"team":"WAS","name":"Commanders","conf":"NFC","div":"NFC East","elo":1418,"pre":1461,"record":[1,3,0],"proj_wins":6.2,"playoff":0.037,"div_win":0.03,"seed1":0.0,"sb":0.0},{"team":"NO","name":"Saints","conf":"NFC","div":"NFC South","elo":1414,"pre":1447,"record":[1,3,0],"proj_wins":6.2,"playoff":0.072,"div_win":0.065,"seed1":0.0,"sb":0.0},{"team":"ARI","name":"Cardinals","conf":"NFC","div":"NFC West","elo":1399,"pre":1403,"record":[1,3,0],"proj_wins":5.7,"playoff":0.012,"div_win":0.0,"seed1":0.0,"sb":0.0},{"team":"MIA","name":"Dolphins","conf":"AFC","div":"AFC East","elo":1388,"pre":1460,"record":[0,4,0],"proj_wins":4.4,"playoff":0.002,"div_win":0.001,"seed1":0.0,"sb":0.0},{"team":"NYJ","name":"Jets","conf":"AFC","div":"AFC East","elo":1375,"pre":1377,"record":[1,3,0],"proj_wins":5.2,"playoff":0.006,"div_win":0.002,"seed1":0.0,"sb":0.0},{"team":"TEN","name":"Titans","conf":"AFC","div":"AFC South","elo":1321,"pre":1376,"record":[0,4,0],"proj_wins":3.5,"playoff":0.0,"div_win":0.0,"seed1":0.0,"sb":0.0}],"params":{"K":20,"HFA":40,"REV":0.4,"REST":2},"history":{"ARI":[[1,1442],[2,1427],[3,1419],[4,1399]],"ATL":[[1,1460],[2,1415],[3,1460],[4,1493]],"BAL":[[1,1560],[2,1528],[3,1539],[4,1546]],"BUF":[[1,1609],[2,1625],[3,1634],[4,1615]],"CAR":[[1,1414],[2,1459],[3,1446],[4,1469]],"CHI":[[1,1553],[2,1532],[3,1561],[4,1572]],"CIN":[[1,1495],[2,1533],[3,1519],[4,1503]],"CLE":[[1,1415],[2,1436],[3,1449],[4,1464]],"DAL":[[1,1438],[2,1464],[3,1453],[4,1475],[5,1446]],"DEN":[[1,1556],[2,1576],[3,1590],[4,1570]],"DET":[[1,1546],[2,1530],[3,1540],[4,1517]],"GB":[[1,1496],[2,1508],[3,1463],[4,1476]],"HOU":[[1,1571],[2,1533],[3,1520],[4,1498]],"IND":[[1,1444],[2,1435],[3,1448],[4,1477]],"JAX":[[1,1580],[2,1560],[3,1594],[4,1610]],"KC":[[1,1523],[2,1532],[3,1552],[4,1564]],"LA":[[1,1558],[2,1576],[3,1562],[4,1578]],"LAC":[[1,1482],[2,1445],[3,1437],[4,1430]],"LV":[[1,1400],[2,1436],[3,1464],[4,1452]],"MIA":[[1,1428],[2,1414],[3,1394],[4,1388]],"MIN":[[1,1566],[2,1587],[3,1601],[4,1607]],"NE":[[1,1579],[2,1598],[3,1564],[4,1583]],"NO":[[1,1443],[2,1475],[3,1447],[4,1414]],"NYG":[[1,1454],[2,1437],[3,1448],[4,1468]],"NYJ":[[1,1407],[2,1395],[3,1385],[4,1375]],"PHI":[[1,1552],[2,1560],[3,1531],[4,1514]],"PIT":[[1,1523],[2,1504],[3,1517],[4,1502]],"SEA":[[1,1662],[2,1677],[3,1659],[4,1665]],"SF":[[1,1585],[2,1598],[3,1606],[4,1626]],"TB":[[1,1461],[2,1440],[3,1426],[4,1412],[5,1442]],"TEN":[[1,1346],[2,1338],[3,1327],[4,1321]],"WAS":[[1,1454],[2,1428],[3,1446],[4,1418]]},"eval":{"model_acc":0.644,"model_brier":0.2209,"vegas_acc":0.662,"vegas_brier":0.2104,"season":2025,"n":285}};
+const NAME=Object.fromEntries(D.ratings.map(r=>[r.team,r.name]));
+const pct=x=>Math.round(x*100)+'%';
+document.getElementById('updated').textContent='2026 season · results through '+D.updated+' · model build';
+document.getElementById('week-h').textContent='Week '+D.week;
+const sc=document.getElementById('scorecard'),e=D.eval;
+sc.innerHTML=[['Week '+D.week,D.games.length+' games'],[pct(e.model_acc),'model accuracy, '+e.season+' holdout'],[pct(e.vegas_acc),'Vegas moneyline, same games'],[e.model_brier.toFixed(3),'Brier score (lower is better)']].map(([b,s])=>`<div><b>${b}</b><small>${s}</small></div>`).join('');
+// games
+const g=document.getElementById('games');
+g.innerHTML=D.games.map(x=>{
+  const hf=x.p_home>=0.5, ph=x.p_home, pa=1-ph;
+  const fav=hf?x.home:x.away, fp=hf?ph:pa;
+  let mk='';
+  if(x.market_home!=null){const mh=x.market_home,mf=hf?mh:1-mh;const diff=fp-mf;
+    mk=`<span>Market: <b>${hf?x.home:x.away} ${pct(hf?mh:1-mh)}</b>${(x.market_home>=.5)!==hf?' <span class="edge">(market favors '+(x.market_home>=.5?x.home:x.away)+')</span>':''}</span><span>Model vs market: <b class="${Math.abs(diff)>=.08?'edge':''}">${diff>=0?'+':''}${Math.round(diff*100)} pts</b></span>`;}
+  const d=new Date(x.date+'T12:00:00');
+  const when=d.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'})+(x.time?' · '+x.time+' ET':'');
+  const score=x.final?`<span>Final: ${x.away} ${x.away_score} – ${x.home} ${x.home_score}</span>`:'';
+  return `<div class="game"><div class="meta"><span>${when}</span>${score}${x.spread?`<span>Line: ${x.home} ${x.spread>0?'-':'+'}${Math.abs(x.spread)}</span>`:''}</div>
+  <div class="teams"><div class="team a ${hf?'':'fav'}">${x.away}<small>${NAME[x.away]} · ${pct(pa)}</small></div><div class="pct">at</div><div class="team h ${hf?'fav':''}">${x.home}<small>${NAME[x.home]} · ${pct(ph)}</small></div></div>
+  <div class="bar ${x.final?'final':''}"><i style="width:${ph*100}%"></i><b></b></div>
+  <div class="mk"><span>Pick: <b>${NAME[fav]} ${pct(fp)}</b></span>${mk}</div></div>`;
+}).join('');
+// rankings
+function spark(h,pre){const pts=[[0,pre],...h];if(pts.length<2)return'';const ys=pts.map(p=>p[1]),mn=Math.min(...ys),mx=Math.max(...ys),r=Math.max(mx-mn,40);
+  const X=i=>2+i*(80/(pts.length-1)),Y=v=>19-(v-mn)/r*16;const d=pts.map((p,i)=>(i?'L':'M')+X(i).toFixed(1)+' '+Y(p[1]).toFixed(1)).join(' ');
+  const l=pts[pts.length-1];return`<svg class="spark" viewBox="0 0 84 22"><path d="${d}"/><circle cx="${X(pts.length-1).toFixed(1)}" cy="${Y(l[1]).toFixed(1)}" r="2.2"/></svg>`;}
+function render(c){const rows=D.ratings.filter(r=>c==='ALL'||r.conf===c);
+  document.getElementById('rows').innerHTML=rows.map((r,i)=>{const ch=r.elo-r.pre;
+    return`<tr><td>${i+1}</td><td class="t">${r.team}<small>${r.name} · ${r.div}</small></td><td><b>${r.elo}</b></td><td class="${ch>=0?'up':'dn'}">${ch>=0?'+':''}${ch}</td><td>${spark(D.history[r.team],r.pre)}</td><td>${r.record[0]}-${r.record[1]}${r.record[2]?'-'+r.record[2]:''}</td><td>${r.proj_wins.toFixed(1)}</td><td>${pct(r.playoff)}</td><td>${pct(r.div_win)}</td><td>${pct(r.seed1)}</td><td>${r.sb<.005?'<1%':pct(r.sb)}</td></tr>`}).join('');}
+render('ALL');
+document.getElementById('conf').addEventListener('click',ev=>{const b=ev.target.closest('button');if(!b)return;document.querySelectorAll('#conf button').forEach(x=>x.setAttribute('aria-pressed',x===b));render(b.dataset.c);});
+// tabs
+document.querySelector('nav').addEventListener('click',ev=>{const b=ev.target.closest('button');if(!b)return;document.querySelectorAll('nav button').forEach(x=>x.setAttribute('aria-selected',x===b));['week','rank','how'].forEach(id=>document.getElementById(id).hidden=id!==b.dataset.tab);});
+const P=D.params;document.getElementById('p-hfa').textContent=P.HFA;document.getElementById('p-rest').textContent=P.REST;document.getElementById('p-rev').textContent=Math.round(P.REV*100)+'%';document.getElementById('p-k').textContent=P.K;
+document.getElementById('eval-text').textContent=`On the ${e.season} season (${e.n} games the model had never seen), it picked the winner ${pct(e.model_acc)} of the time with a Brier score of ${e.model_brier.toFixed(3)}. Closing Vegas moneylines on the same games hit ${pct(e.vegas_acc)} with a Brier of ${e.vegas_brier.toFixed(3)}. The market knows about injuries and quarterbacks; this model does not. Treat a gap of more than 8 points between the two as the model missing something, not as a betting edge.`;
+</script>
+</body></html>

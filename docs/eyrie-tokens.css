@@ -1,0 +1,110 @@
+/*
+ * Eyrie design tokens — "Signal Daylight" (tile A) + tile B's score instrument.
+ * White ground. Light palette is complete; the dark palette is STRUCTURED but
+ * provisional (Phase 1 only needs light). Every token has its only definition
+ * on bare :root; dark blocks re-define the same names.
+ *
+ * Consumed by src/app/globals.css (shadcn variable remap + Tailwind @theme).
+ */
+
+:root {
+  color-scheme: light;
+
+  /* Ground + ink */
+  --paper: #ffffff;
+  --paper-2: #f6f7fa;
+  --ink: #0b0f1a;
+  --ink-2: #3a4152;
+  --ink-3: #5f6679;   /* ≥4.5:1 on paper-2 (eyebrows inside tiles) */
+  --line: #e3e6ee;
+  --line-2: #c9ced9;
+
+  /* Primary action */
+  --cyan: #00d4ff;       /* fills; text on cyan is --ink */
+  --cyan-ink: #007391;   /* cyan used AS text: ≥4.5:1 on white AND on cyan-wash (Badge cyan, FactMark) */
+  --cyan-wash: #e6faff;
+
+  /* Semantic */
+  --signal: #7c3aed;     /* why-now signals */
+  --signal-wash: #f1eaff;
+  --hyp: #ffb300;        /* hypotheses — dashed borders */
+  --hyp-wash: #fff5d6;
+  --qualified: #8ae61a;
+  --danger: #c2185b;
+  --danger-wash: #ffe9f1;
+
+  /* Shape + depth */
+  --radius: 6px;
+  --shadow-card: 0 1px 2px rgba(11, 15, 26, 0.05), 0 1px 1px rgba(11, 15, 26, 0.03);
+  --shadow-pop: 0 8px 24px rgba(11, 15, 26, 0.08), 0 2px 6px rgba(11, 15, 26, 0.06);
+
+  /* Type scale for labels (JetBrains Mono everywhere a label/number appears) */
+  --eyebrow-size: 11px;
+  --eyebrow-tracking: 0.12em;
+  --button-size: 12px;
+  --display-tracking: -0.02em;
+
+  /* Score instrument (tile B) */
+  --score-track-h: 8px;
+  --score-hatch: repeating-linear-gradient(90deg, var(--line-2) 0 1px, transparent 1px 6px);
+  --score-fill: var(--cyan);
+  --score-bracket: var(--ink-3);
+
+  /* App canvas dot grid */
+  --dot-grid: radial-gradient(var(--line-2) 0.8px, transparent 0.8px);
+  --dot-grid-size: 18px;
+}
+
+/*
+ * Dark mode — STRUCTURE ONLY in Phase 1. Values below are a first-pass
+ * inversion so nothing is unreadable if a viewer's OS is dark; they are not
+ * final. Guarded so an explicit data-theme="light" wins over the OS setting.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: #0b0f1a;
+    --paper-2: #121828;
+    --ink: #f3f5fa;
+    --ink-2: #c3c8d6;
+    --ink-3: #8a91a6;
+    --line: #232a3c;
+    --line-2: #333b50;
+    --cyan: #00d4ff;
+    --cyan-ink: #4fe0ff;
+    --cyan-wash: #0b2a33;
+    --signal: #a78bfa;
+    --signal-wash: #22183a;
+    --hyp: #ffc233;
+    --hyp-wash: #332a10;
+    --qualified: #9df03a;
+    --danger: #ff5c9a;
+    --danger-wash: #3a1224;
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-pop: 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+}
+
+:root[data-theme="dark"],
+.dark {
+  color-scheme: dark;
+  --paper: #0b0f1a;
+  --paper-2: #121828;
+  --ink: #f3f5fa;
+  --ink-2: #c3c8d6;
+  --ink-3: #8a91a6;
+  --line: #232a3c;
+  --line-2: #333b50;
+  --cyan: #00d4ff;
+  --cyan-ink: #4fe0ff;
+  --cyan-wash: #0b2a33;
+  --signal: #a78bfa;
+  --signal-wash: #22183a;
+  --hyp: #ffc233;
+  --hyp-wash: #332a10;
+  --qualified: #9df03a;
+  --danger: #ff5c9a;
+  --danger-wash: #3a1224;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-pop: 0 8px 24px rgba(0, 0, 0, 0.5);
+}

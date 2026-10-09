@@ -1,0 +1,368 @@
+{
+ "schema_version": "1.0.0",
+ "note": "32 NFL teams. code = nflverse canonical code (model.json identity). full_name = exactly as The Odds API spells it. aliases = older/alternate full names seen in odds feeds; code_aliases = codes used by nflverse history or other feeds that map to this code.",
+ "teams": [
+  {
+   "code": "ARI",
+   "name": "Cardinals",
+   "city": "Arizona",
+   "conference": "NFC",
+   "division": "NFC West",
+   "full_name": "Arizona Cardinals",
+   "aliases": [],
+   "code_aliases": [
+    "ARZ"
+   ]
+  },
+  {
+   "code": "ATL",
+   "name": "Falcons",
+   "city": "Atlanta",
+   "conference": "NFC",
+   "division": "NFC South",
+   "full_name": "Atlanta Falcons",
+   "aliases": [],
+   "code_aliases": []
+  },
+  {
+   "code": "BAL",
+   "name": "Ravens",
+   "city": "Baltimore",
+   "conference": "AFC",
+   "division": "AFC North",
+   "full_name": "Baltimore Ravens",
+   "aliases": [],
+   "code_aliases": [
+    "BLT"
+   ]
+  },
+  {
+   "code": "BUF",
+   "name": "Bills",
+   "city": "Buffalo",
+   "conference": "AFC",
+   "division": "AFC East",
+   "full_name": "Buffalo Bills",
+   "aliases": [],
+   "code_aliases": []
+  },
+  {
+   "code": "CAR",
+   "name": "Panthers",
+   "city": "Carolina",
+   "conference": "NFC",
+   "division": "NFC South",
+   "full_name": "Carolina Panthers",
+   "aliases": [],
+   "code_aliases": []
+  },
+  {
+   "code": "CHI",
+   "name": "Bears",
+   "city": "Chicago",
+   "conference": "NFC",
+   "division": "NFC North",
+   "full_name": "Chicago Bears",
+   "aliases": [],
+   "code_aliases": []
+  },
+  {
+   "code": "CIN",
+   "name": "Bengals",
+   "city": "Cincinnati",
+   "conference": "AFC",
+   "division": "AFC North",
+   "full_name": "Cincinnati Bengals",
+   "aliases": [],
+   "code_aliases": []
+  },
+  {
+   "code": "CLE",
+   "name": "Browns",
+   "city": "Cleveland",
+   "conference": "AFC",
+   "division": "AFC North",
+   "full_name": "Cleveland Browns",
+   "aliases": [],
+   "code_aliases": [
+    "CLV"
+   ]
+  },
+  {
+   "code": "DAL",
+   "name": "Cowboys",
+   "city": "Dallas",
+   "conference": "NFC",
+   "division": "NFC East",
+   "full_name": "Dallas Cowboys",
+   "aliases": [],
+   "code_aliases": []
+  },
+  {
+   "code": "DEN",
+   "name": "Broncos",
+   "city": "Denver",
+   "conference": "AFC",
+   "division": "AFC West",
+   "full_name": "Denver Broncos",
+   "aliases": [],
+   "code_aliases": []
+  },
+  {
+   "code": "DET",
+   "name": "Lions",
+   "city": "Detroit",
+   "conference": "NFC",
+   "division": "NFC North",
+   "full_name": "Detroit Lions",
+   "aliases": [],
+   "code_aliases": []
+  },
+  {
+   "code": "GB",
+   "name": "Packers",
+   "city": "Green Bay",
+   "conference": "NFC",
+   "division": "NFC North",
+   "full_name": "Green Bay Packers",
+   "aliases": [],
+   "code_aliases": [
+    "GNB"
+   ]
+  },
+  {
+   "code": "HOU",
+   "name": "Texans",
+   "city": "Houston",
+   "conference": "AFC",
+   "division": "AFC South",
+   "full_name": "Houston Texans",
+   "aliases": [],
+   "code_aliases": [
+    "HST"
+   ]
+  },
+  {
+   "code": "IND",
+   "name": "Colts",
+   "city": "Indianapolis",
+   "conference": "AFC",
+   "division": "AFC South",
+   "full_name": "Indianapolis Colts",
+   "aliases": [],
+   "code_aliases": []
+  },
+  {
+   "code": "JAX",
+   "name": "Jaguars",
+   "city": "Jacksonville",
+   "conference": "AFC",
+   "division": "AFC South",
+   "full_name": "Jacksonville Jaguars",
+   "aliases": [],
+   "code_aliases": [
+    "JAC"
+   ]
+  },
+  {
+   "code": "KC",
+   "name": "Chiefs",
+   "city": "Kansas City",
+   "conference": "AFC",
+   "division": "AFC West",
+   "full_name": "Kansas City Chiefs",
+   "aliases": [],
+   "code_aliases": [
+    "KAN"
+   ]
+  },
+  {
+   "code": "LV",
+   "name": "Raiders",
+   "city": "Las Vegas",
+   "conference": "AFC",
+   "division": "AFC West",
+   "full_name": "Las Vegas Raiders",
+   "aliases": [
+    "Oakland Raiders"
+   ],
+   "code_aliases": [
+    "OAK"
+   ]
+  },
+  {
+   "code": "LAC",
+   "name": "Chargers",
+   "city": "Los Angeles",
+   "conference": "AFC",
+   "division": "AFC West",
+   "full_name": "Los Angeles Chargers",
+   "aliases": [
+    "San Diego Chargers"
+   ],
+   "code_aliases": [
+    "SD",
+    "SDG"
+   ]
+  },
+  {
+   "code": "LA",
+   "name": "Rams",
+   "city": "Los Angeles",
+   "conference": "NFC",
+   "division": "NFC West",
+   "full_name": "Los Angeles Rams",
+   "aliases": [
+    "St. Louis Rams",
+    "St Louis Rams"
+   ],
+   "code_aliases": [
+    "STL",
+    "LAR"
+   ]
+  },
+  {
+   "code": "MIA",
+   "name": "Dolphins",
+   "city": "Miami",
+   "conference": "AFC",
+   "division": "AFC East",
+   "full_name": "Miami Dolphins",
+   "aliases": [],
+   "code_aliases": []
+  },
+  {
+   "code": "MIN",
+   "name": "Vikings",
+   "city": "Minnesota",
+   "conference": "NFC",
+   "division": "NFC North",
+   "full_name": "Minnesota Vikings",
+   "aliases": [],
+   "code_aliases": []
+  },
+  {
+   "code": "NE",
+   "name": "Patriots",
+   "city": "New England",
+   "conference": "AFC",
+   "division": "AFC East",
+   "full_name": "New England Patriots",
+   "aliases": [],
+   "code_aliases": [
+    "NWE"
+   ]
+  },
+  {
+   "code": "NO",
+   "name": "Saints",
+   "city": "New Orleans",
+   "conference": "NFC",
+   "division": "NFC South",
+   "full_name": "New Orleans Saints",
+   "aliases": [],
+   "code_aliases": [
+    "NOR"
+   ]
+  },
+  {
+   "code": "NYG",
+   "name": "Giants",
+   "city": "New York",
+   "conference": "NFC",
+   "division": "NFC East",
+   "full_name": "New York Giants",
+   "aliases": [],
+   "code_aliases": []
+  },
+  {
+   "code": "NYJ",
+   "name": "Jets",
+   "city": "New York",
+   "conference": "AFC",
+   "division": "AFC East",
+   "full_name": "New York Jets",
+   "aliases": [],
+   "code_aliases": []
+  },
+  {
+   "code": "PHI",
+   "name": "Eagles",
+   "city": "Philadelphia",
+   "conference": "NFC",
+   "division": "NFC East",
+   "full_name": "Philadelphia Eagles",
+   "aliases": [],
+   "code_aliases": []
+  },
+  {
+   "code": "PIT",
+   "name": "Steelers",
+   "city": "Pittsburgh",
+   "conference": "AFC",
+   "division": "AFC North",
+   "full_name": "Pittsburgh Steelers",
+   "aliases": [],
+   "code_aliases": []
+  },
+  {
+   "code": "SF",
+   "name": "49ers",
+   "city": "San Francisco",
+   "conference": "NFC",
+   "division": "NFC West",
+   "full_name": "San Francisco 49ers",
+   "aliases": [],
+   "code_aliases": [
+    "SFO"
+   ]
+  },
+  {
+   "code": "SEA",
+   "name": "Seahawks",
+   "city": "Seattle",
+   "conference": "NFC",
+   "division": "NFC West",
+   "full_name": "Seattle Seahawks",
+   "aliases": [],
+   "code_aliases": []
+  },
+  {
+   "code": "TB",
+   "name": "Buccaneers",
+   "city": "Tampa Bay",
+   "conference": "NFC",
+   "division": "NFC South",
+   "full_name": "Tampa Bay Buccaneers",
+   "aliases": [],
+   "code_aliases": [
+    "TAM"
+   ]
+  },
+  {
+   "code": "TEN",
+   "name": "Titans",
+   "city": "Tennessee",
+   "conference": "AFC",
+   "division": "AFC South",
+   "full_name": "Tennessee Titans",
+   "aliases": [],
+   "code_aliases": []
+  },
+  {
+   "code": "WAS",
+   "name": "Commanders",
+   "city": "Washington",
+   "conference": "NFC",
+   "division": "NFC East",
+   "full_name": "Washington Commanders",
+   "aliases": [
+    "Washington Football Team",
+    "Washington Redskins"
+   ],
+   "code_aliases": [
+    "WSH"
+   ]
+  }
+ ]
+}

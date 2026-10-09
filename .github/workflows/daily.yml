@@ -1,0 +1,86 @@
+# Gridiron Odds daily build (DECISIONS D14).
+#
+# 10:00 UTC every day September-February (plus manual dispatch): fetch nflverse, rebuild
+# model.json / index.html / picks.jsonl, commit only those generated files, then publish
+# index.html to GitHub Pages. One run at a time; a failed push fails the job loudly.
+#
+# Repository settings the owner must make once (see README.md "Going live"):
+#   Settings > Pages > Source: GitHub Actions
+#   Settings > Secrets and variables > Actions > Secrets:  ODDS_API_KEY   (optional; CSV lines without it)
+#   Settings > Secrets and variables > Actions > Variables: GRIDIRON_ODDS_URL (optional; the Worker URL)
+name: daily build
+
+on:
+  schedule:
+    - cron: "0 10 * 1,2,9,10,11,12 *"   # 10:00 UTC, Sep-Feb
+  workflow_dispatch:
+
+concurrency:
+  group: gridiron-build
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history so `git pull --rebase` can always replay our commit
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"   # the floor we promise; stdlib only, nothing to install
+
+      - name: Build (fetch -> rate -> predict -> sim -> ledger -> model.json -> index.html)
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          GRIDIRON_ODDS_URL: ${{ vars.GRIDIRON_ODDS_URL }}
+        run: make build
+
+      - name: Test (unit tests + Elo reference check on the fresh data)
+        run: make test
+
+      - name: Commit and push generated files
+        run: |
+          set -euo pipefail
+          git config user.name "gridiron-odds bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add model.json index.html picks.jsonl params.json
+          if git diff --cached --quiet; then
+            echo "nothing changed; no commit"
+            exit 0
+          fi
+          git commit -m "build: $(python3 -c 'import json;print(json.load(open("model.json"))["build"]["id"])')"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read     # job-level permissions reset everything else to none; checkout needs this on a private repo
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}   # the branch tip AFTER the build job's push
+
+      - name: Stage the site (index.html is self-contained; model.json and picks.jsonl are published for reference)
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+          cp model.json picks.jsonl _site/ 2>/dev/null || true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,3158 @@
+{
+ "schema_version": "1.0.0",
+ "build": {
+  "id": "20261010T140312Z-3f2a9c1",
+  "built_at": "2026-10-10T14:03:12Z",
+  "official_odds_at": "2026-10-10T14:02:41Z",
+  "league_date": "2026-10-10",
+  "next_league_date": "2026-10-11",
+  "odds_source": "odds_api",
+  "data": {
+   "source_url": "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv",
+   "nflverse_sha256": "3f2a9c1e5b7d4e6f8a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f",
+   "rows": 7548,
+   "max_result_date": "2026-10-09",
+   "fetched": true
+  }
+ },
+ "params": {
+  "elo": {
+   "k": 20,
+   "hfa": 40,
+   "rest_per_day": 2,
+   "reversion": 0.4,
+   "tie_multiplier": 1.0
+  },
+  "qb": {
+   "enabled": true,
+   "k": 6,
+   "new_qb": -50,
+   "annual_reversion": 0.2,
+   "inactivity_penalty": 25,
+   "usual_starter_window": 8
+  },
+  "blend": {
+   "model_weight": 0.35,
+   "fit_seasons": [
+    2015,
+    2024
+   ],
+   "fit_metric": "brier",
+   "fitted_model_weight": 0.05,
+   "pinned": true
+  },
+  "tier_bounds": {
+   "lean": 0.55,
+   "strong": 0.65,
+   "lockish": 0.78
+  },
+  "score": {
+   "points_per_elo": 25,
+   "league_average_total": 45.6,
+   "league_average_season": 2025
+  },
+  "sim": {
+   "runs": 10000,
+   "seed": 2026
+  },
+  "books": [
+   "draftkings",
+   "fanduel",
+   "betmgm",
+   "betrivers"
+  ]
+ },
+ "evaluation": {
+  "season": 2025,
+  "samples": {
+   "model": 285,
+   "market_comparable": 285
+  },
+  "model": {
+   "brier": 0.2173,
+   "logloss": 0.627,
+   "accuracy": 0.6561
+  },
+  "model_no_qb": {
+   "brier": 0.2209,
+   "logloss": 0.634,
+   "accuracy": 0.6456
+  },
+  "market": {
+   "brier": 0.2104,
+   "logloss": 0.608,
+   "accuracy": 0.6596
+  },
+  "blend": {
+   "brier": 0.2098,
+   "logloss": 0.606,
+   "accuracy": 0.6632
+  }
+ },
+ "games": [
+  {
+   "game_id": "2026_05_TB_DAL",
+   "season": 2026,
+   "game_type": "REG",
+   "week": 5,
+   "league_date": "2026-10-08",
+   "kickoff_utc": "2026-10-09T00:15:00Z",
+   "time_known": true,
+   "away": "TB",
+   "home": "DAL",
+   "neutral": false,
+   "status": "final",
+   "availability": {
+    "starter_home": true,
+    "starter_away": true,
+    "market": true,
+    "csv_lines": true
+   },
+   "official": {
+    "pick": "DAL",
+    "p_home_model": 0.6291199583450603,
+    "p_home_market": 0.8090109663725928,
+    "p_home_blend": 0.7460491135629564,
+    "p_pick_blend": 0.7460491135629564,
+    "tier": "Strong",
+    "model_spread": 3.6719999999999997,
+    "blend_spread": 7.488282969279733,
+    "expected_home": 28.494141484639865,
+    "expected_away": 21.005858515360135,
+    "display_home": 28,
+    "display_away": 21,
+    "total_used": 49.5,
+    "total_source": "odds_api",
+    "market": {
+     "source": "odds_api",
+     "as_of": "2026-10-10T14:02:41Z",
+     "consensus_p_home": 0.8090109663725928,
+     "consensus_total": 49.5,
+     "consensus_home_spread": -9.5,
+     "n_books": 4,
+     "books": [
+      {
+       "key": "draftkings",
+       "home_ml": -520,
+       "away_ml": 400,
+       "home_spread": -9.5,
+       "total": 49.5
+      },
+      {
+       "key": "fanduel",
+       "home_ml": -540,
+       "away_ml": 410,
+       "home_spread": -9.5,
+       "total": 50.5
+      },
+      {
+       "key": "betmgm",
+       "home_ml": -525,
+       "away_ml": 400,
+       "home_spread": -10.0,
+       "total": 49.5
+      },
+      {
+       "key": "betrivers",
+       "home_ml": -530,
+       "away_ml": 405,
+       "home_spread": -9.5,
+       "total": 49.5
+      }
+     ]
+    },
+    "best_prices": {
+     "draftkings": {
+      "book": "draftkings",
+      "side": "DAL",
+      "american": -520
+     },
+     "fanduel": {
+      "book": "fanduel",
+      "side": "DAL",
+      "american": -540
+     },
+     "betmgm": {
+      "book": "betmgm",
+      "side": "DAL",
+      "american": -525
+     },
+     "betrivers": {
+      "book": "betrivers",
+      "side": "DAL",
+      "american": -530
+     }
+    },
+    "best_price": {
+     "book": "draftkings",
+     "side": "DAL",
+     "american": -520
+    },
+    "estimated_ev_per_dollar": -0.11047990305955191,
+    "factors": {
+     "team_elo_home": 1563.37,
+     "team_elo_away": 1570.37,
+     "elo_gap_home": -7.0,
+     "home_rank": 11,
+     "away_rank": 10,
+     "hfa_elo": 40.0,
+     "hfa_spread_pts": 1.6,
+     "rest_home": 4,
+     "rest_away": 4,
+     "rest_diff": 0,
+     "rest_elo": 0.0,
+     "qb_home": {
+      "id": "00-0033077",
+      "name": "Dak Prescott",
+      "q": 27.3,
+      "starts": 43,
+      "first_start": false,
+      "usual_starter_id": "00-0033077",
+      "usual_starter_name": "Dak Prescott",
+      "usual_starter_q": 27.3,
+      "differs_from_usual": false,
+      "source": "nflverse_listed"
+     },
+     "qb_away": {
+      "id": "00-0041251",
+      "name": "Jalon Daniels",
+      "q": -31.5,
+      "starts": 60,
+      "first_start": false,
+      "usual_starter_id": "00-0041251",
+      "usual_starter_name": "Jalon Daniels",
+      "usual_starter_q": -31.5,
+      "differs_from_usual": false,
+      "source": "nflverse_listed"
+     },
+     "qb_elo": 58.8,
+     "form_home_3": 12.4,
+     "form_away_3": -8.1,
+     "d_total": 91.8,
+     "model_market_gap_home": -0.17989100802753255,
+     "model_market_gap_pick": -0.17989100802753255
+    },
+    "rationale": [
+     "rating",
+     "home_field",
+     "quarterback",
+     "market",
+     "verdict"
+    ],
+    "rationale_sentences": [
+     "Tampa Bay rates 7 Elo points above Dallas, 10th in the league against 11th.",
+     "Home field is worth about 40 points, or 1.6 points on the spread.",
+     "Dallas's listed starter, Dak Prescott, rates 59 points above the other listed starter.",
+     "The books have Dallas at 81%, further than the model's 63%; the gap may reflect information this model lacks.",
+     "Blended, that comes to 75%: a Strong pick, predicted 27 to 23."
+    ],
+    "edge": {
+     "flag": true,
+     "reason_key": "unknown",
+     "reason_text": "may reflect information this model lacks"
+    },
+    "parlay_eligible": true
+   },
+   "result": {
+    "home_score": 24,
+    "away_score": 16,
+    "winner": "DAL",
+    "margin": 8,
+    "hit": true,
+    "pred_margin_error": -4.328,
+    "pred_total_error": 9.5
+   }
+  },
+  {
+   "game_id": "2026_05_CLE_NYJ",
+   "season": 2026,
+   "game_type": "REG",
+   "week": 5,
+   "league_date": "2026-10-09",
+   "kickoff_utc": "2026-10-10T00:15:00Z",
+   "time_known": true,
+   "away": "CLE",
+   "home": "NYJ",
+   "neutral": false,
+   "status": "final",
+   "availability": {
+    "starter_home": true,
+    "starter_away": true,
+    "market": true,
+    "csv_lines": true
+   },
+   "official": {
+    "pick": "NYJ",
+    "p_home_model": 0.5497719334440526,
+    "p_home_market": 0.5250292591775726,
+    "p_home_blend": 0.5336891951708406,
+    "p_pick_blend": 0.5336891951708406,
+    "tier": "Toss-up",
+    "model_spread": 1.3880000000000001,
+    "blend_spread": 0.9378069089542014,
+    "expected_home": 20.2189034544771,
+    "expected_away": 19.2810965455229,
+    "display_home": 20,
+    "display_away": 19,
+    "total_used": 39.5,
+    "total_source": "odds_api",
+    "market": {
+     "source": "odds_api",
+     "as_of": "2026-10-10T14:02:41Z",
+     "consensus_p_home": 0.5250292591775726,
+     "consensus_total": 39.5,
+     "consensus_home_spread": -1.5,
+     "n_books": 4,
+     "books": [
+      {
+       "key": "draftkings",
+       "home_ml": -122,
+       "away_ml": 102,
+       "home_spread": -1.5,
+       "total": 39.5
+      },
+      {
+       "key": "fanduel",
+       "home_ml": -118,
+       "away_ml": 100,
+       "home_spread": -1.5,
+       "total": 39.5
+      },
+      {
+       "key": "betmgm",
+       "home_ml": -125,
+       "away_ml": 105,
+       "home_spread": -1.5,
+       "total": 40.0
+      },
+      {
+       "key": "betrivers",
+       "home_ml": -120,
+       "away_ml": 100,
+       "home_spread": -1.5,
+       "total": 39.5
+      }
+     ]
+    },
+    "best_prices": {
+     "draftkings": {
+      "book": "draftkings",
+      "side": "NYJ",
+      "american": -122
+     },
+     "fanduel": {
+      "book": "fanduel",
+      "side": "NYJ",
+      "american": -118
+     },
+     "betmgm": {
+      "book": "betmgm",
+      "side": "NYJ",
+      "american": -125
+     },
+     "betrivers": {
+      "book": "betrivers",
+      "side": "NYJ",
+      "american": -120
+     }
+    },
+    "best_price": {
+     "book": "fanduel",
+     "side": "NYJ",
+     "american": -118
+    },
+    "estimated_ev_per_dollar": -0.01403182587081997,
+    "factors": {
+     "team_elo_home": 1441.37,
+     "team_elo_away": 1424.37,
+     "elo_gap_home": 17.0,
+     "home_rank": 26,
+     "away_rank": 29,
+     "hfa_elo": 40.0,
+     "hfa_spread_pts": 1.6,
+     "rest_home": 7,
+     "rest_away": 10,
+     "rest_diff": -3,
+     "rest_elo": -6.0,
+     "qb_home": {
+      "id": "00-0033537",
+      "name": "Deshaun Watson",
+      "q": -22.8,
+      "starts": 46,
+      "first_start": false,
+      "usual_starter_id": "00-0033537",
+      "usual_starter_name": "Deshaun Watson",
+      "usual_starter_q": -22.8,
+      "differs_from_usual": false,
+      "source": "nflverse_listed"
+     },
+     "qb_away": {
+      "id": "00-0030565",
+      "name": "Geno Smith",
+      "q": -6.5,
+      "starts": 87,
+      "first_start": false,
+      "usual_starter_id": "00-0030565",
+      "usual_starter_name": "Geno Smith",
+      "usual_starter_q": -6.5,
+      "differs_from_usual": false,
+      "source": "nflverse_listed"
+     },
+     "qb_elo": -16.3,
+     "form_home_3": -14.2,
+     "form_away_3": 9.8,
+     "d_total": 34.7,
+     "model_market_gap_home": 0.024742674266480025,
+     "model_market_gap_pick": 0.024742674266480025
+    },
+    "rationale": [
+     "rating",
+     "home_field",
+     "rest",
+     "verdict"
+    ],
+    "rationale_sentences": [
+     "New York rates 17 Elo points above Cleveland, 26th in the league against 29th.",
+     "Home field is worth about 40 points, or 1.6 points on the spread.",
+     "New York has 7 days of rest; Cleveland has 10.",
+     "Blended, that comes to 53%: a Toss-up pick, predicted 20 to 19."
+    ],
+    "edge": null,
+    "parlay_eligible": false
+   },
+   "result": {
+    "home_score": 17,
+    "away_score": 20,
+    "winner": "CLE",
+    "margin": -3,
+    "hit": false,
+    "pred_margin_error": 4.388,
+    "pred_total_error": 2.5
+   }
+  },
+  {
+   "game_id": "2026_05_PHI_JAX",
+   "season": 2026,
+   "game_type": "REG",
+   "week": 5,
+   "league_date": "2026-10-11",
+   "kickoff_utc": "2026-10-11T13:30:00Z",
+   "time_known": true,
+   "away": "PHI",
+   "home": "JAX",
+   "neutral": true,
+   "status": "scheduled",
+   "availability": {
+    "starter_home": true,
+    "starter_away": true,
+    "market": true,
+    "csv_lines": true
+   },
+   "official": {
+    "pick": "JAX",
+    "p_home_model": 0.5397792558835925,
+    "p_home_market": 0.7613001719517876,
+    "p_home_blend": 0.6837678513279193,
+    "p_pick_blend": 0.6837678513279193,
+    "tier": "Strong",
+    "model_spread": 1.1079999999999999,
+    "blend_spread": 5.358442541158612,
+    "expected_home": 23.429221270579305,
+    "expected_away": 18.070778729420695,
+    "display_home": 23,
+    "display_away": 18,
+    "total_used": 41.5,
+    "total_source": "odds_api",
+    "market": {
+     "source": "odds_api",
+     "as_of": "2026-10-10T14:02:41Z",
+     "consensus_p_home": 0.7613001719517876,
+     "consensus_total": 41.5,
+     "consensus_home_spread": -7.5,
+     "n_books": 4,
+     "books": [
+      {
+       "key": "draftkings",
+       "home_ml": -375,
+       "away_ml": 295,
+       "home_spread": -7.5,
+       "total": 41.5
+      },
+      {
+       "key": "fanduel",
+       "home_ml": -400,
+       "away_ml": 315,
+       "home_spread": -7.5,
+       "total": 41.5
+      },
+      {
+       "key": "betmgm",
+       "home_ml": -375,
+       "away_ml": 300,
+       "home_spread": -7.5,
+       "total": 42.0
+      },
+      {
+       "key": "betrivers",
+       "home_ml": -380,
+       "away_ml": 300,
+       "home_spread": -7.5,
+       "total": 41.5
+      }
+     ]
+    },
+    "best_prices": {
+     "draftkings": {
+      "book": "draftkings",
+      "side": "JAX",
+      "american": -375
+     },
+     "fanduel": {
+      "book": "fanduel",
+      "side": "JAX",
+      "american": -400
+     },
+     "betmgm": {
+      "book": "betmgm",
+      "side": "JAX",
+      "american": -375
+     },
+     "betrivers": {
+      "book": "betrivers",
+      "side": "JAX",
+      "american": -380
+     }
+    },
+    "best_price": {
+     "book": "draftkings",
+     "side": "JAX",
+     "american": -375
+    },
+    "estimated_ev_per_dollar": -0.13389405498463558,
+    "factors": {
+     "team_elo_home": 1631.37,
+     "team_elo_away": 1577.37,
+     "elo_gap_home": 54.0,
+     "home_rank": 4,
+     "away_rank": 9,
+     "hfa_elo": 0.0,
+     "hfa_spread_pts": 0.0,
+     "rest_home": 7,
+     "rest_away": 7,
+     "rest_diff": 0,
+     "rest_elo": 0.0,
+     "qb_home": {
+      "id": "00-0036971",
+      "name": "Trevor Lawrence",
+      "q": 12.4,
+      "starts": 56,
+      "first_start": false,
+      "usual_starter_id": "00-0036971",
+      "usual_starter_name": "Trevor Lawrence",
+      "usual_starter_q": 12.4,
+      "differs_from_usual": false,
+      "source": "nflverse_listed"
+     },
+     "qb_away": {
+      "id": "00-0036389",
+      "name": "Jalen Hurts",
+      "q": 38.7,
+      "starts": 65,
+      "first_start": false,
+      "usual_starter_id": "00-0036389",
+      "usual_starter_name": "Jalen Hurts",
+      "usual_starter_q": 38.7,
+      "differs_from_usual": false,
+      "source": "nflverse_listed"
+     },
+     "qb_elo": -26.300000000000004,
+     "form_home_3": 18.9,
+     "form_away_3": -11.3,
+     "d_total": 27.699999999999996,
+     "model_market_gap_home": -0.22152091606819502,
+     "model_market_gap_pick": -0.22152091606819502
+    },
+    "rationale": [
+     "rating",
+     "market",
+     "verdict"
+    ],
+    "rationale_sentences": [
+     "Jacksonville rates 54 Elo points above Philadelphia, 4th in the league against 9th.",
+     "The books have Jacksonville at 76%, further than the model's 54%; the gap may reflect information this model lacks.",
+     "Blended, that comes to 68%: a Strong pick, predicted 21 to 20."
+    ],
+    "edge": {
+     "flag": true,
+     "reason_key": "unknown",
+     "reason_text": "may reflect information this model lacks"
+    },
+    "parlay_eligible": true
+   },
+   "result": null
+  },
+  {
+   "game_id": "2026_05_CHI_GB",
+   "season": 2026,
+   "game_type": "REG",
+   "week": 5,
+   "league_date": "2026-10-11",
+   "kickoff_utc": "2026-10-11T17:00:00Z",
+   "time_known": true,
+   "away": "CHI",
+   "home": "GB",
+   "neutral": false,
+   "status": "scheduled",
+   "availability": {
+    "starter_home": true,
+    "starter_away": true,
+    "market": true,
+    "csv_lines": true
+   },
+   "official": {
+    "pick": "GB",
+    "p_home_model": 0.785026736998172,
+    "p_home_market": 0.538566108964878,
+    "p_home_blend": 0.6248273287765309,
+    "p_pick_blend": 0.6248273287765309,
+    "tier": "Lean",
+    "model_spread": 9.0,
+    "blend_spread": 3.5444611368081587,
+    "expected_home": 24.52223056840408,
+    "expected_away": 20.97776943159592,
+    "display_home": 25,
+    "display_away": 21,
+    "total_used": 45.5,
+    "total_source": "odds_api",
+    "market": {
+     "source": "odds_api",
+     "as_of": "2026-10-10T14:02:41Z",
+     "consensus_p_home": 0.538566108964878,
+     "consensus_total": 45.5,
+     "consensus_home_spread": -1.5,
+     "n_books": 4,
+     "books": [
+      {
+       "key": "draftkings",
+       "home_ml": -128,
+       "away_ml": 108,
+       "home_spread": -1.5,
+       "total": 45.5
+      },
+      {
+       "key": "fanduel",
+       "home_ml": -130,
+       "away_ml": 110,
+       "home_spread": -2.0,
+       "total": 45.5
+      },
+      {
+       "key": "betmgm",
+       "home_ml": -125,
+       "away_ml": 105,
+       "home_spread": -1.5,
+       "total": 46.0
+      },
+      {
+       "key": "betrivers",
+       "home_ml": -130,
+       "away_ml": 108,
+       "home_spread": -1.5,
+       "total": 45.5
+      }
+     ]
+    },
+    "best_prices": {
+     "draftkings": {
+      "book": "draftkings",
+      "side": "GB",
+      "american": -128
+     },
+     "fanduel": {
+      "book": "fanduel",
+      "side": "GB",
+      "american": -130
+     },
+     "betmgm": {
+      "book": "betmgm",
+      "side": "GB",
+      "american": -125
+     },
+     "betrivers": {
+      "book": "betrivers",
+      "side": "GB",
+      "american": -130
+     }
+    },
+    "best_price": {
+     "book": "betmgm",
+     "side": "GB",
+     "american": -125
+    },
+    "estimated_ev_per_dollar": 0.12468919179775567,
+    "factors": {
+     "team_elo_home": 1598.37,
+     "team_elo_away": 1474.37,
+     "elo_gap_home": 124.0,
+     "home_rank": 7,
+     "away_rank": 24,
+     "hfa_elo": 40.0,
+     "hfa_spread_pts": 1.6,
+     "rest_home": 7,
+     "rest_away": 7,
+     "rest_diff": 0,
+     "rest_elo": 0.0,
+     "qb_home": {
+      "id": "00-0036264",
+      "name": "Jordan Love",
+      "q": 22.6,
+      "starts": 72,
+      "first_start": false,
+      "usual_starter_id": "00-0036264",
+      "usual_starter_name": "Jordan Love",
+      "usual_starter_q": 22.6,
+      "differs_from_usual": false,
+      "source": "nflverse_listed"
+     },
+     "qb_away": {
+      "id": "00-0038416",
+      "name": "Tyson Bagent",
+      "q": -38.4,
+      "starts": 3,
+      "first_start": false,
+      "usual_starter_id": "00-0039918",
+      "usual_starter_name": "Caleb Williams",
+      "usual_starter_q": 11.7,
+      "differs_from_usual": true,
+      "source": "nflverse_listed"
+     },
+     "qb_elo": 61.0,
+     "form_home_3": 4.4,
+     "form_away_3": -21.0,
+     "d_total": 225.0,
+     "model_market_gap_home": 0.24646062803329405,
+     "model_market_gap_pick": 0.24646062803329405
+    },
+    "rationale": [
+     "rating",
+     "home_field",
+     "quarterback",
+     "market",
+     "verdict"
+    ],
+    "rationale_sentences": [
+     "Green Bay rates 124 Elo points above Chicago, 7th in the league against 24th.",
+     "Home field is worth about 40 points, or 1.6 points on the spread.",
+     "Chicago's listed starter, Tyson Bagent, rates 50 points below their usual starter, Caleb Williams.",
+     "The books have Green Bay at 54%, closer than the model's 79%; the gap may reflect information this model lacks.",
+     "Blended, that comes to 62%: a Lean pick, predicted 27 to 18."
+    ],
+    "edge": {
+     "flag": true,
+     "reason_key": "starter_change",
+     "reason_text": "listed starter differs from the usual starter"
+    },
+    "parlay_eligible": true
+   },
+   "result": null
+  },
+  {
+   "game_id": "2026_05_CIN_MIA",
+   "season": 2026,
+   "game_type": "REG",
+   "week": 5,
+   "league_date": "2026-10-11",
+   "kickoff_utc": "2026-10-11T17:00:00Z",
+   "time_known": true,
+   "away": "CIN",
+   "home": "MIA",
+   "neutral": false,
+   "status": "scheduled",
+   "availability": {
+    "starter_home": true,
+    "starter_away": true,
+    "market": false,
+    "csv_lines": false
+   },
+   "official": {
+    "pick": "CIN",
+    "p_home_model": 0.40170950247183385,
+    "p_home_market": null,
+    "p_home_blend": 0.40170950247183385,
+    "p_pick_blend": 0.5982904975281662,
+    "tier": "Lean",
+    "model_spread": -2.7680000000000002,
+    "blend_spread": -2.7680000000000025,
+    "expected_home": 21.416,
+    "expected_away": 24.184,
+    "display_home": 21,
+    "display_away": 24,
+    "total_used": 45.6,
+    "total_source": "league_average",
+    "market": null,
+    "best_prices": {
+     "draftkings": null,
+     "fanduel": null,
+     "betmgm": null,
+     "betrivers": null
+    },
+    "best_price": null,
+    "estimated_ev_per_dollar": null,
+    "factors": {
+     "team_elo_home": 1466.37,
+     "team_elo_away": 1503.37,
+     "elo_gap_home": -37.0,
+     "home_rank": 25,
+     "away_rank": 21,
+     "hfa_elo": 40.0,
+     "hfa_spread_pts": 1.6,
+     "rest_home": 7,
+     "rest_away": 7,
+     "rest_diff": 0,
+     "rest_elo": 0.0,
+     "qb_home": {
+      "id": "00-0038128",
+      "name": "Malik Willis",
+      "q": -27.6,
+      "starts": 49,
+      "first_start": false,
+      "usual_starter_id": "00-0038128",
+      "usual_starter_name": "Malik Willis",
+      "usual_starter_q": -27.6,
+      "differs_from_usual": false,
+      "source": "nflverse_listed"
+     },
+     "qb_away": {
+      "id": "00-0036442",
+      "name": "Joe Burrow",
+      "q": 44.6,
+      "starts": 84,
+      "first_start": false,
+      "usual_starter_id": "00-0036442",
+      "usual_starter_name": "Joe Burrow",
+      "usual_starter_q": 44.6,
+      "differs_from_usual": false,
+      "source": "nflverse_listed"
+     },
+     "qb_elo": -72.2,
+     "form_home_3": -9.5,
+     "form_away_3": 6.2,
+     "d_total": -69.2,
+     "model_market_gap_home": null,
+     "model_market_gap_pick": null
+    },
+    "rationale": [
+     "rating",
+     "home_field",
+     "quarterback",
+     "verdict"
+    ],
+    "rationale_sentences": [
+     "Cincinnati rates 37 Elo points above Miami, 21th in the league against 25th.",
+     "Home field is worth about 40 points, or 1.6 points on the spread.",
+     "Cincinnati's listed starter, Joe Burrow, rates 72 points above the other listed starter.",
+     "No market line yet, so this is the model alone at 60%: a Lean pick, predicted 24 to 21."
+    ],
+    "edge": null,
+    "parlay_eligible": false
+   },
+   "result": null
+  },
+  {
+   "game_id": "2026_05_LV_NE",
+   "season": 2026,
+   "game_type": "REG",
+   "week": 5,
+   "league_date": "2026-10-11",
+   "kickoff_utc": "2026-10-11T17:00:00Z",
+   "time_known": true,
+   "away": "LV",
+   "home": "NE",
+   "neutral": false,
+   "status": "scheduled",
+   "availability": {
+    "starter_home": true,
+    "starter_away": true,
+    "market": true,
+    "csv_lines": true
+   },
+   "official": {
+    "pick": "NE",
+    "p_home_model": 0.7599570109948487,
+    "p_home_market": 0.7962313331592948,
+    "p_home_blend": 0.7835353204017388,
+    "p_pick_blend": 0.7835353204017388,
+    "tier": "Lock-ish",
+    "model_spread": 8.008,
+    "blend_spread": 8.938744568976226,
+    "expected_home": 27.219372284488113,
+    "expected_away": 18.280627715511887,
+    "display_home": 27,
+    "display_away": 18,
+    "total_used": 45.5,
+    "total_source": "odds_api",
+    "market": {
+     "source": "odds_api",
+     "as_of": "2026-10-10T14:02:41Z",
+     "consensus_p_home": 0.7962313331592948,
+     "consensus_total": 45.5,
+     "consensus_home_spread": -9.5,
+     "n_books": 4,
+     "books": [
+      {
+       "key": "draftkings",
+       "home_ml": -480,
+       "away_ml": 370,
+       "home_spread": -9.5,
+       "total": 45.5
+      },
+      {
+       "key": "fanduel",
+       "home_ml": -500,
+       "away_ml": 380,
+       "home_spread": -9.5,
+       "total": 45.5
+      },
+      {
+       "key": "betmgm",
+       "home_ml": -475,
+       "away_ml": 360,
+       "home_spread": -10.0,
+       "total": 46.0
+      },
+      {
+       "key": "betrivers",
+       "home_ml": -490,
+       "away_ml": 375,
+       "home_spread": -9.5,
+       "total": 45.5
+      }
+     ]
+    },
+    "best_prices": {
+     "draftkings": {
+      "book": "draftkings",
+      "side": "NE",
+      "american": -480
+     },
+     "fanduel": {
+      "book": "fanduel",
+      "side": "NE",
+      "american": -500
+     },
+     "betmgm": {
+      "book": "betmgm",
+      "side": "NE",
+      "american": -475
+     },
+     "betrivers": {
+      "book": "betrivers",
+      "side": "NE",
+      "american": -490
+     }
+    },
+    "best_price": {
+     "book": "betmgm",
+     "side": "NE",
+     "american": -475
+    },
+    "estimated_ev_per_dollar": -0.051509875303158315,
+    "factors": {
+     "team_elo_home": 1561.37,
+     "team_elo_away": 1430.37,
+     "elo_gap_home": 131.0,
+     "home_rank": 12,
+     "away_rank": 28,
+     "hfa_elo": 40.0,
+     "hfa_spread_pts": 1.6,
+     "rest_home": 7,
+     "rest_away": 7,
+     "rest_diff": 0,
+     "rest_elo": 0.0,
+     "qb_home": {
+      "id": "00-0039851",
+      "name": "Drake Maye",
+      "q": 19.3,
+      "starts": 96,
+      "first_start": false,
+      "usual_starter_id": "00-0039851",
+      "usual_starter_name": "Drake Maye",
+      "usual_starter_q": 19.3,
+      "differs_from_usual": false,
+      "source": "nflverse_listed"
+     },
+     "qb_away": {
+      "id": "00-0029604",
+      "name": "Kirk Cousins",
+      "q": -9.9,
+      "starts": 53,
+      "first_start": false,
+      "usual_starter_id": "00-0029604",
+      "usual_starter_name": "Kirk Cousins",
+      "usual_starter_q": -9.9,
+      "differs_from_usual": false,
+      "source": "nflverse_listed"
+     },
+     "qb_elo": 29.200000000000003,
+     "form_home_3": 7.7,
+     "form_away_3": -3.3,
+     "d_total": 200.2,
+     "model_market_gap_home": -0.03627432216444615,
+     "model_market_gap_pick": -0.03627432216444615
+    },
+    "rationale": [
+     "rating",
+     "home_field",
+     "verdict"
+    ],
+    "rationale_sentences": [
+     "New England rates 131 Elo points above Las Vegas, 12th in the league against 28th.",
+     "Home field is worth about 40 points, or 1.6 points on the spread.",
+     "Blended, that comes to 78%: a Lock-ish pick, predicted 27 to 19."
+    ],
+    "edge": null,
+    "parlay_eligible": true
+   },
+   "result": null
+  },
+  {
+   "game_id": "2026_05_DEN_LAC",
+   "season": 2026,
+   "game_type": "REG",
+   "week": 5,
+   "league_date": "2026-10-11",
+   "kickoff_utc": "2026-10-11T20:05:00Z",
+   "time_known": true,
+   "away": "DEN",
+   "home": "LAC",
+   "neutral": false,
+   "status": "scheduled",
+   "availability": {
+    "starter_home": true,
+    "starter_away": true,
+    "market": true,
+    "csv_lines": true
+   },
+   "official": {
+    "pick": "LAC",
+    "p_home_model": 0.6468003596280508,
+    "p_home_market": 0.5533600475385156,
+    "p_home_blend": 0.586064156769853,
+    "p_pick_blend": 0.586064156769853,
+    "tier": "Lean",
+    "model_spread": 4.204,
+    "blend_spread": 2.4161940310391374,
+    "expected_home": 21.95809701551957,
+    "expected_away": 19.54190298448043,
+    "display_home": 22,
+    "display_away": 20,
+    "total_used": 41.5,
+    "total_source": "odds_api",
+    "market": {
+     "source": "odds_api",
+     "as_of": "2026-10-10T14:02:41Z",
+     "consensus_p_home": 0.5533600475385156,
+     "consensus_total": 41.5,
+     "consensus_home_spread": -2.5,
+     "n_books": 4,
+     "books": [
+      {
+       "key": "draftkings",
+       "home_ml": -135,
+       "away_ml": 115,
+       "home_spread": -2.5,
+       "total": 41.5
+      },
+      {
+       "key": "fanduel",
+       "home_ml": -138,
+       "away_ml": 116,
+       "home_spread": -2.5,
+       "total": 41.5
+      },
+      {
+       "key": "betmgm",
+       "home_ml": -135,
+       "away_ml": 114,
+       "home_spread": -2.5,
+       "total": 42.0
+      },
+      {
+       "key": "betrivers",
+       "home_ml": -136,
+       "away_ml": 115,
+       "home_spread": -2.5,
+       "total": 41.5
+      }
+     ]
+    },
+    "best_prices": {
+     "draftkings": {
+      "book": "draftkings",
+      "side": "LAC",
+      "american": -135
+     },
+     "fanduel": {
+      "book": "fanduel",
+      "side": "LAC",
+      "american": -138
+     },
+     "betmgm": {
+      "book": "betmgm",
+      "side": "LAC",
+      "american": -135
+     },
+     "betrivers": {
+      "book": "betrivers",
+      "side": "LAC",
+      "american": -136
+     }
+    },
+    "best_price": {
+     "book": "draftkings",
+     "side": "LAC",
+     "american": -135
+    },
+    "estimated_ev_per_dollar": 0.020185754377151532,
+    "factors": {
+     "team_elo_home": 1582.37,
+     "team_elo_away": 1536.37,
+     "elo_gap_home": 46.0,
+     "home_rank": 8,
+     "away_rank": 16,
+     "hfa_elo": 40.0,
+     "hfa_spread_pts": 1.6,
+     "rest_home": 7,
+     "rest_away": 7,
+     "rest_diff": 0,
+     "rest_elo": 0.0,
+     "qb_home": {
+      "id": "00-0036355",
+      "name": "Justin Herbert",
+      "q": 33.9,
+      "starts": 77,
+      "first_start": false,
+      "usual_starter_id": "00-0036355",
+      "usual_starter_name": "Justin Herbert",
+      "usual_starter_q": 33.9,
+      "differs_from_usual": false,
+      "source": "nflverse_listed"
+     },
+     "qb_away": {
+      "id": "00-0039732",
+      "name": "Bo Nix",
+      "q": 14.8,
+      "starts": 37,
+      "first_start": false,
+      "usual_starter_id": "00-0039732",
+      "usual_starter_name": "Bo Nix",
+      "usual_starter_q": 14.8,
+      "differs_from_usual": false,
+      "source": "nflverse_listed"
+     },
+     "qb_elo": 19.099999999999998,
+     "form_home_3": 16.0,
+     "form_away_3": -55.3,
+     "d_total": 105.1,
+     "model_market_gap_home": 0.09344031208953518,
+     "model_market_gap_pick": 0.09344031208953518
+    },
+    "rationale": [
+     "rating",
+     "home_field",
+     "form",
+     "market",
+     "verdict"
+    ],
+    "rationale_sentences": [
+     "Los Angeles rates 46 Elo points above Denver, 8th in the league against 16th.",
+     "Home field is worth about 40 points, or 1.6 points on the spread.",
+     "Denver has lost 55 points of rating over its last three games.",
+     "The books have Los Angeles at 55%, closer than the model's 65%; the gap may reflect information this model lacks.",
+     "Blended, that comes to 59%: a Lean pick, predicted 23 to 19."
+    ],
+    "edge": {
+     "flag": true,
+     "reason_key": "form_move",
+     "reason_text": "Denver's rating moved 55 points in the last three games"
+    },
+    "parlay_eligible": true
+   },
+   "result": null
+  },
+  {
+   "game_id": "2026_05_BUF_LA",
+   "season": 2026,
+   "game_type": "REG",
+   "week": 5,
+   "league_date": "2026-10-12",
+   "kickoff_utc": "2026-10-13T00:15:00Z",
+   "time_known": true,
+   "away": "BUF",
+   "home": "LA",
+   "neutral": false,
+   "status": "scheduled",
+   "availability": {
+    "starter_home": true,
+    "starter_away": true,
+    "market": true,
+    "csv_lines": true
+   },
+   "official": {
+    "pick": "BUF",
+    "p_home_model": 0.4425463501398011,
+    "p_home_market": 0.384282329581028,
+    "p_home_blend": 0.4046747367765986,
+    "p_pick_blend": 0.5953252632234014,
+    "tier": "Lean",
+    "model_spread": -1.6039999999999999,
+    "blend_spread": -2.682371516234953,
+    "expected_home": 25.908814241882524,
+    "expected_away": 28.591185758117476,
+    "display_home": 26,
+    "display_away": 29,
+    "total_used": 54.5,
+    "total_source": "odds_api",
+    "market": {
+     "source": "odds_api",
+     "as_of": "2026-10-10T14:02:41Z",
+     "consensus_p_home": 0.384282329581028,
+     "consensus_total": 54.5,
+     "consensus_home_spread": 3.0,
+     "n_books": 4,
+     "books": [
+      {
+       "key": "draftkings",
+       "home_ml": 150,
+       "away_ml": -178,
+       "home_spread": 3.0,
+       "total": 54.5
+      },
+      {
+       "key": "fanduel",
+       "home_ml": 148,
+       "away_ml": -176,
+       "home_spread": 3.0,
+       "total": 54.5
+      },
+      {
+       "key": "betmgm",
+       "home_ml": 150,
+       "away_ml": -180,
+       "home_spread": 3.0,
+       "total": 54.0
+      },
+      {
+       "key": "betrivers",
+       "home_ml": 152,
+       "away_ml": -180,
+       "home_spread": 3.0,
+       "total": 54.5
+      }
+     ]
+    },
+    "best_prices": {
+     "draftkings": {
+      "book": "draftkings",
+      "side": "BUF",
+      "american": -178
+     },
+     "fanduel": {
+      "book": "fanduel",
+      "side": "BUF",
+      "american": -176
+     },
+     "betmgm": {
+      "book": "betmgm",
+      "side": "BUF",
+      "american": -180
+     },
+     "betrivers": {
+      "book": "betrivers",
+      "side": "BUF",
+      "american": -180
+     }
+    },
+    "best_price": {
+     "book": "fanduel",
+     "side": "BUF",
+     "american": -176
+    },
+    "estimated_ev_per_dollar": -0.06642174630875686,
+    "factors": {
+     "team_elo_home": 1604.37,
+     "team_elo_away": 1655.37,
+     "elo_gap_home": -51.0,
+     "home_rank": 6,
+     "away_rank": 2,
+     "hfa_elo": 40.0,
+     "hfa_spread_pts": 1.6,
+     "rest_home": 8,
+     "rest_away": 8,
+     "rest_diff": 0,
+     "rest_elo": 0.0,
+     "qb_home": {
+      "id": "00-0026498",
+      "name": "Matthew Stafford",
+      "q": 29.8,
+      "starts": 58,
+      "first_start": false,
+      "usual_starter_id": "00-0026498",
+      "usual_starter_name": "Matthew Stafford",
+      "usual_starter_q": 29.8,
+      "differs_from_usual": false,
+      "source": "nflverse_listed"
+     },
+     "qb_away": {
+      "id": "00-0034857",
+      "name": "Josh Allen",
+      "q": 58.9,
+      "starts": 54,
+      "first_start": false,
+      "usual_starter_id": "00-0034857",
+      "usual_starter_name": "Josh Allen",
+      "usual_starter_q": 58.9,
+      "differs_from_usual": false,
+      "source": "nflverse_listed"
+     },
+     "qb_elo": -29.099999999999998,
+     "form_home_3": 2.9,
+     "form_away_3": 24.6,
+     "d_total": -40.099999999999994,
+     "model_market_gap_home": 0.05826402055877311,
+     "model_market_gap_pick": -0.05826402055877311
+    },
+    "rationale": [
+     "rating",
+     "home_field",
+     "market",
+     "verdict"
+    ],
+    "rationale_sentences": [
+     "Buffalo rates 51 Elo points above Los Angeles, 2nd in the league against 6th.",
+     "Home field is worth about 40 points, or 1.6 points on the spread.",
+     "The books have Buffalo at 62%, further than the model's 56%; the gap may reflect information this model lacks.",
+     "Blended, that comes to 60%: a Lean pick, predicted 28 to 26."
+    ],
+    "edge": null,
+    "parlay_eligible": true
+   },
+   "result": null
+  }
+ ],
+ "teams": [
+  {
+   "team": "ARI",
+   "name": "Cardinals",
+   "city": "Arizona",
+   "conference": "NFC",
+   "division": "NFC West",
+   "full_name": "Arizona Cardinals",
+   "aliases": [],
+   "elo": 1509.37,
+   "rank": 20,
+   "record": {
+    "w": 2,
+    "l": 2,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1492.9699999999998
+    ],
+    [
+     2,
+     1493.9699999999998
+    ],
+    [
+     3,
+     1505.9699999999998
+    ],
+    [
+     4,
+     1506.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0033119",
+    "name": "Jacoby Brissett",
+    "q": -12.2
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 8.675256193814917,
+    "playoffs": 0.2350699947263223,
+    "division": 0.11004244152295184,
+    "seed1": 0.008094575471861428,
+    "super_bowl": 0.00028707141206527786
+   }
+  },
+  {
+   "team": "ATL",
+   "name": "Falcons",
+   "city": "Atlanta",
+   "conference": "NFC",
+   "division": "NFC South",
+   "full_name": "Atlanta Falcons",
+   "aliases": [],
+   "elo": 1481.37,
+   "rank": 23,
+   "record": {
+    "w": 2,
+    "l": 2,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1464.9699999999998
+    ],
+    [
+     2,
+     1465.9699999999998
+    ],
+    [
+     3,
+     1477.9699999999998
+    ],
+    [
+     4,
+     1478.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0039917",
+    "name": "Michael Penix Jr.",
+    "q": 3.1
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 8.151794236113197,
+    "playoffs": 0.15294332618343953,
+    "division": 0.179660564529841,
+    "seed1": 0.0034265789557133652,
+    "super_bowl": 7.906603230180066e-05
+   }
+  },
+  {
+   "team": "BAL",
+   "name": "Ravens",
+   "city": "Baltimore",
+   "conference": "AFC",
+   "division": "AFC North",
+   "full_name": "Baltimore Ravens",
+   "aliases": [],
+   "elo": 1622.37,
+   "rank": 5,
+   "record": {
+    "w": 4,
+    "l": 0,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1605.9699999999998
+    ],
+    [
+     2,
+     1606.9699999999998
+    ],
+    [
+     3,
+     1618.9699999999998
+    ],
+    [
+     4,
+     1619.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0034796",
+    "name": "Lamar Jackson",
+    "q": 55.1
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 12.69916641143245,
+    "playoffs": 0.985,
+    "division": 0.7085079835934235,
+    "seed1": 0.1014350393290131,
+    "super_bowl": 0.052238409501756636
+   }
+  },
+  {
+   "team": "BUF",
+   "name": "Bills",
+   "city": "Buffalo",
+   "conference": "AFC",
+   "division": "AFC East",
+   "full_name": "Buffalo Bills",
+   "aliases": [],
+   "elo": 1655.37,
+   "rank": 2,
+   "record": {
+    "w": 4,
+    "l": 0,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1638.9699999999998
+    ],
+    [
+     2,
+     1639.9699999999998
+    ],
+    [
+     3,
+     1651.9699999999998
+    ],
+    [
+     4,
+     1652.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0034857",
+    "name": "Josh Allen",
+    "q": 58.9
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 13.227316224700582,
+    "playoffs": 0.985,
+    "division": 0.7526589913056417,
+    "seed1": 0.2793752968442035,
+    "super_bowl": 0.23877560027518407
+   }
+  },
+  {
+   "team": "CAR",
+   "name": "Panthers",
+   "city": "Carolina",
+   "conference": "NFC",
+   "division": "NFC South",
+   "full_name": "Carolina Panthers",
+   "aliases": [],
+   "elo": 1417.37,
+   "rank": 30,
+   "record": {
+    "w": 0,
+    "l": 4,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1400.9699999999998
+    ],
+    [
+     2,
+     1401.9699999999998
+    ],
+    [
+     3,
+     1413.9699999999998
+    ],
+    [
+     4,
+     1414.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0039150",
+    "name": "Bryce Young",
+    "q": -15.7
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 4.982617887447232,
+    "playoffs": 0.05726165080985719,
+    "division": 0.0672645271103271,
+    "seed1": 0.00048031639391430233,
+    "super_bowl": 4.149444360433448e-06
+   }
+  },
+  {
+   "team": "CHI",
+   "name": "Bears",
+   "city": "Chicago",
+   "conference": "NFC",
+   "division": "NFC North",
+   "full_name": "Chicago Bears",
+   "aliases": [],
+   "elo": 1474.37,
+   "rank": 24,
+   "record": {
+    "w": 1,
+    "l": 3,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1457.9699999999998
+    ],
+    [
+     2,
+     1458.9699999999998
+    ],
+    [
+     3,
+     1470.9699999999998
+    ],
+    [
+     4,
+     1471.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0039918",
+    "name": "Caleb Williams",
+    "q": 11.7
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 7.021368947616063,
+    "playoffs": 0.13736113296008448,
+    "division": 0.04235988642218118,
+    "seed1": 0.0027639323561605526,
+    "super_bowl": 5.727827701987512e-05
+   }
+  },
+  {
+   "team": "CIN",
+   "name": "Bengals",
+   "city": "Cincinnati",
+   "conference": "AFC",
+   "division": "AFC North",
+   "full_name": "Cincinnati Bengals",
+   "aliases": [],
+   "elo": 1503.37,
+   "rank": 21,
+   "record": {
+    "w": 2,
+    "l": 2,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1486.9699999999998
+    ],
+    [
+     2,
+     1487.9699999999998
+    ],
+    [
+     3,
+     1499.9699999999998
+    ],
+    [
+     4,
+     1500.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0036442",
+    "name": "Joe Burrow",
+    "q": 44.6
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 8.563045680914126,
+    "playoffs": 0.2210456907731406,
+    "division": 0.11402797582507455,
+    "seed1": 0.002627370596166526,
+    "super_bowl": 0.00021776593562468195
+   }
+  },
+  {
+   "team": "CLE",
+   "name": "Browns",
+   "city": "Cleveland",
+   "conference": "AFC",
+   "division": "AFC North",
+   "full_name": "Cleveland Browns",
+   "aliases": [],
+   "elo": 1424.37,
+   "rank": 29,
+   "record": {
+    "w": 2,
+    "l": 3,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1401.4699999999998
+    ],
+    [
+     2,
+     1402.4699999999998
+    ],
+    [
+     3,
+     1414.4699999999998
+    ],
+    [
+     4,
+     1415.4699999999998
+    ],
+    [
+     5,
+     1427.4699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0030565",
+    "name": "Geno Smith",
+    "q": -6.5
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 6.714162050994909,
+    "playoffs": 0.06573783336686073,
+    "division": 0.03391132415986466,
+    "seed1": 0.00023237425045606296,
+    "super_bowl": 5.727827701987512e-06
+   }
+  },
+  {
+   "team": "DAL",
+   "name": "Cowboys",
+   "city": "Dallas",
+   "conference": "NFC",
+   "division": "NFC East",
+   "full_name": "Dallas Cowboys",
+   "aliases": [],
+   "elo": 1563.37,
+   "rank": 11,
+   "record": {
+    "w": 3,
+    "l": 2,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1540.4699999999998
+    ],
+    [
+     2,
+     1541.4699999999998
+    ],
+    [
+     3,
+     1553.4699999999998
+    ],
+    [
+     4,
+     1554.4699999999998
+    ],
+    [
+     5,
+     1566.4699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0033077",
+    "name": "Dak Prescott",
+    "q": 27.3
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 10.08238495601656,
+    "playoffs": 0.5385142470548225,
+    "division": 0.3438069413595845,
+    "seed1": 0.04248093595187699,
+    "super_bowl": 0.003451357489214835
+   }
+  },
+  {
+   "team": "DEN",
+   "name": "Broncos",
+   "city": "Denver",
+   "conference": "AFC",
+   "division": "AFC West",
+   "full_name": "Denver Broncos",
+   "aliases": [],
+   "elo": 1536.37,
+   "rank": 16,
+   "record": {
+    "w": 3,
+    "l": 1,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1519.9699999999998
+    ],
+    [
+     2,
+     1520.9699999999998
+    ],
+    [
+     3,
+     1532.9699999999998
+    ],
+    [
+     4,
+     1533.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0039732",
+    "name": "Bo Nix",
+    "q": 14.8
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 10.177953716156766,
+    "playoffs": 0.36684453435259573,
+    "division": 0.09252072162298014,
+    "seed1": 0.007236379510268556,
+    "super_bowl": 0.000995382372744753
+   }
+  },
+  {
+   "team": "DET",
+   "name": "Lions",
+   "city": "Detroit",
+   "conference": "NFC",
+   "division": "NFC North",
+   "full_name": "Detroit Lions",
+   "aliases": [],
+   "elo": 1640.37,
+   "rank": 3,
+   "record": {
+    "w": 4,
+    "l": 0,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1623.9699999999998
+    ],
+    [
+     2,
+     1624.9699999999998
+    ],
+    [
+     3,
+     1636.9699999999998
+    ],
+    [
+     4,
+     1637.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0033106",
+    "name": "Jared Goff",
+    "q": 31.4
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 12.991977112913768,
+    "playoffs": 0.985,
+    "division": 0.5415286691860196,
+    "seed1": 0.45171107985647196,
+    "super_bowl": 0.11967128255961094
+   }
+  },
+  {
+   "team": "GB",
+   "name": "Packers",
+   "city": "Green Bay",
+   "conference": "NFC",
+   "division": "NFC North",
+   "full_name": "Green Bay Packers",
+   "aliases": [],
+   "elo": 1598.37,
+   "rank": 7,
+   "record": {
+    "w": 4,
+    "l": 0,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1581.9699999999998
+    ],
+    [
+     2,
+     1582.9699999999998
+    ],
+    [
+     3,
+     1594.9699999999998
+    ],
+    [
+     4,
+     1595.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0036264",
+    "name": "Jordan Love",
+    "q": 22.6
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 12.2927063794732,
+    "playoffs": 0.921574673179288,
+    "division": 0.28419828552795423,
+    "seed1": 0.12441156217565737,
+    "super_bowl": 0.017297763122783513
+   }
+  },
+  {
+   "team": "HOU",
+   "name": "Texans",
+   "city": "Houston",
+   "conference": "AFC",
+   "division": "AFC South",
+   "full_name": "Houston Texans",
+   "aliases": [],
+   "elo": 1531.37,
+   "rank": 17,
+   "record": {
+    "w": 2,
+    "l": 2,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1514.9699999999998
+    ],
+    [
+     2,
+     1515.9699999999998
+    ],
+    [
+     3,
+     1527.9699999999998
+    ],
+    [
+     4,
+     1528.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0039163",
+    "name": "C.J. Stroud",
+    "q": 16.1
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 9.085296126224506,
+    "playoffs": 0.33974159357562544,
+    "division": 0.15871142051335965,
+    "seed1": 0.006206613026604523,
+    "super_bowl": 0.0007906603230180063
+   }
+  },
+  {
+   "team": "IND",
+   "name": "Colts",
+   "city": "Indianapolis",
+   "conference": "AFC",
+   "division": "AFC South",
+   "full_name": "Indianapolis Colts",
+   "aliases": [],
+   "elo": 1488.37,
+   "rank": 22,
+   "record": {
+    "w": 2,
+    "l": 2,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1471.9699999999998
+    ],
+    [
+     2,
+     1472.9699999999998
+    ],
+    [
+     3,
+     1484.9699999999998
+    ],
+    [
+     4,
+     1485.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0035710",
+    "name": "Daniel Jones",
+    "q": -4.4
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 8.282501329362452,
+    "playoffs": 0.17558283334523814,
+    "division": 0.08202410721835897,
+    "seed1": 0.0016577587743225734,
+    "super_bowl": 0.00010914150685398899
+   }
+  },
+  {
+   "team": "JAX",
+   "name": "Jaguars",
+   "city": "Jacksonville",
+   "conference": "AFC",
+   "division": "AFC South",
+   "full_name": "Jacksonville Jaguars",
+   "aliases": [],
+   "elo": 1631.37,
+   "rank": 4,
+   "record": {
+    "w": 4,
+    "l": 0,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1614.9699999999998
+    ],
+    [
+     2,
+     1615.9699999999998
+    ],
+    [
+     3,
+     1627.9699999999998
+    ],
+    [
+     4,
+     1628.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0036971",
+    "name": "Trevor Lawrence",
+    "q": 12.4
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 12.846940804307781,
+    "playoffs": 0.985,
+    "division": 0.7366731572216323,
+    "seed1": 0.13371742412120569,
+    "super_bowl": 0.07906603230180065
+   }
+  },
+  {
+   "team": "KC",
+   "name": "Chiefs",
+   "city": "Kansas City",
+   "conference": "AFC",
+   "division": "AFC West",
+   "full_name": "Kansas City Chiefs",
+   "aliases": [],
+   "elo": 1668.37,
+   "rank": 1,
+   "record": {
+    "w": 4,
+    "l": 0,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1651.9699999999998
+    ],
+    [
+     2,
+     1652.9699999999998
+    ],
+    [
+     3,
+     1664.9699999999998
+    ],
+    [
+     4,
+     1665.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0033873",
+    "name": "Patrick Mahomes",
+    "q": 61.2
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 13.424520672597543,
+    "playoffs": 0.985,
+    "division": 0.7018414464871042,
+    "seed1": 0.41641017719368223,
+    "super_bowl": 0.4345001648358666
+   }
+  },
+  {
+   "team": "LA",
+   "name": "Rams",
+   "city": "Los Angeles",
+   "conference": "NFC",
+   "division": "NFC West",
+   "full_name": "Los Angeles Rams",
+   "aliases": [
+    "St. Louis Rams",
+    "St Louis Rams"
+   ],
+   "elo": 1604.37,
+   "rank": 6,
+   "record": {
+    "w": 4,
+    "l": 0,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1587.9699999999998
+    ],
+    [
+     2,
+     1588.9699999999998
+    ],
+    [
+     3,
+     1600.9699999999998
+    ],
+    [
+     4,
+     1601.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0026498",
+    "name": "Matthew Stafford",
+    "q": 29.8
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 12.395917052449073,
+    "playoffs": 0.985,
+    "division": 0.47303529995571636,
+    "seed1": 0.14957559645898585,
+    "super_bowl": 0.0228028927985619
+   }
+  },
+  {
+   "team": "LAC",
+   "name": "Chargers",
+   "city": "Los Angeles",
+   "conference": "AFC",
+   "division": "AFC West",
+   "full_name": "Los Angeles Chargers",
+   "aliases": [
+    "San Diego Chargers"
+   ],
+   "elo": 1582.37,
+   "rank": 8,
+   "record": {
+    "w": 4,
+    "l": 0,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1565.9699999999998
+    ],
+    [
+     2,
+     1566.9699999999998
+    ],
+    [
+     3,
+     1578.9699999999998
+    ],
+    [
+     4,
+     1579.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0036355",
+    "name": "Justin Herbert",
+    "q": 33.9
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 12.012782177993444,
+    "playoffs": 0.7432736204842191,
+    "division": 0.18745873330752116,
+    "seed1": 0.029706717659346123,
+    "super_bowl": 0.008279229960433001
+   }
+  },
+  {
+   "team": "LV",
+   "name": "Raiders",
+   "city": "Las Vegas",
+   "conference": "AFC",
+   "division": "AFC West",
+   "full_name": "Las Vegas Raiders",
+   "aliases": [
+    "Oakland Raiders"
+   ],
+   "elo": 1430.37,
+   "rank": 28,
+   "record": {
+    "w": 1,
+    "l": 3,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1413.9699999999998
+    ],
+    [
+     2,
+     1414.9699999999998
+    ],
+    [
+     3,
+     1426.9699999999998
+    ],
+    [
+     4,
+     1427.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0029604",
+    "name": "Kirk Cousins",
+    "q": -9.9
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 6.214491638971911,
+    "playoffs": 0.07208010094845675,
+    "division": 0.01817909858239458,
+    "seed1": 0.0002793752968442036,
+    "super_bowl": 7.550747465435098e-06
+   }
+  },
+  {
+   "team": "MIA",
+   "name": "Dolphins",
+   "city": "Miami",
+   "conference": "AFC",
+   "division": "AFC East",
+   "full_name": "Miami Dolphins",
+   "aliases": [],
+   "elo": 1466.37,
+   "rank": 25,
+   "record": {
+    "w": 1,
+    "l": 3,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1449.9699999999998
+    ],
+    [
+     2,
+     1450.9699999999998
+    ],
+    [
+     3,
+     1462.9699999999998
+    ],
+    [
+     4,
+     1463.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0038128",
+    "name": "Malik Willis",
+    "q": -27.6
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 6.872790620629452,
+    "playoffs": 0.12526085916456678,
+    "division": 0.04136168797989007,
+    "seed1": 0.0008436999083424767,
+    "super_bowl": 3.962688600322402e-05
+   }
+  },
+  {
+   "team": "MIN",
+   "name": "Vikings",
+   "city": "Minnesota",
+   "conference": "NFC",
+   "division": "NFC North",
+   "full_name": "Minnesota Vikings",
+   "aliases": [],
+   "elo": 1548.37,
+   "rank": 14,
+   "record": {
+    "w": 3,
+    "l": 1,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1531.9699999999998
+    ],
+    [
+     2,
+     1532.9699999999998
+    ],
+    [
+     3,
+     1544.9699999999998
+    ],
+    [
+     4,
+     1545.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0035228",
+    "name": "Kyler Murray",
+    "q": 9.6
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 10.399128786899027,
+    "playoffs": 0.4277570712369329,
+    "division": 0.1319131588638449,
+    "seed1": 0.02680365853922948,
+    "super_bowl": 0.0017297763122783518
+   }
+  },
+  {
+   "team": "NE",
+   "name": "Patriots",
+   "city": "New England",
+   "conference": "AFC",
+   "division": "AFC East",
+   "full_name": "New England Patriots",
+   "aliases": [],
+   "elo": 1561.37,
+   "rank": 12,
+   "record": {
+    "w": 3,
+    "l": 1,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1544.9699999999998
+    ],
+    [
+     2,
+     1545.9699999999998
+    ],
+    [
+     3,
+     1557.9699999999998
+    ],
+    [
+     4,
+     1558.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0039851",
+    "name": "Drake Maye",
+    "q": 19.3
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 10.636347136168581,
+    "playoffs": 0.5384541388538991,
+    "division": 0.17779993073091907,
+    "seed1": 0.015590307047158511,
+    "super_bowl": 0.0031476754406561274
+   }
+  },
+  {
+   "team": "NO",
+   "name": "Saints",
+   "city": "New Orleans",
+   "conference": "NFC",
+   "division": "NFC South",
+   "full_name": "New Orleans Saints",
+   "aliases": [],
+   "elo": 1396.37,
+   "rank": 32,
+   "record": {
+    "w": 0,
+    "l": 4,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1379.9699999999998
+    ],
+    [
+     2,
+     1380.9699999999998
+    ],
+    [
+     3,
+     1392.9699999999998
+    ],
+    [
+     4,
+     1393.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0031503",
+    "name": "Jameis Winston",
+    "q": -20.1
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 4.6167572648009685,
+    "playoffs": 0.04148239897991772,
+    "division": 0.04872884227616001,
+    "seed1": 0.0002520736268064943,
+    "super_bowl": 1.5775747464589496e-06
+   }
+  },
+  {
+   "team": "NYG",
+   "name": "Giants",
+   "city": "New York",
+   "conference": "NFC",
+   "division": "NFC East",
+   "full_name": "New York Giants",
+   "aliases": [],
+   "elo": 1433.37,
+   "rank": 27,
+   "record": {
+    "w": 1,
+    "l": 3,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1416.9699999999998
+    ],
+    [
+     2,
+     1417.9699999999998
+    ],
+    [
+     3,
+     1429.9699999999998
+    ],
+    [
+     4,
+     1430.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0040743",
+    "name": "Tyler Shough",
+    "q": -41.0
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 6.268512812261016,
+    "playoffs": 0.07320327833131106,
+    "division": 0.04673561629655497,
+    "seed1": 0.0007849838889298523,
+    "super_bowl": 8.669418047447717e-06
+   }
+  },
+  {
+   "team": "NYJ",
+   "name": "Jets",
+   "city": "New York",
+   "conference": "AFC",
+   "division": "AFC East",
+   "full_name": "New York Jets",
+   "aliases": [],
+   "elo": 1441.37,
+   "rank": 26,
+   "record": {
+    "w": 1,
+    "l": 4,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1418.4699999999998
+    ],
+    [
+     2,
+     1419.4699999999998
+    ],
+    [
+     3,
+     1431.4699999999998
+    ],
+    [
+     4,
+     1432.4699999999998
+    ],
+    [
+     5,
+     1444.4699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0033537",
+    "name": "Deshaun Watson",
+    "q": -22.8
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 5.996998501982283,
+    "playoffs": 0.08533922991220559,
+    "division": 0.028179389983549113,
+    "seed1": 0.0003916108073482565,
+    "super_bowl": 1.2531121635003433e-05
+   }
+  },
+  {
+   "team": "PHI",
+   "name": "Eagles",
+   "city": "Philadelphia",
+   "conference": "NFC",
+   "division": "NFC East",
+   "full_name": "Philadelphia Eagles",
+   "aliases": [],
+   "elo": 1577.37,
+   "rank": 9,
+   "record": {
+    "w": 4,
+    "l": 0,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1560.9699999999998
+    ],
+    [
+     2,
+     1561.9699999999998
+    ],
+    [
+     3,
+     1573.9699999999998
+    ],
+    [
+     4,
+     1574.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0036389",
+    "name": "Jalen Hurts",
+    "q": 38.7
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 11.924015292568566,
+    "playoffs": 0.6676218331454327,
+    "division": 0.42623388646436833,
+    "seed1": 0.06529211597111342,
+    "super_bowl": 0.006576426119347131
+   }
+  },
+  {
+   "team": "PIT",
+   "name": "Steelers",
+   "city": "Pittsburgh",
+   "conference": "AFC",
+   "division": "AFC North",
+   "full_name": "Pittsburgh Steelers",
+   "aliases": [],
+   "elo": 1518.37,
+   "rank": 19,
+   "record": {
+    "w": 2,
+    "l": 2,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1501.9699999999998
+    ],
+    [
+     2,
+     1502.9699999999998
+    ],
+    [
+     3,
+     1514.9699999999998
+    ],
+    [
+     4,
+     1515.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0023459",
+    "name": "Aaron Rodgers",
+    "q": 8.7
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 8.84335531844136,
+    "playoffs": 0.2782800372819022,
+    "division": 0.14355271642163733,
+    "seed1": 0.004164101771936824,
+    "super_bowl": 0.000434500164835867
+   }
+  },
+  {
+   "team": "SEA",
+   "name": "Seahawks",
+   "city": "Seattle",
+   "conference": "NFC",
+   "division": "NFC West",
+   "full_name": "Seattle Seahawks",
+   "aliases": [],
+   "elo": 1541.37,
+   "rank": 15,
+   "record": {
+    "w": 3,
+    "l": 1,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1524.9699999999998
+    ],
+    [
+     2,
+     1525.9699999999998
+    ],
+    [
+     3,
+     1537.9699999999998
+    ],
+    [
+     4,
+     1538.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0035704",
+    "name": "Drew Lock",
+    "q": -18.3
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 10.270333582949895,
+    "playoffs": 0.38417626583012565,
+    "division": 0.1798430051284794,
+    "seed1": 0.021620251585486184,
+    "super_bowl": 0.0012531121635003437
+   }
+  },
+  {
+   "team": "SF",
+   "name": "49ers",
+   "city": "San Francisco",
+   "conference": "NFC",
+   "division": "NFC West",
+   "full_name": "San Francisco 49ers",
+   "aliases": [],
+   "elo": 1559.37,
+   "rank": 13,
+   "record": {
+    "w": 3,
+    "l": 1,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1542.9699999999998
+    ],
+    [
+     2,
+     1543.9699999999998
+    ],
+    [
+     3,
+     1555.9699999999998
+    ],
+    [
+     4,
+     1556.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0037834",
+    "name": "Brock Purdy",
+    "q": 30.2
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 10.600037563260424,
+    "playoffs": 0.5064429512240006,
+    "division": 0.2370792533928524,
+    "seed1": 0.03757169112302789,
+    "super_bowl": 0.0028707141206527776
+   }
+  },
+  {
+   "team": "TB",
+   "name": "Buccaneers",
+   "city": "Tampa Bay",
+   "conference": "NFC",
+   "division": "NFC South",
+   "full_name": "Tampa Bay Buccaneers",
+   "aliases": [],
+   "elo": 1570.37,
+   "rank": 10,
+   "record": {
+    "w": 3,
+    "l": 2,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1547.4699999999998
+    ],
+    [
+     2,
+     1548.4699999999998
+    ],
+    [
+     3,
+     1560.4699999999998
+    ],
+    [
+     4,
+     1561.4699999999998
+    ],
+    [
+     5,
+     1573.4699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0041251",
+    "name": "Jalon Daniels",
+    "q": -31.5
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 10.198897420009098,
+    "playoffs": 0.5996030927152337,
+    "division": 0.7043460660836719,
+    "seed1": 0.052665645317715365,
+    "super_bowl": 0.004764199569631479
+   }
+  },
+  {
+   "team": "TEN",
+   "name": "Titans",
+   "city": "Tennessee",
+   "conference": "AFC",
+   "division": "AFC South",
+   "full_name": "Tennessee Titans",
+   "aliases": [],
+   "elo": 1404.37,
+   "rank": 31,
+   "record": {
+    "w": 0,
+    "l": 4,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1387.9699999999998
+    ],
+    [
+     2,
+     1388.9699999999998
+    ],
+    [
+     3,
+     1400.9699999999998
+    ],
+    [
+     4,
+     1401.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0040676",
+    "name": "Cam Ward",
+    "q": -33.3
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 4.754757923669409,
+    "playoffs": 0.048359527941289664,
+    "division": 0.02259131504664916,
+    "seed1": 0.00012575386310089697,
+    "super_bowl": 2.280289279856189e-06
+   }
+  },
+  {
+   "team": "WAS",
+   "name": "Commanders",
+   "city": "Washington",
+   "conference": "NFC",
+   "division": "NFC East",
+   "full_name": "Washington Commanders",
+   "aliases": [
+    "Washington Football Team",
+    "Washington Redskins"
+   ],
+   "elo": 1522.37,
+   "rank": 18,
+   "record": {
+    "w": 2,
+    "l": 2,
+    "t": 0
+   },
+   "trend": [
+    [
+     1,
+     1505.9699999999998
+    ],
+    [
+     2,
+     1506.9699999999998
+    ],
+    [
+     3,
+     1518.9699999999998
+    ],
+    [
+     4,
+     1519.9699999999998
+    ]
+   ],
+   "qb": {
+    "id": "00-0039910",
+    "name": "Jayden Daniels",
+    "q": 24.9
+   },
+   "simulation": {
+    "runs": 10000,
+    "projected_wins": 8.917931870585615,
+    "playoffs": 0.2869880836232318,
+    "division": 0.1832235558794922,
+    "seed1": 0.012065002327049464,
+    "super_bowl": 0.0005223840950175663
+   }
+  }
+ ],
+ "scorecard": {
+  "league_date": "2026-10-11",
+  "games_on_slate": 5,
+  "season": {
+   "season": 2026,
+   "n": 52,
+   "hits": 32,
+   "losses": 20,
+   "pushes": 0,
+   "accuracy": 0.6153846153846154,
+   "market_n": 50,
+   "market_accuracy": 0.66
+  },
+  "holdout": {
+   "season": 2025,
+   "n": 285,
+   "model_accuracy": 0.6561,
+   "market_accuracy": 0.6596,
+   "model_brier": 0.2173,
+   "market_brier": 0.2104
+  }
+ },
+ "track_record": {
+  "overall": {
+   "n": 52,
+   "hits": 32,
+   "losses": 20,
+   "pushes": 0,
+   "accuracy": 0.6153846153846154,
+   "market_n": 50,
+   "market_hits": 33,
+   "market_accuracy": 0.66
+  },
+  "by_tier": [
+   {
+    "tier": "Toss-up",
+    "n": 12,
+    "hits": 6,
+    "losses": 6,
+    "pushes": 0,
+    "accuracy": 0.5,
+    "market_n": 12,
+    "market_hits": 7,
+    "market_accuracy": 0.5833333333333334
+   },
+   {
+    "tier": "Lean",
+    "n": 18,
+    "hits": 10,
+    "losses": 8,
+    "pushes": 0,
+    "accuracy": 0.5555555555555556,
+    "market_n": 18,
+    "market_hits": 11,
+    "market_accuracy": 0.6111111111111112
+   },
+   {
+    "tier": "Strong",
+    "n": 16,
+    "hits": 11,
+    "losses": 5,
+    "pushes": 0,
+    "accuracy": 0.6875,
+    "market_n": 15,
+    "market_hits": 10,
+    "market_accuracy": 0.6666666666666666
+   },
+   {
+    "tier": "Lock-ish",
+    "n": 6,
+    "hits": 5,
+    "losses": 1,
+    "pushes": 0,
+    "accuracy": 0.8333333333333334,
+    "market_n": 5,
+    "market_hits": 5,
+    "market_accuracy": 1.0
+   }
+  ],
+  "by_week": [
+   {
+    "season": 2026,
+    "week": 1,
+    "n": 14,
+    "hits": 9,
+    "losses": 5,
+    "pushes": 0,
+    "cum_n": 14,
+    "cum_hits": 9,
+    "cum_accuracy": 0.6428571428571429,
+    "market_n": 14,
+    "market_hits": 10,
+    "market_cum_n": 14,
+    "market_cum_hits": 10,
+    "market_cum_accuracy": 0.7142857142857143
+   },
+   {
+    "season": 2026,
+    "week": 2,
+    "n": 14,
+    "hits": 8,
+    "losses": 6,
+    "pushes": 0,
+    "cum_n": 28,
+    "cum_hits": 17,
+    "cum_accuracy": 0.6071428571428571,
+    "market_n": 13,
+    "market_hits": 9,
+    "market_cum_n": 27,
+    "market_cum_hits": 19,
+    "market_cum_accuracy": 0.7037037037037037
+   },
+   {
+    "season": 2026,
+    "week": 3,
+    "n": 13,
+    "hits": 8,
+    "losses": 5,
+    "pushes": 0,
+    "cum_n": 41,
+    "cum_hits": 25,
+    "cum_accuracy": 0.6097560975609756,
+    "market_n": 12,
+    "market_hits": 8,
+    "market_cum_n": 39,
+    "market_cum_hits": 27,
+    "market_cum_accuracy": 0.6923076923076923
+   },
+   {
+    "season": 2026,
+    "week": 4,
+    "n": 9,
+    "hits": 6,
+    "losses": 3,
+    "pushes": 0,
+    "cum_n": 50,
+    "cum_hits": 31,
+    "cum_accuracy": 0.62,
+    "market_n": 9,
+    "market_hits": 5,
+    "market_cum_n": 48,
+    "market_cum_hits": 32,
+    "market_cum_accuracy": 0.6666666666666666
+   },
+   {
+    "season": 2026,
+    "week": 5,
+    "n": 2,
+    "hits": 1,
+    "losses": 1,
+    "pushes": 0,
+    "cum_n": 52,
+    "cum_hits": 32,
+    "cum_accuracy": 0.6153846153846154,
+    "market_n": 2,
+    "market_hits": 1,
+    "market_cum_n": 50,
+    "market_cum_hits": 33,
+    "market_cum_accuracy": 0.66
+   }
+  ],
+  "calibration": {
+   "n": 52,
+   "bins": [
+    {
+     "lo": 0.0,
+     "hi": 0.1,
+     "n": 0,
+     "mean_p": null,
+     "hit_rate": null,
+     "low_sample": true
+    },
+    {
+     "lo": 0.1,
+     "hi": 0.2,
+     "n": 0,
+     "mean_p": null,
+     "hit_rate": null,
+     "low_sample": true
+    },
+    {
+     "lo": 0.2,
+     "hi": 0.3,
+     "n": 2,
+     "mean_p": 0.263,
+     "hit_rate": 0.0,
+     "low_sample": true
+    },
+    {
+     "lo": 0.3,
+     "hi": 0.4,
+     "n": 5,
+     "mean_p": 0.363,
+     "hit_rate": 0.2,
+     "low_sample": true
+    },
+    {
+     "lo": 0.4,
+     "hi": 0.5,
+     "n": 8,
+     "mean_p": 0.463,
+     "hit_rate": 0.375,
+     "low_sample": true
+    },
+    {
+     "lo": 0.5,
+     "hi": 0.6,
+     "n": 10,
+     "mean_p": 0.5630000000000001,
+     "hit_rate": 0.5,
+     "low_sample": false
+    },
+    {
+     "lo": 0.6,
+     "hi": 0.7,
+     "n": 12,
+     "mean_p": 0.663,
+     "hit_rate": 0.6666666666666666,
+     "low_sample": false
+    },
+    {
+     "lo": 0.7,
+     "hi": 0.8,
+     "n": 9,
+     "mean_p": 0.763,
+     "hit_rate": 0.7777777777777778,
+     "low_sample": true
+    },
+    {
+     "lo": 0.8,
+     "hi": 0.9,
+     "n": 4,
+     "mean_p": 0.863,
+     "hit_rate": 0.75,
+     "low_sample": true
+    },
+    {
+     "lo": 0.9,
+     "hi": 1.0,
+     "n": 2,
+     "mean_p": 0.963,
+     "hit_rate": 1.0,
+     "low_sample": true
+    }
+   ],
+   "error": 0.030636363636363625,
+   "error_n": 22
+  },
+  "score_error": {
+   "n": 52,
+   "margin_mae": 10.42,
+   "total_mae": 9.13,
+   "market_n": 50,
+   "market_margin_mae": 10.08,
+   "market_total_mae": 8.81
+  },
+  "clv": {
+   "n": 50,
+   "mean_pp": 0.42,
+   "share_toward_pick": 0.52
+  },
+  "units": {
+   "all": {
+    "n": 52,
+    "hits": 32,
+    "losses": 20,
+    "pushes": 0,
+    "units": 3.2727,
+    "roi": 0.0629,
+    "mean_break_even": 0.5812
+   },
+   "ev_positive": {
+    "n": 9,
+    "hits": 5,
+    "losses": 4,
+    "pushes": 0,
+    "units": 0.9091,
+    "roi": 0.101,
+    "mean_break_even": 0.5531
+   },
+   "break_even_minus_110": 0.5238095238095238
+  }
+ }
+}

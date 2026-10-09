@@ -1,0 +1,19 @@
+# Gridiron Odds — live-price overlay Worker (DECISIONS D6). Deployed manually by Lauren; the
+# build team never deploys. Deploy: `cd proxy && npx wrangler deploy`.
+name = "gridiron-odds-proxy"
+main = "odds.js"
+compatibility_date = "2026-01-01"
+workers_dev = true
+
+# The Odds API key is a SECRET, never a var and never committed:
+#   npx wrangler secret put ODDS_API_KEY
+# The Worker reads it as env.ODDS_API_KEY and uses it only in the upstream URL.
+
+[vars]
+# Comma-separated list of browser origins allowed to call the Worker (exact match, scheme +
+# host + port). Anything else — including requests with no Origin header — gets 403.
+# Replace the first entry with the real GitHub Pages origin once the repo exists (D14).
+ALLOWED_ORIGINS = "https://grimoireart.github.io,http://localhost:8787,http://127.0.0.1:8787"
+
+[observability]
+enabled = true
