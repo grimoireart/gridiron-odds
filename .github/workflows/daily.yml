@@ -12,7 +12,8 @@ name: daily build
 
 on:
   schedule:
-    - cron: "0 10 * 1,2,9,10,11,12 *"   # 10:00 UTC, Sep-Feb
+    - cron: "23 8 * 1,2,9,10,11,12 *"   # 08:23 UTC, Sep-Feb (off the hour: GitHub delays :00 crons by hours)
+    - cron: "23 2 * 1,2,9,10,11,12 *"   # 02:23 UTC: grades Sunday/Monday night games before the morning
   workflow_dispatch:
 
 concurrency:
