@@ -1,9 +1,9 @@
 {
  "schema_version": "1.0.0",
  "build": {
-  "id": "20261012T021845Z-9f30af4",
-  "built_at": "2026-10-12T02:18:45Z",
-  "official_odds_at": "2026-10-12T02:18:46Z",
+  "id": "20261012T022431Z-9f30af4",
+  "built_at": "2026-10-12T02:24:31Z",
+  "official_odds_at": "2026-10-12T02:24:32Z",
   "league_date": "2026-10-11",
   "next_league_date": "2026-10-11",
   "odds_source": "odds_api",
@@ -91,6 +91,7 @@
  },
  "games": [
   {
+   "frozen_snapshot": null,
    "game_id": "2026_01_NE_SEA",
    "season": 2026,
    "game_type": "REG",
@@ -125,7 +126,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.5996387718242023,
      "consensus_total": 44.5,
      "consensus_home_spread": -3.0,
@@ -218,11 +219,12 @@
     "winner": "SEA",
     "margin": 3,
     "hit": true,
-    "pred_margin_error": 2.058282291359144,
+    "pred_margin_error": 0.5729874043322423,
     "pred_total_error": 21.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_01_SF_LA",
    "season": 2026,
    "game_type": "REG",
@@ -257,7 +259,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.6574752261956054,
      "consensus_total": 47.5,
      "consensus_home_spread": -3.5,
@@ -352,11 +354,12 @@
     "winner": "SF",
     "margin": -20,
     "hit": false,
-    "pred_margin_error": 22.109086938864117,
+    "pred_margin_error": 23.659943971971774,
     "pred_total_error": 13.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_01_ATL_PIT",
    "season": 2026,
    "game_type": "REG",
@@ -391,7 +394,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.7179705215419501,
      "consensus_total": 40.5,
      "consensus_home_spread": -6.5,
@@ -482,11 +485,12 @@
     "winner": "PIT",
     "margin": 7,
     "hit": true,
-    "pred_margin_error": -2.1363143003531135,
+    "pred_margin_error": -1.0944294370082552,
     "pred_total_error": 7.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_01_BAL_IND",
    "season": 2026,
    "game_type": "REG",
@@ -521,7 +525,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.4066302458405761,
      "consensus_total": 48.5,
      "consensus_home_spread": 3.0,
@@ -612,11 +616,12 @@
     "winner": "BAL",
     "margin": -18,
     "hit": true,
-    "pred_margin_error": 16.584055377994343,
+    "pred_margin_error": 15.801080215155862,
     "pred_total_error": -15.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_01_BUF_HOU",
    "season": 2026,
    "game_type": "REG",
@@ -651,7 +656,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.4956702459300312,
      "consensus_total": 44.5,
      "consensus_home_spread": 1.5,
@@ -742,11 +747,12 @@
     "winner": "BUF",
     "margin": -5,
     "hit": false,
-    "pred_margin_error": 6.347479034141728,
+    "pred_margin_error": 5.392025095150321,
     "pred_total_error": -22.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_01_CHI_CAR",
    "season": 2026,
    "game_type": "REG",
@@ -781,7 +787,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.4003612281757977,
      "consensus_total": 47.5,
      "consensus_home_spread": 3.0,
@@ -872,11 +878,12 @@
     "winner": "CHI",
     "margin": -22,
     "hit": true,
-    "pred_margin_error": 19.67011453156483,
+    "pred_margin_error": 19.36067596954519,
     "pred_total_error": -48.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_01_CLE_JAX",
    "season": 2026,
    "game_type": "REG",
@@ -911,7 +918,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.7913616398243045,
      "consensus_total": 40.5,
      "consensus_home_spread": -8.5,
@@ -1004,11 +1011,12 @@
     "winner": "JAX",
     "margin": 24,
     "hit": true,
-    "pred_margin_error": -15.8681047467746,
+    "pred_margin_error": -15.144231491366641,
     "pred_total_error": -3.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_01_NO_DET",
    "season": 2026,
    "game_type": "REG",
@@ -1043,7 +1051,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.7335423197492164,
      "consensus_total": 49.5,
      "consensus_home_spread": -7.0,
@@ -1136,11 +1144,12 @@
     "winner": "DET",
     "margin": 1,
     "hit": true,
-    "pred_margin_error": 4.7365891526088975,
+    "pred_margin_error": 5.569616726066735,
     "pred_total_error": -11.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_01_NYJ_TEN",
    "season": 2026,
    "game_type": "REG",
@@ -1175,7 +1184,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.5173641257162701,
      "consensus_total": 39.5,
      "consensus_home_spread": -1.5,
@@ -1264,11 +1273,12 @@
     "winner": "NYJ",
     "margin": -13,
     "hit": false,
-    "pred_margin_error": 14.651487056139768,
+    "pred_margin_error": 13.8902421852182,
     "pred_total_error": 6.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_01_TB_CIN",
    "season": 2026,
    "game_type": "REG",
@@ -1303,7 +1313,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.644729178800233,
      "consensus_total": 50.5,
      "consensus_home_spread": -3.5,
@@ -1392,11 +1402,12 @@
     "winner": "CIN",
     "margin": 6,
     "hit": true,
-    "pred_margin_error": -3.274303927435302,
+    "pred_margin_error": -2.3624267377624433,
     "pred_total_error": -9.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_01_ARI_LAC",
    "season": 2026,
    "game_type": "REG",
@@ -1431,7 +1442,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.7867435158501441,
      "consensus_total": 47.5,
      "consensus_home_spread": -8.5,
@@ -1524,11 +1535,12 @@
     "winner": "ARI",
     "margin": -12,
     "hit": false,
-    "pred_margin_error": 20.26931488280972,
+    "pred_margin_error": 20.784461212805173,
     "pred_total_error": 7.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_01_GB_MIN",
    "season": 2026,
    "game_type": "REG",
@@ -1563,7 +1575,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.5324675324675325,
      "consensus_total": 46.5,
      "consensus_home_spread": -1.5,
@@ -1654,11 +1666,12 @@
     "winner": "MIN",
     "margin": 17,
     "hit": true,
-    "pred_margin_error": -14.143192463011587,
+    "pred_margin_error": -15.420623186967456,
     "pred_total_error": -14.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_01_MIA_LV",
    "season": 2026,
    "game_type": "REG",
@@ -1693,7 +1706,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.6037569709421778,
      "consensus_total": 40.5,
      "consensus_home_spread": -3.0,
@@ -1790,11 +1803,12 @@
     "winner": "LV",
     "margin": 14,
     "hit": true,
-    "pred_margin_error": -13.547788987150474,
+    "pred_margin_error": -11.952555419722293,
     "pred_total_error": 0.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_01_WAS_PHI",
    "season": 2026,
    "game_type": "REG",
@@ -1829,7 +1843,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.6805555555555556,
      "consensus_total": 43.5,
      "consensus_home_spread": -6.0,
@@ -1922,11 +1936,12 @@
     "winner": "PHI",
     "margin": 2,
     "hit": true,
-    "pred_margin_error": 2.7777017469880727,
+    "pred_margin_error": 3.0869635730483003,
     "pred_total_error": -2.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_01_DAL_NYG",
    "season": 2026,
    "game_type": "REG",
@@ -1961,7 +1976,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.4003612281757977,
      "consensus_total": 47.5,
      "consensus_home_spread": 3.0,
@@ -2056,11 +2071,12 @@
     "winner": "NYG",
     "margin": 8,
     "hit": false,
-    "pred_margin_error": -7.342576451991698,
+    "pred_margin_error": -9.576945425558485,
     "pred_total_error": -0.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_01_DEN_KC",
    "season": 2026,
    "game_type": "REG",
@@ -2095,7 +2111,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.5427435387673957,
      "consensus_total": 42.5,
      "consensus_home_spread": -2.5,
@@ -2190,11 +2206,12 @@
     "winner": "KC",
     "margin": 21,
     "hit": false,
-    "pred_margin_error": -23.338916266235643,
+    "pred_margin_error": -21.03874581387278,
     "pred_total_error": 1.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_02_DET_BUF",
    "season": 2026,
    "game_type": "REG",
@@ -2229,7 +2246,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.6750312469954812,
      "consensus_total": 54.5,
      "consensus_home_spread": -5.5,
@@ -2318,11 +2335,12 @@
     "winner": "BUF",
     "margin": 10,
     "hit": true,
-    "pred_margin_error": -5.096277636816535,
+    "pred_margin_error": -4.982056640214999,
     "pred_total_error": -17.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_02_CAR_ATL",
    "season": 2026,
    "game_type": "REG",
@@ -2357,7 +2375,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.4170073589533933,
      "consensus_total": 43.5,
      "consensus_home_spread": 2.5,
@@ -2456,11 +2474,12 @@
     "winner": "CAR",
     "margin": -31,
     "hit": false,
-    "pred_margin_error": 35.46970171128871,
+    "pred_margin_error": 31.013198360020876,
     "pred_total_error": 6.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_02_CIN_HOU",
    "season": 2026,
    "game_type": "REG",
@@ -2495,7 +2514,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.5720596355604638,
      "consensus_total": 45.5,
      "consensus_home_spread": -3.0,
@@ -2586,11 +2605,12 @@
     "winner": "CIN",
     "margin": -14,
     "hit": false,
-    "pred_margin_error": 18.19612669530092,
+    "pred_margin_error": 16.763310182840144,
     "pred_total_error": 19.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_02_CLE_TB",
    "season": 2026,
    "game_type": "REG",
@@ -2625,7 +2645,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.7768331562167907,
      "consensus_total": 41.5,
      "consensus_home_spread": -8.5,
@@ -2722,11 +2742,12 @@
     "winner": "CLE",
     "margin": -4,
     "hit": false,
-    "pred_margin_error": 7.75788661399618,
+    "pred_margin_error": 10.775913510719793,
     "pred_total_error": -0.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_02_GB_NYJ",
    "season": 2026,
    "game_type": "REG",
@@ -2761,7 +2782,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.3775334481388264,
      "consensus_total": 44.5,
      "consensus_home_spread": 3.5,
@@ -2850,11 +2871,12 @@
     "winner": "GB",
     "margin": -3,
     "hit": true,
-    "pred_margin_error": 0.2861169660869267,
+    "pred_margin_error": -0.20622556564575856,
     "pred_total_error": 7.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_02_MIN_CHI",
    "season": 2026,
    "game_type": "REG",
@@ -2889,7 +2911,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.6574752261956054,
      "consensus_total": 46.5,
      "consensus_home_spread": -4.5,
@@ -2986,11 +3008,12 @@
     "winner": "MIN",
     "margin": -6,
     "hit": false,
-    "pred_margin_error": 7.884464200340846,
+    "pred_margin_error": 9.577587274292048,
     "pred_total_error": 34.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_02_NO_BAL",
    "season": 2026,
    "game_type": "REG",
@@ -3025,7 +3048,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.7571884984025559,
      "consensus_total": 45.5,
      "consensus_home_spread": -8.5,
@@ -3118,11 +3141,12 @@
     "winner": "NO",
     "margin": -7,
     "hit": false,
-    "pred_margin_error": 14.27586007771248,
+    "pred_margin_error": 14.68024483098817,
     "pred_total_error": 4.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_02_PHI_TEN",
    "season": 2026,
    "game_type": "REG",
@@ -3157,7 +3181,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.26645768025078376,
      "consensus_total": 39.5,
      "consensus_home_spread": 7.0,
@@ -3250,11 +3274,12 @@
     "winner": "PHI",
     "margin": -4,
     "hit": true,
-    "pred_margin_error": -4.109089094743849,
+    "pred_margin_error": -3.402853329053344,
     "pred_total_error": -4.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_02_PIT_NE",
    "season": 2026,
    "game_type": "REG",
@@ -3289,7 +3314,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.6636481241914618,
      "consensus_total": 41.5,
      "consensus_home_spread": -4.5,
@@ -3380,11 +3405,12 @@
     "winner": "NE",
     "margin": 17,
     "hit": true,
-    "pred_margin_error": -12.808515369883866,
+    "pred_margin_error": -12.4649241851566,
     "pred_total_error": 18.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_02_JAX_DEN",
    "season": 2026,
    "game_type": "REG",
@@ -3419,7 +3445,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.5720596355604638,
      "consensus_total": 45.5,
      "consensus_home_spread": -2.5,
@@ -3512,11 +3538,12 @@
     "winner": "DEN",
     "margin": 7,
     "hit": true,
-    "pred_margin_error": -6.806064372814477,
+    "pred_margin_error": -5.62578924959512,
     "pred_total_error": 12.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_02_LV_LAC",
    "season": 2026,
    "game_type": "REG",
@@ -3551,7 +3578,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.7335423197492164,
      "consensus_total": 43.5,
      "consensus_home_spread": -6.5,
@@ -3646,11 +3673,12 @@
     "winner": "LV",
     "margin": -12,
     "hit": false,
-    "pred_margin_error": 15.92114261575023,
+    "pred_margin_error": 17.884609144056157,
     "pred_total_error": 3.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_02_MIA_SF",
    "season": 2026,
    "game_type": "REG",
@@ -3685,7 +3713,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.863013698630137,
      "consensus_total": 44.5,
      "consensus_home_spread": -12.5,
@@ -3780,11 +3808,12 @@
     "winner": "SF",
     "margin": 22,
     "hit": true,
-    "pred_margin_error": -11.572000080276775,
+    "pred_margin_error": -10.101042172918639,
     "pred_total_error": -3.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_02_SEA_ARI",
    "season": 2026,
    "game_type": "REG",
@@ -3819,7 +3848,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.34252477380439467,
      "consensus_total": 40.5,
      "consensus_home_spread": 3.5,
@@ -3914,11 +3943,12 @@
     "winner": "SEA",
     "margin": -24,
     "hit": true,
-    "pred_margin_error": 17.45665905963152,
+    "pred_margin_error": 18.789022115561185,
     "pred_total_error": 2.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_02_WAS_DAL",
    "season": 2026,
    "game_type": "REG",
@@ -3953,7 +3983,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.6574752261956054,
      "consensus_total": 51.5,
      "consensus_home_spread": -3.5,
@@ -4048,11 +4078,12 @@
     "winner": "DAL",
     "margin": 17,
     "hit": true,
-    "pred_margin_error": -17.020822558481413,
+    "pred_margin_error": -14.1217808758676,
     "pred_total_error": -5.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_02_IND_KC",
    "season": 2026,
    "game_type": "REG",
@@ -4087,7 +4118,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.6957699520733487,
      "consensus_total": 46.5,
      "consensus_home_spread": -6.0,
@@ -4178,11 +4209,12 @@
     "winner": "KC",
     "margin": 3,
     "hit": true,
-    "pred_margin_error": 2.834721601113338,
+    "pred_margin_error": 2.7784453896938848,
     "pred_total_error": -16.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_02_NYG_LA",
    "season": 2026,
    "game_type": "REG",
@@ -4217,7 +4249,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.7179705215419501,
      "consensus_total": 47.5,
      "consensus_home_spread": -6.5,
@@ -4310,11 +4342,12 @@
     "winner": "LA",
     "margin": 22,
     "hit": true,
-    "pred_margin_error": -15.454436995245327,
+    "pred_margin_error": -15.488626791444258,
     "pred_total_error": 13.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_03_ATL_GB",
    "season": 2026,
    "game_type": "REG",
@@ -4349,7 +4382,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.6690070210631895,
      "consensus_total": 43.5,
      "consensus_home_spread": -4.5,
@@ -4440,11 +4473,12 @@
     "winner": "ATL",
     "margin": -21,
     "hit": false,
-    "pred_margin_error": 27.250444650751543,
+    "pred_margin_error": 26.35471143445521,
     "pred_total_error": -5.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_03_CAR_CLE",
    "season": 2026,
    "game_type": "REG",
@@ -4479,7 +4513,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.448558885283451,
      "consensus_total": 41.5,
      "consensus_home_spread": 2.5,
@@ -4572,11 +4606,12 @@
     "winner": "CLE",
     "margin": 3,
     "hit": false,
-    "pred_margin_error": -2.712992678341158,
+    "pred_margin_error": -3.8299154822483192,
     "pred_total_error": 2.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_03_CIN_PIT",
    "season": 2026,
    "game_type": "REG",
@@ -4611,7 +4646,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.3835616438356164,
      "consensus_total": 42.5,
      "consensus_home_spread": 3.5,
@@ -4706,11 +4741,12 @@
     "winner": "PIT",
     "margin": 3,
     "hit": false,
-    "pred_margin_error": -3.4099195148611927,
+    "pred_margin_error": -5.266976775225343,
     "pred_total_error": -14.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_03_HOU_IND",
    "season": 2026,
    "game_type": "REG",
@@ -4745,7 +4781,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.4675324675324675,
      "consensus_total": 41.5,
      "consensus_home_spread": 1.5,
@@ -4836,11 +4872,12 @@
     "winner": "IND",
     "margin": 2,
     "hit": false,
-    "pred_margin_error": -4.503616328264002,
+    "pred_margin_error": -3.4588219876130863,
     "pred_total_error": 5.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_03_KC_MIA",
    "season": 2026,
    "game_type": "REG",
@@ -4875,7 +4912,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.17766497461928932,
      "consensus_total": 45.5,
      "consensus_home_spread": 10.0,
@@ -4972,11 +5009,12 @@
     "winner": "KC",
     "margin": -14,
     "hit": true,
-    "pred_margin_error": 8.105527643384484,
+    "pred_margin_error": 5.221834797776808,
     "pred_total_error": 11.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_03_LAC_BUF",
    "season": 2026,
    "game_type": "REG",
@@ -5011,7 +5049,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.7335423197492164,
      "consensus_total": 50.5,
      "consensus_home_spread": -7.0,
@@ -5110,11 +5148,12 @@
     "winner": "BUF",
     "margin": 8,
     "hit": true,
-    "pred_margin_error": 2.500968590333171,
+    "pred_margin_error": 0.14505923464107617,
     "pred_total_error": 10.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_03_NE_JAX",
    "season": 2026,
    "game_type": "REG",
@@ -5149,7 +5188,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.593369754159424,
      "consensus_total": 46.5,
      "consensus_home_spread": -3.0,
@@ -5246,11 +5285,12 @@
     "winner": "JAX",
     "margin": 29,
     "hit": true,
-    "pred_margin_error": -29.154782586560035,
+    "pred_margin_error": -27.359718485017456,
     "pred_total_error": 5.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_03_NYJ_DET",
    "season": 2026,
    "game_type": "REG",
@@ -5285,7 +5325,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.7335423197492164,
      "consensus_total": 49.5,
      "consensus_home_spread": -7.0,
@@ -5378,11 +5418,12 @@
     "winner": "DET",
     "margin": 7,
     "hit": true,
-    "pred_margin_error": 1.2210708470327187,
+    "pred_margin_error": 0.43997113169865276,
     "pred_total_error": -5.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_03_SEA_WAS",
    "season": 2026,
    "game_type": "REG",
@@ -5417,7 +5458,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.22849462365591394,
      "consensus_total": 40.5,
      "consensus_home_spread": 8.5,
@@ -5508,11 +5549,12 @@
     "winner": "WAS",
     "margin": 2,
     "hit": false,
-    "pred_margin_error": -8.47940030533142,
+    "pred_margin_error": -9.73173239366459,
     "pred_total_error": -23.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_03_TEN_NYG",
    "season": 2026,
    "game_type": "REG",
@@ -5547,7 +5589,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.5427435387673957,
      "consensus_total": 37.5,
      "consensus_home_spread": -2.5,
@@ -5644,11 +5686,12 @@
     "winner": "NYG",
     "margin": 5,
     "hit": true,
-    "pred_margin_error": 1.2608363203310837,
+    "pred_margin_error": -2.1336319812748523,
     "pred_total_error": 18.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_03_ARI_SF",
    "season": 2026,
    "game_type": "REG",
@@ -5683,7 +5726,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.7659021045164341,
      "consensus_total": 48.5,
      "consensus_home_spread": -7.5,
@@ -5776,11 +5819,12 @@
     "winner": "SF",
     "margin": 6,
     "hit": true,
-    "pred_margin_error": 4.3116358087434214,
+    "pred_margin_error": 2.922806861527004,
     "pred_total_error": -17.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_03_MIN_TB",
    "season": 2026,
    "game_type": "REG",
@@ -5815,7 +5859,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.4956702459300312,
      "consensus_total": 42.5,
      "consensus_home_spread": 1.5,
@@ -5910,11 +5954,12 @@
     "winner": "MIN",
     "margin": -7,
     "hit": true,
-    "pred_margin_error": 1.4973966759297532,
+    "pred_margin_error": 5.078420058825147,
     "pred_total_error": 3.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_03_BAL_DAL",
    "season": 2026,
    "game_type": "REG",
@@ -5949,7 +5994,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.3962430290578221,
      "consensus_total": 53.5,
      "consensus_home_spread": 3.0,
@@ -6038,11 +6083,12 @@
     "winner": "BAL",
     "margin": -3,
     "hit": true,
-    "pred_margin_error": -0.3335527543048231,
+    "pred_margin_error": -0.06831251147074857,
     "pred_total_error": -11.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_03_LV_NO",
    "season": 2026,
    "game_type": "REG",
@@ -6077,7 +6123,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.6309403437815976,
      "consensus_total": 43.5,
      "consensus_home_spread": -3.5,
@@ -6170,11 +6216,12 @@
     "winner": "LV",
     "margin": -8,
     "hit": false,
-    "pred_margin_error": 10.365709763374225,
+    "pred_margin_error": 11.243375197186236,
     "pred_total_error": -18.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_03_LA_DEN",
    "season": 2026,
    "game_type": "REG",
@@ -6209,7 +6256,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.5043297540699688,
      "consensus_total": 43.5,
      "consensus_home_spread": -1.5,
@@ -6300,11 +6347,12 @@
     "winner": "DEN",
     "margin": 4,
     "hit": true,
-    "pred_margin_error": -2.365784854926992,
+    "pred_margin_error": -3.3519531109037812,
     "pred_total_error": -12.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_03_PHI_CHI",
    "season": 2026,
    "game_type": "REG",
@@ -6339,7 +6387,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.3630958183058778,
      "consensus_total": 42.5,
      "consensus_home_spread": 3.5,
@@ -6434,11 +6482,12 @@
     "winner": "CHI",
     "margin": 20,
     "hit": false,
-    "pred_margin_error": -22.109278697862145,
+    "pred_margin_error": -23.264792641279197,
     "pred_total_error": 8.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_04_PIT_CLE",
    "season": 2026,
    "game_type": "REG",
@@ -6473,7 +6522,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.42794036443953615,
      "consensus_total": 38.5,
      "consensus_home_spread": 2.5,
@@ -6564,11 +6613,12 @@
     "winner": "CLE",
     "margin": 3,
     "hit": false,
-    "pred_margin_error": -4.918367543973788,
+    "pred_margin_error": -4.982409965193508,
     "pred_total_error": -12.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_04_IND_WAS",
    "season": 2026,
    "game_type": "REG",
@@ -6603,7 +6653,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.33099297893681046,
      "consensus_total": 46.5,
      "consensus_home_spread": 4.5,
@@ -6698,11 +6748,12 @@
     "winner": "IND",
     "margin": -17,
     "hit": true,
-    "pred_margin_error": 15.985275037530933,
+    "pred_margin_error": 13.521200929674336,
     "pred_total_error": 3.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_04_ARI_NYG",
    "season": 2026,
    "game_type": "REG",
@@ -6737,7 +6788,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.448558885283451,
      "consensus_total": 44.5,
      "consensus_home_spread": 2.5,
@@ -6836,11 +6887,12 @@
     "winner": "NYG",
     "margin": 12,
     "hit": true,
-    "pred_margin_error": -8.336437629399349,
+    "pred_margin_error": -11.675962277820197,
     "pred_total_error": -15.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_04_DAL_HOU",
    "season": 2026,
    "game_type": "REG",
@@ -6875,7 +6927,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.5829926410466066,
      "consensus_total": 48.5,
      "consensus_home_spread": -3.0,
@@ -6966,11 +7018,12 @@
     "winner": "DAL",
     "margin": -4,
     "hit": false,
-    "pred_margin_error": 8.606921740804621,
+    "pred_margin_error": 7.105944139441452,
     "pred_total_error": -15.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_04_GB_TB",
    "season": 2026,
    "game_type": "REG",
@@ -7005,7 +7058,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.4170073589533933,
      "consensus_total": 38.5,
      "consensus_home_spread": 3.0,
@@ -7098,11 +7151,12 @@
     "winner": "GB",
     "margin": -3,
     "hit": true,
-    "pred_margin_error": 1.5947119141960946,
+    "pred_margin_error": 0.9966577079895385,
     "pred_total_error": 7.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_04_JAX_CIN",
    "season": 2026,
    "game_type": "REG",
@@ -7137,7 +7191,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.5720596355604638,
      "consensus_total": 51.5,
      "consensus_home_spread": -2.5,
@@ -7234,11 +7288,12 @@
     "winner": "JAX",
     "margin": -5,
     "hit": false,
-    "pred_margin_error": 3.8781519977635135,
+    "pred_margin_error": 5.911384366866087,
     "pred_total_error": 12.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_04_LA_PHI",
    "season": 2026,
    "game_type": "REG",
@@ -7273,7 +7328,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.3630958183058778,
      "consensus_total": 42.5,
      "consensus_home_spread": 3.5,
@@ -7370,11 +7425,12 @@
     "winner": "LA",
     "margin": -4,
     "hit": true,
-    "pred_margin_error": 3.727068539490099,
+    "pred_margin_error": 1.4012124362308152,
     "pred_total_error": -1.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_04_NE_BUF",
    "season": 2026,
    "game_type": "REG",
@@ -7409,7 +7465,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.7440690150970525,
      "consensus_total": 49.5,
      "consensus_home_spread": -7.0,
@@ -7502,11 +7558,12 @@
     "winner": "NE",
     "margin": -3,
     "hit": false,
-    "pred_margin_error": 8.179672494060993,
+    "pred_margin_error": 9.597553806817118,
     "pred_total_error": -5.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_04_NYJ_CHI",
    "season": 2026,
    "game_type": "REG",
@@ -7541,7 +7598,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.6309403437815976,
      "consensus_total": 43.5,
      "consensus_home_spread": -3.5,
@@ -7638,11 +7695,12 @@
     "winner": "CHI",
     "margin": 11,
     "hit": true,
-    "pred_margin_error": -3.3082631473492343,
+    "pred_margin_error": -5.979598886625044,
     "pred_total_error": 8.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_04_TEN_BAL",
    "season": 2026,
    "game_type": "REG",
@@ -7677,7 +7735,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.8524590163934427,
      "consensus_total": 42.5,
      "consensus_home_spread": -11.5,
@@ -7768,11 +7826,12 @@
     "winner": "BAL",
     "margin": 6,
     "hit": true,
-    "pred_margin_error": 5.854430250378437,
+    "pred_margin_error": 6.0700837559185,
     "pred_total_error": 0.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_04_MIA_MIN",
    "season": 2026,
    "game_type": "REG",
@@ -7807,7 +7866,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.8081570996978852,
      "consensus_total": 38.5,
      "consensus_home_spread": -10.0,
@@ -7898,11 +7957,12 @@
     "winner": "MIN",
     "margin": 5,
     "hit": true,
-    "pred_margin_error": 7.111381379248954,
+    "pred_margin_error": 5.6871470832319435,
     "pred_total_error": 13.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_04_DEN_SF",
    "season": 2026,
    "game_type": "REG",
@@ -7937,7 +7997,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.5996387718242023,
      "consensus_total": 48.5,
      "consensus_home_spread": -3.0,
@@ -8028,11 +8088,12 @@
     "winner": "SF",
     "margin": 10,
     "hit": true,
-    "pred_margin_error": -7.67362462565204,
+    "pred_margin_error": -7.361914249557397,
     "pred_total_error": 10.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_04_KC_LV",
    "season": 2026,
    "game_type": "REG",
@@ -8067,7 +8128,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.33635187580853815,
      "consensus_total": 47.5,
      "consensus_home_spread": 4.5,
@@ -8162,11 +8223,12 @@
     "winner": "KC",
     "margin": -3,
     "hit": true,
-    "pred_margin_error": 1.129597758873657,
+    "pred_margin_error": -0.6917440598103872,
     "pred_total_error": -9.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_04_LAC_SEA",
    "season": 2026,
    "game_type": "REG",
@@ -8201,7 +8263,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.7440690150970525,
      "consensus_total": 42.5,
      "consensus_home_spread": -7.0,
@@ -8292,11 +8354,12 @@
     "winner": "SEA",
     "margin": 7,
     "hit": true,
-    "pred_margin_error": 1.895147422146767,
+    "pred_margin_error": 0.9150789185771915,
     "pred_total_error": -10.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_04_DET_CAR",
    "season": 2026,
    "game_type": "REG",
@@ -8331,7 +8394,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.33635187580853815,
      "consensus_total": 52.5,
      "consensus_home_spread": 4.5,
@@ -8426,11 +8489,12 @@
     "winner": "CAR",
     "margin": 6,
     "hit": false,
-    "pred_margin_error": -8.629145651272184,
+    "pred_margin_error": -9.97057299413571,
     "pred_total_error": -5.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_04_ATL_NO",
    "season": 2026,
    "game_type": "REG",
@@ -8465,7 +8529,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.5173641257162701,
      "consensus_total": 47.5,
      "consensus_home_spread": -1.5,
@@ -8560,11 +8624,12 @@
     "winner": "ATL",
     "margin": -21,
     "hit": false,
-    "pred_margin_error": 22.312837331121436,
+    "pred_margin_error": 21.77263776068346,
     "pred_total_error": -21.5
    }
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_05_TB_DAL",
    "season": 2026,
    "game_type": "REG",
@@ -8599,7 +8664,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.8081570996978852,
      "consensus_total": 49.5,
      "consensus_home_spread": -9.5,
@@ -8696,11 +8761,12 @@
     "winner": "TB",
     "margin": -8,
     "hit": false,
-    "pred_margin_error": 13.770825249539318,
+    "pred_margin_error": 16.35947439158265,
     "pred_total_error": 9.5
    }
   },
   {
+   "frozen_snapshot": "2026_05_PHI_JAX@20261010T154121Z-f80dca9",
    "game_id": "2026_05_PHI_JAX",
    "season": 2026,
    "game_type": "REG",
@@ -8720,22 +8786,22 @@
    },
    "official": {
     "pick": "JAX",
-    "p_home_model": 0.671504060123956,
-    "p_home_market": 0.7600000000000001,
-    "p_home_blend": 0.7290264210433847,
-    "p_pick_blend": 0.7290264210433847,
+    "p_home_model": 0.7201597370154305,
+    "p_home_market": 0.7650751350548044,
+    "p_home_blend": 0.7493547457410236,
+    "p_pick_blend": 0.7493547457410236,
     "tier": "Strong",
     "model_spread": 4.968298187688038,
-    "blend_spread": 6.87706113077366,
-    "expected_home": 24.18853056538683,
-    "expected_away": 17.31146943461317,
-    "display_home": 24,
+    "blend_spread": 7.610047616500003,
+    "expected_home": 24.555023808250002,
+    "expected_away": 16.944976191749998,
+    "display_home": 25,
     "display_away": 17,
     "total_used": 41.5,
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.7600000000000001,
      "consensus_total": 41.5,
      "consensus_home_spread": -7.5,
@@ -8757,11 +8823,11 @@
      "betrivers": null
     },
     "best_price": {
-     "book": "csv",
+     "book": "betmgm",
      "side": "JAX",
-     "american": -380
+     "american": -375
     },
-    "estimated_ev_per_dollar": -0.07912452078730359,
+    "estimated_ev_per_dollar": -0.05081732206137016,
     "factors": {
      "team_elo_home": 1604.6773659271116,
      "team_elo_away": 1483.9957105172655,
@@ -8802,27 +8868,21 @@
      "form_home_3": 57.55041402183065,
      "form_away_3": -58.452789328655626,
      "d_total": 124.20745469220097,
-     "model_market_gap_home": -0.0884959398760441,
-     "model_market_gap_pick": -0.0884959398760441
+     "model_market_gap_home": -0.044915398039373944,
+     "model_market_gap_pick": -0.044915398039373944
     },
     "rationale": [
      "rating",
      "form",
-     "market",
      "verdict"
     ],
     "rationale_sentences": [
      "Jacksonville rates 121 Elo points above Philadelphia, 4th in the league against 19th.",
      "Jacksonville has gained 58 points of rating over its last three games; Philadelphia has lost 58 points of rating over its last three games.",
-     "The books have Jacksonville at 76%, further than the model's 67%; the gap may reflect information this model lacks.",
-     "Blended, that comes to Jacksonville at 73%: a Strong pick, predicted 24 to 17."
+     "Blended, that comes to Jacksonville at 75%: a Strong pick, predicted 25 to 17."
     ],
-    "edge": {
-     "flag": true,
-     "reason_key": "form_move",
-     "reason_text": "Philadelphia's rating moved 58 points in the last three games"
-    },
-    "parlay_eligible": true
+    "edge": null,
+    "parlay_eligible": false
    },
    "result": {
     "home_score": 19,
@@ -8830,11 +8890,12 @@
     "winner": "JAX",
     "margin": 2,
     "hit": true,
-    "pred_margin_error": 2.9682981876880383,
+    "pred_margin_error": 5.610047616500003,
     "pred_total_error": 5.5
    }
   },
   {
+   "frozen_snapshot": "2026_05_CHI_GB@20261011T160812Z-ae7671b",
    "game_id": "2026_05_CHI_GB",
    "season": 2026,
    "game_type": "REG",
@@ -8854,22 +8915,22 @@
    },
    "official": {
     "pick": "CHI",
-    "p_home_model": 0.47272880610007845,
-    "p_home_market": 0.4675324675324675,
-    "p_home_blend": 0.46935118603113135,
-    "p_pick_blend": 0.5306488139688686,
+    "p_home_model": 0.4727288061000785,
+    "p_home_market": 0.47387132463719195,
+    "p_home_blend": 0.4734714431492022,
+    "p_pick_blend": 0.5265285568507978,
     "tier": "Toss-up",
     "model_spread": -0.7587516518138051,
-    "blend_spread": -0.8529484519311281,
-    "expected_home": 22.823525774034437,
-    "expected_away": 23.676474225965563,
+    "blend_spread": -0.7380502465041061,
+    "expected_home": 22.880974876747946,
+    "expected_away": 23.619025123252054,
     "display_home": 23,
     "display_away": 24,
     "total_used": 46.5,
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.4675324675324675,
      "consensus_total": 46.5,
      "consensus_home_spread": 1.5,
@@ -8891,11 +8952,11 @@
      "betrivers": null
     },
     "best_price": {
-     "book": "csv",
+     "book": "fanduel",
      "side": "CHI",
-     "american": -125
+     "american": -120
     },
-    "estimated_ev_per_dollar": -0.04483213485603643,
+    "estimated_ev_per_dollar": -0.034697645773537344,
     "factors": {
      "team_elo_home": 1476.1422712032324,
      "team_elo_away": 1587.5346296473117,
@@ -8936,8 +8997,8 @@
      "form_home_3": -0.7956924133927714,
      "form_away_3": 13.006249091613427,
      "d_total": -18.968791295345127,
-     "model_market_gap_home": 0.005196338567610925,
-     "model_market_gap_pick": -0.005196338567610925
+     "model_market_gap_home": -0.001142518537113446,
+     "model_market_gap_pick": 0.001142518537113446
     },
     "rationale": [
      "rating",
@@ -8960,11 +9021,12 @@
     "winner": "GB",
     "margin": 24,
     "hit": false,
-    "pred_margin_error": -24.758751651813807,
+    "pred_margin_error": -24.738050246504105,
     "pred_total_error": 8.5
    }
   },
   {
+   "frozen_snapshot": "2026_05_CIN_MIA@20261011T160812Z-ae7671b",
    "game_id": "2026_05_CIN_MIA",
    "season": 2026,
    "game_type": "REG",
@@ -8985,21 +9047,21 @@
    "official": {
     "pick": "CIN",
     "p_home_model": 0.31646519973173604,
-    "p_home_market": 0.2522172949002217,
-    "p_home_blend": 0.2747040615912517,
-    "p_pick_blend": 0.7252959384087483,
+    "p_home_market": 0.24802339635003778,
+    "p_home_blend": 0.2719780275336322,
+    "p_pick_blend": 0.7280219724663678,
     "tier": "Strong",
     "model_spread": -5.350954732955424,
-    "blend_spread": -6.746402636832905,
-    "expected_home": 18.876798681583548,
-    "expected_away": 25.623201318416452,
+    "blend_spread": -6.84177067446263,
+    "expected_home": 18.829114662768685,
+    "expected_away": 25.670885337231315,
     "display_home": 19,
     "display_away": 26,
     "total_used": 44.5,
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.2522172949002217,
      "consensus_total": 44.5,
      "consensus_home_spread": 7.0,
@@ -9021,11 +9083,11 @@
      "betrivers": null
     },
     "best_price": {
-     "book": "csv",
+     "book": "betmgm",
      "side": "CIN",
-     "american": -355
+     "american": -350
     },
-    "estimated_ev_per_dollar": -0.07039534654653387,
+    "estimated_ev_per_dollar": -0.06397174968609856,
     "factors": {
      "team_elo_home": 1408.8403928590883,
      "team_elo_away": 1492.62807757069,
@@ -9066,8 +9128,8 @@
      "form_home_3": -32.31624620231037,
      "form_away_3": -18.198506855755113,
      "d_total": -133.7738683238856,
-     "model_market_gap_home": 0.06424790483151432,
-     "model_market_gap_pick": -0.06424790483151432
+     "model_market_gap_home": 0.06844180338169825,
+     "model_market_gap_pick": -0.06844180338169825
     },
     "rationale": [
      "rating",
@@ -9084,7 +9146,7 @@
      "Blended, that comes to Cincinnati at 73%: a Strong pick, predicted 26 to 19."
     ],
     "edge": null,
-    "parlay_eligible": true
+    "parlay_eligible": false
    },
    "result": {
     "home_score": 24,
@@ -9092,11 +9154,12 @@
     "winner": "CIN",
     "margin": -7,
     "hit": true,
-    "pred_margin_error": 1.6490452670445759,
+    "pred_margin_error": 0.1582293255373699,
     "pred_total_error": -10.5
    }
   },
   {
+   "frozen_snapshot": "2026_05_CLE_NYJ@20261011T160812Z-ae7671b",
    "game_id": "2026_05_CLE_NYJ",
    "season": 2026,
    "game_type": "REG",
@@ -9115,23 +9178,23 @@
     "csv_lines": true
    },
    "official": {
-    "pick": "NYJ",
-    "p_home_model": 0.3953321428968232,
-    "p_home_market": 0.5634920634920635,
-    "p_home_blend": 0.5046360912837294,
-    "p_pick_blend": 0.5046360912837294,
+    "pick": "CLE",
+    "p_home_model": 0.3953321428968233,
+    "p_home_market": 0.5525474343645862,
+    "p_home_blend": 0.49752208235086914,
+    "p_pick_blend": 0.5024779176491309,
     "tier": "Toss-up",
     "model_spread": -2.9528761035311346,
-    "blend_spread": 0.12886314019336229,
-    "expected_home": 19.31443157009668,
-    "expected_away": 19.18556842990332,
-    "display_home": 20,
-    "display_away": 19,
+    "blend_spread": -0.0688739054025718,
+    "expected_home": 19.215563047298716,
+    "expected_away": 19.284436952701284,
+    "display_home": 19,
+    "display_away": 20,
     "total_used": 38.5,
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.5634920634920635,
      "consensus_total": 38.5,
      "consensus_home_spread": -2.5,
@@ -9153,11 +9216,11 @@
      "betrivers": null
     },
     "best_price": {
-     "book": "csv",
-     "side": "NYJ",
-     "american": -142
+     "book": "betmgm",
+     "side": "CLE",
+     "american": 115
     },
-    "estimated_ev_per_dollar": -0.1399863796432217,
+    "estimated_ev_per_dollar": 0.08032752294563128,
     "factors": {
      "team_elo_home": 1385.4267641967544,
      "team_elo_away": 1483.6014270077628,
@@ -9198,8 +9261,8 @@
      "form_home_3": 2.1469107134039405,
      "form_away_3": 7.227637624759609,
      "d_total": -73.82190258827836,
-     "model_market_gap_home": -0.16815992059524026,
-     "model_market_gap_pick": -0.16815992059524026
+     "model_market_gap_home": -0.15721529146776292,
+     "model_market_gap_pick": 0.15721529146776292
     },
     "rationale": [
      "rating",
@@ -9212,8 +9275,8 @@
      "Cleveland rates 98 Elo points above New York, 22nd in the league against 29th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Cleveland has 10 days of rest to New York's 7, worth 6 Elo points to Cleveland.",
-     "The books have New York at 56%, further than the model's 40%; the gap may reflect information this model lacks.",
-     "Blended, that comes to New York at 50%: a Toss-up pick, predicted 20 to 19."
+     "The books have Cleveland at 45%, closer than the model's 60%; the gap may reflect information this model lacks.",
+     "Blended, that comes to Cleveland at 50%: a Toss-up pick, predicted 20 to 19."
     ],
     "edge": {
      "flag": true,
@@ -9227,12 +9290,13 @@
     "away_score": 12,
     "winner": "NYJ",
     "margin": 5,
-    "hit": true,
-    "pred_margin_error": -7.952876103531135,
+    "hit": false,
+    "pred_margin_error": -5.0688739054025715,
     "pred_total_error": 9.5
    }
   },
   {
+   "frozen_snapshot": "2026_05_HOU_TEN@20261011T160812Z-ae7671b",
    "game_id": "2026_05_HOU_TEN",
    "season": 2026,
    "game_type": "REG",
@@ -9252,22 +9316,22 @@
    },
    "official": {
     "pick": "HOU",
-    "p_home_model": 0.28111550827427073,
-    "p_home_market": 0.27424749163879597,
-    "p_home_blend": 0.27665129746121214,
-    "p_pick_blend": 0.7233487025387879,
+    "p_home_model": 0.2811155082742707,
+    "p_home_market": 0.264963058107476,
+    "p_home_blend": 0.27061641566585415,
+    "p_pick_blend": 0.7293835843341459,
     "tier": "Strong",
     "model_spread": -6.524388957723755,
-    "blend_spread": -6.678639927480101,
-    "expected_home": 15.410680036259949,
-    "expected_away": 22.08931996374005,
+    "blend_spread": -6.889629556459229,
+    "expected_home": 15.305185221770385,
+    "expected_away": 22.194814778229613,
     "display_home": 15,
     "display_away": 22,
     "total_used": 37.5,
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.27424749163879597,
      "consensus_total": 37.5,
      "consensus_home_spread": 6.5,
@@ -9289,11 +9353,11 @@
      "betrivers": null
     },
     "best_price": {
-     "book": "csv",
+     "book": "fanduel",
      "side": "HOU",
-     "american": -310
+     "american": -320
     },
-    "estimated_ev_per_dollar": -0.04331300631966761,
+    "estimated_ev_per_dollar": -0.04268404556143357,
     "factors": {
      "team_elo_home": 1340.6849221247471,
      "team_elo_away": 1496.8786003512696,
@@ -9334,8 +9398,8 @@
      "form_home_3": -31.56902663394203,
      "form_away_3": -19.1043657379646,
      "d_total": -163.10972394309385,
-     "model_market_gap_home": 0.006868016635474761,
-     "model_market_gap_pick": -0.006868016635474761
+     "model_market_gap_home": 0.016152450166794674,
+     "model_market_gap_pick": -0.016152450166794674
     },
     "rationale": [
      "rating",
@@ -9347,10 +9411,10 @@
      "Houston rates 156 Elo points above Tennessee, 13th in the league against 32nd.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Houston's listed starter, C.J. Stroud, rates 47 points above the other listed starter.",
-     "Blended, that comes to Houston at 72%: a Strong pick, predicted 22 to 15."
+     "Blended, that comes to Houston at 73%: a Strong pick, predicted 22 to 15."
     ],
     "edge": null,
-    "parlay_eligible": true
+    "parlay_eligible": false
    },
    "result": {
     "home_score": 3,
@@ -9358,11 +9422,12 @@
     "winner": "HOU",
     "margin": -23,
     "hit": true,
-    "pred_margin_error": 16.475611042276245,
+    "pred_margin_error": 16.11037044354077,
     "pred_total_error": 8.5
    }
   },
   {
+   "frozen_snapshot": "2026_05_IND_PIT@20261011T160812Z-ae7671b",
    "game_id": "2026_05_IND_PIT",
    "season": 2026,
    "game_type": "REG",
@@ -9383,21 +9448,21 @@
    "official": {
     "pick": "PIT",
     "p_home_model": 0.6018525099711884,
-    "p_home_market": 0.593369754159424,
-    "p_home_blend": 0.5963387186935415,
-    "p_pick_blend": 0.5963387186935415,
+    "p_home_market": 0.585674129369341,
+    "p_home_blend": 0.5913365625799877,
+    "p_pick_blend": 0.5913365625799877,
     "tier": "Lean",
     "model_spread": 2.8711375012477265,
-    "blend_spread": 2.7116146149766815,
-    "expected_home": 22.10580730748834,
-    "expected_away": 19.39419269251166,
+    "blend_spread": 2.567503179835894,
+    "expected_home": 22.033751589917948,
+    "expected_away": 19.466248410082052,
     "display_home": 22,
-    "display_away": 19,
+    "display_away": 20,
     "total_used": 41.5,
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.593369754159424,
      "consensus_total": 41.5,
      "consensus_home_spread": -3.0,
@@ -9419,11 +9484,11 @@
      "betrivers": null
     },
     "best_price": {
-     "book": "csv",
+     "book": "betrivers",
      "side": "PIT",
-     "american": -162
+     "american": -152
     },
-    "estimated_ev_per_dollar": -0.03555096112526007,
+    "estimated_ev_per_dollar": -0.019626225196336167,
     "factors": {
      "team_elo_home": 1492.5430797303864,
      "team_elo_away": 1489.2353971526093,
@@ -9464,8 +9529,8 @@
      "form_home_3": 18.001945424222868,
      "form_away_3": 20.03551784931392,
      "d_total": 71.77843753119316,
-     "model_market_gap_home": 0.008482755811764497,
-     "model_market_gap_pick": 0.008482755811764497
+     "model_market_gap_home": 0.016178380601847397,
+     "model_market_gap_pick": 0.016178380601847397
     },
     "rationale": [
      "rating",
@@ -9477,10 +9542,10 @@
      "Pittsburgh rates 3 Elo points above Indianapolis, 14th in the league against 21st.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Pittsburgh has 10 days of rest to Indianapolis's 7, worth 6 Elo points to Pittsburgh.",
-     "Blended, that comes to Pittsburgh at 60%: a Lean pick, predicted 22 to 19."
+     "Blended, that comes to Pittsburgh at 59%: a Lean pick, predicted 22 to 20."
     ],
     "edge": null,
-    "parlay_eligible": true
+    "parlay_eligible": false
    },
    "result": {
     "home_score": 34,
@@ -9488,11 +9553,12 @@
     "winner": "PIT",
     "margin": 12,
     "hit": true,
-    "pred_margin_error": -9.128862498752273,
+    "pred_margin_error": -9.432496820164106,
     "pred_total_error": -14.5
    }
   },
   {
+   "frozen_snapshot": "2026_05_LV_NE@20261011T160812Z-ae7671b",
    "game_id": "2026_05_LV_NE",
    "season": 2026,
    "game_type": "REG",
@@ -9513,21 +9579,21 @@
    "official": {
     "pick": "NE",
     "p_home_model": 0.712734330789666,
-    "p_home_market": 0.6164383561643836,
-    "p_home_blend": 0.6501419472832324,
-    "p_pick_blend": 0.6501419472832324,
+    "p_home_market": 0.6252603014719493,
+    "p_home_blend": 0.6558762117331501,
+    "p_pick_blend": 0.6558762117331501,
     "tier": "Strong",
     "model_spread": 6.314303219485587,
-    "blend_spread": 4.305861010325554,
-    "expected_home": 24.90293050516278,
-    "expected_away": 20.59706949483722,
+    "blend_spread": 4.481714950507267,
+    "expected_home": 24.990857475253634,
+    "expected_away": 20.509142524746366,
     "display_home": 25,
     "display_away": 21,
     "total_used": 45.5,
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.6164383561643836,
      "consensus_total": 45.5,
      "consensus_home_spread": -3.5,
@@ -9549,11 +9615,11 @@
      "betrivers": null
     },
     "best_price": {
-     "book": "csv",
+     "book": "draftkings",
      "side": "NE",
-     "american": -180
+     "american": -185
     },
-    "estimated_ev_per_dollar": 0.011331917996139251,
+    "estimated_ev_per_dollar": 0.010403893751069149,
     "factors": {
      "team_elo_home": 1588.0113305320745,
      "team_elo_away": 1450.977053321876,
@@ -9594,8 +9660,8 @@
      "form_home_3": 3.5786641405406954,
      "form_away_3": -3.423266050472421,
      "d_total": 157.85758048713967,
-     "model_market_gap_home": 0.09629597462528239,
-     "model_market_gap_pick": 0.09629597462528239
+     "model_market_gap_home": 0.08747402931771664,
+     "model_market_gap_pick": 0.08747402931771664
     },
     "rationale": [
      "rating",
@@ -9606,15 +9672,15 @@
     "rationale_sentences": [
      "New England rates 137 Elo points above Las Vegas, 5th in the league against 26th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "The books have New England at 62%, closer than the model's 71%; the gap may reflect information this model lacks.",
-     "Blended, that comes to New England at 65%: a Strong pick, predicted 25 to 21."
+     "The books have New England at 63%, closer than the model's 71%; the gap may reflect information this model lacks.",
+     "Blended, that comes to New England at 66%: a Strong pick, predicted 25 to 21."
     ],
     "edge": {
      "flag": true,
      "reason_key": "unknown",
      "reason_text": "may reflect information this model lacks"
     },
-    "parlay_eligible": true
+    "parlay_eligible": false
    },
    "result": {
     "home_score": 45,
@@ -9622,11 +9688,12 @@
     "winner": "NE",
     "margin": 28,
     "hit": true,
-    "pred_margin_error": -21.685696780514412,
+    "pred_margin_error": -23.518285049492732,
     "pred_total_error": -16.5
    }
   },
   {
+   "frozen_snapshot": "2026_05_MIN_NO@20261011T160812Z-ae7671b",
    "game_id": "2026_05_MIN_NO",
    "season": 2026,
    "game_type": "REG",
@@ -9647,21 +9714,21 @@
    "official": {
     "pick": "MIN",
     "p_home_model": 0.2633684388025893,
-    "p_home_market": 0.43650793650793646,
-    "p_home_blend": 0.37590911231106494,
-    "p_pick_blend": 0.6240908876889351,
+    "p_home_market": 0.4414242732782817,
+    "p_home_blend": 0.37910473121178934,
+    "p_pick_blend": 0.6208952687882107,
     "tier": "Lean",
     "model_spread": -7.146985488880011,
-    "blend_spread": -3.5226398090375777,
-    "expected_home": 18.98868009548121,
-    "expected_away": 22.51131990451879,
+    "blend_spread": -3.428146337661325,
+    "expected_home": 19.035926831169338,
+    "expected_away": 22.464073168830662,
     "display_home": 19,
-    "display_away": 23,
+    "display_away": 22,
     "total_used": 41.5,
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.43650793650793646,
      "consensus_total": 41.5,
      "consensus_home_spread": 2.5,
@@ -9683,11 +9750,11 @@
      "betrivers": null
     },
     "best_price": {
-     "book": "csv",
+     "book": "fanduel",
      "side": "MIN",
-     "american": -142
+     "american": -134
     },
-    "estimated_ev_per_dollar": 0.06359151282198788,
+    "estimated_ev_per_dollar": 0.08424994698836791,
     "factors": {
      "team_elo_home": 1429.4122737732578,
      "team_elo_away": 1612.9845477712288,
@@ -9728,8 +9795,8 @@
      "form_home_3": -72.40195588042093,
      "form_away_3": 28.576161637693076,
      "d_total": -178.67463722200029,
-     "model_market_gap_home": -0.17313949770534715,
-     "model_market_gap_pick": 0.17313949770534715
+     "model_market_gap_home": -0.1780558344756924,
+     "model_market_gap_pick": 0.1780558344756924
     },
     "rationale": [
      "rating",
@@ -9745,14 +9812,14 @@
      "Minnesota's listed starter, Kyler Murray, rates 33 points above the other listed starter.",
      "New Orleans has lost 72 points of rating over its last three games.",
      "The books have Minnesota at 56%, closer than the model's 74%; the gap may reflect information this model lacks.",
-     "Blended, that comes to Minnesota at 62%: a Lean pick, predicted 23 to 19."
+     "Blended, that comes to Minnesota at 62%: a Lean pick, predicted 22 to 19."
     ],
     "edge": {
      "flag": true,
      "reason_key": "form_move",
      "reason_text": "New Orleans's rating moved 72 points in the last three games"
     },
-    "parlay_eligible": true
+    "parlay_eligible": false
    },
    "result": {
     "home_score": 13,
@@ -9760,11 +9827,12 @@
     "winner": "MIN",
     "margin": -10,
     "hit": true,
-    "pred_margin_error": 2.853014511119989,
+    "pred_margin_error": 6.571853662338675,
     "pred_total_error": 5.5
    }
   },
   {
+   "frozen_snapshot": "2026_05_NYG_WAS@20261011T160812Z-ae7671b",
    "game_id": "2026_05_NYG_WAS",
    "season": 2026,
    "game_type": "REG",
@@ -9785,21 +9853,21 @@
    "official": {
     "pick": "WAS",
     "p_home_model": 0.50299595538381,
-    "p_home_market": 0.6164383561643836,
-    "p_home_blend": 0.5767335158911828,
-    "p_pick_blend": 0.5767335158911828,
+    "p_home_market": 0.6239506569142389,
+    "p_home_blend": 0.5816165113785888,
+    "p_pick_blend": 0.5816165113785888,
     "tier": "Lean",
     "model_spread": 0.08327311763220421,
-    "blend_spread": 2.149780955646382,
-    "expected_home": 21.824890477823192,
-    "expected_away": 19.675109522176808,
+    "blend_spread": 2.288995043468883,
+    "expected_home": 21.89449752173444,
+    "expected_away": 19.60550247826556,
     "display_home": 22,
     "display_away": 20,
     "total_used": 41.5,
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.6164383561643836,
      "consensus_total": 41.5,
      "consensus_home_spread": -3.5,
@@ -9821,11 +9889,11 @@
      "betrivers": null
     },
     "best_price": {
-     "book": "csv",
+     "book": "fanduel",
      "side": "WAS",
-     "american": -180
+     "american": -184
     },
-    "estimated_ev_per_dollar": -0.10285897528038224,
+    "estimated_ev_per_dollar": -0.10228755852435206,
     "factors": {
      "team_elo_home": 1433.3466263091457,
      "team_elo_away": 1475.9953683010494,
@@ -9866,8 +9934,8 @@
      "form_home_3": -9.531607410616061,
      "form_away_3": 28.002498312844637,
      "d_total": 2.0818279408051055,
-     "model_market_gap_home": -0.11344240078057355,
-     "model_market_gap_pick": -0.11344240078057355
+     "model_market_gap_home": -0.12095470153042887,
+     "model_market_gap_pick": -0.12095470153042887
     },
     "rationale": [
      "rating",
@@ -9888,7 +9956,7 @@
      "reason_key": "starter_change",
      "reason_text": "New York's listed starter differs from the usual starter"
     },
-    "parlay_eligible": true
+    "parlay_eligible": false
    },
    "result": {
     "home_score": 27,
@@ -9896,11 +9964,12 @@
     "winner": "tie",
     "margin": 0,
     "hit": null,
-    "pred_margin_error": 0.08327311763220421,
+    "pred_margin_error": 2.288995043468883,
     "pred_total_error": -12.5
    }
   },
   {
+   "frozen_snapshot": "2026_05_DEN_LAC@20261011T160812Z-ae7671b",
    "game_id": "2026_05_DEN_LAC",
    "season": 2026,
    "game_type": "REG",
@@ -9920,22 +9989,22 @@
    },
    "official": {
     "pick": "DEN",
-    "p_home_model": 0.33296040029505475,
-    "p_home_market": 0.3690596562184025,
-    "p_home_blend": 0.3564249166452308,
-    "p_pick_blend": 0.6435750833547692,
+    "p_home_model": 0.3329604002950548,
+    "p_home_market": 0.37141815591492744,
+    "p_home_blend": 0.357957941447972,
+    "p_pick_blend": 0.642042058552028,
     "tier": "Lean",
     "model_spread": -4.828144514710045,
-    "blend_spread": -4.106098638445976,
-    "expected_home": 19.19695068077701,
-    "expected_away": 23.30304931922299,
+    "blend_spread": -4.059703626674754,
+    "expected_home": 19.220148186662623,
+    "expected_away": 23.279851813337377,
     "display_home": 19,
     "display_away": 23,
     "total_used": 42.5,
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.3690596562184025,
      "consensus_total": 42.5,
      "consensus_home_spread": 3.5,
@@ -9957,11 +10026,11 @@
      "betrivers": null
     },
     "best_price": {
-     "book": "csv",
+     "book": "betrivers",
      "side": "DEN",
-     "american": -192
+     "american": -186
     },
-    "estimated_ev_per_dollar": -0.021229560731288455,
+    "estimated_ev_per_dollar": -0.01277403900064511,
     "factors": {
      "team_elo_home": 1423.409456955519,
      "team_elo_away": 1569.8186024550553,
@@ -10002,8 +10071,8 @@
      "form_home_3": -27.597127780569053,
      "form_away_3": 6.748764085015637,
      "d_total": -120.70361286775113,
-     "model_market_gap_home": -0.03609925592334773,
-     "model_market_gap_pick": 0.03609925592334773
+     "model_market_gap_home": -0.038457755619872636,
+     "model_market_gap_pick": 0.038457755619872636
     },
     "rationale": [
      "rating",
@@ -10016,7 +10085,7 @@
      "Blended, that comes to Denver at 64%: a Lean pick, predicted 23 to 19."
     ],
     "edge": null,
-    "parlay_eligible": true
+    "parlay_eligible": false
    },
    "result": {
     "home_score": 17,
@@ -10024,11 +10093,12 @@
     "winner": "DEN",
     "margin": -6,
     "hit": true,
-    "pred_margin_error": 1.1718554852899548,
+    "pred_margin_error": 1.9402963733252463,
     "pred_total_error": 2.5
    }
   },
   {
+   "frozen_snapshot": "2026_05_DET_ARI@20261011T160812Z-ae7671b",
    "game_id": "2026_05_DET_ARI",
    "season": 2026,
    "game_type": "REG",
@@ -10049,21 +10119,21 @@
    "official": {
     "pick": "DET",
     "p_home_model": 0.3450459900349163,
-    "p_home_market": 0.30423004792665137,
-    "p_home_blend": 0.3185156276645441,
-    "p_pick_blend": 0.6814843723354559,
+    "p_home_market": 0.31833690632847933,
+    "p_home_blend": 0.3276850856257323,
+    "p_pick_blend": 0.6723149143742677,
     "tier": "Strong",
     "model_spread": -4.453341133703907,
-    "blend_spread": -5.285202491080416,
-    "expected_home": 25.10739875445979,
-    "expected_away": 30.39260124554021,
+    "blend_spread": -4.993857126115122,
+    "expected_home": 25.253071436942438,
+    "expected_away": 30.246928563057562,
     "display_home": 25,
     "display_away": 30,
     "total_used": 55.5,
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.30423004792665137,
      "consensus_total": 55.5,
      "consensus_home_spread": 5.5,
@@ -10085,11 +10155,11 @@
      "betrivers": null
     },
     "best_price": {
-     "book": "csv",
+     "book": "betrivers",
      "side": "DET",
-     "american": -265
+     "american": -240
     },
-    "estimated_ev_per_dollar": -0.0613517135756928,
+    "estimated_ev_per_dollar": -0.04755387130312072,
     "factors": {
      "team_elo_home": 1427.6430652875188,
      "team_elo_away": 1492.4904503258315,
@@ -10130,8 +10200,8 @@
      "form_home_3": -45.86129327717708,
      "form_away_3": 6.2538875448160525,
      "d_total": -111.33352834259767,
-     "model_market_gap_home": 0.040815942108264947,
-     "model_market_gap_pick": -0.040815942108264947
+     "model_market_gap_home": 0.026709083706436987,
+     "model_market_gap_pick": -0.026709083706436987
     },
     "rationale": [
      "rating",
@@ -10145,10 +10215,10 @@
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Detroit's listed starter, Jared Goff, rates 86 points above the other listed starter.",
      "Arizona has lost 46 points of rating over its last three games.",
-     "Blended, that comes to Detroit at 68%: a Strong pick, predicted 30 to 25."
+     "Blended, that comes to Detroit at 67%: a Strong pick, predicted 30 to 25."
     ],
     "edge": null,
-    "parlay_eligible": true
+    "parlay_eligible": false
    },
    "result": {
     "home_score": 21,
@@ -10156,11 +10226,12 @@
     "winner": "DET",
     "margin": -24,
     "hit": true,
-    "pred_margin_error": 19.54665886629609,
+    "pred_margin_error": 19.006142873884876,
     "pred_total_error": -10.5
    }
   },
   {
+   "frozen_snapshot": "2026_05_SF_SEA@20261011T160812Z-ae7671b",
    "game_id": "2026_05_SF_SEA",
    "season": 2026,
    "game_type": "REG",
@@ -10181,21 +10252,21 @@
    "official": {
     "pick": "SEA",
     "p_home_model": 0.5236792586991603,
-    "p_home_market": 0.5996387718242023,
-    "p_home_blend": 0.5730529422304376,
-    "p_pick_blend": 0.5730529422304376,
+    "p_home_market": 0.6024137131351204,
+    "p_home_blend": 0.5748566540825344,
+    "p_pick_blend": 0.5748566540825344,
     "tier": "Lean",
     "model_spread": 0.658654079919815,
-    "blend_spread": 2.045131546146839,
-    "expected_home": 24.27256577307342,
-    "expected_away": 22.22743422692658,
+    "blend_spread": 2.096386825880826,
+    "expected_home": 24.298193412940414,
+    "expected_away": 22.201806587059586,
     "display_home": 24,
     "display_away": 22,
     "total_used": 46.5,
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T02:18:45Z",
+     "as_of": "2026-10-12T02:24:31Z",
      "consensus_p_home": 0.5996387718242023,
      "consensus_total": 46.5,
      "consensus_home_spread": -3.0,
@@ -10217,11 +10288,11 @@
      "betrivers": null
     },
     "best_price": {
-     "book": "csv",
+     "book": "betrivers",
      "side": "SEA",
-     "american": -166
+     "american": -165
     },
-    "estimated_ev_per_dollar": -0.08173444196809398,
+    "estimated_ev_per_dollar": -0.07674537374623264,
     "factors": {
      "team_elo_home": 1657.5122869678405,
      "team_elo_away": 1621.0825331201413,
@@ -10262,8 +10333,8 @@
      "form_home_3": -23.432518071349477,
      "form_away_3": 40.554606543501905,
      "d_total": 16.466351997995375,
-     "model_market_gap_home": -0.07595951312504201,
-     "model_market_gap_pick": -0.07595951312504201
+     "model_market_gap_home": -0.07873445443596006,
+     "model_market_gap_pick": -0.07873445443596006
     },
     "rationale": [
      "rating",
@@ -10282,7 +10353,7 @@
      "Blended, that comes to Seattle at 57%: a Lean pick, predicted 24 to 22."
     ],
     "edge": null,
-    "parlay_eligible": true
+    "parlay_eligible": false
    },
    "result": {
     "home_score": 29,
@@ -10290,11 +10361,12 @@
     "winner": "SF",
     "margin": -3,
     "hit": false,
-    "pred_margin_error": 3.658654079919815,
+    "pred_margin_error": 5.096386825880826,
     "pred_total_error": -14.5
    }
   },
   {
+   "frozen_snapshot": "2026_05_BAL_ATL@20261011T160812Z-ae7671b",
    "game_id": "2026_05_BAL_ATL",
    "season": 2026,
    "game_type": "REG",
@@ -10315,53 +10387,53 @@
    "official": {
     "pick": "ATL",
     "p_home_model": 0.5062883779948846,
-    "p_home_market": 0.5839984061922898,
-    "p_home_blend": 0.5567998963231979,
-    "p_pick_blend": 0.5567998963231979,
+    "p_home_market": 0.6118483994210332,
+    "p_home_blend": 0.5749023919218812,
+    "p_pick_blend": 0.5749023919218812,
     "tier": "Lean",
     "model_spread": 0.17479371962667942,
-    "blend_spread": 1.5855886787591935,
-    "expected_home": 25.167794339379597,
-    "expected_away": 23.582205660620403,
+    "blend_spread": 2.0976872681437255,
+    "expected_home": 25.29884363407186,
+    "expected_away": 23.20115636592814,
     "display_home": 25,
-    "display_away": 24,
-    "total_used": 48.75,
+    "display_away": 23,
+    "total_used": 48.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T02:18:46Z",
-     "consensus_p_home": 0.5839984061922898,
-     "consensus_total": 48.75,
+     "as_of": "2026-10-12T02:24:32Z",
+     "consensus_p_home": 0.6188074705871525,
+     "consensus_total": 48.5,
      "consensus_home_spread": -2.5,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
-       "home_ml": -171,
-       "away_ml": 129,
+       "home_ml": -187,
+       "away_ml": 140,
        "home_spread": -2.5,
-       "total": 47.5
+       "total": 48.5
       },
       {
        "key": "fanduel",
-       "home_ml": -158,
-       "away_ml": 124,
+       "home_ml": -215,
+       "away_ml": 164,
        "home_spread": -2.5,
-       "total": 49.5
+       "total": 48.5
       },
       {
        "key": "betrivers",
-       "home_ml": -177,
-       "away_ml": 138,
+       "home_ml": -165,
+       "away_ml": 130,
        "home_spread": -2.5,
        "total": 48.0
       },
       {
        "key": "betmgm",
-       "home_ml": -150,
-       "away_ml": 115,
-       "home_spread": -1.5,
-       "total": 49.5
+       "home_ml": -210,
+       "away_ml": 155,
+       "home_spread": -2.5,
+       "total": 48.5
       }
      ]
     },
@@ -10369,30 +10441,30 @@
      "draftkings": {
       "book": "draftkings",
       "side": "ATL",
-      "american": -171
+      "american": -187
      },
      "fanduel": {
       "book": "fanduel",
       "side": "ATL",
-      "american": -158
+      "american": -215
      },
      "betmgm": {
       "book": "betmgm",
       "side": "ATL",
-      "american": -150
+      "american": -210
      },
      "betrivers": {
       "book": "betrivers",
       "side": "ATL",
-      "american": -177
+      "american": -165
      }
     },
     "best_price": {
-     "book": "betmgm",
+     "book": "fanduel",
      "side": "ATL",
-     "american": -150
+     "american": -172
     },
-    "estimated_ev_per_dollar": -0.07200017279467014,
+    "estimated_ev_per_dollar": -0.09085203137935066,
     "factors": {
      "team_elo_home": 1495.4591449310838,
      "team_elo_away": 1526.0285743126437,
@@ -10433,8 +10505,8 @@
      "form_home_3": 33.77322269491037,
      "form_away_3": -18.075139015214745,
      "d_total": 4.369842990666985,
-     "model_market_gap_home": -0.07771002819740525,
-     "model_market_gap_pick": -0.07771002819740525
+     "model_market_gap_home": -0.10556002142614862,
+     "model_market_gap_pick": -0.10556002142614862
     },
     "rationale": [
      "rating",
@@ -10447,15 +10519,20 @@
      "Baltimore rates 31 Elo points above Atlanta, 11th in the league against 17th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Atlanta's listed starter, Michael Penix Jr., rates 29 points below their usual starter, Kirk Cousins; Baltimore's listed starter, Tyler Huntley, rates 36 points below their usual starter, Lamar Jackson.",
-     "The books have Atlanta at 58%, further than the model's 51%; the gap may reflect information this model lacks.",
-     "Blended, that comes to Atlanta at 56%: a Lean pick, predicted 25 to 24."
+     "The books have Atlanta at 61%, further than the model's 51%; the gap may reflect information this model lacks.",
+     "Blended, that comes to Atlanta at 57%: a Lean pick, predicted 25 to 23."
     ],
-    "edge": null,
-    "parlay_eligible": true
+    "edge": {
+     "flag": true,
+     "reason_key": "starter_change",
+     "reason_text": "Atlanta's listed starter differs from the usual starter"
+    },
+    "parlay_eligible": false
    },
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_05_BUF_LA",
    "season": 2026,
    "game_type": "REG",
@@ -10490,7 +10567,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T02:18:46Z",
+     "as_of": "2026-10-12T02:24:32Z",
      "consensus_p_home": 0.6145010394335214,
      "consensus_total": 54.5,
      "consensus_home_spread": -3.5,
@@ -10619,6 +10696,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_06_SEA_DEN",
    "season": 2026,
    "game_type": "REG",
@@ -10653,7 +10731,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T02:18:46Z",
+     "as_of": "2026-10-12T02:24:32Z",
      "consensus_p_home": 0.4251004689161207,
      "consensus_total": 42.5,
      "consensus_home_spread": 3.0,
@@ -10784,6 +10862,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_06_HOU_JAX",
    "season": 2026,
    "game_type": "REG",
@@ -10818,7 +10897,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T02:18:46Z",
+     "as_of": "2026-10-12T02:24:32Z",
      "consensus_p_home": 0.5782779036209135,
      "consensus_total": 43.5,
      "consensus_home_spread": -2.75,
@@ -10947,6 +11026,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_06_BAL_CLE",
    "season": 2026,
    "game_type": "REG",
@@ -11049,6 +11129,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_06_CAR_PHI",
    "season": 2026,
    "game_type": "REG",
@@ -11083,7 +11164,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T02:18:46Z",
+     "as_of": "2026-10-12T02:24:32Z",
      "consensus_p_home": 0.5239130797995729,
      "consensus_total": 42.5,
      "consensus_home_spread": -1.5,
@@ -11214,6 +11295,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_06_CHI_ATL",
    "season": 2026,
    "game_type": "REG",
@@ -11316,6 +11398,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_06_NO_NYG",
    "season": 2026,
    "game_type": "REG",
@@ -11350,7 +11433,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T02:18:46Z",
+     "as_of": "2026-10-12T02:24:32Z",
      "consensus_p_home": 0.5119767254209601,
      "consensus_total": 45.0,
      "consensus_home_spread": -1.25,
@@ -11483,6 +11566,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_06_NYJ_NE",
    "season": 2026,
    "game_type": "REG",
@@ -11517,7 +11601,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T02:18:46Z",
+     "as_of": "2026-10-12T02:24:32Z",
      "consensus_p_home": 0.7507065623415574,
      "consensus_total": 44.5,
      "consensus_home_spread": -7.0,
@@ -11648,6 +11732,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_06_PIT_TB",
    "season": 2026,
    "game_type": "REG",
@@ -11682,7 +11767,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T02:18:46Z",
+     "as_of": "2026-10-12T02:24:32Z",
      "consensus_p_home": 0.43204752868261126,
      "consensus_total": 40.5,
      "consensus_home_spread": 2.5,
@@ -11809,6 +11894,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_06_TEN_IND",
    "season": 2026,
    "game_type": "REG",
@@ -11843,7 +11929,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T02:18:46Z",
+     "as_of": "2026-10-12T02:24:32Z",
      "consensus_p_home": 0.7297670182256255,
      "consensus_total": 43.75,
      "consensus_home_spread": -6.75,
@@ -11970,6 +12056,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_06_ARI_LA",
    "season": 2026,
    "game_type": "REG",
@@ -12004,7 +12091,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T02:18:46Z",
+     "as_of": "2026-10-12T02:24:32Z",
      "consensus_p_home": 0.8476695505528045,
      "consensus_total": 51.75,
      "consensus_home_spread": -12.5,
@@ -12131,6 +12218,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_06_BUF_LV",
    "season": 2026,
    "game_type": "REG",
@@ -12165,7 +12253,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T02:18:46Z",
+     "as_of": "2026-10-12T02:24:32Z",
      "consensus_p_home": 0.29925073842180716,
      "consensus_total": 53.0,
      "consensus_home_spread": 5.75,
@@ -12288,6 +12376,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_06_LAC_KC",
    "season": 2026,
    "game_type": "REG",
@@ -12322,7 +12411,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T02:18:46Z",
+     "as_of": "2026-10-12T02:24:32Z",
      "consensus_p_home": 0.7772716154706505,
      "consensus_total": 43.5,
      "consensus_home_spread": -8.25,
@@ -12449,6 +12538,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_06_DAL_GB",
    "season": 2026,
    "game_type": "REG",
@@ -12483,7 +12573,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T02:18:46Z",
+     "as_of": "2026-10-12T02:24:32Z",
      "consensus_p_home": 0.4978227319860917,
      "consensus_total": 52.5,
      "consensus_home_spread": 0.0,
@@ -12614,6 +12704,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_06_WAS_SF",
    "season": 2026,
    "game_type": "REG",
@@ -12648,7 +12739,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T02:18:46Z",
+     "as_of": "2026-10-12T02:24:32Z",
      "consensus_p_home": 0.7740612114358795,
      "consensus_total": 50.75,
      "consensus_home_spread": -7.5,
@@ -12777,6 +12868,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_07_NE_CHI",
    "season": 2026,
    "game_type": "REG",
@@ -12855,6 +12947,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_07_PIT_NO",
    "season": 2026,
    "game_type": "REG",
@@ -12933,6 +13026,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_07_CIN_BAL",
    "season": 2026,
    "game_type": "REG",
@@ -13013,6 +13107,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_07_CLE_TEN",
    "season": 2026,
    "game_type": "REG",
@@ -13091,6 +13186,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_07_IND_MIN",
    "season": 2026,
    "game_type": "REG",
@@ -13171,6 +13267,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_07_MIA_NYJ",
    "season": 2026,
    "game_type": "REG",
@@ -13251,6 +13348,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_07_NYG_HOU",
    "season": 2026,
    "game_type": "REG",
@@ -13329,6 +13427,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_07_SF_ATL",
    "season": 2026,
    "game_type": "REG",
@@ -13409,6 +13508,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_07_TB_CAR",
    "season": 2026,
    "game_type": "REG",
@@ -13489,6 +13589,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_07_DEN_ARI",
    "season": 2026,
    "game_type": "REG",
@@ -13571,6 +13672,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_07_GB_DET",
    "season": 2026,
    "game_type": "REG",
@@ -13651,6 +13753,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_07_LA_LV",
    "season": 2026,
    "game_type": "REG",
@@ -13729,6 +13832,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_07_KC_SEA",
    "season": 2026,
    "game_type": "REG",
@@ -13809,6 +13913,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_07_DAL_PHI",
    "season": 2026,
    "game_type": "REG",
@@ -13889,6 +13994,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_08_CAR_GB",
    "season": 2026,
    "game_type": "REG",
@@ -13969,6 +14075,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_08_ARI_DAL",
    "season": 2026,
    "game_type": "REG",
@@ -14049,6 +14156,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_08_ATL_TB",
    "season": 2026,
    "game_type": "REG",
@@ -14127,6 +14235,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_08_BAL_BUF",
    "season": 2026,
    "game_type": "REG",
@@ -14207,6 +14316,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_08_CLE_PIT",
    "season": 2026,
    "game_type": "REG",
@@ -14285,6 +14395,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_08_IND_JAX",
    "season": 2026,
    "game_type": "REG",
@@ -14367,6 +14478,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_08_LV_NYJ",
    "season": 2026,
    "game_type": "REG",
@@ -14445,6 +14557,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_08_MIN_DET",
    "season": 2026,
    "game_type": "REG",
@@ -14523,6 +14636,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_08_TEN_CIN",
    "season": 2026,
    "game_type": "REG",
@@ -14601,6 +14715,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_08_LAC_LA",
    "season": 2026,
    "game_type": "REG",
@@ -14681,6 +14796,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_08_KC_DEN",
    "season": 2026,
    "game_type": "REG",
@@ -14759,6 +14875,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_08_NE_MIA",
    "season": 2026,
    "game_type": "REG",
@@ -14839,6 +14956,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_08_PHI_WAS",
    "season": 2026,
    "game_type": "REG",
@@ -14921,6 +15039,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_08_CHI_SEA",
    "season": 2026,
    "game_type": "REG",
@@ -15001,6 +15120,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_09_JAX_BAL",
    "season": 2026,
    "game_type": "REG",
@@ -15081,6 +15201,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_09_CIN_ATL",
    "season": 2026,
    "game_type": "REG",
@@ -15157,6 +15278,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_09_CLE_NO",
    "season": 2026,
    "game_type": "REG",
@@ -15239,6 +15361,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_09_DAL_IND",
    "season": 2026,
    "game_type": "REG",
@@ -15317,6 +15440,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_09_DEN_CAR",
    "season": 2026,
    "game_type": "REG",
@@ -15399,6 +15523,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_09_DET_MIA",
    "season": 2026,
    "game_type": "REG",
@@ -15477,6 +15602,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_09_LA_WAS",
    "season": 2026,
    "game_type": "REG",
@@ -15555,6 +15681,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_09_NYG_PHI",
    "season": 2026,
    "game_type": "REG",
@@ -15637,6 +15764,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_09_NYJ_KC",
    "season": 2026,
    "game_type": "REG",
@@ -15715,6 +15843,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_09_HOU_LAC",
    "season": 2026,
    "game_type": "REG",
@@ -15795,6 +15924,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_09_LV_SF",
    "season": 2026,
    "game_type": "REG",
@@ -15877,6 +16007,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_09_ARI_SEA",
    "season": 2026,
    "game_type": "REG",
@@ -15957,6 +16088,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_09_GB_NE",
    "season": 2026,
    "game_type": "REG",
@@ -16037,6 +16169,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_09_TB_CHI",
    "season": 2026,
    "game_type": "REG",
@@ -16115,6 +16248,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_09_BUF_MIN",
    "season": 2026,
    "game_type": "REG",
@@ -16193,6 +16327,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_10_WAS_NYG",
    "season": 2026,
    "game_type": "REG",
@@ -16271,6 +16406,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_10_NE_DET",
    "season": 2026,
    "game_type": "REG",
@@ -16347,6 +16483,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_10_BUF_NYJ",
    "season": 2026,
    "game_type": "REG",
@@ -16425,6 +16562,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_10_CAR_NO",
    "season": 2026,
    "game_type": "REG",
@@ -16505,6 +16643,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_10_HOU_CLE",
    "season": 2026,
    "game_type": "REG",
@@ -16583,6 +16722,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_10_JAX_TEN",
    "season": 2026,
    "game_type": "REG",
@@ -16665,6 +16805,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_10_KC_ATL",
    "season": 2026,
    "game_type": "REG",
@@ -16743,6 +16884,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_10_MIA_IND",
    "season": 2026,
    "game_type": "REG",
@@ -16821,6 +16963,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_10_MIN_GB",
    "season": 2026,
    "game_type": "REG",
@@ -16899,6 +17042,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_10_LA_ARI",
    "season": 2026,
    "game_type": "REG",
@@ -16979,6 +17123,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_10_SEA_LV",
    "season": 2026,
    "game_type": "REG",
@@ -17057,6 +17202,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_10_SF_DAL",
    "season": 2026,
    "game_type": "REG",
@@ -17137,6 +17283,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_10_PIT_CIN",
    "season": 2026,
    "game_type": "REG",
@@ -17217,6 +17364,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_10_LAC_BAL",
    "season": 2026,
    "game_type": "REG",
@@ -17297,6 +17445,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_11_IND_HOU",
    "season": 2026,
    "game_type": "REG",
@@ -17375,6 +17524,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_11_ARI_KC",
    "season": 2026,
    "game_type": "REG",
@@ -17455,6 +17605,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_11_BAL_CAR",
    "season": 2026,
    "game_type": "REG",
@@ -17535,6 +17686,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_11_JAX_NYG",
    "season": 2026,
    "game_type": "REG",
@@ -17617,6 +17769,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_11_MIA_BUF",
    "season": 2026,
    "game_type": "REG",
@@ -17695,6 +17848,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_11_NO_CHI",
    "season": 2026,
    "game_type": "REG",
@@ -17777,6 +17931,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_11_TB_DET",
    "season": 2026,
    "game_type": "REG",
@@ -17857,6 +18012,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_11_TEN_DAL",
    "season": 2026,
    "game_type": "REG",
@@ -17935,6 +18091,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_11_NYJ_LAC",
    "season": 2026,
    "game_type": "REG",
@@ -18013,6 +18170,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_11_LV_DEN",
    "season": 2026,
    "game_type": "REG",
@@ -18093,6 +18251,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_11_PIT_PHI",
    "season": 2026,
    "game_type": "REG",
@@ -18175,6 +18334,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_11_MIN_SF",
    "season": 2026,
    "game_type": "REG",
@@ -18253,6 +18413,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_11_CIN_WAS",
    "season": 2026,
    "game_type": "REG",
@@ -18333,6 +18494,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_12_GB_LA",
    "season": 2026,
    "game_type": "REG",
@@ -18411,6 +18573,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_12_CHI_DET",
    "season": 2026,
    "game_type": "REG",
@@ -18489,6 +18652,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_12_PHI_DAL",
    "season": 2026,
    "game_type": "REG",
@@ -18569,6 +18733,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_12_KC_BUF",
    "season": 2026,
    "game_type": "REG",
@@ -18647,6 +18812,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_12_DEN_PIT",
    "season": 2026,
    "game_type": "REG",
@@ -18725,6 +18891,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_12_ATL_MIN",
    "season": 2026,
    "game_type": "REG",
@@ -18805,6 +18972,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_12_BAL_HOU",
    "season": 2026,
    "game_type": "REG",
@@ -18885,6 +19053,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_12_LV_CLE",
    "season": 2026,
    "game_type": "REG",
@@ -18965,6 +19134,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_12_NO_CIN",
    "season": 2026,
    "game_type": "REG",
@@ -19045,6 +19215,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_12_NYG_IND",
    "season": 2026,
    "game_type": "REG",
@@ -19125,6 +19296,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_12_NYJ_MIA",
    "season": 2026,
    "game_type": "REG",
@@ -19203,6 +19375,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_12_TEN_JAX",
    "season": 2026,
    "game_type": "REG",
@@ -19283,6 +19456,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_12_SEA_SF",
    "season": 2026,
    "game_type": "REG",
@@ -19365,6 +19539,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_12_WAS_ARI",
    "season": 2026,
    "game_type": "REG",
@@ -19445,6 +19620,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_12_NE_LAC",
    "season": 2026,
    "game_type": "REG",
@@ -19525,6 +19701,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_12_CAR_TB",
    "season": 2026,
    "game_type": "REG",
@@ -19605,6 +19782,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_13_KC_LA",
    "season": 2026,
    "game_type": "REG",
@@ -19683,6 +19861,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_13_CIN_CLE",
    "season": 2026,
    "game_type": "REG",
@@ -19761,6 +19940,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_13_DET_ATL",
    "season": 2026,
    "game_type": "REG",
@@ -19841,6 +20021,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_13_GB_NO",
    "season": 2026,
    "game_type": "REG",
@@ -19923,6 +20104,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_13_JAX_CHI",
    "season": 2026,
    "game_type": "REG",
@@ -20005,6 +20187,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_13_LAC_TB",
    "season": 2026,
    "game_type": "REG",
@@ -20083,6 +20266,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_13_SF_NYG",
    "season": 2026,
    "game_type": "REG",
@@ -20163,6 +20347,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_13_WAS_TEN",
    "season": 2026,
    "game_type": "REG",
@@ -20241,6 +20426,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_13_MIA_DEN",
    "season": 2026,
    "game_type": "REG",
@@ -20319,6 +20505,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_13_PHI_ARI",
    "season": 2026,
    "game_type": "REG",
@@ -20401,6 +20588,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_13_BUF_NE",
    "season": 2026,
    "game_type": "REG",
@@ -20481,6 +20669,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_13_CAR_MIN",
    "season": 2026,
    "game_type": "REG",
@@ -20561,6 +20750,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_13_HOU_PIT",
    "season": 2026,
    "game_type": "REG",
@@ -20639,6 +20829,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_13_DAL_SEA",
    "season": 2026,
    "game_type": "REG",
@@ -20719,6 +20910,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_14_MIN_NE",
    "season": 2026,
    "game_type": "REG",
@@ -20797,6 +20989,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_14_ATL_CLE",
    "season": 2026,
    "game_type": "REG",
@@ -20875,6 +21068,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_14_CHI_MIA",
    "season": 2026,
    "game_type": "REG",
@@ -20953,6 +21147,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_14_DEN_NYJ",
    "season": 2026,
    "game_type": "REG",
@@ -21033,6 +21228,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_14_HOU_WAS",
    "season": 2026,
    "game_type": "REG",
@@ -21111,6 +21307,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_14_IND_PHI",
    "season": 2026,
    "game_type": "REG",
@@ -21193,6 +21390,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_14_NO_CAR",
    "season": 2026,
    "game_type": "REG",
@@ -21273,6 +21471,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_14_TB_BAL",
    "season": 2026,
    "game_type": "REG",
@@ -21353,6 +21552,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_14_TEN_DET",
    "season": 2026,
    "game_type": "REG",
@@ -21431,6 +21631,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_14_LAC_LV",
    "season": 2026,
    "game_type": "REG",
@@ -21511,6 +21712,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_14_KC_CIN",
    "season": 2026,
    "game_type": "REG",
@@ -21591,6 +21793,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_14_LA_SF",
    "season": 2026,
    "game_type": "REG",
@@ -21673,6 +21876,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_14_NYG_SEA",
    "season": 2026,
    "game_type": "REG",
@@ -21751,6 +21955,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_14_BUF_GB",
    "season": 2026,
    "game_type": "REG",
@@ -21829,6 +22034,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_14_PIT_JAX",
    "season": 2026,
    "game_type": "REG",
@@ -21909,6 +22115,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_15_SF_LAC",
    "season": 2026,
    "game_type": "REG",
@@ -21989,6 +22196,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_15_SEA_PHI",
    "season": 2026,
    "game_type": "REG",
@@ -22069,6 +22277,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_15_CHI_BUF",
    "season": 2026,
    "game_type": "REG",
@@ -22147,6 +22356,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_15_ATL_WAS",
    "season": 2026,
    "game_type": "REG",
@@ -22225,6 +22435,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_15_BAL_PIT",
    "season": 2026,
    "game_type": "REG",
@@ -22303,6 +22514,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_15_CIN_CAR",
    "season": 2026,
    "game_type": "REG",
@@ -22383,6 +22595,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_15_CLE_NYG",
    "season": 2026,
    "game_type": "REG",
@@ -22461,6 +22674,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_15_IND_TEN",
    "season": 2026,
    "game_type": "REG",
@@ -22539,6 +22753,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_15_JAX_HOU",
    "season": 2026,
    "game_type": "REG",
@@ -22619,6 +22834,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_15_MIA_GB",
    "season": 2026,
    "game_type": "REG",
@@ -22697,6 +22913,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_15_NO_TB",
    "season": 2026,
    "game_type": "REG",
@@ -22777,6 +22994,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_15_NYJ_ARI",
    "season": 2026,
    "game_type": "REG",
@@ -22859,6 +23077,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_15_DAL_LA",
    "season": 2026,
    "game_type": "REG",
@@ -22939,6 +23158,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_15_DEN_LV",
    "season": 2026,
    "game_type": "REG",
@@ -23017,6 +23237,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_15_DET_MIN",
    "season": 2026,
    "game_type": "REG",
@@ -23097,6 +23318,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_15_NE_KC",
    "season": 2026,
    "game_type": "REG",
@@ -23177,6 +23399,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_16_HOU_PHI",
    "season": 2026,
    "game_type": "REG",
@@ -23257,6 +23480,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_16_GB_CHI",
    "season": 2026,
    "game_type": "REG",
@@ -23335,6 +23559,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_16_BUF_DEN",
    "season": 2026,
    "game_type": "REG",
@@ -23413,6 +23638,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_16_LA_SEA",
    "season": 2026,
    "game_type": "REG",
@@ -23491,6 +23717,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_16_ARI_NO",
    "season": 2026,
    "game_type": "REG",
@@ -23571,6 +23798,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_16_CAR_PIT",
    "season": 2026,
    "game_type": "REG",
@@ -23651,6 +23879,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_16_CIN_IND",
    "season": 2026,
    "game_type": "REG",
@@ -23729,6 +23958,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_16_CLE_BAL",
    "season": 2026,
    "game_type": "REG",
@@ -23807,6 +24037,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_16_LAC_MIA",
    "season": 2026,
    "game_type": "REG",
@@ -23887,6 +24118,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_16_NE_NYJ",
    "season": 2026,
    "game_type": "REG",
@@ -23965,6 +24197,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_16_TB_ATL",
    "season": 2026,
    "game_type": "REG",
@@ -24043,6 +24276,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_16_WAS_MIN",
    "season": 2026,
    "game_type": "REG",
@@ -24121,6 +24355,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_16_TEN_LV",
    "season": 2026,
    "game_type": "REG",
@@ -24199,6 +24434,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_16_SF_KC",
    "season": 2026,
    "game_type": "REG",
@@ -24281,6 +24517,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_16_JAX_DAL",
    "season": 2026,
    "game_type": "REG",
@@ -24361,6 +24598,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_16_NYG_DET",
    "season": 2026,
    "game_type": "REG",
@@ -24439,6 +24677,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_17_BAL_CIN",
    "season": 2026,
    "game_type": "REG",
@@ -24517,6 +24756,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_17_BUF_MIA",
    "season": 2026,
    "game_type": "REG",
@@ -24595,6 +24835,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_17_DEN_NE",
    "season": 2026,
    "game_type": "REG",
@@ -24673,6 +24914,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_17_IND_CLE",
    "season": 2026,
    "game_type": "REG",
@@ -24751,6 +24993,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_17_KC_LAC",
    "season": 2026,
    "game_type": "REG",
@@ -24829,6 +25072,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_17_LA_TB",
    "season": 2026,
    "game_type": "REG",
@@ -24907,6 +25151,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_17_MIN_NYJ",
    "season": 2026,
    "game_type": "REG",
@@ -24985,6 +25230,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_17_NO_ATL",
    "season": 2026,
    "game_type": "REG",
@@ -25065,6 +25311,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_17_NYG_DAL",
    "season": 2026,
    "game_type": "REG",
@@ -25143,6 +25390,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_17_PIT_TEN",
    "season": 2026,
    "game_type": "REG",
@@ -25221,6 +25469,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_17_SEA_CAR",
    "season": 2026,
    "game_type": "REG",
@@ -25301,6 +25550,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_17_WAS_JAX",
    "season": 2026,
    "game_type": "REG",
@@ -25381,6 +25631,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_17_LV_ARI",
    "season": 2026,
    "game_type": "REG",
@@ -25461,6 +25712,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_17_DET_CHI",
    "season": 2026,
    "game_type": "REG",
@@ -25541,6 +25793,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_17_PHI_SF",
    "season": 2026,
    "game_type": "REG",
@@ -25623,6 +25876,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_17_HOU_GB",
    "season": 2026,
    "game_type": "REG",
@@ -25701,6 +25955,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_18_ATL_CAR",
    "season": 2026,
    "game_type": "REG",
@@ -25781,6 +26036,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_18_CHI_MIN",
    "season": 2026,
    "game_type": "REG",
@@ -25859,6 +26115,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_18_CLE_CIN",
    "season": 2026,
    "game_type": "REG",
@@ -25939,6 +26196,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_18_DAL_WAS",
    "season": 2026,
    "game_type": "REG",
@@ -26017,6 +26275,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_18_DET_GB",
    "season": 2026,
    "game_type": "REG",
@@ -26095,6 +26354,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_18_JAX_IND",
    "season": 2026,
    "game_type": "REG",
@@ -26175,6 +26435,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_18_LAC_DEN",
    "season": 2026,
    "game_type": "REG",
@@ -26253,6 +26514,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_18_LV_KC",
    "season": 2026,
    "game_type": "REG",
@@ -26331,6 +26593,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_18_MIA_NE",
    "season": 2026,
    "game_type": "REG",
@@ -26409,6 +26672,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_18_NYJ_BUF",
    "season": 2026,
    "game_type": "REG",
@@ -26487,6 +26751,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_18_PHI_NYG",
    "season": 2026,
    "game_type": "REG",
@@ -26567,6 +26832,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_18_PIT_BAL",
    "season": 2026,
    "game_type": "REG",
@@ -26647,6 +26913,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_18_SEA_LA",
    "season": 2026,
    "game_type": "REG",
@@ -26725,6 +26992,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_18_SF_ARI",
    "season": 2026,
    "game_type": "REG",
@@ -26805,6 +27073,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_18_TB_NO",
    "season": 2026,
    "game_type": "REG",
@@ -26885,6 +27154,7 @@
    "result": null
   },
   {
+   "frozen_snapshot": null,
    "game_id": "2026_18_TEN_HOU",
    "season": 2026,
    "game_type": "REG",
