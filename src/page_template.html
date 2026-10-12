@@ -198,6 +198,11 @@ header { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: flex-end; 
 .probs { display: flex; flex-wrap: wrap; gap: 4px 14px; font-family: var(--mono); font-size: 12px; color: var(--ink-2); }
 .probs b { color: var(--ink); font-weight: 600; }
 .pred { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.spreadline { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 12.5px; color: var(--ink-2); }
+.spreadline b { color: var(--ink); font-weight: 600; }
+.slate-nav { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.slate-nav .btn { padding: 5px 10px; }
+.slate-nav .btn.current { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .pred .score { font-family: var(--mono); font-size: 17px; font-weight: 600; }
 .price { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; font-family: var(--mono); font-size: 12.5px; color: var(--ink-2); }
 .price b { color: var(--ink); font-weight: 600; }
@@ -324,6 +329,7 @@ td.num { font-family: var(--mono); }
       </div>
       <button class="btn signal" id="parlay-btn" type="button" aria-expanded="false" aria-controls="parlay">Build a parlay</button>
     </div>
+    <nav class="slate-nav" id="slate-nav" aria-label="Slates this season"></nav>
     <div class="books" id="books" aria-label="Books used for best price"></div>
     <div class="status" id="live-status"><span id="live-note">Lines as of build time</span></div>
     <section class="parlay" id="parlay" hidden aria-labelledby="parlay-title"></section>
@@ -393,6 +399,8 @@ function clear(el) { while (el.firstChild) el.removeChild(el.firstChild); return
 const $ = (id) => document.getElementById(id);
 
 const MINUS = '−';
+/** A spread from the pick's side: favorites negative (JAX −7.5), underdogs positive (CLE +1.5), pick'em 0. */
+function fmtSpread(s) { const v = -s; const r = Math.round(v * 2) / 2; if (r === 0) return 'PK'; return (r < 0 ? MINUS : '+') + Math.abs(r).toFixed(1).replace(/\.0$/, ''); }
 /** Round half away from zero (contract section 0), for display only. */
 function roundHalfUp(x) { return x < 0 ? -Math.floor(-x + 0.5) : Math.floor(x + 0.5); }
 const pct = (p) => p == null ? '—' : roundHalfUp(p * 100) + '%';
@@ -524,9 +532,26 @@ function renderScorecard() {
 
 /* ---- 5. Today view + game cards -------------------------------------- */
 /** Viewer's league date; ?date=YYYY-MM-DD (or window.GRIDIRON_TODAY) overrides for debugging/tests. */
+let VIEW_DATE = null; // set by the slate navigation; null = the viewer's real league date
 function viewerLeagueDate() {
-  const q = new URLSearchParams(location.search).get('date') || window.GRIDIRON_TODAY;
+  const q = VIEW_DATE || new URLSearchParams(location.search).get('date') || window.GRIDIRON_TODAY;
   return /^\d{4}-\d{2}-\d{2}$/.test(q || '') ? q : nyDate(new Date());
+}
+/** One button per week of the season (its first league date), finished weeks first; the viewed week is highlighted. */
+function renderSlateNav(currentDate) {
+  const nav = clear($('slate-nav'));
+  const weeks = new Map();
+  for (const g of MODEL.games) { const w = weeks.get(g.week) || { week: g.week, dates: new Set(), finals: 0, n: 0 }; w.dates.add(g.league_date); w.n++; if (g.status === 'final') w.finals++; weeks.set(g.week, w); }
+  const curWeek = (MODEL.games.find((g) => g.league_date === currentDate) || {}).week;
+  const ordered = Array.from(weeks.values()).sort((a, b) => a.week - b.week).filter((w) => w.finals > 0 || w.week === curWeek || (curWeek != null && w.week === curWeek + 1));
+  for (const w of ordered) {
+    const dates = Array.from(w.dates).sort();
+    const target = dates.find((d) => MODEL.games.some((g) => g.league_date === d && g.status !== 'final')) || dates[dates.length - 1];
+    const label = 'Wk ' + w.week + (w.finals === w.n ? ' · final' : w.finals ? ' · ' + w.finals + '/' + w.n : '');
+    const b = h('button', { class: 'btn' + (w.week === curWeek ? ' current' : ''), type: 'button', 'aria-pressed': String(w.week === curWeek) }, label);
+    b.addEventListener('click', () => { VIEW_DATE = target; renderToday(); if (!$('parlay').hidden) renderParlay(); });
+    nav.appendChild(b);
+  }
 }
 /** D7: today's slate, else the next league date with games, else the last one. */
 function chooseSlate(today) {
@@ -585,6 +610,13 @@ function gameCard(g) {
   // Both the pick and the score follow the blend (D3/D5 amended), so the pick is always the higher score.
   card.appendChild(h('div', { class: 'pred' }, h('span', { class: 'chip cyan' }, off.tier), h('span', { class: 'score' }, predScore), h('span', { class: 'mono', style: 'font-size:12px;color:var(--ink-3)' }, 'total ' + fix(off.total_used, 1) + ' (' + off.total_source.replace('_', ' ') + ')'),
     pickPts > oppPts ? null : h('span', { class: 'eyebrow' }, 'model-only score; the pick follows the blend')));
+  // Spread line: the page's spread (from the blend) beside the market's consensus spread, both from the pick's side.
+  const pickSpread = pickHome ? off.blend_spread : -off.blend_spread;
+  const mktHome = off.market ? off.market.consensus_home_spread : null;
+  const mktSpread = mktHome == null ? null : (pickHome ? mktHome : -mktHome);
+  card.appendChild(h('div', { class: 'spreadline mono' },
+    h('span', null, 'Spread ', h('b', null, off.pick + ' ' + fmtSpread(pickSpread))),
+    mktSpread == null ? h('span', null, 'market line: none at build') : h('span', null, 'Market line ', h('b', null, off.pick + ' ' + fmtSpread(mktSpread)), mktSpread !== null && Math.abs(pickSpread - mktSpread) >= 3 ? ' (' + fix(Math.abs(pickSpread - mktSpread), 1) + ' pts apart)' : '')));
 
   // Edge chip (D17): amber, dashed, one measured reason.
   if (off.edge && off.edge.flag) {
@@ -652,10 +684,12 @@ function renderToday() {
   const week = slateGames.length ? slateGames[0].week : null;
   const rest = MODEL.games.filter((g) => g.week === week && g.league_date !== pick.date);
   SLATE = { date: pick.date, kind: pick.kind, games: slateGames, week: rest };
-  const label = pick.kind === 'today' ? 'Today · ' + fmtLeagueDate(pick.date)
+  const label = VIEW_DATE ? 'Viewing ' + fmtLeagueDate(pick.date) + (pick.kind === 'today' ? ' · today' : '')
+    : pick.kind === 'today' ? 'Today · ' + fmtLeagueDate(pick.date)
     : pick.kind === 'next' ? 'No games today (' + fmtLeagueDate(today) + ') · Next slate: ' + fmtLeagueDate(pick.date)
     : pick.kind === 'last' ? 'Season over · Last slate: ' + fmtLeagueDate(pick.date) : 'No games in model';
   $('slate-label').textContent = label;
+  renderSlateNav(pick.date);
   $('slate-title').textContent = week != null ? 'Week ' + week + ' · ' + slateGames.length + (slateGames.length === 1 ? ' game' : ' games') : 'No games';
   const box = clear($('slate'));
   if (!slateGames.length) box.appendChild(h('div', { class: 'empty' }, 'No games in the model for this date.'));
