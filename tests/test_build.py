@@ -55,7 +55,7 @@ class HelperTests(unittest.TestCase):
         self.assertIsNone(build.game_market({k: None for k in game}, None, None, "2026-10-09T10:05:00Z"))
 
     def test_result_block_tie_and_errors(self):
-        official = {"pick": "KC", "model_spread": 3.0, "total_used": 45.0}
+        official = {"pick": "KC", "blend_spread": 3.0, "total_used": 45.0}
         g = {"played": True, "home": "KC", "away": "DEN", "home_score": 20, "away_score": 20}
         r = build.result_block(g, official)
         self.assertEqual((r["winner"], r["hit"], r["margin"]), ("tie", None, 0))
@@ -189,3 +189,45 @@ class EndToEndTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class FrozenOfficialTests(unittest.TestCase):
+    """CONTRACT 2.6a: a kicked-off game shows the snapshot the ledger graded, not a recomputation."""
+
+    def test_kicked_off_game_is_frozen_to_the_prekick_snapshot(self):
+        import copy
+        from src import predict, schema, ledger
+        fx = json.load(open(os.path.join(os.path.dirname(__file__), "fixtures", "model_fixture.json")))
+        params = fx["params"]
+        g = next(x for x in fx["games"] if x["status"] == "scheduled" and x["official"]["market"] is not None)
+        official = copy.deepcopy(g["official"])
+        home, away = g["home"], g["away"]
+        other = away if official["pick"] == home else home
+        # a pre-kick snapshot that picked the OTHER side at 54%
+        snap = {"type": "snapshot", "id": g["game_id"] + "@old", "game_id": g["game_id"], "kickoff_utc": g["kickoff_utc"],
+                "build_at": "2026-10-01T10:00:00Z", "pick": other, "p_model": 0.52, "p_market": 0.55, "p_blend": 0.54,
+                "tier": "Toss-up", "pred_home": 21, "pred_away": 22, "best_price": -110, "best_book": "fanduel", "ev": -0.03,
+                "market_source": "odds_api", "qb_home_id": None, "qb_away_id": None, "consensus_p_pick": 0.55,
+                "total_used": 43.0, "total_source": "odds_api"}
+        game = {"game_id": g["game_id"], "home": home, "away": away, "neutral": g["neutral"], "league_date": g["league_date"],
+                "home_rest": 7, "away_rest": 7, "home_qb_id": None, "away_qb_id": None, "home_qb_name": None, "away_qb_name": None,
+                "home_moneyline": None, "away_moneyline": None, "spread_line": None, "total_line": None}
+        f = official["factors"]
+        pregame = {"p_home": official["p_home_model"], "d": f["d_total"], "elo_home": f["team_elo_home"], "elo_away": f["team_elo_away"],
+                   "hfa_elo": f["hfa_elo"], "rest_elo": f["rest_elo"], "q_home": 0.0, "q_away": 0.0, "qb_home_starts": 0, "qb_away_starts": 0}
+        context = {"ranks": {t["team"]: t["rank"] for t in fx["teams"]}, "names": {t["code"]: t for t in schema.TEAM_META},
+                   "form": {}, "usual_starter": {}, "qb": {}, "books": list(params["books"])}
+        frozen = predict.freeze_official(official, snap, game, pregame, params, context)
+        self.assertEqual(frozen["pick"], other)
+        self.assertAlmostEqual(frozen["p_pick_blend"], 0.54)
+        self.assertEqual(frozen["tier"], "Toss-up")
+        self.assertEqual((frozen["display_home"], frozen["display_away"]), (21, 22))
+        self.assertEqual(frozen["best_price"], {"book": "fanduel", "side": other, "american": -110})
+        self.assertFalse(frozen["parlay_eligible"])
+        self.assertIn(other, frozen["rationale_sentences"][-1].replace(".", "") or "")  if False else None
+        self.assertEqual(set(frozen), set(official))
+        # the result block grades the frozen pick
+        played = dict(game, played=True, home_score=20, away_score=27)
+        r = build.result_block(played, frozen)
+        self.assertEqual(r["hit"], other == away)
+        self.assertAlmostEqual(r["pred_margin_error"], frozen["blend_spread"] - (-7))

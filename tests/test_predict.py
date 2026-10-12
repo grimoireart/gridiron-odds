@@ -98,7 +98,7 @@ def wrap(game, out):
         "game_id": game["game_id"], "season": game["season"], "game_type": game["game_type"], "week": game["week"],
         "league_date": game["league_date"], "kickoff_utc": game["kickoff_utc"], "time_known": game["time_known"],
         "away": game["away"], "home": game["home"], "neutral": game["neutral"], "status": "scheduled",
-        "availability": out["availability"], "official": out["official"], "result": None,
+        "availability": out["availability"], "official": out["official"], "result": None, "frozen_snapshot": None,
     }
 
 

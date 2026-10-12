@@ -172,6 +172,7 @@ GAME_KEYS = frozenset(
         "availability",
         "official",
         "result",
+        "frozen_snapshot",
     ]
 )
 AVAILABILITY_KEYS = frozenset(["starter_home", "starter_away", "market", "csv_lines"])

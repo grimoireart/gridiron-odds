@@ -611,7 +611,8 @@ function gameCard(g) {
     card.appendChild(h('div', { class: 'final-line' },
       h('span', null, 'Final ', h('b', null, g.away + ' ' + r.away_score + ', ' + g.home + ' ' + r.home_score)),
       h('span', { class: 'chip ' + hitCls }, hitTxt),
-      h('span', null, 'margin missed by ' + fix(Math.abs(r.pred_margin_error), 1) + ' pts, total by ' + fix(Math.abs(r.pred_total_error), 1))));
+      h('span', null, 'margin missed by ' + fix(Math.abs(r.pred_margin_error), 1) + ' pts, total by ' + fix(Math.abs(r.pred_total_error), 1)),
+      g.frozen_snapshot ? null : h('span', { class: 'eyebrow' }, 'not in the record: no pre-kick pick was logged')));
   }
 
   // Why? disclosure with the official rationale sentences.

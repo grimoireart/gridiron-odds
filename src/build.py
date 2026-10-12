@@ -123,15 +123,16 @@ def result_block(game: dict, official: dict) -> dict | None:
         "winner": winner,
         "margin": margin,
         "hit": None if winner == "tie" else official["pick"] == winner,
-        "pred_margin_error": official["model_spread"] - margin,
+        "pred_margin_error": official["blend_spread"] - margin,
         "pred_total_error": official["total_used"] - (hs + as_),
     }
 
 
-def game_entry(game: dict, prediction: dict) -> dict:
+def game_entry(game: dict, prediction: dict, frozen_snapshot: str | None = None) -> dict:
     """CONTRACT 2.5 games[] entry from a normalized game and predict_game's output."""
     official = prediction["official"]
     return {
+        "frozen_snapshot": frozen_snapshot,
         "game_id": game["game_id"],
         "season": game["season"],
         "game_type": game["game_type"],
@@ -271,7 +272,17 @@ def assemble(games: list[dict], params_file: dict, fetch_report: dict, built_at:
     entries = []
     for g in rows:
         mkt = game_market(g, odds["matched"].get(g["game_id"]), odds["official_odds_at"], built_at)
-        entries.append(game_entry(g, predict.predict_game(g, rep["pregame"][g["game_id"]], mkt, params, context)))
+        pred = predict.predict_game(g, rep["pregame"][g["game_id"]], mkt, params, context)
+        frozen = None
+        if not ledger._before(built_at, g["kickoff_utc"]):
+            # Kicked off: the card shows exactly what the ledger graded (CONTRACT 2.6a), never a
+            # recomputation from the closing line.
+            snap = ledger.latest_prekick_snapshot(events, g["game_id"], g["kickoff_utc"])
+            if snap is not None:
+                pred = dict(pred, official=predict.freeze_official(pred["official"], snap, g, rep["pregame"][g["game_id"]], params, context))
+                pred["availability"] = dict(pred["availability"], market=pred["official"]["market"] is not None)
+                frozen = snap["id"]
+        entries.append(game_entry(g, pred, frozen))
 
     sim = simulate.simulate(schema.TEAM_META, [g for g in rows if not g["played"]], ratings_now, params,
                             runs=int(params["sim"]["runs"]), seed=int(params["sim"]["seed"]), records=rep["records"])

@@ -474,6 +474,51 @@ def edge_chip(factors: dict, names: dict) -> dict | None:
 # ----------------------------------------------------------------------------
 
 
+def freeze_official(official: dict, snapshot: dict, game: dict, pregame: dict, params: dict, context: dict) -> dict:
+    """Return a copy of ``official`` frozen to a pre-kick ledger ``snapshot`` (CONTRACT 2.6a).
+
+    Once a game has kicked off, the card must show exactly what the ledger graded: the pick,
+    the probabilities, the tier, the predicted score, the price and the EV all come from the
+    snapshot. The spread, expected scores, factors, rationale and edge chip are re-derived
+    from those frozen inputs so every number on the card still agrees with the text.
+    """
+    o = dict(official)
+    home = game["home"]
+    pick = snapshot["pick"]
+    pick_is_home = pick == home
+    side = lambda p: None if p is None else (p if pick_is_home else 1.0 - p)
+    o["pick"] = pick
+    o["p_home_model"] = side(snapshot["p_model"])
+    o["p_home_market"] = side(snapshot.get("p_market"))
+    o["p_home_blend"] = side(snapshot["p_blend"])
+    o["p_pick_blend"] = snapshot["p_blend"]
+    o["tier"] = snapshot["tier"]
+    if o["p_home_market"] is None:
+        o["market"] = None
+    elif o.get("market") is None:
+        o["market"] = {"source": snapshot.get("market_source") or "csv", "as_of": snapshot["build_at"],
+                       "consensus_p_home": o["p_home_market"], "consensus_total": None,
+                       "consensus_home_spread": None, "n_books": 0, "books": []}
+    if snapshot.get("total_used") is not None:
+        o["total_used"], o["total_source"] = snapshot["total_used"], snapshot.get("total_source") or o["total_source"]
+    o["blend_spread"] = spread_from_prob(o["p_home_blend"], params["score"]["points_per_elo"])
+    o["expected_home"], o["expected_away"] = expected_scores(o["total_used"], o["blend_spread"])
+    dh, da = snapshot["pred_home"], snapshot["pred_away"]
+    if abs(dh - o["expected_home"]) > 1.5 or abs(da - o["expected_away"]) > 1.5:  # legacy snapshot, other total
+        dh, da = display_scores(o["expected_home"], o["expected_away"], pick_is_home)
+    o["display_home"], o["display_away"] = dh, da
+    o["best_price"] = None if snapshot.get("best_price") is None else {"book": snapshot["best_book"], "side": pick, "american": snapshot["best_price"]}
+    o["estimated_ev_per_dollar"] = snapshot.get("ev")
+    o["best_prices"] = prices_for_pick(o["market"], pick_is_home, pick, list(context.get("books") or params["books"]))
+    o["factors"] = build_factors(game, pregame, params, context, o["p_home_model"], o["p_home_market"], pick_is_home)
+    names = context["names"]
+    keys, sentences = rationale(o["factors"], o, game, names)
+    o["rationale"], o["rationale_sentences"] = keys, sentences
+    o["edge"] = None if o["market"] is None else edge_chip(o["factors"], _labels(game, names))
+    o["parlay_eligible"] = False
+    return o
+
+
 def predict_game(game: dict, pregame: dict, market: dict | None, params: dict, context: dict) -> dict:
     """Build {"official": CONTRACT 2.6, "availability": CONTRACT 2.5} for one game.
 

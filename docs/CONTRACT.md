@@ -142,9 +142,13 @@ Every number in a sentence must be derivable from `factors`/`official` by the ru
 
 Edge chip `reason_key` priority (D17, measured factors only): `starter_change` (either side `differs_from_usual`), then `rest_gap` (`abs(rest_diff) >= 3`), then `form_move` (either `abs(form_*_3) >= 40`, text "{City}'s rating moved {N} points in the last three games"), else `unknown` ("may reflect information this model lacks").
 
+### 2.6a Frozen officials (added 2026-10-11)
+
+Once `built_at >= kickoff_utc`, a game's `official` is frozen to its latest pre-kick ledger snapshot (the one `append_grades` grades): pick, p_home_model/market/blend, p_pick_blend, tier, display scores, total_used/source, best_price and EV are copied from the snapshot; blend_spread, expected scores, factors, rationale and edge are re-derived from those inputs; parlay_eligible is false. The games[] entry carries `frozen_snapshot` (the snapshot id, or null when no pre-kick snapshot exists or the game has not kicked off). Snapshot events now also carry `total_used` and `total_source`. Root cause: on 2026-10-11 the post-kick build recomputed CLE@NYJ from the closing line, flipped the card to NYJ/HIT while the ledger had graded CLE/MISS.
+
 ### 2.7 `result` {}
 `home_score` int, `away_score` int, `winner` code or `"tie"`, `margin` int (home - away),
-`hit` bool or null (null for a tie), `pred_margin_error` float (`model_spread - margin`),
+`hit` bool or null (null for a tie), `pred_margin_error` float (`blend_spread - margin`, i.e. the displayed prediction),
 `pred_total_error` float (`total_used - (home_score + away_score)`).
 
 ### 2.8 `market` {} (official market snapshot)

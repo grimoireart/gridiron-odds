@@ -275,7 +275,14 @@ def snapshot_event(game: dict, build: dict) -> dict | None:
         "qb_home": qb_home.get("name"),
         "qb_away": qb_away.get("name"),
         "consensus_p_pick": _pick_side(p_home_market, pick, home),
+        "total_used": official.get("total_used"),
+        "total_source": official.get("total_source"),
     }
+
+
+def latest_prekick_snapshot(events: list[dict], game_id: str, kickoff_utc: str) -> dict | None:
+    """Public: the snapshot a kicked-off game is graded on (latest with build_at < kickoff)."""
+    return _latest_prekick(_snapshots_by_game(events).get(game_id, []), kickoff_utc)
 
 
 def _snapshots_by_game(events: list[dict]) -> dict[str, list[dict]]:
