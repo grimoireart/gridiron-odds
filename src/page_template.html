@@ -613,10 +613,12 @@ function gameCard(g) {
   // Spread line: the page's spread (from the blend) beside the market's consensus spread, both from the pick's side.
   const pickSpread = pickHome ? off.blend_spread : -off.blend_spread;
   const mktHome = off.market ? off.market.consensus_home_spread : null;
-  const mktSpread = mktHome == null ? null : (pickHome ? mktHome : -mktHome);
+  // consensus_home_spread is in BOOK convention (negative = home favored); flip it into the model's
+  // pick-positive convention so both numbers go through the same formatter.
+  const mktSpread = mktHome == null ? null : (pickHome ? -mktHome : mktHome);
   card.appendChild(h('div', { class: 'spreadline mono' },
     h('span', null, 'Spread ', h('b', null, off.pick + ' ' + fmtSpread(pickSpread))),
-    mktSpread == null ? h('span', null, 'market line: none at build') : h('span', null, 'Market line ', h('b', null, off.pick + ' ' + fmtSpread(mktSpread)), mktSpread !== null && Math.abs(pickSpread - mktSpread) >= 3 ? ' (' + fix(Math.abs(pickSpread - mktSpread), 1) + ' pts apart)' : '')));
+    mktSpread == null ? h('span', null, 'market line: none at build') : h('span', null, 'Market line ', h('b', null, off.pick + ' ' + fmtSpread(mktSpread)), Math.abs(pickSpread - mktSpread) >= 3 ? ' (' + fix(Math.abs(pickSpread - mktSpread), 1) + ' pts apart)' : '')));
 
   // Edge chip (D17): amber, dashed, one measured reason.
   if (off.edge && off.edge.flag) {
@@ -684,7 +686,7 @@ function renderToday() {
   const week = slateGames.length ? slateGames[0].week : null;
   const rest = MODEL.games.filter((g) => g.week === week && g.league_date !== pick.date);
   SLATE = { date: pick.date, kind: pick.kind, games: slateGames, week: rest };
-  const label = VIEW_DATE ? 'Viewing ' + fmtLeagueDate(pick.date) + (pick.kind === 'today' ? ' · today' : '')
+  const label = VIEW_DATE ? 'Viewing ' + fmtLeagueDate(pick.date)
     : pick.kind === 'today' ? 'Today · ' + fmtLeagueDate(pick.date)
     : pick.kind === 'next' ? 'No games today (' + fmtLeagueDate(today) + ') · Next slate: ' + fmtLeagueDate(pick.date)
     : pick.kind === 'last' ? 'Season over · Last slate: ' + fmtLeagueDate(pick.date) : 'No games in model';
