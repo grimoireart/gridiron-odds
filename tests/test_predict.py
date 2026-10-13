@@ -818,10 +818,14 @@ class EdgeChipTests(unittest.TestCase):
             e = predict.edge_chip(factors_for_edge(rest_diff=5, form_away=-60.0), self.names, inj)
             self.assertEqual(e, {"flag": True, "reason_key": "injuries",
                                  "reason_text": "Denver lists 4 starters Out (S, WR, LT and 1 more) and 1 Doubtful (RB)"})
-            # the side with more listed starters is named; Doubtful alone reads as such
+            # the side the MARKET likes less is named (gap_home < 0: the market is cooler on the
+            # away side); Doubtful alone reads as such
             inj2 = injuries.injuries_block(make_report(), make_report(player("Edge", "DE", "Doubtful")), PARAMS, AS_OF)
-            e = predict.edge_chip(factors_for_edge(rest_diff=5), self.names, inj2)
+            e = predict.edge_chip(factors_for_edge(gap=-0.1, rest_diff=5), self.names, inj2)
             self.assertEqual(e["reason_text"], "Kansas City lists 1 starter Doubtful (DE)")
+            # ... and injuries on the side the market likes MORE cannot explain the gap: fall through
+            e = predict.edge_chip(factors_for_edge(gap=0.1, rest_diff=5), self.names, inj2)
+            self.assertEqual(e["reason_key"], "rest_gap")
             # Questionable alone, an unfiled or an unavailable report never earn the chip
             for quiet in (injuries.injuries_block(make_report(player("CB", "CB", "Questionable")), make_report(filed=False), PARAMS, AS_OF),
                           injuries.injuries_block(injuries.unavailable_report(), injuries.unavailable_report(), PARAMS, AS_OF)):

@@ -496,18 +496,27 @@ def injuries_sentence(inj: dict | None, lab: dict, points_per_elo: float | None 
     return "%s; worth %s." % (body, _elo_and_spread(used, lab, points_per_elo))
 
 
-def _injury_edge_text(inj: dict, lab: dict) -> str | None:
-    """"Denver lists 3 starters Out (WR, LT, CB)" for the side with more listed starters
-    (ties -> home); None when neither side has a starter Out or Doubtful."""
+def _injury_edge_text(inj: dict, lab: dict, gap_home: float | None = None) -> str | None:
+    """"Denver lists 3 starters Out (WR, LT, CB)" for the side the MARKET likes less than the
+    model does (D18.4): injuries on that side are what the market may be pricing and the model
+    is not. gap_home = p_home_model - p_home_market; > 0 means the market is cooler on the home
+    side. None when that side has no starter Out or Doubtful (the chip falls through to the next
+    reason). Without a gap (legacy callers) the side with the larger load is used."""
     if not schema.injury_rationale_triggers(inj):
         return None
-    best = None
-    for side in ("home", "away"):
+    if gap_home is None:
+        best = None
+        for s_ in ("home", "away"):
+            rep_ = inj[s_]
+            load = int(rep_.get("starters_out") or 0) + int(rep_.get("starters_doubtful") or 0)
+            if best is None or load > best[0]:
+                best = (load, s_)
+        side = best[1]
+    else:
+        side = "home" if gap_home > 0 else "away"
         rep_ = inj[side]
-        load = int(rep_.get("starters_out") or 0) + int(rep_.get("starters_doubtful") or 0)
-        if best is None or load > best[0]:
-            best = (load, side)
-    side = best[1]
+        if int(rep_.get("starters_out") or 0) + int(rep_.get("starters_doubtful") or 0) < 1:
+            return None
     rep_ = inj[side]
     n_out = int(rep_.get("starters_out") or 0)
     n_dbt = int(rep_.get("starters_doubtful") or 0)
@@ -690,7 +699,7 @@ def edge_chip(factors: dict, names: dict, injuries: dict | None = None) -> dict 
             return {"flag": True, "reason_key": "starter_change",
                     "reason_text": "%s's listed starter differs from the usual starter" % lab[side]}
     if injuries is not None and edge_reason_allowed("injuries"):
-        text = _injury_edge_text(injuries, lab)
+        text = _injury_edge_text(injuries, lab, f.get("model_market_gap_home"))
         if text is not None:
             return {"flag": True, "reason_key": "injuries", "reason_text": text}
     if f["rest_diff"] is not None and abs(f["rest_diff"]) >= REST_GAP_THRESHOLD:
