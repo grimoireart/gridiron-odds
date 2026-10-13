@@ -1,17 +1,17 @@
 {
  "schema_version": "1.0.0",
  "build": {
-  "id": "20261012T180400Z-6bc76ce",
-  "built_at": "2026-10-12T18:04:00Z",
-  "official_odds_at": "2026-10-12T18:04:01Z",
-  "league_date": "2026-10-12",
-  "next_league_date": "2026-10-12",
+  "id": "20261013T093421Z-bbaf0b1",
+  "built_at": "2026-10-13T09:34:21Z",
+  "official_odds_at": "2026-10-13T09:34:22Z",
+  "league_date": "2026-10-13",
+  "next_league_date": "2026-10-15",
   "odds_source": "odds_api",
   "data": {
    "source_url": "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv",
-   "nflverse_sha256": "6bc76ce758033bbd9ee02c410e887a0ce587ce2106ad31e277220e4f03429987",
+   "nflverse_sha256": "bbaf0b1817bef11870f800237950c62ff24e576cc6ef7ea129d1225b8fd9c149",
    "rows": 7548,
-   "max_result_date": "2026-10-11",
+   "max_result_date": "2026-10-12",
    "fetched": true
   }
  },
@@ -126,7 +126,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.5996387718242023,
      "consensus_total": 44.5,
      "consensus_home_spread": -3.0,
@@ -259,7 +259,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.6574752261956054,
      "consensus_total": 47.5,
      "consensus_home_spread": -3.5,
@@ -290,7 +290,7 @@
      "team_elo_home": 1574.7990326100291,
      "team_elo_away": 1549.0442842554867,
      "elo_gap_home": 25.75474835454247,
-     "home_rank": 8,
+     "home_rank": 10,
      "away_rank": 2,
      "hfa_elo": 0.0,
      "hfa_spread_pts": 0.0,
@@ -323,7 +323,7 @@
       "source": "nflverse_listed"
      },
      "qb_elo": 26.9724251170605,
-     "form_home_3": 18.15047977598647,
+     "form_home_3": -11.679176606184228,
      "form_away_3": 40.554606543501905,
      "d_total": 52.72717347160297,
      "model_market_gap_home": -0.08217195156031876,
@@ -336,7 +336,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Los Angeles rates 26 Elo points above San Francisco, 8th in the league against 2nd.",
+     "Los Angeles rates 26 Elo points above San Francisco, 10th in the league against 2nd.",
      "San Francisco has gained 41 points of rating over its last three games.",
      "The books have Los Angeles at 66%, further than the model's 58%; the gap may reflect information this model lacks.",
      "Blended, that comes to Los Angeles at 63%: a Lean pick, predicted 26 to 22."
@@ -394,7 +394,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.7179705215419501,
      "consensus_total": 40.5,
      "consensus_home_spread": -6.5,
@@ -527,7 +527,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.4066302458405761,
      "consensus_total": 48.5,
      "consensus_home_spread": 3.0,
@@ -559,7 +559,7 @@
      "team_elo_away": 1518.0678636848938,
      "elo_gap_home": -34.76917056492607,
      "home_rank": 21,
-     "away_rank": 10,
+     "away_rank": 9,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 7,
@@ -604,7 +604,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Baltimore rates 35 Elo points above Indianapolis, 10th in the league against 21st.",
+     "Baltimore rates 35 Elo points above Indianapolis, 9th in the league against 21st.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Baltimore's listed starter, Lamar Jackson, rates 41 points above the other listed starter.",
      "Blended, that comes to Baltimore at 58%: a Lean pick, predicted 25 to 23."
@@ -658,7 +658,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.4956702459300312,
      "consensus_total": 44.5,
      "consensus_home_spread": 1.5,
@@ -723,7 +723,7 @@
      },
      "qb_elo": -28.96439722493497,
      "form_home_3": -19.1043657379646,
-     "form_away_3": 2.1331871691616016,
+     "form_away_3": 0.5748029274043347,
      "d_total": 33.6869758535432,
      "model_market_gap_home": 0.0526578595068492,
      "model_market_gap_pick": 0.0526578595068492
@@ -789,7 +789,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.4003612281757977,
      "consensus_total": 47.5,
      "consensus_home_spread": 3.0,
@@ -821,7 +821,7 @@
      "team_elo_away": 1537.3810139329871,
      "elo_gap_home": -81.68751389483123,
      "home_rank": 17,
-     "away_rank": 9,
+     "away_rank": 8,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 7,
@@ -866,7 +866,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Chicago rates 82 Elo points above Carolina, 9th in the league against 17th.",
+     "Chicago rates 82 Elo points above Carolina, 8th in the league against 17th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Carolina has gained 58 points of rating over its last three games.",
      "Blended, that comes to Chicago at 59%: a Lean pick, predicted 25 to 22."
@@ -920,7 +920,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.7913616398243045,
      "consensus_total": 40.5,
      "consensus_home_spread": -8.5,
@@ -1053,7 +1053,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.7335423197492164,
      "consensus_total": 49.5,
      "consensus_home_spread": -7.0,
@@ -1186,7 +1186,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.5173641257162701,
      "consensus_total": 39.5,
      "consensus_home_spread": -1.5,
@@ -1315,7 +1315,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.644729178800233,
      "consensus_total": 50.5,
      "consensus_home_spread": -3.5,
@@ -1444,7 +1444,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.7867435158501441,
      "consensus_total": 47.5,
      "consensus_home_spread": -8.5,
@@ -1577,7 +1577,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.5324675324675325,
      "consensus_total": 46.5,
      "consensus_home_spread": -1.5,
@@ -1708,7 +1708,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.6037569709421778,
      "consensus_total": 40.5,
      "consensus_home_spread": -3.0,
@@ -1845,7 +1845,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.6805555555555556,
      "consensus_total": 43.5,
      "consensus_home_spread": -6.0,
@@ -1978,7 +1978,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.4003612281757977,
      "consensus_total": 47.5,
      "consensus_home_spread": 3.0,
@@ -2113,7 +2113,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.5427435387673957,
      "consensus_total": 42.5,
      "consensus_home_spread": -2.5,
@@ -2248,7 +2248,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.6750312469954812,
      "consensus_total": 54.5,
      "consensus_home_spread": -5.5,
@@ -2312,7 +2312,7 @@
       "source": "nflverse_listed"
      },
      "qb_elo": 18.341592081417385,
-     "form_home_3": 2.1331871691616016,
+     "form_home_3": 0.5748029274043347,
      "form_away_3": 6.2538875448160525,
      "d_total": 122.59305907958662,
      "model_market_gap_home": -0.005580399492501886,
@@ -2377,7 +2377,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.4170073589533933,
      "consensus_total": 43.5,
      "consensus_home_spread": 2.5,
@@ -2516,7 +2516,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.5720596355604638,
      "consensus_total": 45.5,
      "consensus_home_spread": -3.0,
@@ -2647,7 +2647,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.7768331562167907,
      "consensus_total": 41.5,
      "consensus_home_spread": -8.5,
@@ -2784,7 +2784,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.3775334481388264,
      "consensus_total": 44.5,
      "consensus_home_spread": 3.5,
@@ -2913,7 +2913,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.6574752261956054,
      "consensus_total": 46.5,
      "consensus_home_spread": -4.5,
@@ -2944,7 +2944,7 @@
      "team_elo_home": 1562.853627709977,
      "team_elo_away": 1573.5253574702276,
      "elo_gap_home": -10.671729760250628,
-     "home_rank": 9,
+     "home_rank": 8,
      "away_rank": 3,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -2991,7 +2991,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Minnesota rates 11 Elo points above Chicago, 3rd in the league against 9th.",
+     "Minnesota rates 11 Elo points above Chicago, 3rd in the league against 8th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Minnesota's listed starter, Carson Wentz, rates 36 points below their usual starter, Kyler Murray.",
      "The books have Chicago at 66%, further than the model's 57%; the gap may reflect information this model lacks.",
@@ -3050,7 +3050,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.7571884984025559,
      "consensus_total": 45.5,
      "consensus_home_spread": -8.5,
@@ -3081,7 +3081,7 @@
      "team_elo_home": 1544.1037133278585,
      "team_elo_away": 1456.573059261717,
      "elo_gap_home": 87.53065406614155,
-     "home_rank": 10,
+     "home_rank": 9,
      "away_rank": 27,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -3128,7 +3128,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Baltimore rates 88 Elo points above New Orleans, 10th in the league against 27th.",
+     "Baltimore rates 88 Elo points above New Orleans, 9th in the league against 27th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Baltimore's listed starter, Lamar Jackson, rates 54 points above the other listed starter.",
      "New Orleans has lost 72 points of rating over its last three games.",
@@ -3183,7 +3183,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.26645768025078376,
      "consensus_total": 39.5,
      "consensus_home_spread": 7.0,
@@ -3316,7 +3316,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.6636481241914618,
      "consensus_total": 41.5,
      "consensus_home_spread": -4.5,
@@ -3447,7 +3447,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.5720596355604638,
      "consensus_total": 45.5,
      "consensus_home_spread": -2.5,
@@ -3580,7 +3580,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.7335423197492164,
      "consensus_total": 43.5,
      "consensus_home_spread": -6.5,
@@ -3715,7 +3715,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.863013698630137,
      "consensus_total": 44.5,
      "consensus_home_spread": -12.5,
@@ -3850,7 +3850,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.34252477380439467,
      "consensus_total": 40.5,
      "consensus_home_spread": 3.5,
@@ -3985,7 +3985,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.6574752261956054,
      "consensus_total": 51.5,
      "consensus_home_spread": -3.5,
@@ -4120,7 +4120,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.6957699520733487,
      "consensus_total": 46.5,
      "consensus_home_spread": -6.0,
@@ -4251,7 +4251,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.7179705215419501,
      "consensus_total": 47.5,
      "consensus_home_spread": -6.5,
@@ -4282,7 +4282,7 @@
      "team_elo_home": 1538.9083702380728,
      "team_elo_away": 1464.4251217926417,
      "elo_gap_home": 74.48324844543117,
-     "home_rank": 8,
+     "home_rank": 10,
      "away_rank": 19,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -4315,7 +4315,7 @@
       "source": "nflverse_listed"
      },
      "qb_elo": 43.15582667343566,
-     "form_home_3": 18.15047977598647,
+     "form_home_3": -11.679176606184228,
      "form_away_3": 28.002498312844637,
      "d_total": 163.63907511886683,
      "model_market_gap_home": 0.0015293646590268661,
@@ -4329,7 +4329,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Los Angeles rates 74 Elo points above New York, 8th in the league against 19th.",
+     "Los Angeles rates 74 Elo points above New York, 10th in the league against 19th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Los Angeles's listed starter, Matthew Stafford, rates 43 points above the other listed starter.",
      "Los Angeles has 11 days of rest to New York's 8, worth 6 Elo points to Los Angeles.",
@@ -4384,7 +4384,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.6690070210631895,
      "consensus_total": 43.5,
      "consensus_home_spread": -4.5,
@@ -4515,7 +4515,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.448558885283451,
      "consensus_total": 41.5,
      "consensus_home_spread": 2.5,
@@ -4648,7 +4648,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.3835616438356164,
      "consensus_total": 42.5,
      "consensus_home_spread": 3.5,
@@ -4783,7 +4783,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.4675324675324675,
      "consensus_total": 41.5,
      "consensus_home_spread": 1.5,
@@ -4914,7 +4914,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.17766497461928932,
      "consensus_total": 45.5,
      "consensus_home_spread": 10.0,
@@ -5051,7 +5051,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.7335423197492164,
      "consensus_total": 50.5,
      "consensus_home_spread": -7.0,
@@ -5115,7 +5115,7 @@
       "source": "nflverse_listed"
      },
      "qb_elo": 53.58388514807401,
-     "form_home_3": 2.1331871691616016,
+     "form_home_3": 0.5748029274043347,
      "form_away_3": -27.597127780569053,
      "d_total": 262.52421475832926,
      "model_market_gap_home": 0.08569826695957339,
@@ -5190,7 +5190,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.593369754159424,
      "consensus_total": 46.5,
      "consensus_home_spread": -3.0,
@@ -5327,7 +5327,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.7335423197492164,
      "consensus_total": 49.5,
      "consensus_home_spread": -7.0,
@@ -5460,7 +5460,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.22849462365591394,
      "consensus_total": 40.5,
      "consensus_home_spread": 8.5,
@@ -5591,7 +5591,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.5427435387673957,
      "consensus_total": 37.5,
      "consensus_home_spread": -2.5,
@@ -5728,7 +5728,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.7659021045164341,
      "consensus_total": 48.5,
      "consensus_home_spread": -7.5,
@@ -5861,7 +5861,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.4956702459300312,
      "consensus_total": 42.5,
      "consensus_home_spread": 1.5,
@@ -5996,7 +5996,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.3962430290578221,
      "consensus_total": 53.5,
      "consensus_home_spread": 3.0,
@@ -6028,7 +6028,7 @@
      "team_elo_away": 1510.5443915919402,
      "elo_gap_home": -51.85950131555137,
      "home_rank": 24,
-     "away_rank": 10,
+     "away_rank": 9,
      "hfa_elo": 0.0,
      "hfa_spread_pts": 0.0,
      "rest_home": 7,
@@ -6072,7 +6072,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Baltimore rates 52 Elo points above Dallas, 10th in the league against 24th.",
+     "Baltimore rates 52 Elo points above Dallas, 9th in the league against 24th.",
      "Baltimore's listed starter, Lamar Jackson, rates 31 points above the other listed starter.",
      "Blended, that comes to Baltimore at 61%: a Lean pick, predicted 28 to 25."
     ],
@@ -6125,7 +6125,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.6309403437815976,
      "consensus_total": 43.5,
      "consensus_home_spread": -3.5,
@@ -6258,7 +6258,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.5043297540699688,
      "consensus_total": 43.5,
      "consensus_home_spread": -1.5,
@@ -6290,7 +6290,7 @@
      "team_elo_away": 1555.2807029348335,
      "elo_gap_home": 20.073377514766435,
      "home_rank": 7,
-     "away_rank": 8,
+     "away_rank": 10,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 7,
@@ -6323,7 +6323,7 @@
      },
      "qb_elo": -21.217998887941235,
      "form_home_3": 6.748764085015637,
-     "form_away_3": 18.15047977598647,
+     "form_away_3": -11.679176606184228,
      "d_total": 40.8553786268252,
      "model_market_gap_home": 0.05419634997375933,
      "model_market_gap_pick": 0.05419634997375933
@@ -6335,7 +6335,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Denver rates 20 Elo points above Los Angeles, 7th in the league against 8th.",
+     "Denver rates 20 Elo points above Los Angeles, 7th in the league against 10th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "The books have Denver at 50%, closer than the model's 56%; the gap may reflect information this model lacks.",
      "Blended, that comes to Denver at 52%: a Toss-up pick, predicted 22 to 21."
@@ -6389,7 +6389,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.3630958183058778,
      "consensus_total": 42.5,
      "consensus_home_spread": 3.5,
@@ -6420,7 +6420,7 @@
      "team_elo_home": 1540.2887503906254,
      "team_elo_away": 1535.6164308211617,
      "elo_gap_home": 4.6723195694637525,
-     "home_rank": 9,
+     "home_rank": 8,
      "away_rank": 18,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -6468,7 +6468,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Chicago rates 5 Elo points above Philadelphia, 9th in the league against 18th.",
+     "Chicago rates 5 Elo points above Philadelphia, 8th in the league against 18th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Chicago's listed starter, Case Keenum, rates 55 points below their usual starter, Caleb Williams.",
      "Philadelphia has lost 58 points of rating over its last three games.",
@@ -6524,7 +6524,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.42794036443953615,
      "consensus_total": 38.5,
      "consensus_home_spread": 2.5,
@@ -6655,7 +6655,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.33099297893681046,
      "consensus_total": 46.5,
      "consensus_home_spread": 4.5,
@@ -6790,7 +6790,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.448558885283451,
      "consensus_total": 44.5,
      "consensus_home_spread": 2.5,
@@ -6929,7 +6929,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.5829926410466066,
      "consensus_total": 48.5,
      "consensus_home_spread": -3.0,
@@ -7060,7 +7060,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.4170073589533933,
      "consensus_total": 38.5,
      "consensus_home_spread": 3.0,
@@ -7193,7 +7193,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.5720596355604638,
      "consensus_total": 51.5,
      "consensus_home_spread": -2.5,
@@ -7330,7 +7330,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.3630958183058778,
      "consensus_total": 42.5,
      "consensus_home_spread": 3.5,
@@ -7362,7 +7362,7 @@
      "team_elo_away": 1541.3292928526503,
      "elo_gap_home": -41.60402517397574,
      "home_rank": 18,
-     "away_rank": 8,
+     "away_rank": 10,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 6,
@@ -7395,7 +7395,7 @@
      },
      "qb_elo": -3.2192613387717923,
      "form_home_3": -58.452789328655626,
-     "form_away_3": 18.15047977598647,
+     "form_away_3": -11.679176606184228,
      "d_total": -6.823286512747535,
      "model_market_gap_home": 0.12708594529663936,
      "model_market_gap_pick": -0.12708594529663936
@@ -7408,7 +7408,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Los Angeles rates 42 Elo points above Philadelphia, 8th in the league against 18th.",
+     "Los Angeles rates 42 Elo points above Philadelphia, 10th in the league against 18th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Philadelphia has lost 58 points of rating over its last three games.",
      "The books have Los Angeles at 64%, further than the model's 51%; the gap may reflect information this model lacks.",
@@ -7467,7 +7467,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.7440690150970525,
      "consensus_total": 49.5,
      "consensus_home_spread": -7.0,
@@ -7531,7 +7531,7 @@
       "source": "nflverse_listed"
      },
      "qb_elo": 48.76484100256212,
-     "form_home_3": 2.1331871691616016,
+     "form_home_3": 0.5748029274043347,
      "form_away_3": 3.5786641405406954,
      "d_total": 129.49181235152483,
      "model_market_gap_home": -0.065890229546957,
@@ -7600,7 +7600,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.6309403437815976,
      "consensus_total": 43.5,
      "consensus_home_spread": -3.5,
@@ -7631,7 +7631,7 @@
      "team_elo_home": 1576.1799135331125,
      "team_elo_away": 1396.7814803109536,
      "elo_gap_home": 179.39843322215893,
-     "home_rank": 9,
+     "home_rank": 8,
      "away_rank": 29,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -7678,7 +7678,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Chicago rates 179 Elo points above New York, 9th in the league against 29th.",
+     "Chicago rates 179 Elo points above New York, 8th in the league against 29th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Chicago's listed starter, Case Keenum, rates 48 points below their usual starter, Caleb Williams.",
      "The books have Chicago at 63%, closer than the model's 75%; the gap may reflect information this model lacks.",
@@ -7737,7 +7737,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.8524590163934427,
      "consensus_total": 42.5,
      "consensus_home_spread": -11.5,
@@ -7768,7 +7768,7 @@
      "team_elo_home": 1520.757508173007,
      "team_elo_away": 1345.955988264384,
      "elo_gap_home": 174.80151990862305,
-     "home_rank": 10,
+     "home_rank": 9,
      "away_rank": 32,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -7814,7 +7814,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Baltimore rates 175 Elo points above Tennessee, 10th in the league against 32nd.",
+     "Baltimore rates 175 Elo points above Tennessee, 9th in the league against 32nd.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Baltimore's listed starter, Lamar Jackson, rates 82 points above the other listed starter.",
      "Blended, that comes to Baltimore at 85%: a Lock-ish pick, predicted 27 to 15."
@@ -7868,7 +7868,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.8081570996978852,
      "consensus_total": 38.5,
      "consensus_home_spread": -10.0,
@@ -7999,7 +7999,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.5996387718242023,
      "consensus_total": 48.5,
      "consensus_home_spread": -3.0,
@@ -8130,7 +8130,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.33635187580853815,
      "consensus_total": 47.5,
      "consensus_home_spread": 4.5,
@@ -8265,7 +8265,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.7440690150970525,
      "consensus_total": 42.5,
      "consensus_home_spread": -7.0,
@@ -8396,7 +8396,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.33635187580853815,
      "consensus_total": 52.5,
      "consensus_home_spread": 4.5,
@@ -8531,7 +8531,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.5173641257162701,
      "consensus_total": 47.5,
      "consensus_home_spread": -1.5,
@@ -8664,7 +8664,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.8081570996978852,
      "consensus_total": 49.5,
      "consensus_home_spread": -9.5,
@@ -8801,7 +8801,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.7600000000000001,
      "consensus_total": 41.5,
      "consensus_home_spread": -7.5,
@@ -8930,7 +8930,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.4675324675324675,
      "consensus_total": 46.5,
      "consensus_home_spread": 1.5,
@@ -8962,7 +8962,7 @@
      "team_elo_away": 1587.5346296473117,
      "elo_gap_home": -111.39235844407926,
      "home_rank": 15,
-     "away_rank": 9,
+     "away_rank": 8,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 7,
@@ -9007,7 +9007,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Chicago rates 111 Elo points above Green Bay, 9th in the league against 15th.",
+     "Chicago rates 111 Elo points above Green Bay, 8th in the league against 15th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Chicago's listed starter, Tyson Bagent, rates 52 points below their usual starter, Caleb Williams.",
      "Blended, that comes to Chicago at 53%: a Toss-up pick, predicted 24 to 23."
@@ -9061,7 +9061,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.2522172949002217,
      "consensus_total": 44.5,
      "consensus_home_spread": 7.0,
@@ -9194,7 +9194,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.5634920634920635,
      "consensus_total": 38.5,
      "consensus_home_spread": -2.5,
@@ -9331,7 +9331,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.27424749163879597,
      "consensus_total": 37.5,
      "consensus_home_spread": 6.5,
@@ -9462,7 +9462,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.593369754159424,
      "consensus_total": 41.5,
      "consensus_home_spread": -3.0,
@@ -9593,7 +9593,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.6164383561643836,
      "consensus_total": 45.5,
      "consensus_home_spread": -3.5,
@@ -9728,7 +9728,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.43650793650793646,
      "consensus_total": 41.5,
      "consensus_home_spread": 2.5,
@@ -9867,7 +9867,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.6164383561643836,
      "consensus_total": 41.5,
      "consensus_home_spread": -3.5,
@@ -10004,7 +10004,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.3690596562184025,
      "consensus_total": 42.5,
      "consensus_home_spread": 3.5,
@@ -10133,7 +10133,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.30423004792665137,
      "consensus_total": 55.5,
      "consensus_home_spread": 5.5,
@@ -10266,7 +10266,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.5996387718242023,
      "consensus_total": 46.5,
      "consensus_home_spread": -3.0,
@@ -10401,7 +10401,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-10-12T18:04:00Z",
+     "as_of": "2026-10-13T09:34:21Z",
      "consensus_p_home": 0.6092362344582594,
      "consensus_total": 44.5,
      "consensus_home_spread": -3.5,
@@ -10433,7 +10433,7 @@
      "team_elo_away": 1526.0285743126437,
      "elo_gap_home": -30.569429381559985,
      "home_rank": 20,
-     "away_rank": 10,
+     "away_rank": 9,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 6,
@@ -10480,7 +10480,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Baltimore rates 31 Elo points above Atlanta, 10th in the league against 20th.",
+     "Baltimore rates 31 Elo points above Atlanta, 9th in the league against 20th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Baltimore's listed starter, Tyler Huntley, rates 36 points below their usual starter, Lamar Jackson.",
      "Atlanta has gained 61 points of rating over its last three games.",
@@ -10505,7 +10505,7 @@
    }
   },
   {
-   "frozen_snapshot": null,
+   "frozen_snapshot": "2026_05_BUF_LA@20261012T180400Z-6bc76ce",
    "game_id": "2026_05_BUF_LA",
    "season": 2026,
    "game_type": "REG",
@@ -10516,7 +10516,7 @@
    "away": "BUF",
    "home": "LA",
    "neutral": false,
-   "status": "scheduled",
+   "status": "final",
    "availability": {
     "starter_home": true,
     "starter_away": true,
@@ -10539,64 +10539,27 @@
     "total_used": 54.5,
     "total_source": "odds_api",
     "market": {
-     "source": "odds_api",
-     "as_of": "2026-10-12T18:04:01Z",
-     "consensus_p_home": 0.6103272933740636,
-     "consensus_total": 54.5,
+     "source": "csv",
+     "as_of": "2026-10-13T09:34:21Z",
+     "consensus_p_home": 0.6224665518611737,
+     "consensus_total": 55.5,
      "consensus_home_spread": -3.5,
-     "n_books": 4,
+     "n_books": 1,
      "books": [
       {
-       "key": "draftkings",
-       "home_ml": -175,
-       "away_ml": 145,
+       "key": "csv",
+       "home_ml": -185,
+       "away_ml": 154,
        "home_spread": -3.5,
-       "total": 54.5
-      },
-      {
-       "key": "fanduel",
-       "home_ml": -176,
-       "away_ml": 148,
-       "home_spread": -3.5,
-       "total": 54.5
-      },
-      {
-       "key": "betrivers",
-       "home_ml": -177,
-       "away_ml": 145,
-       "home_spread": -3.5,
-       "total": 54.5
-      },
-      {
-       "key": "betmgm",
-       "home_ml": -175,
-       "away_ml": 145,
-       "home_spread": -3.5,
-       "total": 54.5
+       "total": 55.5
       }
      ]
     },
     "best_prices": {
-     "draftkings": {
-      "book": "draftkings",
-      "side": "LA",
-      "american": -175
-     },
-     "fanduel": {
-      "book": "fanduel",
-      "side": "LA",
-      "american": -176
-     },
-     "betmgm": {
-      "book": "betmgm",
-      "side": "LA",
-      "american": -175
-     },
-     "betrivers": {
-      "book": "betrivers",
-      "side": "LA",
-      "american": -177
-     }
+     "draftkings": null,
+     "fanduel": null,
+     "betmgm": null,
+     "betrivers": null
     },
     "best_price": {
      "book": "draftkings",
@@ -10608,7 +10571,7 @@
      "team_elo_home": 1557.0588500140593,
      "team_elo_away": 1588.7801515087774,
      "elo_gap_home": -31.72130149471809,
-     "home_rank": 8,
+     "home_rank": 10,
      "away_rank": 6,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -10641,8 +10604,8 @@
       "source": "nflverse_listed"
      },
      "qb_elo": -17.094766865764324,
-     "form_home_3": 18.15047977598647,
-     "form_away_3": 2.1331871691616016,
+     "form_home_3": -11.679176606184228,
+     "form_away_3": 0.5748029274043347,
      "d_total": -8.816068360482415,
      "model_market_gap_home": -0.12301191329704358,
      "model_market_gap_pick": -0.12301191329704358
@@ -10654,7 +10617,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Buffalo rates 32 Elo points above Los Angeles, 6th in the league against 8th.",
+     "Buffalo rates 32 Elo points above Los Angeles, 6th in the league against 10th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "The books have Los Angeles at 61%, further than the model's 49%; the gap may reflect information this model lacks.",
      "Blended, that comes to Los Angeles at 57%: a Lean pick, predicted 28 to 26."
@@ -10664,9 +10627,17 @@
      "reason_key": "unknown",
      "reason_text": "may reflect information this model lacks"
     },
-    "parlay_eligible": true
+    "parlay_eligible": false
    },
-   "result": null
+   "result": {
+    "home_score": 34,
+    "away_score": 37,
+    "winner": "BUF",
+    "margin": -3,
+    "hit": false,
+    "pred_margin_error": 4.881253413738363,
+    "pred_total_error": -16.5
+   }
   },
   {
    "frozen_snapshot": null,
@@ -10690,37 +10661,37 @@
    "official": {
     "pick": "SEA",
     "p_home_model": 0.5443540554648549,
-    "p_home_market": 0.4172761773023209,
-    "p_home_blend": 0.4617534346592078,
-    "p_pick_blend": 0.5382465653407922,
+    "p_home_market": 0.41612474810977956,
+    "p_home_blend": 0.461005005684056,
+    "p_pick_blend": 0.538994994315944,
     "tier": "Toss-up",
     "model_spread": 1.2360632573413834,
-    "blend_spread": -1.0651381223773322,
-    "expected_home": 19.967430938811333,
-    "expected_away": 21.032569061188667,
+    "blend_spread": -1.0860654529798017,
+    "expected_home": 19.9569672735101,
+    "expected_away": 21.0430327264899,
     "display_home": 20,
     "display_away": 21,
     "total_used": 41.0,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T18:04:01Z",
-     "consensus_p_home": 0.4172761773023209,
+     "as_of": "2026-10-13T09:34:22Z",
+     "consensus_p_home": 0.41612474810977956,
      "consensus_total": 41.0,
      "consensus_home_spread": 3.0,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
-       "home_ml": 124,
-       "away_ml": -148,
+       "home_ml": 130,
+       "away_ml": -155,
        "home_spread": 3.0,
        "total": 40.5
       },
       {
        "key": "fanduel",
-       "home_ml": 132,
-       "away_ml": -156,
+       "home_ml": 130,
+       "away_ml": -154,
        "home_spread": 3.0,
        "total": 41.5
       },
@@ -10734,7 +10705,7 @@
       {
        "key": "betmgm",
        "home_ml": 130,
-       "away_ml": -160,
+       "away_ml": -155,
        "home_spread": 3.0,
        "total": 41.0
       }
@@ -10744,17 +10715,17 @@
      "draftkings": {
       "book": "draftkings",
       "side": "SEA",
-      "american": -148
+      "american": -155
      },
      "fanduel": {
       "book": "fanduel",
       "side": "SEA",
-      "american": -156
+      "american": -154
      },
      "betmgm": {
       "book": "betmgm",
       "side": "SEA",
-      "american": -160
+      "american": -155
      },
      "betrivers": {
       "book": "betrivers",
@@ -10763,11 +10734,11 @@
      }
     },
     "best_price": {
-     "book": "draftkings",
+     "book": "fanduel",
      "side": "SEA",
-     "american": -148
+     "american": -154
     },
-    "estimated_ev_per_dollar": -0.09807332294245635,
+    "estimated_ev_per_dollar": -0.11100825612824822,
     "factors": {
      "team_elo_home": 1582.1028445346155,
      "team_elo_away": 1642.8833214020876,
@@ -10808,8 +10779,8 @@
      "form_home_3": 6.748764085015637,
      "form_away_3": -23.432518071349477,
      "d_total": 30.901581433534588,
-     "model_market_gap_home": 0.12707787816253402,
-     "model_market_gap_pick": -0.12707787816253402
+     "model_market_gap_home": 0.12822930735507537,
+     "model_market_gap_pick": -0.12822930735507537
     },
     "rationale": [
      "rating",
@@ -10856,24 +10827,24 @@
    "official": {
     "pick": "JAX",
     "p_home_model": 0.6722947707237587,
-    "p_home_market": 0.5748033972413787,
-    "p_home_blend": 0.6089253779602117,
-    "p_pick_blend": 0.6089253779602117,
+    "p_home_market": 0.5676102505512941,
+    "p_home_blend": 0.6042498326116567,
+    "p_pick_blend": 0.6042498326116567,
     "tier": "Lean",
     "model_spread": 4.993221786100236,
-    "blend_spread": 3.07687104190415,
-    "expected_home": 22.788435520952074,
-    "expected_away": 19.711564479047926,
+    "blend_spread": 2.9407269047434763,
+    "expected_home": 22.72036345237174,
+    "expected_away": 19.77963654762826,
     "display_home": 23,
     "display_away": 20,
     "total_used": 42.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T18:04:01Z",
-     "consensus_p_home": 0.5748033972413787,
+     "as_of": "2026-10-13T09:34:22Z",
+     "consensus_p_home": 0.5676102505512941,
      "consensus_total": 42.5,
-     "consensus_home_spread": -2.75,
+     "consensus_home_spread": -2.5,
      "n_books": 4,
      "books": [
       {
@@ -10885,23 +10856,23 @@
       },
       {
        "key": "fanduel",
-       "home_ml": -148,
-       "away_ml": 126,
+       "home_ml": -138,
+       "away_ml": 118,
        "home_spread": -2.5,
        "total": 42.5
       },
       {
        "key": "betmgm",
        "home_ml": -145,
-       "away_ml": 125,
+       "away_ml": 120,
        "home_spread": -2.5,
        "total": 42.5
       },
       {
        "key": "betrivers",
-       "home_ml": -162,
+       "home_ml": -150,
        "away_ml": 125,
-       "home_spread": -3.0,
+       "home_spread": -2.5,
        "total": 42.5
       }
      ]
@@ -10915,7 +10886,7 @@
      "fanduel": {
       "book": "fanduel",
       "side": "JAX",
-      "american": -148
+      "american": -138
      },
      "betmgm": {
       "book": "betmgm",
@@ -10925,15 +10896,15 @@
      "betrivers": {
       "book": "betrivers",
       "side": "JAX",
-      "american": -162
+      "american": -150
      }
     },
     "best_price": {
-     "book": "betmgm",
+     "book": "fanduel",
      "side": "JAX",
-     "american": -145
+     "american": -138
     },
-    "estimated_ev_per_dollar": 0.028873914484495722,
+    "estimated_ev_per_dollar": 0.04211203015633541,
     "factors": {
      "team_elo_home": 1611.509434951871,
      "team_elo_away": 1513.5132953832986,
@@ -10974,8 +10945,8 @@
      "form_home_3": 57.55041402183065,
      "form_away_3": -19.1043657379646,
      "d_total": 124.83054465250589,
-     "model_market_gap_home": 0.0974913734823799,
-     "model_market_gap_pick": 0.0974913734823799
+     "model_market_gap_home": 0.10468452017246455,
+     "model_market_gap_pick": 0.10468452017246455
     },
     "rationale": [
      "rating",
@@ -10987,7 +10958,7 @@
      "Jacksonville rates 98 Elo points above Houston, 4th in the league against 13th.",
      "Jacksonville has gained 58 points of rating over its last three games.",
      "The books have Jacksonville at 57%, closer than the model's 67%; the gap may reflect information this model lacks.",
-     "Blended, that comes to Jacksonville at 61%: a Lean pick, predicted 23 to 20."
+     "Blended, that comes to Jacksonville at 60%: a Lean pick, predicted 23 to 20."
     ],
     "edge": {
      "flag": true,
@@ -11020,30 +10991,30 @@
    "official": {
     "pick": "BAL",
     "p_home_model": 0.3476531609392642,
-    "p_home_market": 0.3343735317837161,
-    "p_home_blend": 0.33902140198815794,
-    "p_pick_blend": 0.6609785980118421,
+    "p_home_market": 0.3300948396512952,
+    "p_home_blend": 0.33624025210208436,
+    "p_pick_blend": 0.6637597478979156,
     "tier": "Strong",
     "model_spread": -4.373318078659701,
-    "blend_spread": -4.639364512979391,
-    "expected_home": 18.180317743510304,
-    "expected_away": 22.819682256489696,
+    "blend_spread": -4.725779352268346,
+    "expected_home": 18.262110323865826,
+    "expected_away": 22.987889676134174,
     "display_home": 18,
     "display_away": 23,
-    "total_used": 41.0,
+    "total_used": 41.25,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T18:04:01Z",
-     "consensus_p_home": 0.3343735317837161,
-     "consensus_total": 41.0,
+     "as_of": "2026-10-13T09:34:22Z",
+     "consensus_p_home": 0.3300948396512952,
+     "consensus_total": 41.25,
      "consensus_home_spread": 4.5,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
-       "home_ml": 190,
-       "away_ml": -230,
+       "home_ml": 195,
+       "away_ml": -238,
        "home_spread": 4.5,
        "total": 40.5
       },
@@ -11056,10 +11027,10 @@
       },
       {
        "key": "betrivers",
-       "home_ml": 175,
-       "away_ml": -220,
+       "home_ml": 185,
+       "away_ml": -230,
        "home_spread": 4.5,
-       "total": 40.5
+       "total": 41.0
       },
       {
        "key": "betmgm",
@@ -11074,7 +11045,7 @@
      "draftkings": {
       "book": "draftkings",
       "side": "BAL",
-      "american": -230
+      "american": -238
      },
      "fanduel": {
       "book": "fanduel",
@@ -11089,21 +11060,21 @@
      "betrivers": {
       "book": "betrivers",
       "side": "BAL",
-      "american": -220
+      "american": -230
      }
     },
     "best_price": {
-     "book": "betrivers",
+     "book": "fanduel",
      "side": "BAL",
-     "american": -220
+     "american": -230
     },
-    "estimated_ev_per_dollar": -0.03857658471004782,
+    "estimated_ev_per_dollar": -0.04764905736386027,
     "factors": {
      "team_elo_home": 1461.1807032495137,
      "team_elo_away": 1547.1264225108469,
      "elo_gap_home": -85.94571926133312,
      "home_rank": 22,
-     "away_rank": 10,
+     "away_rank": 9,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 7,
@@ -11138,8 +11109,8 @@
      "form_home_3": 7.227637624759609,
      "form_away_3": 36.58203091890664,
      "d_total": -109.33295196649253,
-     "model_market_gap_home": 0.01327962915554809,
-     "model_market_gap_pick": -0.01327962915554809
+     "model_market_gap_home": 0.01755832128796897,
+     "model_market_gap_pick": -0.01755832128796897
     },
     "rationale": [
      "rating",
@@ -11148,7 +11119,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Baltimore rates 86 Elo points above Cleveland, 10th in the league against 22nd.",
+     "Baltimore rates 86 Elo points above Cleveland, 9th in the league against 22nd.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Baltimore's listed starter, Lamar Jackson, rates 63 points above the other listed starter.",
      "Blended, that comes to Baltimore at 66%: a Strong pick, predicted 23 to 18."
@@ -11194,7 +11165,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T18:04:01Z",
+     "as_of": "2026-10-13T09:34:22Z",
      "consensus_p_home": 0.5193194355926765,
      "consensus_total": 41.75,
      "consensus_home_spread": -1.25,
@@ -11346,23 +11317,23 @@
    "official": {
     "pick": "CHI",
     "p_home_model": 0.5295389971261055,
-    "p_home_market": 0.38135383539337114,
-    "p_home_blend": 0.4332186419998282,
-    "p_pick_blend": 0.5667813580001718,
+    "p_home_market": 0.3841787328182823,
+    "p_home_blend": 0.43505482532602047,
+    "p_pick_blend": 0.5649451746739795,
     "tier": "Lean",
     "model_spread": 0.8219890973586655,
-    "blend_spread": -1.8673347325581684,
-    "expected_home": 23.316332633720915,
-    "expected_away": 25.183667366279085,
-    "display_home": 23,
-    "display_away": 25,
-    "total_used": 48.5,
+    "blend_spread": -1.815397018793584,
+    "expected_home": 23.71730149060321,
+    "expected_away": 25.53269850939679,
+    "display_home": 24,
+    "display_away": 26,
+    "total_used": 49.25,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T18:04:01Z",
-     "consensus_p_home": 0.38135383539337114,
-     "consensus_total": 48.5,
+     "as_of": "2026-10-13T09:34:22Z",
+     "consensus_p_home": 0.3841787328182823,
+     "consensus_total": 49.25,
      "consensus_home_spread": 3.5,
      "n_books": 4,
      "books": [
@@ -11371,26 +11342,26 @@
        "home_ml": 145,
        "away_ml": -175,
        "home_spread": 3.0,
-       "total": 48.5
+       "total": 49.5
       },
       {
        "key": "fanduel",
        "home_ml": 158,
        "away_ml": -188,
        "home_spread": 3.5,
-       "total": 48.5
+       "total": 49.5
       },
       {
        "key": "betrivers",
        "home_ml": 150,
-       "away_ml": -186,
+       "away_ml": -182,
        "home_spread": 3.5,
-       "total": 48.5
+       "total": 49.0
       },
       {
        "key": "betmgm",
-       "home_ml": 150,
-       "away_ml": -185,
+       "home_ml": 145,
+       "away_ml": -175,
        "home_spread": 3.5,
        "total": 49.0
       }
@@ -11410,12 +11381,12 @@
      "betmgm": {
       "book": "betmgm",
       "side": "CHI",
-      "american": -185
+      "american": -175
      },
      "betrivers": {
       "book": "betrivers",
       "side": "CHI",
-      "american": -186
+      "american": -182
      }
     },
     "best_price": {
@@ -11423,13 +11394,13 @@
      "side": "CHI",
      "american": -175
     },
-    "estimated_ev_per_dollar": -0.10934358028544428,
+    "estimated_ev_per_dollar": -0.11222901122660361,
     "factors": {
      "team_elo_home": 1474.3612967328806,
      "team_elo_away": 1553.2949994822388,
      "elo_gap_home": -78.93370274935819,
      "home_rank": 20,
-     "away_rank": 9,
+     "away_rank": 8,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 7,
@@ -11464,8 +11435,8 @@
      "form_home_3": 60.54140975487849,
      "form_away_3": 13.006249091613427,
      "d_total": 20.549727433966638,
-     "model_market_gap_home": 0.14818516173273438,
-     "model_market_gap_pick": -0.14818516173273438
+     "model_market_gap_home": 0.14536026430782323,
+     "model_market_gap_pick": -0.14536026430782323
     },
     "rationale": [
      "rating",
@@ -11476,12 +11447,12 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Chicago rates 79 Elo points above Atlanta, 9th in the league against 20th.",
+     "Chicago rates 79 Elo points above Atlanta, 8th in the league against 20th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Chicago's listed starter, Tyson Bagent, rates 59 points below their usual starter, Caleb Williams.",
      "Atlanta has gained 61 points of rating over its last three games.",
      "The books have Chicago at 62%, further than the model's 47%; the gap may reflect information this model lacks.",
-     "Blended, that comes to Chicago at 57%: a Lean pick, predicted 25 to 23."
+     "Blended, that comes to Chicago at 56%: a Lean pick, predicted 26 to 24."
     ],
     "edge": {
      "flag": true,
@@ -11514,52 +11485,52 @@
    "official": {
     "pick": "NYG",
     "p_home_model": 0.6504100019988941,
-    "p_home_market": 0.48558662631753136,
-    "p_home_blend": 0.5432748078060083,
-    "p_pick_blend": 0.5432748078060083,
+    "p_home_market": 0.49588004830425947,
+    "p_home_blend": 0.5499655320973815,
+    "p_pick_blend": 0.5499655320973815,
     "tier": "Toss-up",
     "model_spread": 4.314051400374187,
-    "blend_spread": 1.205833593784215,
-    "expected_home": 23.227916796892107,
-    "expected_away": 22.022083203107893,
+    "blend_spread": 1.3934351110934464,
+    "expected_home": 23.446717555546723,
+    "expected_away": 22.053282444453277,
     "display_home": 23,
     "display_away": 22,
-    "total_used": 45.25,
+    "total_used": 45.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T18:04:01Z",
-     "consensus_p_home": 0.48558662631753136,
-     "consensus_total": 45.25,
-     "consensus_home_spread": 1.5,
+     "as_of": "2026-10-13T09:34:22Z",
+     "consensus_p_home": 0.49588004830425947,
+     "consensus_total": 45.5,
+     "consensus_home_spread": 0.75,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
-       "home_ml": 102,
-       "away_ml": -122,
-       "home_spread": 1.5,
+       "home_ml": -110,
+       "away_ml": -110,
+       "home_spread": -1.5,
        "total": 45.5
       },
       {
        "key": "fanduel",
-       "home_ml": -106,
-       "away_ml": -110,
+       "home_ml": -104,
+       "away_ml": -112,
        "home_spread": 1.5,
-       "total": 44.5
+       "total": 45.5
       },
       {
        "key": "betrivers",
        "home_ml": -108,
        "away_ml": -113,
-       "home_spread": 1.0,
+       "home_spread": 0.5,
        "total": 45.0
       },
       {
        "key": "betmgm",
-       "home_ml": 100,
-       "away_ml": -120,
-       "home_spread": 1.5,
+       "home_ml": -108,
+       "away_ml": -110,
+       "home_spread": 1.0,
        "total": 45.5
       }
      ]
@@ -11568,17 +11539,17 @@
      "draftkings": {
       "book": "draftkings",
       "side": "NYG",
-      "american": 102
+      "american": -110
      },
      "fanduel": {
       "book": "fanduel",
       "side": "NYG",
-      "american": -106
+      "american": -104
      },
      "betmgm": {
       "book": "betmgm",
       "side": "NYG",
-      "american": 100
+      "american": -108
      },
      "betrivers": {
       "book": "betrivers",
@@ -11587,11 +11558,11 @@
      }
     },
     "best_price": {
-     "book": "draftkings",
+     "book": "fanduel",
      "side": "NYG",
-     "american": 102
+     "american": -104
     },
-    "estimated_ev_per_dollar": 0.09741511176813689,
+    "estimated_ev_per_dollar": 0.07877854372947912,
     "factors": {
      "team_elo_home": 1476.0552874087257,
      "team_elo_away": 1417.7304251172143,
@@ -11632,8 +11603,8 @@
      "form_home_3": 28.002498312844637,
      "form_away_3": -72.40195588042093,
      "d_total": 107.85128500935468,
-     "model_market_gap_home": 0.16482337568136274,
-     "model_market_gap_pick": 0.16482337568136274
+     "model_market_gap_home": 0.15452995369463463,
+     "model_market_gap_pick": 0.15452995369463463
     },
     "rationale": [
      "rating",
@@ -11648,8 +11619,8 @@
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "New York's listed starter, Jameis Winston, rates 3 points above their usual starter, Jaxson Dart.",
      "New Orleans has lost 72 points of rating over its last three games.",
-     "The books have New York at 49%, closer than the model's 65%; the gap may reflect information this model lacks.",
-     "Blended, that comes to New York at 54%: a Toss-up pick, predicted 23 to 22."
+     "The books have New York at 50%, closer than the model's 65%; the gap may reflect information this model lacks.",
+     "Blended, that comes to New York at 55%: a Toss-up pick, predicted 23 to 22."
     ],
     "edge": {
      "flag": true,
@@ -11682,51 +11653,51 @@
    "official": {
     "pick": "NE",
     "p_home_model": 0.8338550138085002,
-    "p_home_market": 0.7431586436971754,
-    "p_home_blend": 0.7749023732361391,
-    "p_pick_blend": 0.7749023732361391,
+    "p_home_market": 0.7504790567100461,
+    "p_home_blend": 0.7796606416945051,
+    "p_pick_blend": 0.7796606416945051,
     "tier": "Strong",
     "model_spread": 11.209652871306725,
-    "blend_spread": 8.590017196481824,
-    "expected_home": 26.045008598240912,
-    "expected_away": 17.454991401759088,
+    "blend_spread": 8.781016491352762,
+    "expected_home": 26.14050824567638,
+    "expected_away": 17.35949175432362,
     "display_home": 26,
     "display_away": 17,
     "total_used": 43.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T18:04:01Z",
-     "consensus_p_home": 0.7431586436971754,
+     "as_of": "2026-10-13T09:34:22Z",
+     "consensus_p_home": 0.7504790567100461,
      "consensus_total": 43.5,
-     "consensus_home_spread": -7.0,
+     "consensus_home_spread": -7.25,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
-       "home_ml": -325,
-       "away_ml": 260,
-       "home_spread": -7.0,
+       "home_ml": -355,
+       "away_ml": 280,
+       "home_spread": -7.5,
        "total": 43.5
       },
       {
        "key": "fanduel",
-       "home_ml": -375,
-       "away_ml": 300,
+       "home_ml": -390,
+       "away_ml": 310,
        "home_spread": -7.5,
        "total": 43.5
       },
       {
        "key": "betrivers",
-       "home_ml": -335,
-       "away_ml": 260,
+       "home_ml": -345,
+       "away_ml": 270,
        "home_spread": -7.0,
        "total": 43.5
       },
       {
        "key": "betmgm",
        "home_ml": -350,
-       "away_ml": 275,
+       "away_ml": 280,
        "home_spread": -7.0,
        "total": 43.5
       }
@@ -11736,12 +11707,12 @@
      "draftkings": {
       "book": "draftkings",
       "side": "NE",
-      "american": -325
+      "american": -355
      },
      "fanduel": {
       "book": "fanduel",
       "side": "NE",
-      "american": -375
+      "american": -390
      },
      "betmgm": {
       "book": "betmgm",
@@ -11751,15 +11722,15 @@
      "betrivers": {
       "book": "betrivers",
       "side": "NE",
-      "american": -335
+      "american": -345
      }
     },
     "best_price": {
-     "book": "draftkings",
+     "book": "betrivers",
      "side": "NE",
-     "american": -325
+     "american": -345
     },
-    "estimated_ev_per_dollar": 0.013333872693412657,
+    "estimated_ev_per_dollar": 0.0056492334900138386,
     "factors": {
      "team_elo_home": 1606.0622823425467,
      "team_elo_away": 1407.8474879550035,
@@ -11800,8 +11771,8 @@
      "form_home_3": 3.5786641405406954,
      "form_away_3": 2.1469107134039405,
      "d_total": 280.24132178266814,
-     "model_market_gap_home": 0.09069637011132481,
-     "model_market_gap_pick": 0.09069637011132481
+     "model_market_gap_home": 0.08337595709845413,
+     "model_market_gap_pick": 0.08337595709845413
     },
     "rationale": [
      "rating",
@@ -11814,8 +11785,8 @@
      "New England rates 198 Elo points above New York, 5th in the league against 29th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "New England's listed starter, Drake Maye, rates 42 points above the other listed starter.",
-     "The books have New England at 74%, closer than the model's 83%; the gap may reflect information this model lacks.",
-     "Blended, that comes to New England at 77%: a Strong pick, predicted 26 to 17."
+     "The books have New England at 75%, closer than the model's 83%; the gap may reflect information this model lacks.",
+     "Blended, that comes to New England at 78%: a Strong pick, predicted 26 to 17."
     ],
     "edge": {
      "flag": true,
@@ -11848,22 +11819,22 @@
    "official": {
     "pick": "PIT",
     "p_home_model": 0.3896945301698782,
-    "p_home_market": 0.43120950084146414,
-    "p_home_blend": 0.41667926110640907,
-    "p_pick_blend": 0.5833207388935909,
+    "p_home_market": 0.4311354851835255,
+    "p_home_blend": 0.4166311509287489,
+    "p_pick_blend": 0.5833688490712511,
     "tier": "Lean",
     "model_spread": -3.117167237176958,
-    "blend_spread": -2.3376885101535567,
-    "expected_home": 19.081155744923223,
-    "expected_away": 21.418844255076777,
+    "blend_spread": -2.3390639421276793,
+    "expected_home": 19.08046802893616,
+    "expected_away": 21.41953197106384,
     "display_home": 19,
     "display_away": 21,
     "total_used": 40.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T18:04:01Z",
-     "consensus_p_home": 0.43120950084146414,
+     "as_of": "2026-10-13T09:34:22Z",
+     "consensus_p_home": 0.4311354851835255,
      "consensus_total": 40.5,
      "consensus_home_spread": 2.75,
      "n_books": 4,
@@ -11884,8 +11855,8 @@
       },
       {
        "key": "betrivers",
-       "home_ml": 117,
-       "away_ml": -141,
+       "home_ml": 116,
+       "away_ml": -143,
        "home_spread": 2.5,
        "total": 40.5
       },
@@ -11917,7 +11888,7 @@
      "betrivers": {
       "book": "betrivers",
       "side": "PIT",
-      "american": -141
+      "american": -143
      }
     },
     "best_price": {
@@ -11925,7 +11896,7 @@
      "side": "PIT",
      "american": -138
     },
-    "estimated_ev_per_dollar": 0.00601692649764235,
+    "estimated_ev_per_dollar": 0.00609989912288228,
     "factors": {
      "team_elo_home": 1440.7894044007542,
      "team_elo_away": 1512.3223142725988,
@@ -11966,8 +11937,8 @@
      "form_home_3": 8.280594633484043,
      "form_away_3": 18.001945424222868,
      "d_total": -77.92918092942395,
-     "model_market_gap_home": -0.04151497067158594,
-     "model_market_gap_pick": 0.04151497067158594
+     "model_market_gap_home": -0.04144095501364731,
+     "model_market_gap_pick": 0.04144095501364731
     },
     "rationale": [
      "rating",
@@ -12010,24 +11981,24 @@
    "official": {
     "pick": "IND",
     "p_home_model": 0.7873591234308711,
-    "p_home_market": 0.7347708040920186,
-    "p_home_blend": 0.753176715860617,
-    "p_pick_blend": 0.753176715860617,
+    "p_home_market": 0.7355390234957113,
+    "p_home_blend": 0.7536760584730173,
+    "p_pick_blend": 0.7536760584730173,
     "tier": "Strong",
     "model_spread": 9.0964177647239,
-    "blend_spread": 7.752172143107449,
-    "expected_home": 25.751086071553726,
-    "expected_away": 17.998913928446274,
+    "blend_spread": 7.770849508441844,
+    "expected_home": 25.76042475422092,
+    "expected_away": 17.98957524577908,
     "display_home": 26,
     "display_away": 18,
     "total_used": 43.75,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T18:04:01Z",
-     "consensus_p_home": 0.7347708040920186,
+     "as_of": "2026-10-13T09:34:22Z",
+     "consensus_p_home": 0.7355390234957113,
      "consensus_total": 43.75,
-     "consensus_home_spread": -6.75,
+     "consensus_home_spread": -7.0,
      "n_books": 4,
      "books": [
       {
@@ -12046,15 +12017,15 @@
       },
       {
        "key": "betrivers",
-       "home_ml": -315,
-       "away_ml": 250,
-       "home_spread": -6.5,
+       "home_ml": -335,
+       "away_ml": 260,
+       "home_spread": -7.0,
        "total": 43.5
       },
       {
        "key": "betmgm",
        "home_ml": -325,
-       "away_ml": 270,
+       "away_ml": 260,
        "home_spread": -7.0,
        "total": 44.0
       }
@@ -12079,15 +12050,15 @@
      "betrivers": {
       "book": "betrivers",
       "side": "IND",
-      "american": -315
+      "american": -335
      }
     },
     "best_price": {
-     "book": "betrivers",
+     "book": "fanduel",
      "side": "IND",
-     "american": -315
+     "american": -320
     },
-    "estimated_ev_per_dollar": -0.007719564818552266,
+    "estimated_ev_per_dollar": -0.010800173254164769,
     "factors": {
      "team_elo_home": 1469.4561626103969,
      "team_elo_away": 1324.0502270927182,
@@ -12128,8 +12099,8 @@
      "form_home_3": 20.03551784931392,
      "form_away_3": -31.56902663394203,
      "d_total": 227.41044411809753,
-     "model_market_gap_home": 0.05258831933885255,
-     "model_market_gap_pick": 0.05258831933885255
+     "model_market_gap_home": 0.05182009993515979,
+     "model_market_gap_pick": 0.05182009993515979
     },
     "rationale": [
      "rating",
@@ -12142,7 +12113,7 @@
      "Indianapolis rates 145 Elo points above Tennessee, 21st in the league against 32nd.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Indianapolis's listed starter, Daniel Jones, rates 42 points above the other listed starter.",
-     "The books have Indianapolis at 73%, closer than the model's 79%; the gap may reflect information this model lacks.",
+     "The books have Indianapolis at 74%, closer than the model's 79%; the gap may reflect information this model lacks.",
      "Blended, that comes to Indianapolis at 75%: a Strong pick, predicted 26 to 18."
     ],
     "edge": null,
@@ -12171,53 +12142,53 @@
    },
    "official": {
     "pick": "LA",
-    "p_home_model": 0.8391195851147325,
-    "p_home_market": 0.8500800633204031,
-    "p_home_blend": 0.8462438959484184,
-    "p_pick_blend": 0.8462438959484184,
+    "p_home_model": 0.8261713288246957,
+    "p_home_market": 0.8620061988802217,
+    "p_home_blend": 0.8494639943607876,
+    "p_pick_blend": 0.8494639943607876,
     "tier": "Lock-ish",
-    "model_spread": 11.47713088173402,
-    "blend_spread": 11.85061092792091,
-    "expected_home": 31.925305463960456,
-    "expected_away": 20.074694536039544,
+    "model_spread": 10.831179344834336,
+    "blend_spread": 12.024073396586509,
+    "expected_home": 32.13703669829326,
+    "expected_away": 20.112963301706746,
     "display_home": 32,
     "display_away": 20,
-    "total_used": 52.0,
+    "total_used": 52.25,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T18:04:01Z",
-     "consensus_p_home": 0.8500800633204031,
-     "consensus_total": 52.0,
-     "consensus_home_spread": -12.5,
+     "as_of": "2026-10-13T09:34:22Z",
+     "consensus_p_home": 0.8620061988802217,
+     "consensus_total": 52.25,
+     "consensus_home_spread": -13.25,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
-       "home_ml": -675,
-       "away_ml": 490,
-       "home_spread": -12.5,
+       "home_ml": -900,
+       "away_ml": 600,
+       "home_spread": -13.5,
        "total": 52.5
       },
       {
        "key": "fanduel",
-       "home_ml": -850,
-       "away_ml": 590,
+       "home_ml": -900,
+       "away_ml": 610,
        "home_spread": -12.5,
-       "total": 51.5
+       "total": 52.5
       },
       {
        "key": "betrivers",
-       "home_ml": -835,
-       "away_ml": 540,
-       "home_spread": -12.5,
+       "home_ml": -910,
+       "away_ml": 575,
+       "home_spread": -13.5,
        "total": 52.0
       },
       {
        "key": "betmgm",
-       "home_ml": -750,
-       "away_ml": 550,
-       "home_spread": -12.5,
+       "home_ml": -800,
+       "away_ml": 600,
+       "home_spread": -13.0,
        "total": 52.0
       }
      ]
@@ -12226,35 +12197,35 @@
      "draftkings": {
       "book": "draftkings",
       "side": "LA",
-      "american": -675
+      "american": -900
      },
      "fanduel": {
       "book": "fanduel",
       "side": "LA",
-      "american": -850
+      "american": -900
      },
      "betmgm": {
       "book": "betmgm",
       "side": "LA",
-      "american": -750
+      "american": -800
      },
      "betrivers": {
       "book": "betrivers",
       "side": "LA",
-      "american": -835
+      "american": -910
      }
     },
     "best_price": {
-     "book": "draftkings",
+     "book": "betmgm",
      "side": "LA",
-     "american": -675
+     "american": -800
     },
-    "estimated_ev_per_dollar": -0.028386637985149232,
+    "estimated_ev_per_dollar": -0.04435300634411399,
     "factors": {
-     "team_elo_home": 1557.0588500140593,
+     "team_elo_home": 1543.6015263286492,
      "team_elo_away": 1406.499838654255,
-     "elo_gap_home": 150.55901135980434,
-     "home_rank": 8,
+     "elo_gap_home": 137.10168767439427,
+     "home_rank": 10,
      "away_rank": 30,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -12265,12 +12236,12 @@
      "qb_home": {
       "id": "00-0026498",
       "name": "Matthew Stafford",
-      "q": 19.12919966101796,
-      "starts": 256,
+      "q": 16.43773492393595,
+      "starts": 257,
       "first_start": false,
       "usual_starter_id": "00-0026498",
       "usual_starter_name": "Matthew Stafford",
-      "usual_starter_q": 19.12919966101796,
+      "usual_starter_q": 16.43773492393595,
       "differs_from_usual": false,
       "source": "nflverse_listed"
      },
@@ -12286,12 +12257,12 @@
       "differs_from_usual": false,
       "source": "nflverse_listed"
      },
-     "qb_elo": 98.36926068354612,
-     "form_home_3": 18.15047977598647,
+     "qb_elo": 95.6777959464641,
+     "form_home_3": -11.679176606184228,
      "form_away_3": -45.86129327717708,
-     "d_total": 286.9282720433505,
-     "model_market_gap_home": -0.010960478205670587,
-     "model_market_gap_pick": -0.010960478205670587
+     "d_total": 270.7794836208584,
+     "model_market_gap_home": -0.03583487005552599,
+     "model_market_gap_pick": -0.03583487005552599
     },
     "rationale": [
      "rating",
@@ -12301,9 +12272,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Los Angeles rates 151 Elo points above Arizona, 8th in the league against 30th.",
+     "Los Angeles rates 137 Elo points above Arizona, 10th in the league against 30th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "Los Angeles's listed starter, Matthew Stafford, rates 98 points above the other listed starter.",
+     "Los Angeles's listed starter, Matthew Stafford, rates 96 points above the other listed starter.",
      "Arizona has lost 46 points of rating over its last three games.",
      "Blended, that comes to Los Angeles at 85%: a Lock-ish pick, predicted 32 to 20."
     ],
@@ -12333,53 +12304,53 @@
    },
    "official": {
     "pick": "BUF",
-    "p_home_model": 0.30991899097248843,
-    "p_home_market": 0.29375349746578167,
-    "p_home_blend": 0.29941142019312905,
-    "p_pick_blend": 0.700588579806871,
+    "p_home_model": 0.2903967437502587,
+    "p_home_market": 0.29117053660914427,
+    "p_home_blend": 0.29089970910853435,
+    "p_pick_blend": 0.7091002908914656,
     "tier": "Strong",
-    "model_spread": -5.5624301825807825,
-    "blend_spread": -5.907115078764004,
-    "expected_home": 23.296442460617996,
-    "expected_away": 29.203557539382004,
-    "display_home": 23,
-    "display_away": 29,
-    "total_used": 52.5,
+    "model_spread": -6.208381719480466,
+    "blend_spread": -6.191430025094649,
+    "expected_home": 23.529284987452677,
+    "expected_away": 29.720715012547323,
+    "display_home": 24,
+    "display_away": 30,
+    "total_used": 53.25,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T18:04:01Z",
-     "consensus_p_home": 0.29375349746578167,
-     "consensus_total": 52.5,
-     "consensus_home_spread": 5.75,
+     "as_of": "2026-10-13T09:34:22Z",
+     "consensus_p_home": 0.29117053660914427,
+     "consensus_total": 53.25,
+     "consensus_home_spread": 6.0,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
-       "home_ml": 230,
-       "away_ml": -285,
+       "home_ml": 235,
+       "away_ml": -290,
        "home_spread": 6.0,
-       "total": 52.5
+       "total": 53.5
       },
       {
        "key": "fanduel",
        "home_ml": 225,
        "away_ml": -275,
        "home_spread": 5.5,
-       "total": 52.5
+       "total": 53.5
       },
       {
        "key": "betrivers",
-       "home_ml": 225,
+       "home_ml": 230,
        "away_ml": -286,
        "home_spread": 6.0,
-       "total": 52.5
+       "total": 53.0
       },
       {
        "key": "betmgm",
-       "home_ml": 225,
+       "home_ml": 230,
        "away_ml": -275,
-       "home_spread": 5.5,
+       "home_spread": 6.0,
        "total": 53.0
       }
      ]
@@ -12388,7 +12359,7 @@
      "draftkings": {
       "book": "draftkings",
       "side": "BUF",
-      "american": -285
+      "american": -290
      },
      "fanduel": {
       "book": "fanduel",
@@ -12411,11 +12382,11 @@
      "side": "BUF",
      "american": -275
     },
-    "estimated_ev_per_dollar": -0.04465193662699418,
+    "estimated_ev_per_dollar": -0.03304505787527412,
     "factors": {
      "team_elo_home": 1432.9261015114037,
-     "team_elo_away": 1588.7801515087774,
-     "elo_gap_home": -155.85404999737375,
+     "team_elo_away": 1602.2374751941875,
+     "elo_gap_home": -169.31137368278382,
      "home_rank": 26,
      "away_rank": 6,
      "hfa_elo": 40.0,
@@ -12439,21 +12410,21 @@
      "qb_away": {
       "id": "00-0034857",
       "name": "Josh Allen",
-      "q": 36.223966526782284,
-      "starts": 143,
+      "q": 38.91543126386429,
+      "starts": 144,
       "first_start": false,
       "usual_starter_id": "00-0034857",
       "usual_starter_name": "Josh Allen",
-      "usual_starter_q": 36.223966526782284,
+      "usual_starter_q": 38.91543126386429,
       "differs_from_usual": false,
       "source": "nflverse_listed"
      },
-     "qb_elo": -25.206704567145813,
+     "qb_elo": -27.89816930422782,
      "form_home_3": -3.423266050472421,
-     "form_away_3": 2.1331871691616016,
-     "d_total": -139.06075456451956,
-     "model_market_gap_home": 0.016165493506706763,
-     "model_market_gap_pick": -0.016165493506706763
+     "form_away_3": 0.5748029274043347,
+     "d_total": -155.20954298701164,
+     "model_market_gap_home": -0.0007737928588855691,
+     "model_market_gap_pick": 0.0007737928588855691
     },
     "rationale": [
      "rating",
@@ -12461,9 +12432,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Buffalo rates 156 Elo points above Las Vegas, 6th in the league against 26th.",
+     "Buffalo rates 169 Elo points above Las Vegas, 6th in the league against 26th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "Blended, that comes to Buffalo at 70%: a Strong pick, predicted 29 to 23."
+     "Blended, that comes to Buffalo at 71%: a Strong pick, predicted 30 to 24."
     ],
     "edge": null,
     "parlay_eligible": true
@@ -12492,37 +12463,37 @@
    "official": {
     "pick": "KC",
     "p_home_model": 0.8026926923417202,
-    "p_home_market": 0.7774422202041456,
-    "p_home_blend": 0.7862798854522967,
-    "p_pick_blend": 0.7862798854522967,
+    "p_home_market": 0.7863788230205931,
+    "p_home_blend": 0.7920886772829876,
+    "p_pick_blend": 0.7920886772829876,
     "tier": "Lock-ish",
     "model_spread": 9.750498219532226,
-    "blend_spread": 9.051708279079161,
-    "expected_home": 25.775854139539582,
-    "expected_away": 16.724145860460418,
+    "blend_spread": 9.2943306212035,
+    "expected_home": 25.89716531060175,
+    "expected_away": 16.60283468939825,
     "display_home": 26,
     "display_away": 17,
     "total_used": 42.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T18:04:01Z",
-     "consensus_p_home": 0.7774422202041456,
+     "as_of": "2026-10-13T09:34:22Z",
+     "consensus_p_home": 0.7863788230205931,
      "consensus_total": 42.5,
      "consensus_home_spread": -8.25,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
-       "home_ml": -380,
-       "away_ml": 300,
+       "home_ml": -440,
+       "away_ml": 340,
        "home_spread": -8.5,
        "total": 42.5
       },
       {
        "key": "fanduel",
-       "home_ml": -460,
-       "away_ml": 360,
+       "home_ml": -500,
+       "away_ml": 380,
        "home_spread": -8.5,
        "total": 42.5
       },
@@ -12535,8 +12506,8 @@
       },
       {
        "key": "betmgm",
-       "home_ml": -425,
-       "away_ml": 333,
+       "home_ml": -450,
+       "away_ml": 340,
        "home_spread": -8.0,
        "total": 42.5
       }
@@ -12546,17 +12517,17 @@
      "draftkings": {
       "book": "draftkings",
       "side": "KC",
-      "american": -380
+      "american": -440
      },
      "fanduel": {
       "book": "fanduel",
       "side": "KC",
-      "american": -460
+      "american": -500
      },
      "betmgm": {
       "book": "betmgm",
       "side": "KC",
-      "american": -425
+      "american": -450
      },
      "betrivers": {
       "book": "betrivers",
@@ -12567,9 +12538,9 @@
     "best_price": {
      "book": "draftkings",
      "side": "KC",
-     "american": -380
+     "american": -440
     },
-    "estimated_ev_per_dollar": -0.006804355218151592,
+    "estimated_ev_per_dollar": -0.027891168789060672,
     "factors": {
      "team_elo_home": 1540.51457249453,
      "team_elo_away": 1411.1252148759588,
@@ -12610,8 +12581,8 @@
      "form_home_3": 34.81841860684199,
      "form_away_3": -27.597127780569053,
      "d_total": 243.76245548830562,
-     "model_market_gap_home": 0.025250472137574698,
-     "model_market_gap_pick": 0.025250472137574698
+     "model_market_gap_home": 0.016313869321127106,
+     "model_market_gap_pick": 0.016313869321127106
     },
     "rationale": [
      "rating",
@@ -12654,22 +12625,22 @@
    "official": {
     "pick": "GB",
     "p_home_model": 0.6515214884747624,
-    "p_home_market": 0.5103703535778933,
-    "p_home_blend": 0.5597732507917974,
-    "p_pick_blend": 0.5597732507917974,
+    "p_home_market": 0.5092560735939637,
+    "p_home_blend": 0.5590489688022433,
+    "p_pick_blend": 0.5590489688022433,
     "tier": "Lean",
     "model_spread": 4.348043858019335,
-    "blend_spread": 1.6693714200209941,
-    "expected_home": 27.084685710010497,
-    "expected_away": 25.415314289989503,
+    "blend_spread": 1.6489518105296697,
+    "expected_home": 27.074475905264833,
+    "expected_away": 25.425524094735167,
     "display_home": 27,
     "display_away": 25,
     "total_used": 52.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T18:04:01Z",
-     "consensus_p_home": 0.5103703535778933,
+     "as_of": "2026-10-13T09:34:22Z",
+     "consensus_p_home": 0.5092560735939637,
      "consensus_total": 52.5,
      "consensus_home_spread": -1.25,
      "n_books": 4,
@@ -12683,8 +12654,8 @@
       },
       {
        "key": "fanduel",
-       "home_ml": -112,
-       "away_ml": -104,
+       "home_ml": -110,
+       "away_ml": -106,
        "home_spread": -1.5,
        "total": 52.5
       },
@@ -12713,7 +12684,7 @@
      "fanduel": {
       "book": "fanduel",
       "side": "GB",
-      "american": -112
+      "american": -110
      },
      "betmgm": {
       "book": "betmgm",
@@ -12729,9 +12700,9 @@
     "best_price": {
      "book": "fanduel",
      "side": "GB",
-     "american": -112
+     "american": -110
     },
-    "estimated_ev_per_dollar": 0.05957079614161653,
+    "estimated_ev_per_dollar": 0.06727530407700988,
     "factors": {
      "team_elo_home": 1510.3819013683053,
      "team_elo_away": 1438.134264743115,
@@ -12772,8 +12743,8 @@
      "form_home_3": -0.7956924133927714,
      "form_away_3": -20.550625533273887,
      "d_total": 108.70109645048338,
-     "model_market_gap_home": 0.14115113489686915,
-     "model_market_gap_pick": 0.14115113489686915
+     "model_market_gap_home": 0.1422654148807987,
+     "model_market_gap_pick": 0.1422654148807987
     },
     "rationale": [
      "rating",
@@ -12820,50 +12791,50 @@
    "official": {
     "pick": "SF",
     "p_home_model": 0.8325810520595208,
-    "p_home_market": 0.7765125834738772,
-    "p_home_blend": 0.7961365474788524,
-    "p_pick_blend": 0.7961365474788524,
+    "p_home_market": 0.7769092250601137,
+    "p_home_blend": 0.7963943645099063,
+    "p_pick_blend": 0.7963943645099063,
     "tier": "Lock-ish",
     "model_spread": 11.145950631357309,
-    "blend_spread": 9.466370979254194,
-    "expected_home": 29.983185489627097,
-    "expected_away": 20.516814510372903,
+    "blend_spread": 9.477414140074995,
+    "expected_home": 29.9887070700375,
+    "expected_away": 20.5112929299625,
     "display_home": 30,
     "display_away": 21,
     "total_used": 50.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-10-12T18:04:01Z",
-     "consensus_p_home": 0.7765125834738772,
+     "as_of": "2026-10-13T09:34:22Z",
+     "consensus_p_home": 0.7769092250601137,
      "consensus_total": 50.5,
      "consensus_home_spread": -7.5,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
-       "home_ml": -440,
-       "away_ml": 340,
+       "home_ml": -410,
+       "away_ml": 320,
        "home_spread": -7.5,
        "total": 50.5
       },
       {
        "key": "fanduel",
-       "home_ml": -430,
-       "away_ml": 340,
+       "home_ml": -450,
+       "away_ml": 350,
        "home_spread": -7.5,
        "total": 50.5
       },
       {
        "key": "betrivers",
-       "home_ml": -420,
-       "away_ml": 320,
+       "home_ml": -455,
+       "away_ml": 325,
        "home_spread": -7.5,
-       "total": 51.0
+       "total": 50.5
       },
       {
        "key": "betmgm",
-       "home_ml": -400,
+       "home_ml": -425,
        "away_ml": 320,
        "home_spread": -7.5,
        "total": 50.5
@@ -12874,30 +12845,30 @@
      "draftkings": {
       "book": "draftkings",
       "side": "SF",
-      "american": -440
+      "american": -410
      },
      "fanduel": {
       "book": "fanduel",
       "side": "SF",
-      "american": -430
+      "american": -450
      },
      "betmgm": {
       "book": "betmgm",
       "side": "SF",
-      "american": -400
+      "american": -425
      },
      "betrivers": {
       "book": "betrivers",
       "side": "SF",
-      "american": -420
+      "american": -455
      }
     },
     "best_price": {
-     "book": "betmgm",
+     "book": "draftkings",
      "side": "SF",
-     "american": -400
+     "american": -410
     },
-    "estimated_ev_per_dollar": -0.004829315651434463,
+    "estimated_ev_per_dollar": -0.009363107560848266,
     "factors": {
      "team_elo_home": 1635.7114986858942,
      "team_elo_away": 1433.2867072014694,
@@ -12938,8 +12909,8 @@
      "form_home_3": 40.554606543501905,
      "form_away_3": -9.531607410616061,
      "d_total": 278.64876578393273,
-     "model_market_gap_home": 0.05606846858564363,
-     "model_market_gap_pick": 0.05606846858564363
+     "model_market_gap_home": 0.05567182699940709,
+     "model_market_gap_pick": 0.05567182699940709
     },
     "rationale": [
      "rating",
@@ -13009,7 +12980,7 @@
      "team_elo_home": 1553.2949994822388,
      "team_elo_away": 1606.0622823425467,
      "elo_gap_home": -52.76728286030789,
-     "home_rank": 9,
+     "home_rank": 8,
      "away_rank": 5,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -13032,7 +13003,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "New England rates 53 Elo points above Chicago, 5th in the league against 9th.",
+     "New England rates 53 Elo points above Chicago, 5th in the league against 8th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "No market line yet, so this is the model alone: New England at 52%, a Toss-up pick, predicted 24 to 23."
     ],
@@ -13167,7 +13138,7 @@
      "team_elo_home": 1547.1264225108469,
      "team_elo_away": 1505.035071768802,
      "elo_gap_home": 42.091350742044824,
-     "home_rank": 10,
+     "home_rank": 9,
      "away_rank": 16,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -13191,7 +13162,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Baltimore rates 42 Elo points above Cincinnati, 10th in the league against 16th.",
+     "Baltimore rates 42 Elo points above Cincinnati, 9th in the league against 16th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Cincinnati has 14 days of rest to Baltimore's 7, worth 14 Elo points to Cincinnati.",
      "No market line yet, so this is the model alone: Baltimore at 60%, a Lean pick, predicted 24 to 22."
@@ -13868,17 +13839,17 @@
    },
    "official": {
     "pick": "LA",
-    "p_home_model": 0.38123559959562686,
+    "p_home_model": 0.3996699636141123,
     "p_home_market": null,
-    "p_home_blend": 0.38123559959562686,
-    "p_pick_blend": 0.6187644004043731,
+    "p_home_blend": 0.3996699636141123,
+    "p_pick_blend": 0.6003300363858877,
     "tier": "Lean",
-    "model_spread": -3.3653099401062265,
-    "blend_spread": -3.365309940106225,
-    "expected_home": 21.33021267700571,
-    "expected_away": 24.695522617111934,
-    "display_home": 21,
-    "display_away": 25,
+    "model_spread": -2.827016992689823,
+    "blend_spread": -2.827016992689824,
+    "expected_home": 21.59935915071391,
+    "expected_away": 24.426376143403736,
+    "display_home": 22,
+    "display_away": 24,
     "total_used": 46.025735294117645,
     "total_source": "league_average",
     "market": null,
@@ -13892,10 +13863,10 @@
     "estimated_ev_per_dollar": null,
     "factors": {
      "team_elo_home": 1432.9261015114037,
-     "team_elo_away": 1557.0588500140593,
-     "elo_gap_home": -124.13274850265566,
+     "team_elo_away": 1543.6015263286492,
+     "elo_gap_home": -110.67542481724558,
      "home_rank": 26,
-     "away_rank": 8,
+     "away_rank": 10,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 7,
@@ -13906,8 +13877,8 @@
      "qb_away": null,
      "qb_elo": 0.0,
      "form_home_3": -3.423266050472421,
-     "form_away_3": 18.15047977598647,
-     "d_total": -84.13274850265566,
+     "form_away_3": -11.679176606184228,
+     "d_total": -70.67542481724558,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -13917,9 +13888,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Los Angeles rates 124 Elo points above Las Vegas, 8th in the league against 26th.",
+     "Los Angeles rates 111 Elo points above Las Vegas, 10th in the league against 26th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "No market line yet, so this is the model alone: Los Angeles at 62%, a Lean pick, predicted 25 to 21."
+     "No market line yet, so this is the model alone: Los Angeles at 60%, a Lean pick, predicted 24 to 22."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -14352,15 +14323,15 @@
    },
    "official": {
     "pick": "BUF",
-    "p_home_model": 0.6342810768393967,
+    "p_home_model": 0.6520570908220211,
     "p_home_market": null,
-    "p_home_blend": 0.6342810768393967,
-    "p_pick_blend": 0.6342810768393967,
-    "tier": "Lean",
-    "model_spread": 3.826149159917222,
-    "blend_spread": 3.8261491599172204,
-    "expected_home": 24.925942227017433,
-    "expected_away": 21.09979306710021,
+    "p_home_blend": 0.6520570908220211,
+    "p_pick_blend": 0.6520570908220211,
+    "tier": "Strong",
+    "model_spread": 4.364442107333625,
+    "blend_spread": 4.364442107333623,
+    "expected_home": 25.195088700725634,
+    "expected_away": 20.83064659339201,
     "display_home": 25,
     "display_away": 21,
     "total_used": 46.025735294117645,
@@ -14375,11 +14346,11 @@
     "best_price": null,
     "estimated_ev_per_dollar": null,
     "factors": {
-     "team_elo_home": 1588.7801515087774,
+     "team_elo_home": 1602.2374751941875,
      "team_elo_away": 1547.1264225108469,
-     "elo_gap_home": 41.65372899793056,
+     "elo_gap_home": 55.11105268334063,
      "home_rank": 6,
-     "away_rank": 10,
+     "away_rank": 9,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 14,
@@ -14389,9 +14360,9 @@
      "qb_home": null,
      "qb_away": null,
      "qb_elo": 0.0,
-     "form_home_3": 2.1331871691616016,
+     "form_home_3": 0.5748029274043347,
      "form_away_3": 36.58203091890664,
-     "d_total": 95.65372899793056,
+     "d_total": 109.11105268334063,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -14402,10 +14373,10 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Buffalo rates 42 Elo points above Baltimore, 6th in the league against 10th.",
+     "Buffalo rates 55 Elo points above Baltimore, 6th in the league against 9th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Buffalo has 14 days of rest to Baltimore's 7, worth 14 Elo points to Buffalo.",
-     "No market line yet, so this is the model alone: Buffalo at 63%, a Lean pick, predicted 25 to 21."
+     "No market line yet, so this is the model alone: Buffalo at 65%, a Strong pick, predicted 25 to 21."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -14832,15 +14803,15 @@
    },
    "official": {
     "pick": "LA",
-    "p_home_model": 0.7290345026952663,
+    "p_home_model": 0.713463015332019,
     "p_home_market": null,
-    "p_home_blend": 0.7290345026952663,
-    "p_pick_blend": 0.7290345026952663,
+    "p_home_blend": 0.713463015332019,
+    "p_pick_blend": 0.713463015332019,
     "tier": "Strong",
-    "model_spread": 6.87734540552402,
-    "blend_spread": 6.877345405524018,
-    "expected_home": 26.45154034982083,
-    "expected_away": 19.574194944296814,
+    "model_spread": 6.339052458107617,
+    "blend_spread": 6.33905245810762,
+    "expected_home": 26.182393876112634,
+    "expected_away": 19.84334141800501,
     "display_home": 26,
     "display_away": 20,
     "total_used": 46.025735294117645,
@@ -14855,10 +14826,10 @@
     "best_price": null,
     "estimated_ev_per_dollar": null,
     "factors": {
-     "team_elo_home": 1557.0588500140593,
+     "team_elo_home": 1543.6015263286492,
      "team_elo_away": 1411.1252148759588,
-     "elo_gap_home": 145.9336351381005,
-     "home_rank": 8,
+     "elo_gap_home": 132.47631145269042,
+     "home_rank": 10,
      "away_rank": 28,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -14869,9 +14840,9 @@
      "qb_home": null,
      "qb_away": null,
      "qb_elo": 0.0,
-     "form_home_3": 18.15047977598647,
+     "form_home_3": -11.679176606184228,
      "form_away_3": -27.597127780569053,
-     "d_total": 171.9336351381005,
+     "d_total": 158.47631145269042,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -14882,10 +14853,10 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Los Angeles Rams rates 146 Elo points above Los Angeles Chargers, 8th in the league against 28th.",
+     "Los Angeles Rams rates 132 Elo points above Los Angeles Chargers, 10th in the league against 28th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Los Angeles Chargers has 14 days of rest to Los Angeles Rams's 7, worth 14 Elo points to Los Angeles Chargers.",
-     "No market line yet, so this is the model alone: Los Angeles Rams at 73%, a Strong pick, predicted 26 to 20."
+     "No market line yet, so this is the model alone: Los Angeles Rams at 71%, a Strong pick, predicted 26 to 20."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -15183,7 +15154,7 @@
      "team_elo_away": 1553.2949994822388,
      "elo_gap_home": 89.5883219198488,
      "home_rank": 1,
-     "away_rank": 9,
+     "away_rank": 8,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 8,
@@ -15206,7 +15177,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Seattle rates 90 Elo points above Chicago, 1st in the league against 9th.",
+     "Seattle rates 90 Elo points above Chicago, 1st in the league against 8th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Chicago has 11 days of rest to Seattle's 8, worth 6 Elo points to Chicago.",
      "No market line yet, so this is the model alone: Seattle at 67%, a Strong pick, predicted 25 to 21."
@@ -15263,7 +15234,7 @@
      "team_elo_home": 1547.1264225108469,
      "team_elo_away": 1611.509434951871,
      "elo_gap_home": -64.38301244102422,
-     "home_rank": 10,
+     "home_rank": 9,
      "away_rank": 4,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -15287,7 +15258,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Jacksonville rates 64 Elo points above Baltimore, 4th in the league against 10th.",
+     "Jacksonville rates 64 Elo points above Baltimore, 4th in the league against 9th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Jacksonville has gained 58 points of rating over its last three games.",
      "No market line yet, so this is the model alone: Jacksonville at 54%, a Toss-up pick, predicted 24 to 23."
@@ -15721,17 +15692,17 @@
    },
    "official": {
     "pick": "LA",
-    "p_home_model": 0.381725394164415,
+    "p_home_model": 0.4001681251124928,
     "p_home_market": null,
-    "p_home_blend": 0.381725394164415,
-    "p_pick_blend": 0.618274605835585,
+    "p_home_blend": 0.4001681251124928,
+    "p_pick_blend": 0.5998318748875072,
     "tier": "Lean",
-    "model_spread": -3.3508857125035956,
-    "blend_spread": -3.350885712503595,
-    "expected_home": 21.337424790807024,
-    "expected_away": 24.68831050331062,
-    "display_home": 21,
-    "display_away": 25,
+    "model_spread": -2.8125927650871927,
+    "blend_spread": -2.8125927650871914,
+    "expected_home": 21.606571264515228,
+    "expected_away": 24.419164029602417,
+    "display_home": 22,
+    "display_away": 24,
     "total_used": 46.025735294117645,
     "total_source": "league_average",
     "market": null,
@@ -15745,10 +15716,10 @@
     "estimated_ev_per_dollar": null,
     "factors": {
      "team_elo_home": 1433.2867072014694,
-     "team_elo_away": 1557.0588500140593,
-     "elo_gap_home": -123.77214281258989,
+     "team_elo_away": 1543.6015263286492,
+     "elo_gap_home": -110.31481912717982,
      "home_rank": 25,
-     "away_rank": 8,
+     "away_rank": 10,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 7,
@@ -15759,8 +15730,8 @@
      "qb_away": null,
      "qb_elo": 0.0,
      "form_home_3": -9.531607410616061,
-     "form_away_3": 18.15047977598647,
-     "d_total": -83.77214281258989,
+     "form_away_3": -11.679176606184228,
+     "d_total": -70.31481912717982,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -15770,9 +15741,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Los Angeles rates 124 Elo points above Washington, 8th in the league against 25th.",
+     "Los Angeles rates 110 Elo points above Washington, 10th in the league against 25th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "No market line yet, so this is the model alone: Los Angeles at 62%, a Lean pick, predicted 25 to 21."
+     "No market line yet, so this is the model alone: Los Angeles at 60%, a Lean pick, predicted 24 to 22."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -16314,7 +16285,7 @@
      "team_elo_home": 1553.2949994822388,
      "team_elo_away": 1440.7894044007542,
      "elo_gap_home": 112.50559508148467,
-     "home_rank": 9,
+     "home_rank": 8,
      "away_rank": 23,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -16337,7 +16308,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Chicago rates 113 Elo points above Tampa Bay, 9th in the league against 23rd.",
+     "Chicago rates 113 Elo points above Tampa Bay, 8th in the league against 23rd.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "No market line yet, so this is the model alone: Chicago at 70%, a Strong pick, predicted 26 to 20."
     ],
@@ -16367,17 +16338,17 @@
    },
    "official": {
     "pick": "MIN",
-    "p_home_model": 0.6075049364397328,
+    "p_home_model": 0.5888878618086032,
     "p_home_market": null,
-    "p_home_blend": 0.6075049364397328,
-    "p_pick_blend": 0.6075049364397328,
+    "p_home_blend": 0.5888878618086032,
+    "p_pick_blend": 0.5888878618086032,
     "tier": "Lean",
-    "model_spread": 3.035449796739795,
-    "blend_spread": 3.035449796739794,
-    "expected_home": 24.530592545428718,
-    "expected_away": 21.495142748688927,
-    "display_home": 25,
-    "display_away": 21,
+    "model_spread": 2.4971568493233915,
+    "blend_spread": 2.4971568493233915,
+    "expected_home": 24.261446071720517,
+    "expected_away": 21.764289222397128,
+    "display_home": 24,
+    "display_away": 22,
     "total_used": 46.025735294117645,
     "total_source": "league_average",
     "market": null,
@@ -16391,8 +16362,8 @@
     "estimated_ev_per_dollar": null,
     "factors": {
      "team_elo_home": 1624.6663964272723,
-     "team_elo_away": 1588.7801515087774,
-     "elo_gap_home": 35.88624491849487,
+     "team_elo_away": 1602.2374751941875,
+     "elo_gap_home": 22.428921233084793,
      "home_rank": 3,
      "away_rank": 6,
      "hfa_elo": 40.0,
@@ -16405,8 +16376,8 @@
      "qb_away": null,
      "qb_elo": 0.0,
      "form_home_3": 28.576161637693076,
-     "form_away_3": 2.1331871691616016,
-     "d_total": 75.88624491849487,
+     "form_away_3": 0.5748029274043347,
+     "d_total": 62.42892123308479,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -16416,9 +16387,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Minnesota rates 36 Elo points above Buffalo, 3rd in the league against 6th.",
+     "Minnesota rates 22 Elo points above Buffalo, 3rd in the league against 6th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "No market line yet, so this is the model alone: Minnesota at 61%, a Lean pick, predicted 25 to 21."
+     "No market line yet, so this is the model alone: Minnesota at 59%, a Lean pick, predicted 24 to 22."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -16602,15 +16573,15 @@
    },
    "official": {
     "pick": "BUF",
-    "p_home_model": 0.3100767097742614,
+    "p_home_model": 0.2937526834430266,
     "p_home_market": null,
-    "p_home_blend": 0.3100767097742614,
-    "p_pick_blend": 0.6899232902257386,
+    "p_home_blend": 0.2937526834430266,
+    "p_pick_blend": 0.7062473165569734,
     "tier": "Strong",
-    "model_spread": -5.557306542150955,
-    "blend_spread": -5.557306542150955,
-    "expected_home": 20.234214375983345,
-    "expected_away": 25.7915209181343,
+    "model_spread": -6.095599489567357,
+    "blend_spread": -6.095599489567357,
+    "expected_home": 19.965067902275145,
+    "expected_away": 26.0606673918425,
     "display_home": 20,
     "display_away": 26,
     "total_used": 46.025735294117645,
@@ -16626,8 +16597,8 @@
     "estimated_ev_per_dollar": null,
     "factors": {
      "team_elo_home": 1407.8474879550035,
-     "team_elo_away": 1588.7801515087774,
-     "elo_gap_home": -180.93266355377386,
+     "team_elo_away": 1602.2374751941875,
+     "elo_gap_home": -194.38998723918394,
      "home_rank": 29,
      "away_rank": 6,
      "hfa_elo": 40.0,
@@ -16640,8 +16611,8 @@
      "qb_away": null,
      "qb_elo": 0.0,
      "form_home_3": 2.1469107134039405,
-     "form_away_3": 2.1331871691616016,
-     "d_total": -138.93266355377386,
+     "form_away_3": 0.5748029274043347,
+     "d_total": -152.38998723918394,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -16651,9 +16622,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Buffalo rates 181 Elo points above New York, 6th in the league against 29th.",
+     "Buffalo rates 194 Elo points above New York, 6th in the league against 29th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "No market line yet, so this is the model alone: Buffalo at 69%, a Strong pick, predicted 26 to 20."
+     "No market line yet, so this is the model alone: Buffalo at 71%, a Strong pick, predicted 26 to 20."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -17163,15 +17134,15 @@
    },
    "official": {
     "pick": "LA",
-    "p_home_model": 0.3460542530863903,
+    "p_home_model": 0.3637876098714122,
     "p_home_market": null,
-    "p_home_blend": 0.3460542530863903,
-    "p_pick_blend": 0.6539457469136096,
-    "tier": "Strong",
-    "model_spread": -4.422360454392174,
-    "blend_spread": -4.422360454392174,
-    "expected_home": 20.801687419862734,
-    "expected_away": 25.22404787425491,
+    "p_home_blend": 0.3637876098714122,
+    "p_pick_blend": 0.6362123901285879,
+    "tier": "Lean",
+    "model_spread": -3.8840675069757706,
+    "blend_spread": -3.8840675069757724,
+    "expected_home": 21.070833893570935,
+    "expected_away": 24.95490140054671,
     "display_home": 21,
     "display_away": 25,
     "total_used": 46.025735294117645,
@@ -17187,10 +17158,10 @@
     "estimated_ev_per_dollar": null,
     "factors": {
      "team_elo_home": 1406.499838654255,
-     "team_elo_away": 1557.0588500140593,
-     "elo_gap_home": -150.55901135980434,
+     "team_elo_away": 1543.6015263286492,
+     "elo_gap_home": -137.10168767439427,
      "home_rank": 30,
-     "away_rank": 8,
+     "away_rank": 10,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 7,
@@ -17201,8 +17172,8 @@
      "qb_away": null,
      "qb_elo": 0.0,
      "form_home_3": -45.86129327717708,
-     "form_away_3": 18.15047977598647,
-     "d_total": -110.55901135980434,
+     "form_away_3": -11.679176606184228,
+     "d_total": -97.10168767439427,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -17213,10 +17184,10 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Los Angeles rates 151 Elo points above Arizona, 8th in the league against 30th.",
+     "Los Angeles rates 137 Elo points above Arizona, 10th in the league against 30th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Arizona has lost 46 points of rating over its last three games.",
-     "No market line yet, so this is the model alone: Los Angeles at 65%, a Strong pick, predicted 25 to 21."
+     "No market line yet, so this is the model alone: Los Angeles at 64%, a Lean pick, predicted 25 to 21."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -17511,7 +17482,7 @@
      "team_elo_home": 1547.1264225108469,
      "team_elo_away": 1411.1252148759588,
      "elo_gap_home": 136.00120763488803,
-     "home_rank": 10,
+     "home_rank": 9,
      "away_rank": 28,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -17535,7 +17506,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Baltimore rates 136 Elo points above Los Angeles, 10th in the league against 28th.",
+     "Baltimore rates 136 Elo points above Los Angeles, 9th in the league against 28th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Baltimore has 11 days of rest to Los Angeles's 8, worth 6 Elo points to Baltimore.",
      "No market line yet, so this is the model alone: Baltimore at 74%, a Strong pick, predicted 27 to 19."
@@ -17753,7 +17724,7 @@
      "team_elo_away": 1547.1264225108469,
      "elo_gap_home": -58.76361832457769,
      "home_rank": 17,
-     "away_rank": 10,
+     "away_rank": 9,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 7,
@@ -17776,7 +17747,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Baltimore rates 59 Elo points above Carolina, 10th in the league against 17th.",
+     "Baltimore rates 59 Elo points above Carolina, 9th in the league against 17th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Carolina has gained 58 points of rating over its last three games.",
      "No market line yet, so this is the model alone: Baltimore at 52%, a Toss-up pick, predicted 24 to 23."
@@ -17890,15 +17861,15 @@
    },
    "official": {
     "pick": "BUF",
-    "p_home_model": 0.7920777630663386,
+    "p_home_model": 0.8045474027616402,
     "p_home_market": null,
-    "p_home_blend": 0.7920777630663386,
-    "p_pick_blend": 0.7920777630663386,
+    "p_home_blend": 0.8045474027616402,
+    "p_pick_blend": 0.8045474027616402,
     "tier": "Lock-ish",
-    "model_spread": 9.293870113912044,
-    "blend_spread": 9.293870113912043,
-    "expected_home": 27.659802704014844,
-    "expected_away": 18.3659325901028,
+    "model_spread": 9.832163061328448,
+    "blend_spread": 9.832163061328448,
+    "expected_home": 27.928949177723048,
+    "expected_away": 18.096786116394597,
     "display_home": 28,
     "display_away": 18,
     "total_used": 46.025735294117645,
@@ -17913,9 +17884,9 @@
     "best_price": null,
     "estimated_ev_per_dollar": null,
     "factors": {
-     "team_elo_home": 1588.7801515087774,
+     "team_elo_home": 1602.2374751941875,
      "team_elo_away": 1396.4333986609763,
-     "elo_gap_home": 192.3467528478011,
+     "elo_gap_home": 205.80407653321117,
      "home_rank": 6,
      "away_rank": 31,
      "hfa_elo": 40.0,
@@ -17927,9 +17898,9 @@
      "qb_home": null,
      "qb_away": null,
      "qb_elo": 0.0,
-     "form_home_3": 2.1331871691616016,
+     "form_home_3": 0.5748029274043347,
      "form_away_3": -32.31624620231037,
-     "d_total": 232.3467528478011,
+     "d_total": 245.80407653321117,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -17939,9 +17910,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Buffalo rates 192 Elo points above Miami, 6th in the league against 31st.",
+     "Buffalo rates 206 Elo points above Miami, 6th in the league against 31st.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "No market line yet, so this is the model alone: Buffalo at 79%, a Lock-ish pick, predicted 28 to 18."
+     "No market line yet, so this is the model alone: Buffalo at 80%, a Lock-ish pick, predicted 28 to 18."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -17995,7 +17966,7 @@
      "team_elo_home": 1553.2949994822388,
      "team_elo_away": 1417.7304251172143,
      "elo_gap_home": 135.56457436502455,
-     "home_rank": 9,
+     "home_rank": 8,
      "away_rank": 27,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -18020,7 +17991,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Chicago rates 136 Elo points above New Orleans, 9th in the league against 27th.",
+     "Chicago rates 136 Elo points above New Orleans, 8th in the league against 27th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Chicago has 14 days of rest to New Orleans's 7, worth 14 Elo points to Chicago.",
      "New Orleans has lost 72 points of rating over its last three games.",
@@ -18615,17 +18586,17 @@
    },
    "official": {
     "pick": "LA",
-    "p_home_model": 0.6222131625540113,
+    "p_home_model": 0.6038387920112582,
     "p_home_market": null,
-    "p_home_blend": 0.6222131625540113,
-    "p_pick_blend": 0.6222131625540113,
+    "p_home_blend": 0.6038387920112582,
+    "p_pick_blend": 0.6038387920112582,
     "tier": "Lean",
-    "model_spread": 3.4670779458301606,
-    "blend_spread": 3.4670779458301606,
-    "expected_home": 24.746406619973904,
-    "expected_away": 21.27932867414374,
-    "display_home": 25,
-    "display_away": 21,
+    "model_spread": 2.9287849984137573,
+    "blend_spread": 2.928784998413758,
+    "expected_home": 24.477260146265703,
+    "expected_away": 21.548475147851942,
+    "display_home": 24,
+    "display_away": 22,
     "total_used": 46.025735294117645,
     "total_source": "league_average",
     "market": null,
@@ -18638,10 +18609,10 @@
     "best_price": null,
     "estimated_ev_per_dollar": null,
     "factors": {
-     "team_elo_home": 1557.0588500140593,
+     "team_elo_home": 1543.6015263286492,
      "team_elo_away": 1510.3819013683053,
-     "elo_gap_home": 46.67694864575401,
-     "home_rank": 8,
+     "elo_gap_home": 33.219624960343936,
+     "home_rank": 10,
      "away_rank": 15,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -18652,9 +18623,9 @@
      "qb_home": null,
      "qb_away": null,
      "qb_elo": 0.0,
-     "form_home_3": 18.15047977598647,
+     "form_home_3": -11.679176606184228,
      "form_away_3": -0.7956924133927714,
-     "d_total": 86.67694864575401,
+     "d_total": 73.21962496034394,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -18664,9 +18635,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Los Angeles rates 47 Elo points above Green Bay, 8th in the league against 15th.",
+     "Los Angeles rates 33 Elo points above Green Bay, 10th in the league against 15th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "No market line yet, so this is the model alone: Los Angeles at 62%, a Lean pick, predicted 25 to 21."
+     "No market line yet, so this is the model alone: Los Angeles at 60%, a Lean pick, predicted 24 to 22."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -18721,7 +18692,7 @@
      "team_elo_away": 1553.2949994822388,
      "elo_gap_home": -39.661322523143554,
      "home_rank": 12,
-     "away_rank": 9,
+     "away_rank": 8,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 4,
@@ -18743,7 +18714,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Chicago rates 40 Elo points above Detroit, 9th in the league against 12th.",
+     "Chicago rates 40 Elo points above Detroit, 8th in the league against 12th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "No market line yet, so this is the model alone: Detroit at 50%, a Toss-up pick, predicted 24 to 23."
     ],
@@ -18854,15 +18825,15 @@
    },
    "official": {
     "pick": "BUF",
-    "p_home_model": 0.6243603820574588,
+    "p_home_model": 0.6423466978777215,
     "p_home_market": null,
-    "p_home_blend": 0.6243603820574588,
-    "p_pick_blend": 0.6243603820574588,
+    "p_home_blend": 0.6423466978777215,
+    "p_pick_blend": 0.6423466978777215,
     "tier": "Lean",
-    "model_spread": 3.530623160569894,
-    "blend_spread": 3.5306231605698937,
-    "expected_home": 24.77817922734377,
-    "expected_away": 21.247556066773875,
+    "model_spread": 4.068916107986297,
+    "blend_spread": 4.068916107986295,
+    "expected_home": 25.04732570105197,
+    "expected_away": 20.978409593065674,
     "display_home": 25,
     "display_away": 21,
     "total_used": 46.025735294117645,
@@ -18877,9 +18848,9 @@
     "best_price": null,
     "estimated_ev_per_dollar": null,
     "factors": {
-     "team_elo_home": 1588.7801515087774,
+     "team_elo_home": 1602.2374751941875,
      "team_elo_away": 1540.51457249453,
-     "elo_gap_home": 48.26557901424735,
+     "elo_gap_home": 61.722902699657425,
      "home_rank": 6,
      "away_rank": 11,
      "hfa_elo": 40.0,
@@ -18891,9 +18862,9 @@
      "qb_home": null,
      "qb_away": null,
      "qb_elo": 0.0,
-     "form_home_3": 2.1331871691616016,
+     "form_home_3": 0.5748029274043347,
      "form_away_3": 34.81841860684199,
-     "d_total": 88.26557901424735,
+     "d_total": 101.72290269965742,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -18903,9 +18874,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Buffalo rates 48 Elo points above Kansas City, 6th in the league against 11th.",
+     "Buffalo rates 62 Elo points above Kansas City, 6th in the league against 11th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "No market line yet, so this is the model alone: Buffalo at 62%, a Lean pick, predicted 25 to 21."
+     "No market line yet, so this is the model alone: Buffalo at 64%, a Lean pick, predicted 25 to 21."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -19122,7 +19093,7 @@
      "team_elo_away": 1547.1264225108469,
      "elo_gap_home": -33.613127127548296,
      "home_rank": 13,
-     "away_rank": 10,
+     "away_rank": 9,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 10,
@@ -19145,7 +19116,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Baltimore rates 34 Elo points above Houston, 10th in the league against 13th.",
+     "Baltimore rates 34 Elo points above Houston, 9th in the league against 13th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Houston has 10 days of rest to Baltimore's 7, worth 6 Elo points to Houston.",
      "No market line yet, so this is the model alone: Houston at 52%, a Toss-up pick, predicted 24 to 23."
@@ -19905,15 +19876,15 @@
    },
    "official": {
     "pick": "LA",
-    "p_home_model": 0.5834635360537542,
+    "p_home_model": 0.5645235469192927,
     "p_home_market": null,
-    "p_home_blend": 0.5834635360537542,
-    "p_pick_blend": 0.5834635360537542,
+    "p_home_blend": 0.5645235469192927,
+    "p_pick_blend": 0.5645235469192927,
     "tier": "Lean",
-    "model_spread": 2.3417711007811706,
-    "blend_spread": 2.341771100781168,
-    "expected_home": 24.183753197449406,
-    "expected_away": 21.84198209666824,
+    "model_spread": 1.8034781533647675,
+    "blend_spread": 1.8034781533647655,
+    "expected_home": 23.914606723741205,
+    "expected_away": 22.11112857037644,
     "display_home": 24,
     "display_away": 22,
     "total_used": 46.025735294117645,
@@ -19928,10 +19899,10 @@
     "best_price": null,
     "estimated_ev_per_dollar": null,
     "factors": {
-     "team_elo_home": 1557.0588500140593,
+     "team_elo_home": 1543.6015263286492,
      "team_elo_away": 1540.51457249453,
-     "elo_gap_home": 16.54427751952926,
-     "home_rank": 8,
+     "elo_gap_home": 3.0869538341191856,
+     "home_rank": 10,
      "away_rank": 11,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -19942,9 +19913,9 @@
      "qb_home": null,
      "qb_away": null,
      "qb_elo": 0.0,
-     "form_home_3": 18.15047977598647,
+     "form_home_3": -11.679176606184228,
      "form_away_3": 34.81841860684199,
-     "d_total": 58.54427751952926,
+     "d_total": 45.086953834119186,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -19954,9 +19925,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Los Angeles rates 17 Elo points above Kansas City, 8th in the league against 11th.",
+     "Los Angeles rates 3 Elo points above Kansas City, 10th in the league against 11th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "No market line yet, so this is the model alone: Los Angeles at 58%, a Lean pick, predicted 24 to 22."
+     "No market line yet, so this is the model alone: Los Angeles at 56%, a Lean pick, predicted 24 to 22."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -20255,7 +20226,7 @@
      "team_elo_home": 1553.2949994822388,
      "team_elo_away": 1611.509434951871,
      "elo_gap_home": -58.214435469632235,
-     "home_rank": 9,
+     "home_rank": 8,
      "away_rank": 4,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -20280,7 +20251,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Jacksonville rates 58 Elo points above Chicago, 4th in the league against 9th.",
+     "Jacksonville rates 58 Elo points above Chicago, 4th in the league against 8th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Chicago has 10 days of rest to Jacksonville's 7, worth 6 Elo points to Chicago.",
      "Jacksonville has gained 58 points of rating over its last three games.",
@@ -20713,15 +20684,15 @@
    },
    "official": {
     "pick": "NE",
-    "p_home_model": 0.573269598754235,
+    "p_home_model": 0.5542202296815807,
     "p_home_market": null,
-    "p_home_blend": 0.573269598754235,
-    "p_pick_blend": 0.573269598754235,
+    "p_home_blend": 0.5542202296815807,
+    "p_pick_blend": 0.5542202296815807,
     "tier": "Lean",
-    "model_spread": 2.0512852333507725,
-    "blend_spread": 2.0512852333507707,
-    "expected_home": 24.038510263734207,
-    "expected_away": 21.98722503038344,
+    "model_spread": 1.5129922859343696,
+    "blend_spread": 1.5129922859343703,
+    "expected_home": 23.76936379002601,
+    "expected_away": 22.256371504091636,
     "display_home": 24,
     "display_away": 22,
     "total_used": 46.025735294117645,
@@ -20737,8 +20708,8 @@
     "estimated_ev_per_dollar": null,
     "factors": {
      "team_elo_home": 1606.0622823425467,
-     "team_elo_away": 1588.7801515087774,
-     "elo_gap_home": 17.282130833769315,
+     "team_elo_away": 1602.2374751941875,
+     "elo_gap_home": 3.824807148359241,
      "home_rank": 5,
      "away_rank": 6,
      "hfa_elo": 40.0,
@@ -20751,8 +20722,8 @@
      "qb_away": null,
      "qb_elo": 0.0,
      "form_home_3": 3.5786641405406954,
-     "form_away_3": 2.1331871691616016,
-     "d_total": 51.282130833769315,
+     "form_away_3": 0.5748029274043347,
+     "d_total": 37.82480714835924,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -20763,10 +20734,10 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "New England rates 17 Elo points above Buffalo, 5th in the league against 6th.",
+     "New England rates 4 Elo points above Buffalo, 5th in the league against 6th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Buffalo has 10 days of rest to New England's 7, worth 6 Elo points to Buffalo.",
-     "No market line yet, so this is the model alone: New England at 57%, a Lean pick, predicted 24 to 22."
+     "No market line yet, so this is the model alone: New England at 55%, a Lean pick, predicted 24 to 22."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -21222,7 +21193,7 @@
      "team_elo_away": 1553.2949994822388,
      "elo_gap_home": -156.86160082126253,
      "home_rank": 31,
-     "away_rank": 9,
+     "away_rank": 8,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 7,
@@ -21244,7 +21215,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Chicago rates 157 Elo points above Miami, 9th in the league against 31st.",
+     "Chicago rates 157 Elo points above Miami, 8th in the league against 31st.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "No market line yet, so this is the model alone: Chicago at 66%, a Strong pick, predicted 25 to 21."
     ],
@@ -21624,7 +21595,7 @@
      "team_elo_home": 1547.1264225108469,
      "team_elo_away": 1440.7894044007542,
      "elo_gap_home": 106.33701811009269,
-     "home_rank": 10,
+     "home_rank": 9,
      "away_rank": 23,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -21648,7 +21619,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Baltimore rates 106 Elo points above Tampa Bay, 10th in the league against 23rd.",
+     "Baltimore rates 106 Elo points above Tampa Bay, 9th in the league against 23rd.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Baltimore has 14 days of rest to Tampa Bay's 7, worth 14 Elo points to Baltimore.",
      "No market line yet, so this is the model alone: Baltimore at 72%, a Strong pick, predicted 26 to 20."
@@ -21920,17 +21891,17 @@
    },
    "official": {
     "pick": "SF",
-    "p_home_model": 0.6566680269034091,
+    "p_home_model": 0.6739153185210062,
     "p_home_market": null,
-    "p_home_blend": 0.6566680269034091,
-    "p_pick_blend": 0.6566680269034091,
+    "p_home_blend": 0.6739153185210062,
+    "p_pick_blend": 0.6739153185210062,
     "tier": "Strong",
-    "model_spread": 4.506105946873395,
-    "blend_spread": 4.506105946873396,
-    "expected_home": 25.26592062049552,
-    "expected_away": 20.759814673622124,
-    "display_home": 25,
-    "display_away": 21,
+    "model_spread": 5.044398894289798,
+    "blend_spread": 5.044398894289797,
+    "expected_home": 25.535067094203722,
+    "expected_away": 20.490668199913923,
+    "display_home": 26,
+    "display_away": 20,
     "total_used": 46.025735294117645,
     "total_source": "league_average",
     "market": null,
@@ -21944,10 +21915,10 @@
     "estimated_ev_per_dollar": null,
     "factors": {
      "team_elo_home": 1635.7114986858942,
-     "team_elo_away": 1557.0588500140593,
-     "elo_gap_home": 78.65264867183487,
+     "team_elo_away": 1543.6015263286492,
+     "elo_gap_home": 92.10997235724494,
      "home_rank": 2,
-     "away_rank": 8,
+     "away_rank": 10,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 7,
@@ -21958,8 +21929,8 @@
      "qb_away": null,
      "qb_elo": 0.0,
      "form_home_3": 40.554606543501905,
-     "form_away_3": 18.15047977598647,
-     "d_total": 112.65264867183487,
+     "form_away_3": -11.679176606184228,
+     "d_total": 126.10997235724494,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -21971,11 +21942,11 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "San Francisco rates 79 Elo points above Los Angeles, 2nd in the league against 8th.",
+     "San Francisco rates 92 Elo points above Los Angeles, 2nd in the league against 10th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Los Angeles has 10 days of rest to San Francisco's 7, worth 6 Elo points to Los Angeles.",
      "San Francisco has gained 41 points of rating over its last three games.",
-     "No market line yet, so this is the model alone: San Francisco at 66%, a Strong pick, predicted 25 to 21."
+     "No market line yet, so this is the model alone: San Francisco at 67%, a Strong pick, predicted 26 to 20."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -22082,15 +22053,15 @@
    },
    "official": {
     "pick": "BUF",
-    "p_home_model": 0.4449643705958929,
+    "p_home_model": 0.42592306765802934,
     "p_home_market": null,
-    "p_home_blend": 0.4449643705958929,
-    "p_pick_blend": 0.5550356294041071,
+    "p_home_blend": 0.42592306765802934,
+    "p_pick_blend": 0.5740769323419707,
     "tier": "Lean",
-    "model_spread": -1.535930005618884,
-    "blend_spread": -1.5359300056188845,
-    "expected_home": 22.24490264424938,
-    "expected_away": 23.780832649868266,
+    "model_spread": -2.074222953035287,
+    "blend_spread": -2.074222953035287,
+    "expected_home": 21.975756170541178,
+    "expected_away": 24.049979123576467,
     "display_home": 22,
     "display_away": 24,
     "total_used": 46.025735294117645,
@@ -22106,8 +22077,8 @@
     "estimated_ev_per_dollar": null,
     "factors": {
      "team_elo_home": 1510.3819013683053,
-     "team_elo_away": 1588.7801515087774,
-     "elo_gap_home": -78.3982501404721,
+     "team_elo_away": 1602.2374751941875,
+     "elo_gap_home": -91.85557382588217,
      "home_rank": 15,
      "away_rank": 6,
      "hfa_elo": 40.0,
@@ -22120,8 +22091,8 @@
      "qb_away": null,
      "qb_elo": 0.0,
      "form_home_3": -0.7956924133927714,
-     "form_away_3": 2.1331871691616016,
-     "d_total": -38.3982501404721,
+     "form_away_3": 0.5748029274043347,
+     "d_total": -51.855573825882175,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -22131,9 +22102,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Buffalo rates 78 Elo points above Green Bay, 6th in the league against 15th.",
+     "Buffalo rates 92 Elo points above Green Bay, 6th in the league against 15th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "No market line yet, so this is the model alone: Buffalo at 56%, a Lean pick, predicted 24 to 22."
+     "No market line yet, so this is the model alone: Buffalo at 57%, a Lean pick, predicted 24 to 22."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -22404,17 +22375,17 @@
    },
    "official": {
     "pick": "BUF",
-    "p_home_model": 0.6069542653301154,
+    "p_home_model": 0.625273809119991,
     "p_home_market": null,
-    "p_home_blend": 0.6069542653301154,
-    "p_pick_blend": 0.6069542653301154,
+    "p_home_blend": 0.625273809119991,
+    "p_pick_blend": 0.625273809119991,
     "tier": "Lean",
-    "model_spread": 3.019406081061543,
-    "blend_spread": 3.019406081061544,
-    "expected_home": 24.522570687589596,
-    "expected_away": 21.50316460652805,
+    "model_spread": 3.5576990284779457,
+    "blend_spread": 3.5576990284779453,
+    "expected_home": 24.791717161297797,
+    "expected_away": 21.23401813281985,
     "display_home": 25,
-    "display_away": 22,
+    "display_away": 21,
     "total_used": 46.025735294117645,
     "total_source": "league_average",
     "market": null,
@@ -22427,11 +22398,11 @@
     "best_price": null,
     "estimated_ev_per_dollar": null,
     "factors": {
-     "team_elo_home": 1588.7801515087774,
+     "team_elo_home": 1602.2374751941875,
      "team_elo_away": 1553.2949994822388,
-     "elo_gap_home": 35.48515202653857,
+     "elo_gap_home": 48.942475711948646,
      "home_rank": 6,
-     "away_rank": 9,
+     "away_rank": 8,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 6,
@@ -22441,9 +22412,9 @@
      "qb_home": null,
      "qb_away": null,
      "qb_elo": 0.0,
-     "form_home_3": 2.1331871691616016,
+     "form_home_3": 0.5748029274043347,
      "form_away_3": 13.006249091613427,
-     "d_total": 75.48515202653857,
+     "d_total": 88.94247571194865,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -22453,9 +22424,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Buffalo rates 35 Elo points above Chicago, 6th in the league against 9th.",
+     "Buffalo rates 49 Elo points above Chicago, 6th in the league against 8th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "No market line yet, so this is the model alone: Buffalo at 61%, a Lean pick, predicted 25 to 22."
+     "No market line yet, so this is the model alone: Buffalo at 63%, a Lean pick, predicted 25 to 21."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -22591,7 +22562,7 @@
      "team_elo_away": 1547.1264225108469,
      "elo_gap_home": -34.80410823824809,
      "home_rank": 14,
-     "away_rank": 10,
+     "away_rank": 9,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 6,
@@ -22613,7 +22584,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Baltimore rates 35 Elo points above Pittsburgh, 10th in the league against 14th.",
+     "Baltimore rates 35 Elo points above Pittsburgh, 9th in the league against 14th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "No market line yet, so this is the model alone: Pittsburgh at 50%, a Toss-up pick, predicted 24 to 23."
     ],
@@ -23206,15 +23177,15 @@
    },
    "official": {
     "pick": "LA",
-    "p_home_model": 0.699678189697057,
+    "p_home_model": 0.6831528871509934,
     "p_home_market": null,
-    "p_home_blend": 0.699678189697057,
-    "p_pick_blend": 0.699678189697057,
+    "p_home_blend": 0.6831528871509934,
+    "p_pick_blend": 0.6831528871509934,
     "tier": "Strong",
-    "model_spread": 5.8769834108377745,
-    "blend_spread": 5.876983410837774,
-    "expected_home": 25.95135935247771,
-    "expected_away": 20.074375941639936,
+    "model_spread": 5.338690463421371,
+    "blend_spread": 5.338690463421373,
+    "expected_home": 25.68221287876951,
+    "expected_away": 20.343522415348136,
     "display_home": 26,
     "display_away": 20,
     "total_used": 46.025735294117645,
@@ -23229,10 +23200,10 @@
     "best_price": null,
     "estimated_ev_per_dollar": null,
     "factors": {
-     "team_elo_home": 1557.0588500140593,
+     "team_elo_home": 1543.6015263286492,
      "team_elo_away": 1438.134264743115,
-     "elo_gap_home": 118.92458527094436,
-     "home_rank": 8,
+     "elo_gap_home": 105.46726158553429,
+     "home_rank": 10,
      "away_rank": 24,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -23243,9 +23214,9 @@
      "qb_home": null,
      "qb_away": null,
      "qb_elo": 0.0,
-     "form_home_3": 18.15047977598647,
+     "form_home_3": -11.679176606184228,
      "form_away_3": -20.550625533273887,
-     "d_total": 146.92458527094436,
+     "d_total": 133.4672615855343,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -23256,10 +23227,10 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Los Angeles rates 119 Elo points above Dallas, 8th in the league against 24th.",
+     "Los Angeles rates 105 Elo points above Dallas, 10th in the league against 24th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Dallas has 13 days of rest to Los Angeles's 7, worth 12 Elo points to Dallas.",
-     "No market line yet, so this is the model alone: Los Angeles at 70%, a Strong pick, predicted 26 to 20."
+     "No market line yet, so this is the model alone: Los Angeles at 68%, a Strong pick, predicted 26 to 20."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -23635,7 +23606,7 @@
      "team_elo_home": 1553.2949994822388,
      "team_elo_away": 1510.3819013683053,
      "elo_gap_home": 42.91309811393353,
-     "home_rank": 9,
+     "home_rank": 8,
      "away_rank": 15,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -23658,7 +23629,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Chicago rates 43 Elo points above Green Bay, 9th in the league against 15th.",
+     "Chicago rates 43 Elo points above Green Bay, 8th in the league against 15th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "No market line yet, so this is the model alone: Chicago at 62%, a Lean pick, predicted 25 to 21."
     ],
@@ -23688,17 +23659,17 @@
    },
    "official": {
     "pick": "DEN",
-    "p_home_model": 0.5449552499124936,
+    "p_home_model": 0.5256876970414832,
     "p_home_market": null,
-    "p_home_blend": 0.5449552499124936,
-    "p_pick_blend": 0.5449552499124936,
+    "p_home_blend": 0.5256876970414832,
+    "p_pick_blend": 0.5256876970414832,
     "tier": "Toss-up",
-    "model_spread": 1.2529077210335253,
-    "blend_spread": 1.2529077210335258,
-    "expected_home": 23.639321507575584,
-    "expected_away": 22.38641378654206,
+    "model_spread": 0.7146147736171224,
+    "blend_spread": 0.7146147736171222,
+    "expected_home": 23.370175033867383,
+    "expected_away": 22.65556026025026,
     "display_home": 24,
-    "display_away": 22,
+    "display_away": 23,
     "total_used": 46.025735294117645,
     "total_source": "league_average",
     "market": null,
@@ -23712,8 +23683,8 @@
     "estimated_ev_per_dollar": null,
     "factors": {
      "team_elo_home": 1582.1028445346155,
-     "team_elo_away": 1588.7801515087774,
-     "elo_gap_home": -6.677306974161866,
+     "team_elo_away": 1602.2374751941875,
+     "elo_gap_home": -20.13463065957194,
      "home_rank": 7,
      "away_rank": 6,
      "hfa_elo": 40.0,
@@ -23726,8 +23697,8 @@
      "qb_away": null,
      "qb_elo": 0.0,
      "form_home_3": 6.748764085015637,
-     "form_away_3": 2.1331871691616016,
-     "d_total": 31.322693025838134,
+     "form_away_3": 0.5748029274043347,
+     "d_total": 17.86536934042806,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -23737,9 +23708,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Buffalo rates 7 Elo points above Denver, 6th in the league against 7th.",
+     "Buffalo rates 20 Elo points above Denver, 6th in the league against 7th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "No market line yet, so this is the model alone: Denver at 54%, a Toss-up pick, predicted 24 to 22."
+     "No market line yet, so this is the model alone: Denver at 53%, a Toss-up pick, predicted 24 to 23."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -23767,15 +23738,15 @@
    },
    "official": {
     "pick": "SEA",
-    "p_home_model": 0.6760804303994744,
+    "p_home_model": 0.6928087327266521,
     "p_home_market": null,
-    "p_home_blend": 0.6760804303994744,
-    "p_pick_blend": 0.6760804303994744,
+    "p_home_blend": 0.6928087327266521,
+    "p_pick_blend": 0.6928087327266521,
     "tier": "Strong",
-    "model_spread": 5.112978855521132,
-    "blend_spread": 5.112978855521132,
-    "expected_home": 25.56935707481939,
-    "expected_away": 20.456378219298255,
+    "model_spread": 5.6512718029375355,
+    "blend_spread": 5.6512718029375355,
+    "expected_home": 25.83850354852759,
+    "expected_away": 20.187231745590054,
     "display_home": 26,
     "display_away": 20,
     "total_used": 46.025735294117645,
@@ -23791,10 +23762,10 @@
     "estimated_ev_per_dollar": null,
     "factors": {
      "team_elo_home": 1642.8833214020876,
-     "team_elo_away": 1557.0588500140593,
-     "elo_gap_home": 85.82447138802831,
+     "team_elo_away": 1543.6015263286492,
+     "elo_gap_home": 99.28179507343839,
      "home_rank": 1,
-     "away_rank": 8,
+     "away_rank": 10,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 6,
@@ -23805,8 +23776,8 @@
      "qb_away": null,
      "qb_elo": 0.0,
      "form_home_3": -23.432518071349477,
-     "form_away_3": 18.15047977598647,
-     "d_total": 127.82447138802831,
+     "form_away_3": -11.679176606184228,
+     "d_total": 141.2817950734384,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -23816,9 +23787,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Seattle rates 86 Elo points above Los Angeles, 1st in the league against 8th.",
+     "Seattle rates 99 Elo points above Los Angeles, 1st in the league against 10th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "No market line yet, so this is the model alone: Seattle at 68%, a Strong pick, predicted 26 to 20."
+     "No market line yet, so this is the model alone: Seattle at 69%, a Strong pick, predicted 26 to 20."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -24113,7 +24084,7 @@
      "team_elo_home": 1547.1264225108469,
      "team_elo_away": 1461.1807032495137,
      "elo_gap_home": 85.94571926133312,
-     "home_rank": 10,
+     "home_rank": 9,
      "away_rank": 22,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -24136,7 +24107,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Baltimore rates 86 Elo points above Cleveland, 10th in the league against 22nd.",
+     "Baltimore rates 86 Elo points above Cleveland, 9th in the league against 22nd.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "No market line yet, so this is the model alone: Baltimore at 67%, a Strong pick, predicted 26 to 20."
     ],
@@ -24835,7 +24806,7 @@
      "team_elo_away": 1547.1264225108469,
      "elo_gap_home": -42.091350742044824,
      "home_rank": 16,
-     "away_rank": 10,
+     "away_rank": 9,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 4,
@@ -24857,7 +24828,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Baltimore rates 42 Elo points above Cincinnati, 10th in the league against 16th.",
+     "Baltimore rates 42 Elo points above Cincinnati, 9th in the league against 16th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "No market line yet, so this is the model alone: Baltimore at 50%, a Toss-up pick, predicted 24 to 23."
     ],
@@ -24887,15 +24858,15 @@
    },
    "official": {
     "pick": "BUF",
-    "p_home_model": 0.28904962274316376,
+    "p_home_model": 0.2733939127573559,
     "p_home_market": null,
-    "p_home_blend": 0.28904962274316376,
-    "p_pick_blend": 0.7109503772568362,
+    "p_home_blend": 0.2733939127573559,
+    "p_pick_blend": 0.7266060872426441,
     "tier": "Strong",
-    "model_spread": -6.253870113912044,
-    "blend_spread": -6.253870113912044,
-    "expected_home": 19.8859325901028,
-    "expected_away": 26.139802704014844,
+    "model_spread": -6.792163061328447,
+    "blend_spread": -6.792163061328447,
+    "expected_home": 19.6167861163946,
+    "expected_away": 26.408949177723045,
     "display_home": 20,
     "display_away": 26,
     "total_used": 46.025735294117645,
@@ -24911,8 +24882,8 @@
     "estimated_ev_per_dollar": null,
     "factors": {
      "team_elo_home": 1396.4333986609763,
-     "team_elo_away": 1588.7801515087774,
-     "elo_gap_home": -192.3467528478011,
+     "team_elo_away": 1602.2374751941875,
+     "elo_gap_home": -205.80407653321117,
      "home_rank": 31,
      "away_rank": 6,
      "hfa_elo": 40.0,
@@ -24925,8 +24896,8 @@
      "qb_away": null,
      "qb_elo": 0.0,
      "form_home_3": -32.31624620231037,
-     "form_away_3": 2.1331871691616016,
-     "d_total": -156.3467528478011,
+     "form_away_3": 0.5748029274043347,
+     "d_total": -169.80407653321117,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -24936,9 +24907,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Buffalo rates 192 Elo points above Miami, 6th in the league against 31st.",
+     "Buffalo rates 206 Elo points above Miami, 6th in the league against 31st.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "No market line yet, so this is the model alone: Buffalo at 71%, a Strong pick, predicted 26 to 20."
+     "No market line yet, so this is the model alone: Buffalo at 73%, a Strong pick, predicted 26 to 20."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -25203,17 +25174,17 @@
    },
    "official": {
     "pick": "LA",
-    "p_home_model": 0.3864953344562599,
+    "p_home_model": 0.40501755478465146,
     "p_home_market": null,
-    "p_home_blend": 0.3864953344562599,
-    "p_pick_blend": 0.6135046655437402,
+    "p_home_blend": 0.40501755478465146,
+    "p_pick_blend": 0.5949824452153485,
     "tier": "Lean",
-    "model_spread": -3.2107778245322063,
-    "blend_spread": -3.2107778245322076,
-    "expected_home": 21.40747873479272,
-    "expected_away": 24.618256559324927,
-    "display_home": 21,
-    "display_away": 25,
+    "model_spread": -2.672484877115803,
+    "blend_spread": -2.672484877115803,
+    "expected_home": 21.676625208500923,
+    "expected_away": 24.349110085616722,
+    "display_home": 22,
+    "display_away": 24,
     "total_used": 46.025735294117645,
     "total_source": "league_average",
     "market": null,
@@ -25227,10 +25198,10 @@
     "estimated_ev_per_dollar": null,
     "factors": {
      "team_elo_home": 1440.7894044007542,
-     "team_elo_away": 1557.0588500140593,
-     "elo_gap_home": -116.26944561330515,
+     "team_elo_away": 1543.6015263286492,
+     "elo_gap_home": -102.81212192789508,
      "home_rank": 23,
-     "away_rank": 8,
+     "away_rank": 10,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 7,
@@ -25241,8 +25212,8 @@
      "qb_away": null,
      "qb_elo": 0.0,
      "form_home_3": 8.280594633484043,
-     "form_away_3": 18.15047977598647,
-     "d_total": -80.26944561330515,
+     "form_away_3": -11.679176606184228,
+     "d_total": -66.81212192789508,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -25252,9 +25223,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Los Angeles rates 116 Elo points above Tampa Bay, 8th in the league against 23rd.",
+     "Los Angeles rates 103 Elo points above Tampa Bay, 10th in the league against 23rd.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "No market line yet, so this is the model alone: Los Angeles at 61%, a Lean pick, predicted 25 to 21."
+     "No market line yet, so this is the model alone: Los Angeles at 59%, a Lean pick, predicted 24 to 22."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -25869,7 +25840,7 @@
      "team_elo_home": 1553.2949994822388,
      "team_elo_away": 1513.6336769590953,
      "elo_gap_home": 39.661322523143554,
-     "home_rank": 9,
+     "home_rank": 8,
      "away_rank": 12,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -25893,7 +25864,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Chicago rates 40 Elo points above Detroit, 9th in the league against 12th.",
+     "Chicago rates 40 Elo points above Detroit, 8th in the league against 12th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Chicago has 9 days of rest to Detroit's 6, worth 6 Elo points to Chicago.",
      "No market line yet, so this is the model alone: Chicago at 62%, a Lean pick, predicted 25 to 21."
@@ -26194,7 +26165,7 @@
      "team_elo_away": 1553.2949994822388,
      "elo_gap_home": 71.37139694503344,
      "home_rank": 3,
-     "away_rank": 9,
+     "away_rank": 8,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
      "rest_home": 7,
@@ -26216,7 +26187,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Minnesota rates 71 Elo points above Chicago, 3rd in the league against 9th.",
+     "Minnesota rates 71 Elo points above Chicago, 3rd in the league against 8th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "No market line yet, so this is the model alone: Minnesota at 66%, a Strong pick, predicted 25 to 21."
     ],
@@ -26803,17 +26774,17 @@
    },
    "official": {
     "pick": "BUF",
-    "p_home_model": 0.7810491225600086,
+    "p_home_model": 0.7940081672770996,
     "p_home_market": null,
-    "p_home_blend": 0.7810491225600086,
-    "p_pick_blend": 0.7810491225600086,
+    "p_home_blend": 0.7940081672770996,
+    "p_pick_blend": 0.7940081672770996,
     "tier": "Lock-ish",
-    "model_spread": 8.837306542150955,
-    "blend_spread": 8.837306542150957,
-    "expected_home": 27.4315209181343,
-    "expected_away": 18.594214375983345,
-    "display_home": 27,
-    "display_away": 19,
+    "model_spread": 9.375599489567357,
+    "blend_spread": 9.375599489567357,
+    "expected_home": 27.7006673918425,
+    "expected_away": 18.325067902275144,
+    "display_home": 28,
+    "display_away": 18,
     "total_used": 46.025735294117645,
     "total_source": "league_average",
     "market": null,
@@ -26826,9 +26797,9 @@
     "best_price": null,
     "estimated_ev_per_dollar": null,
     "factors": {
-     "team_elo_home": 1588.7801515087774,
+     "team_elo_home": 1602.2374751941875,
      "team_elo_away": 1407.8474879550035,
-     "elo_gap_home": 180.93266355377386,
+     "elo_gap_home": 194.38998723918394,
      "home_rank": 6,
      "away_rank": 29,
      "hfa_elo": 40.0,
@@ -26840,9 +26811,9 @@
      "qb_home": null,
      "qb_away": null,
      "qb_elo": 0.0,
-     "form_home_3": 2.1331871691616016,
+     "form_home_3": 0.5748029274043347,
      "form_away_3": 2.1469107134039405,
-     "d_total": 220.93266355377386,
+     "d_total": 234.38998723918394,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -26852,9 +26823,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Buffalo rates 181 Elo points above New York, 6th in the league against 29th.",
+     "Buffalo rates 194 Elo points above New York, 6th in the league against 29th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "No market line yet, so this is the model alone: Buffalo at 78%, a Lock-ish pick, predicted 27 to 19."
+     "No market line yet, so this is the model alone: Buffalo at 79%, a Lock-ish pick, predicted 28 to 18."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -26989,7 +26960,7 @@
      "team_elo_home": 1547.1264225108469,
      "team_elo_away": 1512.3223142725988,
      "elo_gap_home": 34.80410823824809,
-     "home_rank": 10,
+     "home_rank": 9,
      "away_rank": 14,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -27013,7 +26984,7 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Baltimore rates 35 Elo points above Pittsburgh, 10th in the league against 14th.",
+     "Baltimore rates 35 Elo points above Pittsburgh, 9th in the league against 14th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Baltimore has 10 days of rest to Pittsburgh's 7, worth 6 Elo points to Baltimore.",
      "No market line yet, so this is the model alone: Baltimore at 61%, a Lean pick, predicted 25 to 21."
@@ -27044,15 +27015,15 @@
    },
    "official": {
     "pick": "SEA",
-    "p_home_model": 0.4344330426030151,
+    "p_home_model": 0.4155050326849303,
     "p_home_market": null,
-    "p_home_blend": 0.4344330426030151,
-    "p_pick_blend": 0.5655669573969849,
+    "p_home_blend": 0.4155050326849303,
+    "p_pick_blend": 0.5844949673150697,
     "tier": "Lean",
-    "model_spread": -1.8329788555211326,
-    "blend_spread": -1.8329788555211326,
-    "expected_home": 22.096378219298256,
-    "expected_away": 23.92935707481939,
+    "model_spread": -2.3712718029375357,
+    "blend_spread": -2.3712718029375366,
+    "expected_home": 21.827231745590055,
+    "expected_away": 24.19850354852759,
     "display_home": 22,
     "display_away": 24,
     "total_used": 46.025735294117645,
@@ -27067,10 +27038,10 @@
     "best_price": null,
     "estimated_ev_per_dollar": null,
     "factors": {
-     "team_elo_home": 1557.0588500140593,
+     "team_elo_home": 1543.6015263286492,
      "team_elo_away": 1642.8833214020876,
-     "elo_gap_home": -85.82447138802831,
-     "home_rank": 8,
+     "elo_gap_home": -99.28179507343839,
+     "home_rank": 10,
      "away_rank": 1,
      "hfa_elo": 40.0,
      "hfa_spread_pts": 1.6,
@@ -27081,9 +27052,9 @@
      "qb_home": null,
      "qb_away": null,
      "qb_elo": 0.0,
-     "form_home_3": 18.15047977598647,
+     "form_home_3": -11.679176606184228,
      "form_away_3": -23.432518071349477,
-     "d_total": -45.824471388028314,
+     "d_total": -59.28179507343839,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
     },
@@ -27093,9 +27064,9 @@
      "verdict"
     ],
     "rationale_sentences": [
-     "Seattle rates 86 Elo points above Los Angeles, 1st in the league against 8th.",
+     "Seattle rates 99 Elo points above Los Angeles, 1st in the league against 10th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
-     "No market line yet, so this is the model alone: Seattle at 57%, a Lean pick, predicted 24 to 22."
+     "No market line yet, so this is the model alone: Seattle at 58%, a Lean pick, predicted 24 to 22."
     ],
     "edge": null,
     "parlay_eligible": false
@@ -27389,11 +27360,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 5.4947,
-    "playoffs": 0.0066,
+    "projected_wins": 5.5164,
+    "playoffs": 0.0089,
     "division": 0.0,
     "seed1": 0.0,
-    "super_bowl": 0.0
+    "super_bowl": 0.0001
    }
   },
   {
@@ -27440,11 +27411,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 7.5398,
-    "playoffs": 0.2904,
-    "division": 0.27,
+    "projected_wins": 7.5799,
+    "playoffs": 0.3026,
+    "division": 0.2793,
     "seed1": 0.0002,
-    "super_bowl": 0.0035
+    "super_bowl": 0.0031
    }
   },
   {
@@ -27456,7 +27427,7 @@
    "full_name": "Baltimore Ravens",
    "aliases": [],
    "elo": 1547.1264225108469,
-   "rank": 10,
+   "rank": 9,
    "record": {
     "w": 4,
     "l": 1,
@@ -27491,11 +27462,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 10.7385,
-    "playoffs": 0.8328,
-    "division": 0.5889,
-    "seed1": 0.0913,
-    "super_bowl": 0.0393
+    "projected_wins": 10.7218,
+    "playoffs": 0.8281,
+    "division": 0.5905,
+    "seed1": 0.0776,
+    "super_bowl": 0.034
    }
   },
   {
@@ -27506,10 +27477,10 @@
    "division": "AFC East",
    "full_name": "Buffalo Bills",
    "aliases": [],
-   "elo": 1588.7801515087774,
+   "elo": 1602.2374751941875,
    "rank": 6,
    "record": {
-    "w": 3,
+    "w": 4,
     "l": 1,
     "t": 0
    },
@@ -27529,20 +27500,24 @@
     [
      4,
      1588.7801515087774
+    ],
+    [
+     5,
+     1602.2374751941875
     ]
    ],
    "qb": {
     "id": "00-0034857",
     "name": "Josh Allen",
-    "q": 36.223966526782284
+    "q": 38.91543126386429
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 10.7969,
-    "playoffs": 0.8696,
-    "division": 0.4023,
-    "seed1": 0.1135,
-    "super_bowl": 0.0667
+    "projected_wins": 11.5262,
+    "playoffs": 0.944,
+    "division": 0.5259,
+    "seed1": 0.1965,
+    "super_bowl": 0.0929
    }
   },
   {
@@ -27585,11 +27560,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 8.2735,
-    "playoffs": 0.5971,
-    "division": 0.5898,
+    "projected_wins": 8.2498,
+    "playoffs": 0.5878,
+    "division": 0.578,
     "seed1": 0.0012,
-    "super_bowl": 0.01
+    "super_bowl": 0.0083
    }
   },
   {
@@ -27601,7 +27576,7 @@
    "full_name": "Chicago Bears",
    "aliases": [],
    "elo": 1553.2949994822388,
-   "rank": 9,
+   "rank": 8,
    "record": {
     "w": 3,
     "l": 2,
@@ -27636,11 +27611,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 9.477699999999999,
-    "playoffs": 0.5764,
-    "division": 0.047,
-    "seed1": 0.0061,
-    "super_bowl": 0.0194
+    "projected_wins": 9.4245,
+    "playoffs": 0.6375,
+    "division": 0.0529,
+    "seed1": 0.0076,
+    "super_bowl": 0.023
    }
   },
   {
@@ -27687,11 +27662,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 9.5779,
-    "playoffs": 0.5311,
-    "division": 0.1799,
-    "seed1": 0.0189,
-    "super_bowl": 0.011
+    "projected_wins": 9.552299999999999,
+    "playoffs": 0.516,
+    "division": 0.1726,
+    "seed1": 0.0132,
+    "super_bowl": 0.0111
    }
   },
   {
@@ -27738,11 +27713,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 8.710899999999999,
-    "playoffs": 0.291,
-    "division": 0.0732,
-    "seed1": 0.0048,
-    "super_bowl": 0.0021
+    "projected_wins": 8.7219,
+    "playoffs": 0.2872,
+    "division": 0.074,
+    "seed1": 0.0039,
+    "super_bowl": 0.0035
    }
   },
   {
@@ -27789,11 +27764,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 7.0059,
-    "playoffs": 0.119,
-    "division": 0.1033,
+    "projected_wins": 7.0335,
+    "playoffs": 0.1274,
+    "division": 0.1079,
     "seed1": 0.0,
-    "super_bowl": 0.0011
+    "super_bowl": 0.0005
    }
   },
   {
@@ -27840,11 +27815,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 10.4884,
-    "playoffs": 0.8284,
-    "division": 0.5008,
-    "seed1": 0.0696,
-    "super_bowl": 0.0575
+    "projected_wins": 10.4343,
+    "playoffs": 0.8201,
+    "division": 0.4946,
+    "seed1": 0.0584,
+    "super_bowl": 0.0526
    }
   },
   {
@@ -27891,11 +27866,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 9.108699999999999,
-    "playoffs": 0.4282,
-    "division": 0.0349,
-    "seed1": 0.0047,
-    "super_bowl": 0.008
+    "projected_wins": 9.1069,
+    "playoffs": 0.4639,
+    "division": 0.0378,
+    "seed1": 0.0046,
+    "super_bowl": 0.0092
    }
   },
   {
@@ -27942,11 +27917,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 8.9505,
-    "playoffs": 0.3447,
-    "division": 0.0222,
-    "seed1": 0.0028,
-    "super_bowl": 0.0064
+    "projected_wins": 8.9747,
+    "playoffs": 0.3845,
+    "division": 0.0224,
+    "seed1": 0.0038,
+    "super_bowl": 0.0075
    }
   },
   {
@@ -27993,11 +27968,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 7.3971,
-    "playoffs": 0.1419,
-    "division": 0.0178,
-    "seed1": 0.0002,
-    "super_bowl": 0.0027
+    "projected_wins": 7.3732,
+    "playoffs": 0.1325,
+    "division": 0.0188,
+    "seed1": 0.0005,
+    "super_bowl": 0.0021
    }
   },
   {
@@ -28044,11 +28019,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 7.8133,
-    "playoffs": 0.1432,
-    "division": 0.026,
-    "seed1": 0.0008,
-    "super_bowl": 0.0011
+    "projected_wins": 7.8457,
+    "playoffs": 0.1436,
+    "division": 0.0269,
+    "seed1": 0.0009,
+    "super_bowl": 0.0015
    }
   },
   {
@@ -28095,11 +28070,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 12.0888,
-    "playoffs": 0.9813,
-    "division": 0.9562,
-    "seed1": 0.4654,
-    "super_bowl": 0.1439
+    "projected_wins": 12.1009,
+    "playoffs": 0.9824,
+    "division": 0.9543,
+    "seed1": 0.4304,
+    "super_bowl": 0.1392
    }
   },
   {
@@ -28142,11 +28117,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 10.9177,
-    "playoffs": 0.8619,
-    "division": 0.4759,
-    "seed1": 0.0967,
-    "super_bowl": 0.0381
+    "projected_wins": 10.8947,
+    "playoffs": 0.8519,
+    "division": 0.4821,
+    "seed1": 0.0851,
+    "super_bowl": 0.034
    }
   },
   {
@@ -28160,11 +28135,11 @@
     "St. Louis Rams",
     "St Louis Rams"
    ],
-   "elo": 1557.0588500140593,
-   "rank": 8,
+   "elo": 1543.6015263286492,
+   "rank": 10,
    "record": {
     "w": 2,
-    "l": 2,
+    "l": 3,
     "t": 0
    },
    "trend": [
@@ -28183,20 +28158,24 @@
     [
      4,
      1557.0588500140593
+    ],
+    [
+     5,
+     1543.6015263286492
     ]
    ],
    "qb": {
     "id": "00-0026498",
     "name": "Matthew Stafford",
-    "q": 19.12919966101796
+    "q": 16.43773492393595
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 9.4953,
-    "playoffs": 0.6188,
-    "division": 0.0284,
-    "seed1": 0.0081,
-    "super_bowl": 0.0223
+    "projected_wins": 8.8078,
+    "playoffs": 0.4381,
+    "division": 0.012,
+    "seed1": 0.0017,
+    "super_bowl": 0.0103
    }
   },
   {
@@ -28245,9 +28224,9 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 4.1414,
-    "playoffs": 0.0007,
-    "division": 0.0,
+    "projected_wins": 4.1788,
+    "playoffs": 0.0002,
+    "division": 0.0002,
     "seed1": 0.0,
     "super_bowl": 0.0
    }
@@ -28298,11 +28277,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 7.7021,
-    "playoffs": 0.1099,
-    "division": 0.0233,
-    "seed1": 0.0005,
-    "super_bowl": 0.0007
+    "projected_wins": 7.7082,
+    "playoffs": 0.1032,
+    "division": 0.0231,
+    "seed1": 0.0006,
+    "super_bowl": 0.001
    }
   },
   {
@@ -28349,7 +28328,7 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 4.0572,
+    "projected_wins": 4.0335,
     "playoffs": 0.0004,
     "division": 0.0001,
     "seed1": 0.0,
@@ -28400,11 +28379,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 12.9101,
-    "playoffs": 0.9873,
-    "division": 0.8959,
-    "seed1": 0.3296,
-    "super_bowl": 0.1541
+    "projected_wins": 12.8642,
+    "playoffs": 0.9888,
+    "division": 0.8869,
+    "seed1": 0.3165,
+    "super_bowl": 0.1537
    }
   },
   {
@@ -28451,11 +28430,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 10.8285,
-    "playoffs": 0.8981,
-    "division": 0.5921,
-    "seed1": 0.1244,
-    "super_bowl": 0.0876
+    "projected_wins": 10.822,
+    "playoffs": 0.8881,
+    "division": 0.4719,
+    "seed1": 0.1215,
+    "super_bowl": 0.0806
    }
   },
   {
@@ -28502,11 +28481,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 5.9011,
-    "playoffs": 0.0585,
-    "division": 0.0546,
+    "projected_wins": 5.9321,
+    "playoffs": 0.0608,
+    "division": 0.056,
     "seed1": 0.0,
-    "super_bowl": 0.0008
+    "super_bowl": 0.0001
    }
   },
   {
@@ -28553,11 +28532,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 8.5526,
-    "playoffs": 0.6126,
-    "division": 0.5757,
-    "seed1": 0.0075,
-    "super_bowl": 0.0063
+    "projected_wins": 8.5137,
+    "playoffs": 0.6154,
+    "division": 0.5702,
+    "seed1": 0.0072,
+    "super_bowl": 0.0108
    }
   },
   {
@@ -28604,11 +28583,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 6.3275,
-    "playoffs": 0.0232,
-    "division": 0.0055,
+    "projected_wins": 6.2499,
+    "playoffs": 0.0169,
+    "division": 0.0021,
     "seed1": 0.0,
-    "super_bowl": 0.0002
+    "super_bowl": 0.0
    }
   },
   {
@@ -28655,11 +28634,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 7.8142,
-    "playoffs": 0.2981,
-    "division": 0.2719,
-    "seed1": 0.0005,
-    "super_bowl": 0.0041
+    "projected_wins": 7.8464,
+    "playoffs": 0.301,
+    "division": 0.2711,
+    "seed1": 0.0002,
+    "super_bowl": 0.0039
    }
   },
   {
@@ -28706,10 +28685,10 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 9.2615,
-    "playoffs": 0.4863,
-    "division": 0.158,
-    "seed1": 0.0139,
+    "projected_wins": 9.265799999999999,
+    "playoffs": 0.4853,
+    "division": 0.1629,
+    "seed1": 0.0114,
     "super_bowl": 0.01
    }
   },
@@ -28757,11 +28736,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 11.0771,
-    "playoffs": 0.9086,
-    "division": 0.2367,
-    "seed1": 0.1118,
-    "super_bowl": 0.121
+    "projected_wins": 11.1172,
+    "playoffs": 0.921,
+    "division": 0.2428,
+    "seed1": 0.1172,
+    "super_bowl": 0.1261
    }
   },
   {
@@ -28808,11 +28787,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 13.1738,
-    "playoffs": 0.9925,
-    "division": 0.7349,
-    "seed1": 0.5273,
-    "super_bowl": 0.1807
+    "projected_wins": 13.2081,
+    "playoffs": 0.9947,
+    "division": 0.7452,
+    "seed1": 0.5397,
+    "super_bowl": 0.1797
    }
   },
   {
@@ -28859,11 +28838,11 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 6.2165,
-    "playoffs": 0.0916,
-    "division": 0.0856,
+    "projected_wins": 6.2435,
+    "playoffs": 0.0937,
+    "division": 0.0867,
     "seed1": 0.0,
-    "super_bowl": 0.0006
+    "super_bowl": 0.0005
    }
   },
   {
@@ -28910,8 +28889,8 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 3.223,
-    "playoffs": 0.0002,
+    "projected_wins": 3.2346,
+    "playoffs": 0.0001,
     "division": 0.0,
     "seed1": 0.0,
     "super_bowl": 0.0
@@ -28964,26 +28943,26 @@
    },
    "simulation": {
     "runs": 10000,
-    "projected_wins": 5.9378,
-    "playoffs": 0.0696,
-    "division": 0.0491,
-    "seed1": 0.0002,
-    "super_bowl": 0.0008
+    "projected_wins": 5.9175,
+    "playoffs": 0.0739,
+    "division": 0.0508,
+    "seed1": 0.0001,
+    "super_bowl": 0.0007
    }
   }
  ],
  "scorecard": {
-  "league_date": "2026-10-12",
+  "league_date": "2026-10-15",
   "games_on_slate": 1,
   "season": {
    "season": 2026,
-   "n": 13,
+   "n": 14,
    "hits": 8,
-   "losses": 4,
+   "losses": 5,
    "pushes": 1,
-   "accuracy": 0.6666666666666666,
-   "market_n": 12,
-   "market_accuracy": 0.75
+   "accuracy": 0.6153846153846154,
+   "market_n": 13,
+   "market_accuracy": 0.6923076923076923
   },
   "holdout": {
    "season": 2025,
@@ -28996,14 +28975,14 @@
  },
  "track_record": {
   "overall": {
-   "n": 13,
+   "n": 14,
    "hits": 8,
-   "losses": 4,
+   "losses": 5,
    "pushes": 1,
-   "accuracy": 0.6666666666666666,
-   "market_n": 12,
+   "accuracy": 0.6153846153846154,
+   "market_n": 13,
    "market_hits": 9,
-   "market_accuracy": 0.75
+   "market_accuracy": 0.6923076923076923
   },
   "by_tier": [
    {
@@ -29019,14 +28998,14 @@
    },
    {
     "tier": "Lean",
-    "n": 6,
+    "n": 7,
     "hits": 3,
-    "losses": 2,
+    "losses": 3,
     "pushes": 1,
-    "accuracy": 0.6,
-    "market_n": 5,
+    "accuracy": 0.5,
+    "market_n": 6,
     "market_hits": 3,
-    "market_accuracy": 0.6
+    "market_accuracy": 0.5
    },
    {
     "tier": "Strong",
@@ -29055,22 +29034,22 @@
    {
     "season": 2026,
     "week": 5,
-    "n": 13,
+    "n": 14,
     "hits": 8,
-    "losses": 4,
+    "losses": 5,
     "pushes": 1,
-    "cum_n": 13,
+    "cum_n": 14,
     "cum_hits": 8,
-    "cum_accuracy": 0.6666666666666666,
-    "market_n": 12,
+    "cum_accuracy": 0.6153846153846154,
+    "market_n": 13,
     "market_hits": 9,
-    "market_cum_n": 12,
+    "market_cum_n": 13,
     "market_cum_hits": 9,
-    "market_cum_accuracy": 0.75
+    "market_cum_accuracy": 0.6923076923076923
    }
   ],
   "calibration": {
-   "n": 12,
+   "n": 13,
    "bins": [
     {
      "lo": 0.0,
@@ -29115,9 +29094,9 @@
     {
      "lo": 0.5,
      "hi": 0.6,
-     "n": 3,
-     "mean_p": 0.5803652028614678,
-     "hit_rate": 0.3333333333333333,
+     "n": 4,
+     "mean_p": 0.5770921830761253,
+     "hit_rate": 0.25,
      "low_sample": true
     },
     {
@@ -29157,27 +29136,27 @@
    "error_n": 0
   },
   "score_error": {
-   "n": 13,
-   "margin_mae": 10.076923076923077,
-   "total_mae": 9.76923076923077,
-   "market_n": 13,
-   "market_margin_mae": 10.153846153846153,
-   "market_total_mae": 9.807692307692308
+   "n": 14,
+   "margin_mae": 9.714285714285714,
+   "total_mae": 10.285714285714286,
+   "market_n": 14,
+   "market_margin_mae": 9.892857142857142,
+   "market_total_mae": 10.214285714285714
   },
   "clv": {
-   "n": 13,
-   "mean_pp": -0.12156362947225441,
-   "share_toward_pick": 0.38461538461538464
+   "n": 14,
+   "mean_pp": -0.02617152388773501,
+   "share_toward_pick": 0.42857142857142855
   },
   "units": {
    "all": {
-    "n": 13,
+    "n": 14,
     "hits": 8,
-    "losses": 4,
+    "losses": 5,
     "pushes": 1,
-    "units": -0.2361140382511666,
-    "roi": -0.018162618327012818,
-    "mean_break_even": 0.6479836776233862
+    "units": -1.2361140382511666,
+    "roi": -0.08829385987508333,
+    "mean_break_even": 0.6471536746762612
    },
    "ev_positive": {
     "n": 3,
