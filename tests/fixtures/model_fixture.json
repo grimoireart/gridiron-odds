@@ -13,6 +13,12 @@
    "rows": 7548,
    "max_result_date": "2026-10-09",
    "fetched": true
+  },
+  "injuries": {
+   "available": true,
+   "injuries_rows": 1413,
+   "depth_chart_as_of": "2026-10-10T13:58:07Z",
+   "teams_with_report_for_next_slate": 30
   }
  },
  "params": {
@@ -60,7 +66,29 @@
    "fanduel",
    "betmgm",
    "betrivers"
-  ]
+  ],
+  "injury": {
+   "enabled": false,
+   "weights": {
+    "OL": 6,
+    "WR_TE": 7,
+    "RB": 4,
+    "DL_EDGE": 6,
+    "LB": 4,
+    "DB": 5
+   },
+   "status_mult": {
+    "Out": 1.0,
+    "Doubtful": 0.75,
+    "Questionable": 0.25,
+    "Probable": 0.0
+   },
+   "gate": {
+    "holdout_brier_with": null,
+    "holdout_brier_without": null,
+    "improvement_required": 0.001
+   }
+  }
  },
  "evaluation": {
   "season": 2025,
@@ -232,10 +260,150 @@
      "model_market_gap_home": -0.17989100802753255,
      "model_market_gap_pick": -0.17989100802753255
     },
+    "injuries": {
+     "enabled": false,
+     "as_of": "2026-10-09T00:15:00Z",
+     "home": {
+      "available": true,
+      "report_filed": true,
+      "players": [
+       {
+        "gsis_id": "00-0036358",
+        "name": "CeeDee Lamb",
+        "position": "WR",
+        "pos_group": "WR_TE",
+        "status": "Out",
+        "injury": "Ankle",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0038556",
+        "name": "DeMarvion Overshown",
+        "position": "LB",
+        "pos_group": "LB",
+        "status": "Out",
+        "injury": "Hamstring",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0037243",
+        "name": "Tyler Smith",
+        "position": "G",
+        "pos_group": "OL",
+        "status": "Questionable",
+        "injury": "Thumb",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0037839",
+        "name": "Cobie Durant",
+        "position": "CB",
+        "pos_group": "DB",
+        "status": "Out",
+        "injury": "Hamstring",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0040874",
+        "name": "Drew Shelton",
+        "position": "T",
+        "pos_group": "OL",
+        "status": "Out",
+        "injury": "Hamstring",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0039062",
+        "name": "Jonathan Mingo",
+        "position": "WR",
+        "pos_group": "WR_TE",
+        "status": "Questionable",
+        "injury": "Illness",
+        "starter": false,
+        "covered_by_qb_term": false
+       }
+      ],
+      "starters_out": 2,
+      "starters_doubtful": 0,
+      "starters_questionable": 1,
+      "total_listed": 6,
+      "qb_listed": null
+     },
+     "away": {
+      "available": true,
+      "report_filed": true,
+      "players": [
+       {
+        "gsis_id": "00-0036411",
+        "name": "Antoine Winfield Jr.",
+        "position": "S",
+        "pos_group": "DB",
+        "status": "Out",
+        "injury": "Rib",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0040747",
+        "name": "Benjamin Morrison",
+        "position": "CB",
+        "pos_group": "DB",
+        "status": "Out",
+        "injury": "Quadricep",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0041251",
+        "name": "Jalon Daniels",
+        "position": "QB",
+        "pos_group": "QB",
+        "status": "Questionable",
+        "injury": "Shoulder",
+        "starter": true,
+        "covered_by_qb_term": true
+       },
+       {
+        "gsis_id": "00-0034855",
+        "name": "Baker Mayfield",
+        "position": "QB",
+        "pos_group": "QB",
+        "status": "Out",
+        "injury": "Thumb",
+        "starter": false,
+        "covered_by_qb_term": true
+       },
+       {
+        "gsis_id": "00-0039049",
+        "name": "SirVocea Dennis",
+        "position": "LB",
+        "pos_group": "LB",
+        "status": "Out",
+        "injury": "Ankle",
+        "starter": false,
+        "covered_by_qb_term": false
+       }
+      ],
+      "starters_out": 2,
+      "starters_doubtful": 0,
+      "starters_questionable": 0,
+      "total_listed": 5,
+      "qb_listed": "Questionable"
+     },
+     "elo_home": 0.0,
+     "elo_away": 0.0,
+     "elo": 0.0
+    },
     "rationale": [
      "rating",
      "home_field",
      "quarterback",
+     "injuries",
      "market",
      "verdict"
     ],
@@ -243,6 +411,7 @@
      "Tampa Bay rates 7 Elo points above Dallas, 10th in the league against 11th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Dallas's listed starter, Dak Prescott, rates 59 points above the other listed starter.",
+     "Dallas lists 2 starters out (LB, WR_TE); Tampa Bay lists 2 starters out (DB); shown for context, not in the number yet.",
      "The books have Dallas at 81%, further than the model's 63%; the gap may reflect information this model lacks.",
      "Blended, that comes to 75%: a Strong pick, predicted 27 to 23."
     ],
@@ -405,6 +574,33 @@
      "d_total": 34.7,
      "model_market_gap_home": 0.024742674266480025,
      "model_market_gap_pick": 0.024742674266480025
+    },
+    "injuries": {
+     "enabled": false,
+     "as_of": "2026-10-10T00:15:00Z",
+     "home": {
+      "available": true,
+      "report_filed": false,
+      "players": [],
+      "starters_out": 0,
+      "starters_doubtful": 0,
+      "starters_questionable": 0,
+      "total_listed": 0,
+      "qb_listed": null
+     },
+     "away": {
+      "available": true,
+      "report_filed": false,
+      "players": [],
+      "starters_out": 0,
+      "starters_doubtful": 0,
+      "starters_questionable": 0,
+      "total_listed": 0,
+      "qb_listed": null
+     },
+     "elo_home": 0.0,
+     "elo_away": 0.0,
+     "elo": 0.0
     },
     "rationale": [
      "rating",
@@ -574,13 +770,124 @@
      "model_market_gap_home": -0.22152091606819502,
      "model_market_gap_pick": -0.22152091606819502
     },
+    "injuries": {
+     "enabled": false,
+     "as_of": "2026-10-10T14:03:12Z",
+     "home": {
+      "available": true,
+      "report_filed": true,
+      "players": [
+       {
+        "gsis_id": "00-0033038",
+        "name": "Eric Murray",
+        "position": "S",
+        "pos_group": "DB",
+        "status": "Doubtful",
+        "injury": "Concussion",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0037106",
+        "name": "Jaylon Jones",
+        "position": "CB",
+        "pos_group": "DB",
+        "status": "Out",
+        "injury": "Hamstring",
+        "starter": false,
+        "covered_by_qb_term": false
+       }
+      ],
+      "starters_out": 0,
+      "starters_doubtful": 1,
+      "starters_questionable": 0,
+      "total_listed": 2,
+      "qb_listed": null
+     },
+     "away": {
+      "available": true,
+      "report_filed": true,
+      "players": [
+       {
+        "gsis_id": "00-0036912",
+        "name": "DeVonta Smith",
+        "position": "WR",
+        "pos_group": "WR_TE",
+        "status": "Out",
+        "injury": "Hamstring",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0040587",
+        "name": "Drew Kendall",
+        "position": "C",
+        "pos_group": "OL",
+        "status": "Out",
+        "injury": "Knee",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0034993",
+        "name": "Marcus Epps",
+        "position": "S",
+        "pos_group": "DB",
+        "status": "Out",
+        "injury": "Groin",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0034844",
+        "name": "Saquon Barkley",
+        "position": "RB",
+        "pos_group": "RB",
+        "status": "Out",
+        "injury": "Hamstring",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0036224",
+        "name": "Jonathan Greenard",
+        "position": "LB",
+        "pos_group": "LB",
+        "status": "Questionable",
+        "injury": "Ankle",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0035662",
+        "name": "Marquise Brown",
+        "position": "WR",
+        "pos_group": "WR_TE",
+        "status": "Out",
+        "injury": "Ankle",
+        "starter": false,
+        "covered_by_qb_term": false
+       }
+      ],
+      "starters_out": 4,
+      "starters_doubtful": 0,
+      "starters_questionable": 1,
+      "total_listed": 6,
+      "qb_listed": null
+     },
+     "elo_home": 0.0,
+     "elo_away": 0.0,
+     "elo": 0.0
+    },
     "rationale": [
      "rating",
+     "injuries",
      "market",
      "verdict"
     ],
     "rationale_sentences": [
      "Jacksonville rates 54 Elo points above Philadelphia, 4th in the league against 9th.",
+     "Jacksonville lists 1 doubtful (DB); Philadelphia lists 4 starters out (DB, OL, RB, WR_TE); shown for context, not in the number yet.",
      "The books have Jacksonville at 76%, further than the model's 54%; the gap may reflect information this model lacks.",
      "Blended, that comes to 68%: a Strong pick, predicted 21 to 20."
     ],
@@ -736,6 +1043,33 @@
      "model_market_gap_home": 0.24646062803329405,
      "model_market_gap_pick": 0.24646062803329405
     },
+    "injuries": {
+     "enabled": false,
+     "as_of": "2026-10-10T14:03:12Z",
+     "home": {
+      "available": false,
+      "report_filed": false,
+      "players": [],
+      "starters_out": 0,
+      "starters_doubtful": 0,
+      "starters_questionable": 0,
+      "total_listed": 0,
+      "qb_listed": null
+     },
+     "away": {
+      "available": false,
+      "report_filed": false,
+      "players": [],
+      "starters_out": 0,
+      "starters_doubtful": 0,
+      "starters_questionable": 0,
+      "total_listed": 0,
+      "qb_listed": null
+     },
+     "elo_home": 0.0,
+     "elo_away": 0.0,
+     "elo": 0.0
+    },
     "rationale": [
      "rating",
      "home_field",
@@ -844,6 +1178,185 @@
      "d_total": -69.2,
      "model_market_gap_home": null,
      "model_market_gap_pick": null
+    },
+    "injuries": {
+     "enabled": false,
+     "as_of": "2026-10-10T14:03:12Z",
+     "home": {
+      "available": true,
+      "report_filed": true,
+      "players": [
+       {
+        "gsis_id": "00-0041523",
+        "name": "Caleb Douglas",
+        "position": "WR",
+        "pos_group": "WR_TE",
+        "status": "Out",
+        "injury": "Ankle",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0041077",
+        "name": "Justin Joly",
+        "position": "TE",
+        "pos_group": "WR_TE",
+        "status": "Out",
+        "injury": "Concussion",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0038521",
+        "name": "Reese Taylor",
+        "position": "CB",
+        "pos_group": "DB",
+        "status": "Out",
+        "injury": "Quadricep",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0038603",
+        "name": "Rob Beal Jr.",
+        "position": "DE",
+        "pos_group": "DL_EDGE",
+        "status": "Out",
+        "injury": "Hamstring",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0040066",
+        "name": "Jackson Woodard",
+        "position": "LB",
+        "pos_group": "LB",
+        "status": "Questionable",
+        "injury": "Ankle",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0039874",
+        "name": "Jaylen Wright",
+        "position": "RB",
+        "pos_group": "RB",
+        "status": "Questionable",
+        "injury": "Foot",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0040127",
+        "name": "Kenneth Grant",
+        "position": "DT",
+        "pos_group": "DL_EDGE",
+        "status": "Questionable",
+        "injury": "Toe",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": null,
+        "name": "Practice Squad Guard",
+        "position": "G",
+        "pos_group": "OL",
+        "status": "Questionable",
+        "injury": "Knee",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0039481",
+        "name": "Storm Duck",
+        "position": "CB",
+        "pos_group": "DB",
+        "status": "Questionable",
+        "injury": "Knee",
+        "starter": false,
+        "covered_by_qb_term": false
+       }
+      ],
+      "starters_out": 0,
+      "starters_doubtful": 0,
+      "starters_questionable": 0,
+      "total_listed": 9,
+      "qb_listed": null
+     },
+     "away": {
+      "available": true,
+      "report_filed": true,
+      "players": [
+       {
+        "gsis_id": "00-0037193",
+        "name": "Bryan Cook",
+        "position": "S",
+        "pos_group": "DB",
+        "status": "Questionable",
+        "injury": "Ankle",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0036900",
+        "name": "Ja'Marr Chase",
+        "position": "WR",
+        "pos_group": "WR_TE",
+        "status": "Questionable",
+        "injury": "Concussion",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0036231",
+        "name": "Kyle Dugger",
+        "position": "S",
+        "pos_group": "DB",
+        "status": "Out",
+        "injury": "Quadricep",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0041069",
+        "name": "Colbie Young",
+        "position": "WR",
+        "pos_group": "WR_TE",
+        "status": "Questionable",
+        "injury": "Knee",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0039313",
+        "name": "Swayze Bozeman",
+        "position": "LB",
+        "pos_group": "LB",
+        "status": "Questionable",
+        "injury": "Groin",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0036410",
+        "name": "Tee Higgins",
+        "position": "WR",
+        "pos_group": "WR_TE",
+        "status": "Questionable",
+        "injury": "Groin",
+        "starter": false,
+        "covered_by_qb_term": false
+       }
+      ],
+      "starters_out": 0,
+      "starters_doubtful": 0,
+      "starters_questionable": 2,
+      "total_listed": 6,
+      "qb_listed": null
+     },
+     "elo_home": 0.0,
+     "elo_away": 0.0,
+     "elo": 0.0
     },
     "rationale": [
      "rating",
@@ -1005,14 +1518,215 @@
      "model_market_gap_home": -0.03627432216444615,
      "model_market_gap_pick": -0.03627432216444615
     },
+    "injuries": {
+     "enabled": false,
+     "as_of": "2026-10-10T14:03:12Z",
+     "home": {
+      "available": true,
+      "report_filed": true,
+      "players": [
+       {
+        "gsis_id": "00-0034778",
+        "name": "Carlton Davis III",
+        "position": "CB",
+        "pos_group": "DB",
+        "status": "Out",
+        "injury": "Neck",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0039147",
+        "name": "Christian Gonzalez",
+        "position": "CB",
+        "pos_group": "DB",
+        "status": "Out",
+        "injury": "Shoulder",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0036187",
+        "name": "Reggie Gilliam",
+        "position": "FB",
+        "pos_group": "RB",
+        "status": "Out",
+        "injury": "Ankle",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0036981",
+        "name": "Christian Barmore",
+        "position": "DT",
+        "pos_group": "DL_EDGE",
+        "status": "Questionable",
+        "injury": "Shoulder",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0036813",
+        "name": "Christian Elliss",
+        "position": "LB",
+        "pos_group": "LB",
+        "status": "Questionable",
+        "injury": "Chest",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0040716",
+        "name": "Craig Woodson",
+        "position": "S",
+        "pos_group": "DB",
+        "status": "Questionable",
+        "injury": "Shoulder",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0035678",
+        "name": "Dre'Mont Jones",
+        "position": "LB",
+        "pos_group": "LB",
+        "status": "Questionable",
+        "injury": "Shoulder",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0031330",
+        "name": "Morgan Moses",
+        "position": "T",
+        "pos_group": "OL",
+        "status": "Questionable",
+        "injury": "Foot",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0036875",
+        "name": "Rhamondre Stevenson",
+        "position": "RB",
+        "pos_group": "RB",
+        "status": "Questionable",
+        "injury": "Knee",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0041316",
+        "name": "Channing Canada",
+        "position": "CB",
+        "pos_group": "DB",
+        "status": "Out",
+        "injury": "Hamstring",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0041088",
+        "name": "Karon Prunty",
+        "position": "CB",
+        "pos_group": "DB",
+        "status": "Out",
+        "injury": "Hamstring",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0033555",
+        "name": "Mack Hollins",
+        "position": "WR",
+        "pos_group": "WR_TE",
+        "status": "Out",
+        "injury": "Calf",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0039770",
+        "name": "Charles Woods",
+        "position": "CB",
+        "pos_group": "DB",
+        "status": "Questionable",
+        "injury": "Shoulder",
+        "starter": false,
+        "covered_by_qb_term": false
+       }
+      ],
+      "starters_out": 3,
+      "starters_doubtful": 0,
+      "starters_questionable": 6,
+      "total_listed": 13,
+      "qb_listed": null
+     },
+     "away": {
+      "available": true,
+      "report_filed": true,
+      "players": [
+       {
+        "gsis_id": "00-0040122",
+        "name": "Ashton Jeanty",
+        "position": "RB",
+        "pos_group": "RB",
+        "status": "Questionable",
+        "injury": "Ankle",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0040581",
+        "name": "Dont'e Thornton Jr.",
+        "position": "WR",
+        "pos_group": "WR_TE",
+        "status": "Out",
+        "injury": "Hamstring",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0037291",
+        "name": "Jalen Nailor",
+        "position": "WR",
+        "pos_group": "WR_TE",
+        "status": "Out",
+        "injury": "Concussion",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0040871",
+        "name": "Trey Zuhn III",
+        "position": "C",
+        "pos_group": "OL",
+        "status": "Out",
+        "injury": "Knee",
+        "starter": false,
+        "covered_by_qb_term": false
+       }
+      ],
+      "starters_out": 0,
+      "starters_doubtful": 0,
+      "starters_questionable": 1,
+      "total_listed": 4,
+      "qb_listed": null
+     },
+     "elo_home": 0.0,
+     "elo_away": 0.0,
+     "elo": 0.0
+    },
     "rationale": [
      "rating",
      "home_field",
+     "injuries",
      "verdict"
     ],
     "rationale_sentences": [
      "New England rates 131 Elo points above Las Vegas, 12th in the league against 28th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
+     "New England lists 3 starters out (DB, RB); Las Vegas lists no starter out or doubtful; shown for context, not in the number yet.",
      "Blended, that comes to 78%: a Lock-ish pick, predicted 27 to 19."
     ],
     "edge": null,
@@ -1163,9 +1877,189 @@
      "model_market_gap_home": 0.09344031208953518,
      "model_market_gap_pick": 0.09344031208953518
     },
+    "injuries": {
+     "enabled": false,
+     "as_of": "2026-10-10T14:03:12Z",
+     "home": {
+      "available": true,
+      "report_filed": true,
+      "players": [
+       {
+        "gsis_id": "00-0034790",
+        "name": "Derwin James",
+        "position": "S",
+        "pos_group": "DB",
+        "status": "Out",
+        "injury": "Hamstring",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0034356",
+        "name": "Donte Jackson",
+        "position": "CB",
+        "pos_group": "DB",
+        "status": "Out",
+        "injury": "Hamstring",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0038046",
+        "name": "Charlie Kolar",
+        "position": "TE",
+        "pos_group": "WR_TE",
+        "status": "Questionable",
+        "injury": "Forearm",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0039915",
+        "name": "Ladd McConkey",
+        "position": "WR",
+        "pos_group": "WR_TE",
+        "status": "Questionable",
+        "injury": "Foot",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0041550",
+        "name": "Brenen Thompson",
+        "position": "WR",
+        "pos_group": "WR_TE",
+        "status": "Out",
+        "injury": "Quadricep",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0039897",
+        "name": "Joe Alt",
+        "position": "T",
+        "pos_group": "OL",
+        "status": "Out",
+        "injury": "Neck",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0036736",
+        "name": "Kayode Awosika",
+        "position": "G",
+        "pos_group": "OL",
+        "status": "Out",
+        "injury": "Fibula",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0038544",
+        "name": "Quentin Johnston",
+        "position": "WR",
+        "pos_group": "WR_TE",
+        "status": "Out",
+        "injury": "Chest",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0037241",
+        "name": "Trevor Penning",
+        "position": "G",
+        "pos_group": "OL",
+        "status": "Out",
+        "injury": "Concussion",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0037012",
+        "name": "Trey Lance",
+        "position": "QB",
+        "pos_group": "QB",
+        "status": "Doubtful",
+        "injury": "Groin",
+        "starter": false,
+        "covered_by_qb_term": true
+       },
+       {
+        "gsis_id": "00-0040212",
+        "name": "Branson Taylor",
+        "position": "G",
+        "pos_group": "OL",
+        "status": "Questionable",
+        "injury": "Neck",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0041381",
+        "name": "Rodney Shelley",
+        "position": "CB",
+        "pos_group": "DB",
+        "status": "Questionable",
+        "injury": "Hamstring",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0038614",
+        "name": "Scott Matlock",
+        "position": "FB",
+        "pos_group": "RB",
+        "status": "Questionable",
+        "injury": "Foot",
+        "starter": false,
+        "covered_by_qb_term": false
+       }
+      ],
+      "starters_out": 2,
+      "starters_doubtful": 0,
+      "starters_questionable": 2,
+      "total_listed": 13,
+      "qb_listed": null
+     },
+     "away": {
+      "available": true,
+      "report_filed": true,
+      "players": [
+       {
+        "gsis_id": "00-0036874",
+        "name": "Pat Surtain II",
+        "position": "CB",
+        "pos_group": "DB",
+        "status": "Out",
+        "injury": "Ankle",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0038552",
+        "name": "Riley Moss",
+        "position": "CB",
+        "pos_group": "DB",
+        "status": "Out",
+        "injury": "Ribs",
+        "starter": true,
+        "covered_by_qb_term": false
+       }
+      ],
+      "starters_out": 2,
+      "starters_doubtful": 0,
+      "starters_questionable": 0,
+      "total_listed": 2,
+      "qb_listed": null
+     },
+     "elo_home": 0.0,
+     "elo_away": 0.0,
+     "elo": 0.0
+    },
     "rationale": [
      "rating",
      "home_field",
+     "injuries",
      "form",
      "market",
      "verdict"
@@ -1173,6 +2067,7 @@
     "rationale_sentences": [
      "Los Angeles rates 46 Elo points above Denver, 8th in the league against 16th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
+     "Los Angeles lists 2 starters out (DB); Denver lists 2 starters out (DB); shown for context, not in the number yet.",
      "Denver has lost 55 points of rating over its last three games.",
      "The books have Los Angeles at 55%, closer than the model's 65%; the gap may reflect information this model lacks.",
      "Blended, that comes to 59%: a Lean pick, predicted 23 to 19."
@@ -1329,15 +2224,106 @@
      "model_market_gap_home": 0.05826402055877311,
      "model_market_gap_pick": -0.05826402055877311
     },
+    "injuries": {
+     "enabled": false,
+     "as_of": "2026-10-10T14:03:12Z",
+     "home": {
+      "available": true,
+      "report_filed": true,
+      "players": [
+       {
+        "gsis_id": "00-0037841",
+        "name": "Quentin Lake",
+        "position": "S",
+        "pos_group": "DB",
+        "status": "Questionable",
+        "injury": "Hip",
+        "starter": true,
+        "covered_by_qb_term": false
+       }
+      ],
+      "starters_out": 0,
+      "starters_doubtful": 0,
+      "starters_questionable": 1,
+      "total_listed": 1,
+      "qb_listed": null
+     },
+     "away": {
+      "available": true,
+      "report_filed": true,
+      "players": [
+       {
+        "gsis_id": "00-0035230",
+        "name": "Ed Oliver",
+        "position": "DE",
+        "pos_group": "DL_EDGE",
+        "status": "Out",
+        "injury": "Knee",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0034827",
+        "name": "DJ Moore",
+        "position": "WR",
+        "pos_group": "WR_TE",
+        "status": "Questionable",
+        "injury": "Shoulder",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0037034",
+        "name": "Dee Alford",
+        "position": "CB",
+        "pos_group": "DB",
+        "status": "Questionable",
+        "injury": "Ankle",
+        "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0036988",
+        "name": "Josh Palmer",
+        "position": "WR",
+        "pos_group": "WR_TE",
+        "status": "Out",
+        "injury": "Shoulder",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0040132",
+        "name": "Landon Jackson",
+        "position": "DE",
+        "pos_group": "DL_EDGE",
+        "status": "Questionable",
+        "injury": "Knee",
+        "starter": false,
+        "covered_by_qb_term": false
+       }
+      ],
+      "starters_out": 1,
+      "starters_doubtful": 0,
+      "starters_questionable": 2,
+      "total_listed": 5,
+      "qb_listed": null
+     },
+     "elo_home": 0.0,
+     "elo_away": 0.0,
+     "elo": 0.0
+    },
     "rationale": [
      "rating",
      "home_field",
+     "injuries",
      "market",
      "verdict"
     ],
     "rationale_sentences": [
      "Buffalo rates 51 Elo points above Los Angeles, 2nd in the league against 6th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
+     "Los Angeles lists no starter out or doubtful; Buffalo lists 1 starter out (DL_EDGE); shown for context, not in the number yet.",
      "The books have Buffalo at 62%, further than the model's 56%; the gap may reflect information this model lacks.",
      "Blended, that comes to 60%: a Lean pick, predicted 28 to 26."
     ],
@@ -2957,6 +3943,41 @@
     "market_n": 5,
     "market_hits": 5,
     "market_accuracy": 1.0
+   }
+  ],
+  "by_injury_load": [
+   {
+    "load": "starter_out",
+    "n": 0,
+    "hits": 0,
+    "losses": 0,
+    "pushes": 0,
+    "accuracy": null,
+    "market_n": 0,
+    "market_hits": 0,
+    "market_accuracy": null
+   },
+   {
+    "load": "no_starter_out",
+    "n": 0,
+    "hits": 0,
+    "losses": 0,
+    "pushes": 0,
+    "accuracy": null,
+    "market_n": 0,
+    "market_hits": 0,
+    "market_accuracy": null
+   },
+   {
+    "load": "unknown",
+    "n": 52,
+    "hits": 32,
+    "losses": 20,
+    "pushes": 0,
+    "accuracy": 0.6153846153846154,
+    "market_n": 50,
+    "market_hits": 33,
+    "market_accuracy": 0.66
    }
   ],
   "by_week": [

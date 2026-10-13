@@ -3,16 +3,24 @@
     python3 -m src.build            # == make build
 
 Pipeline: fetch games.csv (or use the cache under GRIDIRON_OFFLINE=1) -> load -> Elo replay ->
-one official odds call (ODDS_API_KEY) or CSV closing lines -> predict every game of the current
-season -> season simulation -> ledger snapshots + grades + reducer -> assemble model.json ->
+one official odds call (ODDS_API_KEY) or CSV closing lines -> the season's injury report and
+depth chart (nflverse, cached under data/; D18) -> predict every game of the current season ->
+season simulation -> ledger snapshots + grades + reducer -> assemble model.json ->
 schema.validate_model (any problem aborts, nothing is written) -> append picks.jsonl ->
 write model.json and index.html atomically.
 
 Environment: GRIDIRON_OFFLINE (skip the download), ODDS_API_KEY (the single Odds API call),
 GRIDIRON_ODDS_URL (the optional live-overlay Worker URL, embedded by src/render.py). Nothing else.
 
-Every helper below is pure except ``run``/``main`` (I/O) and ``official_market_inputs`` (one
-network call through ``market.fetch_official_odds``). Numbers are never rounded here.
+Every helper below is pure except ``run``/``main`` (I/O), ``official_market_inputs`` (one
+network call through ``market.fetch_official_odds``) and ``fetch_injury_files`` (two cached
+nflverse downloads through ``injuries.fetch_*``). Numbers are never rounded here.
+
+Injury term (D18.6): ``params.injury_tuning.mode`` is ``"pregame"`` — the term is added to d at
+forecast time on the plain replay's ratings, which is what passed the gate — so the replay runs
+WITHOUT ``elo.replay``'s ``extra`` hook and ``predict.predict_game`` applies each game's own
+report term (played games included, at ``as_of = kickoff``). The hook-injected "replay" mode
+failed the gate (params.json ``injury_tuning.alternative``) and is not used by the build.
 """
 from __future__ import annotations
 
@@ -23,7 +31,7 @@ import time
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
-from . import data, elo, evaluate, ledger, market, predict, qb, render, schema, simulate
+from . import data, elo, evaluate, injuries, ledger, market, predict, qb, render, schema, simulate
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GAMES_PATH = os.path.join(ROOT, "data", "games.csv")
@@ -32,7 +40,10 @@ PICKS_PATH = os.path.join(ROOT, "picks.jsonl")
 MODEL_PATH = os.path.join(ROOT, "model.json")
 INDEX_PATH = os.path.join(ROOT, "index.html")
 
-PARAM_KEYS = ("elo", "qb", "blend", "tier_bounds", "score", "sim", "books")
+DATA_DIR = os.path.join(ROOT, "data")
+
+PARAM_KEYS = ("elo", "qb", "blend", "tier_bounds", "score", "sim", "books", "injury")
+INJURY_BUILD_KEYS = ("available", "injuries_rows", "depth_chart_as_of", "teams_with_report_for_next_slate")
 CSV_CLOSE_KEYS = ("home_moneyline", "away_moneyline", "spread_line", "total_line")
 
 
@@ -93,7 +104,7 @@ def next_league_date(entries: list[dict], league_date: str) -> str | None:
 
 
 def params_block(params_file: dict) -> dict:
-    """The section-2.3 params object (exactly the seven keys) from params.json."""
+    """The section-2.3 params object (exactly the eight keys) from params.json."""
     missing = [k for k in PARAM_KEYS if k not in params_file]
     if missing:
         raise BuildError("params.json is missing %s (run make tune)" % missing)
@@ -231,6 +242,128 @@ def scorecard_block(build: dict, entries: list[dict], season_agg: dict, evaluati
 
 
 # ----------------------------------------------------------------------------
+# Injury reports (D18, CONTRACT 2.6b / 6.7)
+# ----------------------------------------------------------------------------
+
+
+def injury_as_of(built_at: str, kickoff_utc: str) -> str:
+    """CONTRACT 2.6b: the depth-chart cutoff for a game is min(built_at, kickoff_utc).
+
+    ISO-8601 UTC strings at second precision compare lexicographically, so no parsing."""
+    return built_at if built_at <= kickoff_utc else kickoff_utc
+
+
+def depth_rows_by_team(depth_rows: list[dict]) -> dict:
+    """{canonical team: [depth rows]} so starters are computed on ~1/32 of the file per call."""
+    out: dict = {}
+    for r in depth_rows:
+        team = schema.canonical_code((r.get("team") or "").strip() or None)
+        if team is not None:
+            out.setdefault(team, []).append(r)
+    return out
+
+
+def depth_chart_as_of(depth_rows: list[dict], built_at: str) -> str | None:
+    """The latest depth-chart snapshot time at or before ``built_at`` (null when none)."""
+    latest = None
+    for r in depth_rows:
+        dt = (r.get("dt") or "").strip()
+        if dt and dt <= built_at and (latest is None or dt > latest):
+            latest = dt
+    return latest
+
+
+def injury_rows_by_team_week(injury_rows: list[dict], season: int) -> dict:
+    """{(team, week_str): rows} for one season; ``injuries.report_for`` re-checks every row."""
+    out: dict = {}
+    want = str(season)
+    for r in injury_rows:
+        if (r.get("season") or "").strip() != want:
+            continue
+        team = schema.canonical_code((r.get("team") or "").strip() or None)
+        if team is None:
+            continue
+        out.setdefault((team, (r.get("week") or "").strip()), []).append(r)
+    return out
+
+
+def injury_context(rows: list[dict], injury_rows: list[dict] | None, depth_rows: list[dict] | None,
+                   built_at: str) -> dict:
+    """CONTRACT 6.7 ``context["injuries"]``: {game_id: {"home", "away", "as_of"}} for every game.
+
+    Each team's report is ``injuries.report_for`` over that (season, week, team); starters come
+    from ``injuries.starters_by_team`` on the team's depth rows at ``injury_as_of``, computed once
+    per distinct (team, as_of). Returns {} (every game unavailable) when either file is missing.
+    """
+    if injury_rows is None or depth_rows is None:
+        return {}
+    by_team = depth_rows_by_team(depth_rows)
+    by_week: dict = {}
+    starters: dict = {}
+    out: dict = {}
+    for g in rows:
+        season = g["season"]
+        if season not in by_week:
+            by_week[season] = injury_rows_by_team_week(injury_rows, season)
+        as_of = injury_as_of(built_at, g["kickoff_utc"])
+        entry = {"as_of": as_of}
+        for side in ("home", "away"):
+            team = g[side]
+            key = (team, as_of)
+            if key not in starters:
+                starters[key] = injuries.starters_by_team(by_team.get(team, []), as_of)
+            entry[side] = injuries.report_for(by_week[season].get((team, str(g["week"])), []), starters[key],
+                                              team, season, g["week"], g.get(side + "_qb_id"))
+        out[g["game_id"]] = entry
+    return out
+
+
+def next_slate_week(rows: list[dict], league_date: str) -> int | None:
+    """The week of the earliest scheduled game on or after ``league_date`` (the next slate)."""
+    pending = [(g["league_date"], g["week"]) for g in rows if not g["played"] and g["league_date"] >= league_date]
+    return min(pending)[1] if pending else None
+
+
+def injuries_build_block(rows: list[dict], context_injuries: dict, injury_rows: list[dict] | None,
+                         depth_rows: list[dict] | None, built_at: str, league_date: str) -> dict:
+    """CONTRACT 2.2 ``build.injuries``: what the build had to work with.
+
+    ``teams_with_report_for_next_slate`` counts the teams playing in the next slate's week whose
+    report for that week is filed (0 before the league publishes it: "no report filed yet")."""
+    available = injury_rows is not None and depth_rows is not None
+    week = next_slate_week(rows, league_date)
+    filed = set()
+    if available and week is not None:
+        for g in rows:
+            if g["week"] != week:
+                continue
+            entry = context_injuries.get(g["game_id"]) or {}
+            for side in ("home", "away"):
+                if (entry.get(side) or {}).get("report_filed"):
+                    filed.add(g[side])
+    return {
+        "available": available,
+        "injuries_rows": len(injury_rows or []),
+        "depth_chart_as_of": depth_chart_as_of(depth_rows, built_at) if available else None,
+        "teams_with_report_for_next_slate": len(filed),
+    }
+
+
+def fetch_injury_files(season: int, cache_dir: str = DATA_DIR, offline: bool = False, log=print) -> dict:
+    """The two nflverse files for ``season`` (I/O; D12 style via ``injuries.fetch_*``).
+
+    Returns {"injuries": rows | None, "depth": rows | None}. A failure never aborts the build:
+    ``injuries.fetch_*`` logs one stderr line and returns the cache, or None when there is no
+    usable cache, and every report then degrades to ``available: false`` (CONTRACT 2.6b)."""
+    inj = injuries.fetch_injuries(season, cache_dir, offline=offline)
+    dep = injuries.fetch_depth_charts(season, cache_dir, offline=offline)
+    if inj is None or dep is None:
+        missing = [name for name, rows in (("injuries_%d.csv" % season, inj), ("depth_charts_%d.csv" % season, dep)) if rows is None]
+        print("injuries: %s unavailable; every report degrades to available=false" % ", ".join(missing), file=sys.stderr)
+    return {"injuries": inj, "depth": dep}
+
+
+# ----------------------------------------------------------------------------
 # Odds (the one network call) and assembly
 # ----------------------------------------------------------------------------
 
@@ -254,20 +387,25 @@ def official_market_inputs(api_key: str | None, games: list[dict], fetch=None) -
     return {"odds_source": "odds_api", "official_odds_at": r["fetched_at"], "matched": market.match_overlay(games, overlay)}
 
 
-def assemble(games: list[dict], params_file: dict, fetch_report: dict, built_at: str, odds: dict, events: list[dict]) -> dict:
+def assemble(games: list[dict], params_file: dict, fetch_report: dict, built_at: str, odds: dict, events: list[dict],
+             injury_files: dict | None = None) -> dict:
     """Everything from normalized games to a validated-shape model plus the new ledger events.
 
-    Pure given its inputs. Returns {"model", "new_snapshots", "new_grades"}; the caller validates
-    the model and does the writing.
+    Pure given its inputs. ``injury_files`` is ``fetch_injury_files``'s result (None = both files
+    unavailable). Returns {"model", "new_snapshots", "new_grades"}; the caller validates the
+    model and does the writing.
     """
     params = params_block(params_file)
     season = current_season(games)
     rows = season_games(games, season)
     by_id = {g["game_id"]: g for g in games}
+    injury_files = injury_files or {"injuries": None, "depth": None}
 
     rep = elo.replay(games, params)
     ratings_now = current_ratings(rep, games, season, params)
     context = predict_context(rep, ratings_now, params)
+    context["injuries"] = injury_context(rows, injury_files["injuries"], injury_files["depth"], built_at)
+    context["injuries_as_of"] = built_at
 
     entries = []
     for g in rows:
@@ -302,6 +440,8 @@ def assemble(games: list[dict], params_file: dict, fetch_report: dict, built_at:
             "max_result_date": data.max_result_date(games),
             "fetched": bool(fetch_report["fetched"]),
         },
+        "injuries": injuries_build_block(rows, context["injuries"], injury_files["injuries"], injury_files["depth"],
+                                         built_at, league_date),
     }
 
     lgames = ledger_games(entries, by_id)
@@ -345,7 +485,7 @@ def write_json_atomic(obj: dict, path: str) -> None:
 def run(games_path: str = GAMES_PATH, params_path: str = PARAMS_PATH, picks_path: str = PICKS_PATH,
         model_path: str = MODEL_PATH, index_path: str = INDEX_PATH, offline: bool | None = None,
         api_key: str | None = None, odds_url: str | None = None, now: datetime | None = None,
-        fetch_odds=None, log=print) -> dict:
+        fetch_odds=None, log=print, injury_cache_dir: str = DATA_DIR) -> dict:
     """The whole build. Returns a summary dict; raises BuildError / DataError on failure.
 
     Nothing is written unless ``schema.validate_model`` returns no problems. Write order:
@@ -362,8 +502,9 @@ def run(games_path: str = GAMES_PATH, params_path: str = PARAMS_PATH, picks_path
         params_file = json.load(fh)
     events = ledger.read_events(picks_path)
     odds = official_market_inputs(api_key, games, fetch=fetch_odds)
+    injury_files = fetch_injury_files(current_season(games), injury_cache_dir, offline=offline, log=log)
 
-    out = assemble(games, params_file, report, built_at, odds, events)
+    out = assemble(games, params_file, report, built_at, odds, events, injury_files)
     model = out["model"]
     problems = schema.validate_model(model)
     if problems:
@@ -386,10 +527,25 @@ def run(games_path: str = GAMES_PATH, params_path: str = PARAMS_PATH, picks_path
         "grades_written": len(out["new_grades"]),
         "ledger_events": len(events) + len(out["new_snapshots"]) + len(out["new_grades"]),
         "fetched": report["fetched"],
+        "injuries_available": model["build"]["injuries"]["available"],
+        "teams_with_report_for_next_slate": model["build"]["injuries"]["teams_with_report_for_next_slate"],
+        "injury_term_enabled": bool(model["params"]["injury"]["enabled"]),
         "seconds": time.perf_counter() - t0,
     }
+    # D18.1: a missing season file never fails the build, but with the term enabled it is not a
+    # cosmetic degrade — every term is 0, so every unfrozen probability moved and any snapshot
+    # written this build was made without the reports. Say so where the operator will see it.
+    summary["injury_term_degraded"] = summary["injury_term_enabled"] and not summary["injuries_available"]
+    if summary["injury_term_degraded"]:
+        msg = ("injuries: WARNING the injury term is enabled but the season files are unavailable; every term "
+               "is 0 this build, model probabilities moved, and %d snapshot(s) were written without the reports "
+               "(they are superseded when the feed returns; see RUNBOOK)" % summary["snapshots_written"])
+        log(msg)
+        print(msg, file=sys.stderr)
     log("build %(build_id)s: %(games)d games (%(finals)d final), odds=%(odds_source)s, "
-        "+%(snapshots_written)d snapshots +%(grades_written)d grades (%(ledger_events)d events), %(seconds).1f s" % summary)
+        "+%(snapshots_written)d snapshots +%(grades_written)d grades (%(ledger_events)d events), "
+        "injuries available=%(injuries_available)s next-slate reports=%(teams_with_report_for_next_slate)d "
+        "term=%(injury_term_enabled)s, %(seconds).1f s" % summary)
     return summary
 
 

@@ -42,8 +42,8 @@ GAME_TYPES = ("REG", "WC", "DIV", "CON", "SB")
 GAME_STATUSES = ("scheduled", "final")
 MARKET_SOURCES = ("odds_api", "csv")
 TOTAL_SOURCES = ("odds_api", "csv", "league_average")
-EDGE_REASON_KEYS = ("starter_change", "rest_gap", "form_move", "unknown")
-RATIONALE_KEYS = ("rating", "home_field", "quarterback", "rest", "form", "market", "verdict")
+EDGE_REASON_KEYS = ("starter_change", "injuries", "rest_gap", "form_move", "unknown")  # D17 + D18.4 priority order
+RATIONALE_KEYS = ("rating", "home_field", "quarterback", "rest", "injuries", "form", "market", "verdict")
 LEDGER_EVENT_TYPES = ("snapshot", "grade")
 EDGE_THRESHOLD = 0.08  # D17
 EV_POSITIVE_THRESHOLD = 0.02  # D8
@@ -55,6 +55,10 @@ RATIONALE_QB_GAP = 30.0  # |qb_elo| >= this (or a starter change / first start) 
 RATIONALE_REST_GAP = 3  # |rest_diff| >= this days -> "rest"
 RATIONALE_FORM_MOVE = 40.0  # |form_*_3| >= this Elo points -> "form"
 RATIONALE_MARKET_GAP = 0.05  # |model_market_gap_pick| >= this -> "market"
+# Injury reports (D18, CONTRACT 2.6b): "injuries" iff a starter is Out or Doubtful on either side.
+INJURY_STATUSES = ("Out", "Doubtful", "Questionable", "Probable")  # severity order; Probable only before 2016
+INJURY_GROUPS = ("OL", "WR_TE", "RB", "DL_EDGE", "LB", "DB", "QB", "ST")
+INJURY_WEIGHT_GROUPS = ("OL", "WR_TE", "RB", "DL_EDGE", "LB", "DB")  # params.injury.weights keys (QB/ST carry no weight)
 
 # CSV team-code aliases (nflverse history + other feeds) -> canonical code.
 _TEAMS_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "teams.json")
@@ -150,12 +154,31 @@ OFFICIAL_KEYS = frozenset(
         "best_price",
         "estimated_ev_per_dollar",
         "factors",
+        "injuries",
         "rationale",
         "rationale_sentences",
         "edge",
         "parlay_eligible",
     ]
 )
+INJURIES_KEYS = frozenset(["enabled", "as_of", "home", "away", "elo_home", "elo_away", "elo"])
+INJURY_REPORT_KEYS = frozenset(
+    [
+        "available",
+        "report_filed",
+        "players",
+        "starters_out",
+        "starters_doubtful",
+        "starters_questionable",
+        "total_listed",
+        "qb_listed",
+    ]
+)
+INJURY_PLAYER_KEYS = frozenset(
+    ["gsis_id", "name", "position", "pos_group", "status", "injury", "starter", "covered_by_qb_term"]
+)
+PARAMS_INJURY_KEYS = frozenset(["enabled", "weights", "status_mult", "gate"])
+PARAMS_INJURY_GATE_KEYS = frozenset(["holdout_brier_with", "holdout_brier_without", "improvement_required"])
 GAME_KEYS = frozenset(
     [
         "game_id",
@@ -260,8 +283,11 @@ TOP_KEYS = frozenset(
     ["schema_version", "build", "params", "evaluation", "games", "teams", "scorecard", "track_record"]
 )
 TRACK_RECORD_KEYS = frozenset(
-    ["overall", "by_tier", "by_week", "calibration", "score_error", "clv", "units"]
+    ["overall", "by_tier", "by_week", "by_injury_load", "calibration", "score_error", "clv", "units"]
 )
+INJURY_LOADS = ("starter_out", "no_starter_out", "unknown")  # D18.5 by_injury_load buckets, in order
+BUILD_KEYS = frozenset(["id", "built_at", "official_odds_at", "league_date", "next_league_date", "odds_source", "data", "injuries"])
+BUILD_INJURIES_KEYS = frozenset(["available", "injuries_rows", "depth_chart_as_of", "teams_with_report_for_next_slate"])
 
 
 def _is_num(x) -> bool:
@@ -332,6 +358,144 @@ def _check_qb(qb, where: str, problems: list[str]) -> None:
         problems.append("%s.source: must be 'nflverse_listed'" % where)
 
 
+def _check_injury_report(rep, where: str, problems: list[str]) -> None:
+    """CONTRACT 2.6b report: exact keys, player shape, ordering, counts, the unavailable zeros."""
+    if not _check_keys(rep, INJURY_REPORT_KEYS, where, problems):
+        return
+    for k in ("available", "report_filed"):
+        if not isinstance(rep[k], bool):
+            problems.append("%s.%s: must be bool" % (where, k))
+    for k in ("starters_out", "starters_doubtful", "starters_questionable", "total_listed"):
+        if not _is_int(rep[k]) or rep[k] < 0:
+            problems.append("%s.%s: non-negative int" % (where, k))
+    if rep["qb_listed"] is not None and rep["qb_listed"] not in INJURY_STATUSES:
+        problems.append("%s.qb_listed: one of %s or null" % (where, INJURY_STATUSES))
+    if not isinstance(rep["players"], list):
+        problems.append("%s.players: must be a list" % where)
+        return
+    ok = True
+    for i, p in enumerate(rep["players"]):
+        pw = "%s.players[%d]" % (where, i)
+        if not _check_keys(p, INJURY_PLAYER_KEYS, pw, problems):
+            ok = False
+            continue
+        if p["gsis_id"] is not None and (not isinstance(p["gsis_id"], str) or not p["gsis_id"]):
+            problems.append("%s.gsis_id: non-empty string or null" % pw)
+        if not isinstance(p["name"], str) or not p["name"]:
+            problems.append("%s.name: non-empty string" % pw)
+        for k in ("position", "injury"):
+            if p[k] is not None and not isinstance(p[k], str):
+                problems.append("%s.%s: string or null" % (pw, k))
+        if p["pos_group"] not in INJURY_GROUPS:
+            problems.append("%s.pos_group: %r not in %s" % (pw, p["pos_group"], INJURY_GROUPS))
+            ok = False
+        if p["status"] not in INJURY_STATUSES:
+            problems.append("%s.status: %r not in %s" % (pw, p["status"], INJURY_STATUSES))
+            ok = False
+        for k in ("starter", "covered_by_qb_term"):
+            if not isinstance(p[k], bool):
+                problems.append("%s.%s: must be bool" % (pw, k))
+                ok = False
+        if ok and p["covered_by_qb_term"] != (p["pos_group"] == "QB"):
+            problems.append("%s.covered_by_qb_term must equal (pos_group == 'QB')" % pw)
+    if not ok:
+        return
+    players = rep["players"]
+    if rep["available"] is False:
+        if rep["report_filed"] or players or rep["qb_listed"] is not None or any(
+            rep[k] != 0 for k in ("starters_out", "starters_doubtful", "starters_questionable", "total_listed")
+        ):
+            problems.append("%s: unavailable report must be all false/[]/0/null" % where)
+        return
+    if players and not rep["report_filed"]:
+        problems.append("%s.report_filed: must be true when players are listed" % where)
+    if rep["total_listed"] != len(players):
+        problems.append("%s.total_listed must equal len(players)" % where)
+    counted = [p for p in players if p["starter"] and not p["covered_by_qb_term"]]
+    for k, st in (("starters_out", "Out"), ("starters_doubtful", "Doubtful"), ("starters_questionable", "Questionable")):
+        n = sum(1 for p in counted if p["status"] == st)
+        if rep[k] != n:
+            problems.append("%s.%s: %r but the players imply %d" % (where, k, rep[k], n))
+    order = [(0 if p["starter"] else 1, INJURY_STATUSES.index(p["status"])) for p in players]
+    if order != sorted(order):
+        problems.append("%s.players: must list starters first, then Out, Doubtful, Questionable, Probable" % where)
+
+
+def _injury_term(rep, params_injury) -> float:
+    """The D18.6 formula (mirrors injuries.injury_elo) for the consistency check below."""
+    if not params_injury.get("enabled") or not rep.get("available"):
+        return 0.0
+    w, m = params_injury.get("weights") or {}, params_injury.get("status_mult") or {}
+    total = 0.0
+    for p in rep.get("players") or []:
+        if p.get("starter") and not p.get("covered_by_qb_term"):
+            total += float(w.get(p.get("pos_group"), 0.0)) * float(m.get(p.get("status"), 0.0))
+    return -total if total else 0.0
+
+
+def _check_injuries(inj, where: str, problems: list[str], params_injury) -> None:
+    """CONTRACT 2.6b official.injuries: shape, enabled mirrors params, elo arithmetic and zeros."""
+    if not _check_keys(inj, INJURIES_KEYS, where, problems):
+        return
+    if not isinstance(inj["enabled"], bool):
+        problems.append("%s.enabled: must be bool" % where)
+    elif isinstance(params_injury, dict) and isinstance(params_injury.get("enabled"), bool) and inj["enabled"] != params_injury["enabled"]:
+        problems.append("%s.enabled: must equal params.injury.enabled" % where)
+    if not isinstance(inj["as_of"], str) or not _ISO_UTC.match(inj["as_of"]):
+        problems.append("%s.as_of: must be ISO-8601 UTC 'YYYY-MM-DDTHH:MM:SSZ'" % where)
+    for k in ("elo_home", "elo_away", "elo"):
+        if not _is_num(inj[k]):
+            problems.append("%s.%s: number" % (where, k))
+    before = len(problems)
+    _check_injury_report(inj["home"], where + ".home", problems)
+    _check_injury_report(inj["away"], where + ".away", problems)
+    if len(problems) != before or not all(_is_num(inj[k]) for k in ("elo_home", "elo_away", "elo")):
+        return
+    for k in ("elo_home", "elo_away"):
+        if inj[k] > 1e-9:
+            problems.append("%s.%s: must be <= 0 (a penalty)" % (where, k))
+    if abs(inj["elo_home"] - inj["elo_away"] - inj["elo"]) > 1e-9:
+        problems.append("%s.elo must equal elo_home - elo_away" % where)
+    if inj["enabled"] is False and (inj["elo_home"] != 0 or inj["elo_away"] != 0):
+        problems.append("%s: elo_home/elo_away must be 0 while the term is disabled" % where)
+    for k, side in (("elo_home", "home"), ("elo_away", "away")):
+        if inj[side]["available"] is False and inj[k] != 0:
+            problems.append("%s.%s: must be 0 when the %s report is unavailable" % (where, k, side))
+    if isinstance(params_injury, dict) and isinstance(params_injury.get("weights"), dict) and isinstance(params_injury.get("status_mult"), dict):
+        for k, side in (("elo_home", "home"), ("elo_away", "away")):
+            want = _injury_term(inj[side], params_injury)
+            if abs(inj[k] - want) > 1e-6:
+                problems.append("%s.%s: %r but D18.6 on the %s report gives %r" % (where, k, inj[k], side, want))
+
+
+def _check_params_injury(pi, problems: list[str]) -> None:
+    """params.injury (CONTRACT 2.3, D18): exact keys, ranges, and the enable gate."""
+    where = "params.injury"
+    if not _check_keys(pi, PARAMS_INJURY_KEYS, where, problems):
+        return
+    if not isinstance(pi["enabled"], bool):
+        problems.append("%s.enabled: must be bool" % where)
+    if _check_keys(pi["weights"], frozenset(INJURY_WEIGHT_GROUPS), where + ".weights", problems):
+        for k, v in pi["weights"].items():
+            if not _is_num(v) or v < 0:
+                problems.append("%s.weights.%s: number >= 0" % (where, k))
+    if _check_keys(pi["status_mult"], frozenset(INJURY_STATUSES), where + ".status_mult", problems):
+        for k, v in pi["status_mult"].items():
+            if not _is_num(v) or not 0.0 <= v <= 1.0:
+                problems.append("%s.status_mult.%s: number in [0,1]" % (where, k))
+    if _check_keys(pi["gate"], PARAMS_INJURY_GATE_KEYS, where + ".gate", problems):
+        g = pi["gate"]
+        for k in ("holdout_brier_with", "holdout_brier_without"):
+            if g[k] is not None and (not _is_num(g[k]) or g[k] < 0):
+                problems.append("%s.gate.%s: number >= 0 or null" % (where, k))
+        if not _is_num(g["improvement_required"]) or g["improvement_required"] < 0:
+            problems.append("%s.gate.improvement_required: number >= 0" % where)
+        elif pi["enabled"] is True:
+            w, wo = g["holdout_brier_with"], g["holdout_brier_without"]
+            if not (_is_num(w) and _is_num(wo)) or (wo - w) < g["improvement_required"] - 1e-12:
+                problems.append("%s.enabled: true but the gate is not met (holdout_brier_without - holdout_brier_with must be >= improvement_required)" % where)
+
+
 def _check_market(market, where: str, problems: list[str]) -> None:
     if not _check_keys(market, MARKET_KEYS, where, problems):
         return
@@ -369,7 +533,7 @@ def _check_market(market, where: str, problems: list[str]) -> None:
                 problems.append("%s.%s: number or null" % (bw, k))
 
 
-def _check_game(g, i: int, problems: list[str], tier_bounds: dict, default_books) -> None:
+def _check_game(g, i: int, problems: list[str], tier_bounds: dict, default_books, params_injury=None) -> None:
     where = "games[%d]" % i
     if not _check_keys(g, GAME_KEYS, where, problems):
         return
@@ -518,6 +682,9 @@ def _check_game(g, i: int, problems: list[str], tier_bounds: dict, default_books
         if o["market"] is None and f["model_market_gap_home"] is not None:
             problems.append("%s.model_market_gap_home: must be null without a market" % fw)
 
+    # injury reports (D18)
+    _check_injuries(o["injuries"], ow + ".injuries", problems, params_injury)
+
     # rationale
     if not isinstance(o["rationale"], list) or not all(k in RATIONALE_KEYS for k in o["rationale"]):
         problems.append("%s.rationale: list of keys from %s" % (ow, RATIONALE_KEYS))
@@ -646,6 +813,17 @@ def _check_track_record(tr, problems: list[str]) -> None:
     else:
         for x in bt:
             _check_agg(x, "%s.by_tier[%s]" % (where, x["tier"]), problems, ("tier", "n", "hits", "losses", "pushes", "accuracy", "market_n", "market_hits", "market_accuracy"))
+    bl = tr["by_injury_load"]
+    if not isinstance(bl, list) or [x.get("load") for x in bl if isinstance(x, dict)] != list(INJURY_LOADS):
+        problems.append("%s.by_injury_load: list of 3 entries in load order %s" % (where, INJURY_LOADS))
+    else:
+        for x in bl:
+            if _check_agg(x, "%s.by_injury_load[%s]" % (where, x["load"]), problems, ("load", "n", "hits", "losses", "pushes", "accuracy", "market_n", "market_hits", "market_accuracy")):
+                if all(_is_int(x.get(k)) for k in ("n", "hits", "losses", "pushes")) and x["hits"] + x["losses"] + x["pushes"] != x["n"]:
+                    problems.append("%s.by_injury_load[%s]: hits + losses + pushes must equal n" % (where, x["load"]))
+        if isinstance(ov, dict) and _is_int(ov.get("n")) and all(_is_int(x.get("n")) for x in bl if isinstance(x, dict)):
+            if sum(x["n"] for x in bl) != ov["n"]:
+                problems.append("%s.by_injury_load: bucket counts must sum to overall.n" % where)
     bw = tr["by_week"]
     if not isinstance(bw, list):
         problems.append("%s.by_week: list" % where)
@@ -682,13 +860,27 @@ def _check_track_record(tr, problems: list[str]) -> None:
         problems.append("%s.units: object" % where)
 
 
+def injury_rationale_triggers(injuries) -> bool:
+    """CONTRACT 2.6b trigger: any starter Out or Doubtful on either side (QBs never count)."""
+    if not isinstance(injuries, dict):
+        return False
+    n = 0
+    for side in ("home", "away"):
+        rep = injuries.get(side)
+        if isinstance(rep, dict) and rep.get("available"):
+            n += int(rep.get("starters_out") or 0) + int(rep.get("starters_doubtful") or 0)
+    return n >= 1
+
+
 def expected_rationale_keys(game: dict) -> list[str]:
     """CONTRACT 2.6: the rationale keys a game's factors require, in RATIONALE_KEYS order.
 
     rating and verdict always; home_field iff not neutral; quarterback iff both starters are
     listed and one differs from the usual starter, or is a first start, or |qb_elo| >= 30;
-    rest iff |rest_diff| >= 3; form iff either |form_*_3| >= 40; market iff a market is
-    present and |model_market_gap_pick| >= 0.05. Pure; used by validate_model and tests."""
+    rest iff |rest_diff| >= 3; injuries iff a starter is Out or Doubtful on either side
+    (CONTRACT 2.6b counts, which exclude quarterbacks); form iff either |form_*_3| >= 40;
+    market iff a market is present and |model_market_gap_pick| >= 0.05. Pure; used by
+    validate_model and tests."""
     o = game["official"]
     f = o["factors"]
     keys = ["rating"]
@@ -701,6 +893,8 @@ def expected_rationale_keys(game: dict) -> list[str]:
             keys.append("quarterback")
     if f.get("rest_diff") is not None and abs(f["rest_diff"]) >= RATIONALE_REST_GAP:
         keys.append("rest")
+    if injury_rationale_triggers(o.get("injuries")):
+        keys.append("injuries")
     if any(f.get(k) is not None and abs(f[k]) >= RATIONALE_FORM_MOVE for k in ("form_home_3", "form_away_3")):
         keys.append("form")
     gap = f.get("model_market_gap_pick")
@@ -742,7 +936,7 @@ def validate_model(model: dict) -> list[str]:
         problems.append("schema_version: %r is not major version %s" % (sv, SCHEMA_VERSION.split(".")[0]))
 
     b = model["build"]
-    if _check_keys(b, frozenset(["id", "built_at", "official_odds_at", "league_date", "next_league_date", "odds_source", "data"]), "build", problems):
+    if _check_keys(b, BUILD_KEYS, "build", problems):
         if not isinstance(b["id"], str) or not b["id"]:
             problems.append("build.id: non-empty string")
         if not isinstance(b["built_at"], str) or not _ISO_UTC.match(b["built_at"]):
@@ -765,10 +959,25 @@ def validate_model(model: dict) -> list[str]:
                 problems.append("build.data.max_result_date: 'YYYY-MM-DD' or null")
             if not isinstance(d["fetched"], bool):
                 problems.append("build.data.fetched: bool")
+        bi = b["injuries"]
+        if _check_keys(bi, BUILD_INJURIES_KEYS, "build.injuries", problems):
+            if not isinstance(bi["available"], bool):
+                problems.append("build.injuries.available: bool")
+            if not _is_int(bi["injuries_rows"]) or bi["injuries_rows"] < 0:
+                problems.append("build.injuries.injuries_rows: non-negative int")
+            if bi["depth_chart_as_of"] is not None and (not isinstance(bi["depth_chart_as_of"], str) or not _ISO_UTC.match(bi["depth_chart_as_of"])):
+                problems.append("build.injuries.depth_chart_as_of: ISO-8601 UTC or null")
+            if not _is_int(bi["teams_with_report_for_next_slate"]) or not 0 <= bi["teams_with_report_for_next_slate"] <= 32:
+                problems.append("build.injuries.teams_with_report_for_next_slate: int in 0..32")
+            if bi["available"] is False and (bi["depth_chart_as_of"] is not None or bi["teams_with_report_for_next_slate"] != 0):
+                problems.append("build.injuries: depth_chart_as_of must be null and teams_with_report_for_next_slate 0 when unavailable")
 
     p = model["params"]
     tier_bounds = TIER_BOUNDS
-    if _check_keys(p, frozenset(["elo", "qb", "blend", "tier_bounds", "score", "sim", "books"]), "params", problems):
+    params_injury = None
+    if _check_keys(p, frozenset(["elo", "qb", "blend", "tier_bounds", "score", "sim", "books", "injury"]), "params", problems):
+        params_injury = p["injury"]
+        _check_params_injury(params_injury, problems)
         _check_keys(p["elo"], frozenset(["k", "hfa", "rest_per_day", "reversion", "tie_multiplier"]), "params.elo", problems)
         _check_keys(p["qb"], frozenset(["enabled", "k", "new_qb", "annual_reversion", "inactivity_penalty", "usual_starter_window"]), "params.qb", problems)
         _check_keys(p["blend"], frozenset(["model_weight", "fit_seasons", "fit_metric", "fitted_model_weight", "pinned"]), "params.blend", problems)
@@ -805,7 +1014,7 @@ def validate_model(model: dict) -> list[str]:
         if len(ids) != len(set(ids)):
             problems.append("games: duplicate game_id")
         for i, g in enumerate(games):
-            _check_game(g, i, problems, tier_bounds, default_books)
+            _check_game(g, i, problems, tier_bounds, default_books, params_injury)
 
     teams = model["teams"]
     if not isinstance(teams, list) or len(teams) != 32:

@@ -8,7 +8,10 @@ No file or UI logic, no global state. Surface per docs/CONTRACT.md section 6.1:
     rollover(rating, reversion)                     -> float
     qb_inactivity(q, days_since_last_start, penalty) -> float   (re-exported from src/qb.py)
     pregame_d(elo_home, elo_away, hfa_elo, rest_elo, q_home, q_away) -> float
-    replay(games, params, initial=None)             -> ReplayResult (dict; see docstring)
+    replay(games, params, initial=None, extra=None) -> ReplayResult (dict; see docstring)
+                                                       extra = {game_id: (extra_home_elo, extra_away_elo)}
+                                                       optional per-game rating terms (D18.6 injuries);
+                                                       absent => byte-identical to the plain replay
 
 Conventions: result s = 1 home win / 0 away win / 0.5 tie; d is from the home side; d_fav is d
 from the winner's side (|d| for a tie); delta is added to home and subtracted from away.
@@ -85,8 +88,12 @@ def _rollover_state(ratings: dict, qbs: dict, reversion: float, annual_reversion
         st["q"] = _qb.season_regress(st["q"], annual_reversion)
 
 
-def _pregame(game: dict, ratings: dict, qbs: dict, params: dict) -> dict:
-    """Everything known before a game: ratings, terms, QB q's (lazily decayed) and d/p."""
+def _pregame(game: dict, ratings: dict, qbs: dict, params: dict, extra: dict | None = None) -> dict:
+    """Everything known before a game: ratings, terms, QB q's (lazily decayed) and d/p.
+
+    ``extra`` (optional) maps game_id -> (extra_home_elo, extra_away_elo): per-game rating
+    terms (the D18.6 injury term during tuning) added to d as extra_home - extra_away. When
+    ``extra`` is None nothing changes and the record keeps its original keys."""
     elo_p = params["elo"]
     h, a = game["home"], game["away"]
     elo_home = ratings.get(h, INITIAL_RATING)
@@ -106,7 +113,13 @@ def _pregame(game: dict, ratings: dict, qbs: dict, params: dict) -> dict:
             q_away = _qb.effective_q(st, game["gameday"], params)
             starts_away = st["starts"] if st else 0
     d = pregame_d(elo_home, elo_away, hfa_elo, rest_elo, q_home or 0.0, q_away or 0.0)
-    return {
+    extra_home = extra_away = 0.0
+    if extra is not None:
+        pair = extra.get(game["game_id"])
+        if pair:
+            extra_home, extra_away = float(pair[0]), float(pair[1])
+        d += extra_home - extra_away
+    rec = {
         "p_home": win_prob(d),
         "d": d,
         "elo_home": elo_home,
@@ -118,6 +131,10 @@ def _pregame(game: dict, ratings: dict, qbs: dict, params: dict) -> dict:
         "qb_home_starts": starts_home,
         "qb_away_starts": starts_away,
     }
+    if extra is not None:
+        rec["extra_home"] = extra_home
+        rec["extra_away"] = extra_away
+    return rec
 
 
 def _apply_result(game: dict, pre: dict, ratings: dict, qbs: dict, params: dict) -> float:
@@ -147,7 +164,7 @@ def _apply_result(game: dict, pre: dict, ratings: dict, qbs: dict, params: dict)
     return delta
 
 
-def replay(games: list[dict], params: dict, initial: dict | None = None) -> dict:
+def replay(games: list[dict], params: dict, initial: dict | None = None, extra: dict | None = None) -> dict:
     """Causal replay over normalized games (CONTRACT 6.1).
 
     Played games are processed in ``sort_key`` order; the season rollover (team Elo by
@@ -159,6 +176,13 @@ def replay(games: list[dict], params: dict, initial: dict | None = None) -> dict
 
     ``initial`` is an optional ``{"ratings": {code: float}, "qb": {id: state}, "season": int}``
     starting point (tests and continuation); omitted = every team at 1500, no QB history.
+
+    ``extra`` is an optional ``{game_id: (extra_home_elo, extra_away_elo)}`` hook (D18.6): the
+    pair is added to that game's d as ``extra_home - extra_away`` BEFORE p and the rating
+    update, so the term shapes both the forecast and the post-game delta. Games absent from
+    the map get 0. With ``extra=None`` the replay is byte-identical to the plain one and the
+    pregame records keep their original keys; with a map each record also carries
+    ``extra_home`` / ``extra_away``.
 
     Returns::
 
@@ -193,7 +217,7 @@ def replay(games: list[dict], params: dict, initial: dict | None = None) -> dict
             if season is not None or initial:
                 _rollover_state(ratings, qbs, reversion, annual)
             season = g["season"]
-        pre = _pregame(g, ratings, qbs, params)
+        pre = _pregame(g, ratings, qbs, params, extra)
         pregame[g["game_id"]] = pre
         _apply_result(g, pre, ratings, qbs, params)
         for side in ("home", "away"):
@@ -215,7 +239,7 @@ def replay(games: list[dict], params: dict, initial: dict | None = None) -> dict
             _rollover_state(eval_ratings, eval_qbs, reversion, annual)
         for g in unplayed:
             use_rolled = season is not None and g["season"] > season
-            pregame[g["game_id"]] = _pregame(g, eval_ratings if use_rolled else ratings, eval_qbs if use_rolled else qbs, params)
+            pregame[g["game_id"]] = _pregame(g, eval_ratings if use_rolled else ratings, eval_qbs if use_rolled else qbs, params, extra)
 
     window = int(params["qb"]["usual_starter_window"])
     usual = {code: _qb.usual_starter(starters.get(code, []), window) for code in TEAMS}

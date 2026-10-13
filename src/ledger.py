@@ -11,6 +11,25 @@ fields changed since the game's latest pre-kick snapshot (so reruns add nothing)
 per game, for the latest snapshot whose ``build_at`` precedes kickoff. ``reduce`` folds the events
 into the ``track_record`` object of CONTRACT 2.12 using frozen snapshot values only.
 
+Injury reports (D18, CONTRACT 4.1 amendment 2026-10-13). A snapshot records the injury context
+the pick was made in: ``injury_elo`` (``official.injuries.elo`` as used, 0 while the term is
+disabled) and ``inj_home`` / ``inj_away`` (the starter counts, ``available``, ``report_filed`` and
+``qb_listed`` of each side's report). DECISION on the write rule: these three keys are
+INFORMATIONAL and are NOT in ``SNAPSHOT_OFFICIAL_FIELDS`` -- a report change alone never creates a
+snapshot. Reasoning (CONTRACT 4.1): while the term is disabled a changed report changes nothing
+official, and Wednesday-to-Friday report churn would otherwise add two or three snapshots per game
+per week that grade identically; once the term is enabled a changed report moves ``p_model`` and
+the existing rule fires on its own, so the graded snapshot always carries the counts it was priced
+with. Readers tolerate events written before 2026-10-13 that lack the keys (``reduce`` files such
+picks under the ``unknown`` injury-load bucket).
+
+``reduce`` also computes ``by_injury_load`` (D18.5): the graded picks split by whether the PICKED
+side had at least one starter listed Out at snapshot time (``starter_out`` / ``no_starter_out`` /
+``unknown`` for legacy snapshots, unavailable or unfiled reports), each with n, hits, losses,
+pushes, accuracy and market accuracy. It is always returned at the top level of ``reduce``'s
+result and is published inside ``track_record`` only once ``schema.TRACK_RECORD_KEYS`` admits the
+key (CONTRACT 2.12 does not list it yet and ``validate_model`` requires the exact key set).
+
 Game dicts given to this module are the model.json ``games[]`` entries (CONTRACT 2.5) which the
 build extends with the CSV close fields of the normalized game (CONTRACT 1):
 ``home_moneyline``, ``away_moneyline``, ``spread_line``, ``total_line`` (and optionally
@@ -28,10 +47,16 @@ import json
 import os
 from datetime import datetime, timezone
 
-from .schema import LEDGER_SCHEMA_VERSION, TIERS
+from .schema import INJURY_LOADS as _INJURY_LOADS, LEDGER_SCHEMA_VERSION, TIERS, TRACK_RECORD_KEYS
 
 __all__ = [
     "SNAPSHOT_OFFICIAL_FIELDS",
+    "SNAPSHOT_INJURY_FIELDS",
+    "INJURY_SUMMARY_KEYS",
+    "INJURY_LOADS",
+    "injury_summary",
+    "injury_load",
+    "by_injury_load",
     "read_events",
     "write_events",
     "snapshot_event",
@@ -44,11 +69,18 @@ __all__ = [
 ]
 
 #: The official fields whose change triggers a new snapshot (CONTRACT 4.1 write rule).
+#: The D18 injury keys (SNAPSHOT_INJURY_FIELDS) are deliberately absent: see the module docstring.
 SNAPSHOT_OFFICIAL_FIELDS = (
     "pick", "p_model", "p_market", "p_blend", "tier", "pred_home", "pred_away",
     "best_price", "best_book", "ev", "market_source", "qb_home_id", "qb_away_id",
     "consensus_p_pick",
 )
+#: Informational snapshot keys recorded for the injury context (CONTRACT 4.1, D18).
+SNAPSHOT_INJURY_FIELDS = ("injury_elo", "inj_home", "inj_away")
+#: The per-side summary copied from official.injuries.home/away into a snapshot.
+INJURY_SUMMARY_KEYS = ("available", "report_filed", "starters_out", "starters_doubtful", "starters_questionable", "qb_listed")
+#: by_injury_load buckets, in output order.
+INJURY_LOADS = _INJURY_LOADS  # ("starter_out", "no_starter_out", "unknown")
 
 BREAK_EVEN_MINUS_110 = 110 / 210  # 0.5238...
 CALIBRATION_BINS = 10
@@ -166,6 +198,36 @@ def _csv_close_mls(game: dict) -> tuple[int | None, int | None]:
     return home_ml, away_ml
 
 
+def injury_summary(report) -> dict:
+    """The CONTRACT 4.1 ``inj_home``/``inj_away`` summary of a 2.6b report.
+
+    A missing or malformed report (an official built before D18) summarizes as unavailable."""
+    rep_ = report if isinstance(report, dict) else {}
+    available = bool(rep_.get("available"))
+    return {
+        "available": available,
+        "report_filed": bool(rep_.get("report_filed")) if available else False,
+        "starters_out": int(rep_.get("starters_out") or 0) if available else 0,
+        "starters_doubtful": int(rep_.get("starters_doubtful") or 0) if available else 0,
+        "starters_questionable": int(rep_.get("starters_questionable") or 0) if available else 0,
+        "qb_listed": rep_.get("qb_listed") if available else None,
+    }
+
+
+def injury_load(summary) -> str:
+    """D18.5 bucket of the picked side's snapshot summary: ``starter_out`` when at least one
+    starter was listed Out, ``no_starter_out`` when a filed report listed none, else ``unknown``
+    (no summary on a legacy snapshot, an unavailable report, or no report filed yet -- which is
+    "no report", not "nobody hurt")."""
+    if not isinstance(summary, dict) or not summary.get("available"):
+        return "unknown"
+    if int(summary.get("starters_out") or 0) >= 1:
+        return "starter_out"
+    if summary.get("report_filed"):
+        return "no_starter_out"
+    return "unknown"
+
+
 def _pick_side(p_home, pick: str, home: str):
     """A home-side probability seen from the pick's side (None passes through)."""
     if p_home is None:
@@ -252,6 +314,7 @@ def snapshot_event(game: dict, build: dict) -> dict | None:
     p_home_market = official.get("p_home_market")
     if p_home_market is None and market is not None:
         p_home_market = market.get("consensus_p_home")
+    inj = official.get("injuries") if isinstance(official.get("injuries"), dict) else {}
     return {
         "type": "snapshot",
         "schema_version": LEDGER_SCHEMA_VERSION,
@@ -277,6 +340,9 @@ def snapshot_event(game: dict, build: dict) -> dict | None:
         "consensus_p_pick": _pick_side(p_home_market, pick, home),
         "total_used": official.get("total_used"),
         "total_source": official.get("total_source"),
+        "injury_elo": float(inj.get("elo") or 0.0),
+        "inj_home": injury_summary(inj.get("home")),
+        "inj_away": injury_summary(inj.get("away")),
     }
 
 
@@ -427,6 +493,7 @@ def _graded_rows(events: list[dict], games_by_id: dict[str, dict]) -> list[dict]
             "clv_pp": ev.get("clv_pp"),
             "best_price": snap.get("best_price"),
             "ev": snap.get("ev"),
+            "injury_load": injury_load(snap.get("inj_home" if pick == home else "inj_away") if home is not None else None),
             "grade": ev,
         })
     return rows
@@ -455,6 +522,16 @@ def _by_tier(rows: list[dict]) -> list[dict]:
     for tier in TIERS:
         agg = _wlt([r for r in rows if r["tier"] == tier])
         out.append({"tier": tier, **agg})
+    return out
+
+
+def by_injury_load(rows: list[dict]) -> list[dict]:
+    """D18.5: the graded rows split by the picked side's injury load at snapshot time, one
+    entry per INJURY_LOADS bucket (always all three, n on each) with the _wlt aggregate."""
+    out = []
+    for load in INJURY_LOADS:
+        agg = _wlt([r for r in rows if r.get("injury_load", "unknown") == load])
+        out.append({"load": load, **agg})
     return out
 
 
@@ -600,13 +677,16 @@ def reduce(events: list[dict], games: list[dict] | dict[str, dict], params: dict
     ``games`` supplies season/week, the home code, and the CSV close lines (``spread_line``,
     ``total_line``) per game; it may be a list or a ``{game_id: game}`` dict. ``params`` is
     accepted for signature compatibility and unused (every input is already frozen in the
-    events). Returns ``{"track_record", "scorecard_season", "grades": {game_id: grade}}``.
+    events). Returns ``{"track_record", "scorecard_season", "grades": {game_id: grade},
+    "by_injury_load"}`` (the D18.5 split; see the module docstring for when it is also
+    inside ``track_record``).
     """
     games_by_id = games if isinstance(games, dict) else {g["game_id"]: g for g in games}
     rows = _graded_rows(events, games_by_id)
     overall = _wlt(rows)
     season = _current_season(games_by_id, rows)
     season_agg = _wlt([r for r in rows if r["season"] == season]) if season is not None else _wlt([])
+    injury_split = by_injury_load(rows)
     track_record = {
         "overall": overall,
         "by_tier": _by_tier(rows),
@@ -616,6 +696,8 @@ def reduce(events: list[dict], games: list[dict] | dict[str, dict], params: dict
         "clv": _clv(rows),
         "units": _units(rows),
     }
+    if "by_injury_load" in TRACK_RECORD_KEYS:  # published once CONTRACT 2.12 / the schema admit it
+        track_record["by_injury_load"] = injury_split
     scorecard_season = {
         "season": season,
         "n": season_agg["n"],
@@ -630,6 +712,7 @@ def reduce(events: list[dict], games: list[dict] | dict[str, dict], params: dict
         "track_record": track_record,
         "scorecard_season": scorecard_season,
         "grades": {r["game_id"]: r["grade"] for r in rows},
+        "by_injury_load": injury_split,
     }
 
 

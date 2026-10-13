@@ -5,8 +5,8 @@ Every builder codes against this file literally. `src/schema.py` is the executab
 valid example; `tests/fixtures/overlay_fixture.json` and `tests/fixtures/odds_api_sample.json` are the
 overlay and raw-feed examples. Where this file and DECISIONS.md disagree, DECISIONS.md wins and this
 file has a bug — say so in your report. Source: REVIEW_codex.md "Recommended v1 architecture"
-amended by DECISIONS.md D1–D17 (D16 as amended 2026-10-09: default books draftkings, fanduel,
-betmgm, betrivers; Caesars is absent from the feed).
+amended by DECISIONS.md D1–D18 (D16 as amended 2026-10-09: default books draftkings, fanduel,
+betmgm, betrivers; Caesars is absent from the feed; D18 2026-10-13: injury reports, section 2.6b).
 
 ## 0. Global rules
 
@@ -74,6 +74,7 @@ when EITHER rest field is null the rest term is 0 and `factors.rest_diff` is nul
 | next_league_date | date or null | first `league_date` >= `build.league_date` that has a scheduled (not final) game in `games[]`; null if none |
 | odds_source | "odds_api" or "csv" | whether ODDS_API_KEY was set and the call succeeded |
 | data | {} | `source_url` str, `nflverse_sha256` 64-hex, `rows` int, `max_result_date` date or null (latest league_date with a final score), `fetched` bool (false under GRIDIRON_OFFLINE) |
+| injuries | {} | D18 (added 2026-10-13; exactly these 4 keys): `available` bool (both `injuries_{season}.csv` and `depth_charts_{season}.csv` loaded; false => every `official.injuries.*` report is unavailable), `injuries_rows` int >= 0 (rows of the season's injury file, 0 when unavailable), `depth_chart_as_of` ISO UTC or null (the latest depth-chart snapshot `dt` <= `built_at`; null when unavailable), `teams_with_report_for_next_slate` int 0..32 (teams playing in the week of the next slate — the earliest scheduled game on or after `build.league_date` — whose report for that week is filed; 0 before the league publishes it, which the page renders as "no report filed yet"; 0 when unavailable) |
 
 ### 2.3 `params` {} (mirrors params.json; every key required)
 - `elo`: `k` 20, `hfa` 40, `rest_per_day` 2, `reversion` 0.4, `tie_multiplier` 1.0 (numbers)
@@ -83,6 +84,14 @@ when EITHER rest field is null the rest term is 0 and `factors.rest_diff` is nul
 - `score`: `points_per_elo` 25, `league_average_total` float (computed mean total of `league_average_season`), `league_average_season` int (previous full season)
 - `sim`: `runs` 10000, `seed` 2026
 - `books`: list of default book keys, `["draftkings","fanduel","betmgm","betrivers"]` (D16). `official.best_prices` is keyed by exactly this list.
+- `injury` (D18, added 2026-10-13; exactly these 4 keys): `enabled` bool; `weights` {`OL`, `WR_TE`, `RB`, `DL_EDGE`, `LB`, `DB`} numbers >= 0
+  (Elo points per starter listed Out in that position group; exactly these 6 keys); `status_mult` {`Out`, `Doubtful`,
+  `Questionable`, `Probable`} numbers in [0, 1] (exactly these 4 keys); `gate` {`holdout_brier_with` number >= 0 or null,
+  `holdout_brier_without` number >= 0 or null, `improvement_required` number >= 0}. THE GATE: `enabled` may be `true` only
+  when both holdout Briers are present and `holdout_brier_without - holdout_brier_with >= improvement_required`
+  (`validate_model` rejects an enabled term that has not earned it). While `enabled` is false the reports are still
+  fetched, published and shown (section 2.6b) but add 0 to the model. Params block is exactly 8 keys now
+  (`elo, qb, blend, tier_bounds, score, sim, books, injury`).
 
 ### 2.4 `evaluation` {} (2025 holdout; produced by `evaluate.holdout`, RUN BY EVERY BUILD — SPEC "runs with every build"; params.json keeps tune's copy for reference only)
 `season` int; `samples` {`model` int, `market_comparable` int}; `model`, `model_no_qb`, `market`,
@@ -103,7 +112,7 @@ rows carry `result`). Each game has exactly these keys:
 | official | {} | section 2.6 |
 | result | {} or null | null unless status == "final"; section 2.7 |
 
-### 2.6 `official` {} — immutable snapshot, exactly these 23 keys
+### 2.6 `official` {} — immutable snapshot, exactly these 24 keys
 
 | key | type | meaning |
 |---|---|---|
@@ -125,7 +134,8 @@ rows carry `result`). Each game has exactly these keys:
 | best_price | price or null | highest decimal profit for the pick among `best_prices` (tie -> first in `params.books` order); when `market.source == "csv"` it is `{book:"csv", side: pick, american: CSV ML of the pick}`; null without a market |
 | estimated_ev_per_dollar | float or null | `market.estimated_ev(p_pick_blend, best_price.american)`; null iff best_price is null. Label "Model-estimated EV at this price"; positive styling only when >= 0.02 (D8) |
 | factors | {} | section 2.9 — the single source of every number in the rationale |
-| rationale | list of keys | subset of `["rating","home_field","quarterback","rest","form","market","verdict"]` in EXACTLY that order; always starts with "rating" and ends with "verdict"; each key present iff its trigger below fires (no budget/cap: 2 to 7 sentences; `validate_model` enforces order and triggers via `schema.expected_rationale_keys`). SPEC's "3-5 sentences, in order of size" is superseded. |
+| injuries | {} | section 2.6b (D18): both teams' listed injury reports, starters flagged from the depth chart, and the injury Elo term (0 while `params.injury.enabled` is false) |
+| rationale | list of keys | subset of `["rating","home_field","quarterback","rest","injuries","form","market","verdict"]` in EXACTLY that order; always starts with "rating" and ends with "verdict"; each key present iff its trigger below fires (no budget/cap: 2 to 7 sentences; `validate_model` enforces order and triggers via `schema.expected_rationale_keys`). SPEC's "3-5 sentences, in order of size" is superseded. |
 | rationale_sentences | list of str | one sentence per key, same length and order as `rationale` |
 | edge | {} or null | null unless market present and `abs(model_market_gap_pick) >= 0.08` (D17); else `{flag: true, reason_key, reason_text}` |
 | parlay_eligible | bool | `market != null and p_pick_blend >= 0.55 and best_price != null` (a book-level check happens in the parlay builder) |
@@ -135,16 +145,82 @@ Rationale rules (predict.py): sentence keys are emitted when
 - `home_field` iff not neutral: "Home field is worth about {hfa_elo} points, or {hfa_spread_pts} points on the spread."
 - `quarterback` iff a listed starter `differs_from_usual`, or `first_start`, or `abs(qb_elo) >= 30`. A first start is said as "first start on record", never "rates X below the usual starter". Always "listed starter".
 - `rest` iff `abs(rest_diff) >= 3`.
+- `injuries` iff `injuries.home.starters_out + injuries.home.starters_doubtful + injuries.away.starters_out + injuries.away.starters_doubtful >= 1` (Questionable alone never triggers; an unavailable or unfiled report counts 0): "{City} lists {n} starter(s) out ({position groups}) and {m} doubtful; {OtherCity} lists none." The sentence reports LISTED statuses only (the word "listed" or "lists" must appear), names position groups or players from `injuries.*.players`, never speculates about severity, and when `injuries.enabled` is false ends with "shown for context, not in the number yet"; when true, "worth about {N} Elo points to {City}, or {S} points on the spread" with N = round(abs(injuries.elo)) and S = abs(injuries.elo) / points_per_elo to one decimal (two when one decimal would read 0; "1 point" singular) — the same form as `home_field`, never a bare "points" that reads as game points (amended 2026-10-13). While the term is in the number the Questionable starters are listed too ("..., 1 doubtful (RB) and 1 questionable (DE)"; a side with only Questionable starters reads "{City} lists 1 starter questionable (DE)" instead of "lists none"), because they move it; the trigger is unchanged. A quarterback on the report is never counted here (`covered_by_qb_term`); the `quarterback` sentence owns that position. FROZEN games (2.6a): the clause describes the term the frozen number actually carries (the snapshot's `injury_elo`): identical to the live wording when it equals `injuries.elo`; "not in the frozen pick, which carried no injury term." when the snapshot predates the term; otherwise "the frozen pick carried about {N} Elo points to {City}, or {S} points on the spread; the latest report reads about {M} Elo points to {City2}." (or "...; the two reports now cancel out." / "...; the term is switched off in this build.").
 - `form` iff `abs(form_home_3) >= 40 or abs(form_away_3) >= 40`.
 - `market` iff market present and `abs(model_market_gap_pick) >= 0.05`; the gap "may reflect information this model lacks" — never "injury news", never "edge".
 - `verdict` always: "Blended, that comes to {City} at {P}%: a {tier} pick, predicted {X} to {Y}." or, without a market, "No market line yet, so this is the model alone: {City} at {P}%, ...". When the pick's display score is not the larger one (market overrules the model) the tail reads "a {tier} pick, though the model alone scores it {OtherCity} {Y} to {X}." — never "predicted" for a score the pick loses.
 Every number in a sentence must be derivable from `factors`/`official` by the rules above (tests check this, not prose scraping). No adjectives about teams; no sentence about an absent factor.
 
-Edge chip `reason_key` priority (D17, measured factors only): `starter_change` (either side `differs_from_usual`), then `rest_gap` (`abs(rest_diff) >= 3`), then `form_move` (either `abs(form_*_3) >= 40`, text "{City}'s rating moved {N} points in the last three games"), else `unknown` ("may reflect information this model lacks").
+Edge chip `reason_key` priority (D17 + D18.4, measured factors only): `starter_change` (either side `differs_from_usual`), then `injuries` (added 2026-10-13: a starter listed Out or Doubtful on either side per `official.injuries` — the league's own report is a measured factor; text "{City} lists {n} starters Out ({positions}) and {m} Doubtful ({positions})", the side with more listed starters first; Questionable alone, an unfiled or an unavailable report never earn it), then `rest_gap` (`abs(rest_diff) >= 3`), then `form_move` (either `abs(form_*_3) >= 40`, text "{City}'s rating moved {N} points in the last three games"), else `unknown` ("may reflect information this model lacks").
 
 ### 2.6a Frozen officials (added 2026-10-11)
 
-Once `built_at >= kickoff_utc`, a game's `official` is frozen to its latest pre-kick ledger snapshot (the one `append_grades` grades): pick, p_home_model/market/blend, p_pick_blend, tier, display scores, total_used/source, best_price and EV are copied from the snapshot; blend_spread, expected scores, factors, rationale and edge are re-derived from those inputs; parlay_eligible is false. The games[] entry carries `frozen_snapshot` (the snapshot id, or null when no pre-kick snapshot exists or the game has not kicked off). Snapshot events now also carry `total_used` and `total_source`. Root cause: on 2026-10-11 the post-kick build recomputed CLE@NYJ from the closing line, flipped the card to NYJ/HIT while the ledger had graded CLE/MISS.
+Once `built_at >= kickoff_utc`, a game's `official` is frozen to its latest pre-kick ledger snapshot (the one `append_grades` grades): pick, p_home_model/market/blend, p_pick_blend, tier, display scores, total_used/source, best_price and EV are copied from the snapshot; blend_spread, model_spread, expected scores, factors, rationale and edge are re-derived from those inputs; parlay_eligible is false. `injuries` (2.6b) is rebuilt from the cached season files like any other game (the week's report is stable once the game has kicked off; the frozen numbers live in the snapshot's `injury_elo`/`inj_home`/`inj_away`, section 4.1). The injury term folded into `factors.d_total` of a frozen game is the SNAPSHOT's `injury_elo` (0 when the snapshot predates D18), not the rebuilt block's `elo` (amended 2026-10-13): the frozen `p_home_model` was made with that term, so `p_home_model == win_prob(factors.d_total)` keeps holding on a frozen card (up to the other frozen inputs, e.g. a listed QB that changed after the snapshot), `model_spread = d_total / points_per_elo` is re-derived from it, and the injuries sentence says what the frozen pick carried when it is not the latest report (2.6 rules). The page never reads a frozen term from the block: it recovers it as `d_total - elo_gap_home - hfa_elo - rest_elo - qb_elo` (2.9) and labels the card "in the frozen number: ±N Elo" / "not in the frozen pick, which carried no injury term; the latest report reads ±M" / "the frozen pick carried ±N ...; the latest report reads ±M" accordingly. The games[] entry carries `frozen_snapshot` (the snapshot id, or null when no pre-kick snapshot exists or the game has not kicked off). Snapshot events now also carry `total_used` and `total_source`. Root cause: on 2026-10-11 the post-kick build recomputed CLE@NYJ from the closing line, flipped the card to NYJ/HIT while the ledger had graded CLE/MISS.
+
+### 2.6b `injuries` (D18, added 2026-10-13) — exactly these 7 keys
+
+Source: nflverse `injuries_{season}.csv` (the league's official weekly report: `report_status` Out / Doubtful /
+Questionable, plus `Probable` in files before 2016) and `depth_charts_{season}.csv` (which starters are, `pos_rank == "1"`).
+Both are cached under `data/` (gitignored) by `injuries.fetch_injuries` / `injuries.fetch_depth_charts` (D12 style:
+temp download -> validate -> atomic replace; on ANY failure a stderr line and the existing cache; `None` only when no
+usable cache exists). Missing data never fails the build: it degrades to `available: false`.
+
+```
+"injuries": {
+  "enabled": bool,            == params.injury.enabled at build time (the term is in d_total iff true)
+  "as_of": ISO UTC,           depth-chart cutoff used for starters = min(build.built_at, game.kickoff_utc)
+  "home": <report>, "away": <report>,
+  "elo_home": float <= 0,     injuries.injury_elo(home report, params) — 0 when disabled or unavailable
+  "elo_away": float <= 0,     same for the away report
+  "elo": float                elo_home - elo_away; the term added to factors.d_total (0 while disabled)
+}
+<report> (exactly these 8 keys):
+{
+  "available": bool,          false when either season file could not be loaded (then everything below is false/[]/0/null)
+  "report_filed": bool,       true iff injuries_{season}.csv has >= 1 row for (season, week, team) — a bye or a
+                              pre-Wednesday build gives false ("no report yet"), which is NOT "nobody hurt"
+  "players": [<player>...],   rows whose report_status is non-blank (practice-only rows are not listed). Order:
+                              starters first, then non-starters; within each, Out, Doubtful, Questionable, Probable;
+                              then name, then gsis_id (stable, so reruns are byte-identical)
+  "starters_out": int,        starters with status Out       } starters only, and NEVER a player with
+  "starters_doubtful": int,   starters with status Doubtful  } covered_by_qb_term (the QB term owns the
+  "starters_questionable": int, starters with status Questionable } quarterback; see D2/2.9 qb_*)
+  "total_listed": int,        == len(players) (every status, starters and depth, QBs included)
+  "qb_listed": str or null    the LISTED starting QB's (game.home_qb_id / away_qb_id) report status, null when
+                              that id is not on the report (or no QB is listed)
+}
+<player> (exactly these 8 keys; every string is an untrusted feed value — the page renders them with textContent only):
+{
+  "gsis_id": str or null, "name": str (non-empty; full_name, or "Unknown" when blank),
+  "position": str or null (the report's raw position, e.g. "T", "CB"),
+  "pos_group": "OL"|"WR_TE"|"RB"|"DL_EDGE"|"LB"|"DB"|"QB"|"ST"   (injuries.pos_group; for a starter the depth-chart
+                              slot decides, otherwise the report's position; unknown positions map to "ST" = no weight),
+  "status": "Out"|"Doubtful"|"Questionable"|"Probable",
+  "injury": str or null (report_primary_injury),
+  "starter": bool,            gsis_id is pos_rank 1 on the team's latest depth chart at or before `as_of`, offense or
+                              defense only (Special Teams slots and K/PK/P/LS/KR/PR/H never count as starters)
+  "covered_by_qb_term": bool  == (pos_group == "QB"): excluded from counts and from the Elo term
+}
+```
+Unavailable report (`injuries.unavailable_report()`): `{available: false, report_filed: false, players: [],
+starters_out: 0, starters_doubtful: 0, starters_questionable: 0, total_listed: 0, qb_listed: null}`.
+
+Starters (`injuries.starters_by_team(depth_rows, as_of)`): per team and per UNIT (offense group such as `3WR 1TE`;
+defense group such as `Base 3-4 D` / `Base 4-3 D`; Special Teams is dropped) take the rows at the latest `dt <= as_of`
+for that unit, keep `pos_rank == "1"` with a non-blank `gsis_id`, drop K/PK/P/LS/KR/PR/H. Per-unit (not per-team)
+because the feed carries partial snapshots (21 of 7,488 team-snapshots in the 2026 file hold one unit only); a
+per-team rule would silently drop a whole offense. Result `{team: {gsis_id: {name, pos_abb, pos_grp}}}` where
+`pos_grp` is the model group (`pos_group(pos_abb)`), not the formation name.
+
+Elo term (D18.6; `injuries.injury_elo(report, params)`): `0` when `params.injury.enabled` is false or
+`report.available` is false; otherwise
+`-(sum over players with starter and not covered_by_qb_term of weights[pos_group] * status_mult[status])`
+(`weights.get(group, 0)`, so "ST"/"QB" add nothing). Always <= 0 per side; `elo = elo_home - elo_away` is
+home-positive like every other term and enters `factors.d_total`.
+
+Position groups (`injuries.pos_group`): OL = T, OT, LT, RT, G, OG, LG, RG, C, OL; WR_TE = WR, TE; RB = RB, HB, FB;
+DL_EDGE = DE, DT, NT, DL, EDGE, LDE, RDE, LDT, RDT, DI; LB = LB, ILB, OLB, MLB, WLB, SLB, LILB, RILB, LOLB, ROLB;
+DB = CB, S, FS, SS, DB, NB, SAF, LCB, RCB; QB = QB; ST = K, PK, P, LS, KR, PR, H and anything unrecognized.
 
 ### 2.7 `result` {}
 `home_score` int, `away_score` int, `winner` code or `"tie"`, `margin` int (home - away),
@@ -176,7 +252,7 @@ Once `built_at >= kickoff_utc`, a game's `official` is frozen to its latest pre-
 | qb_home, qb_away | {} or null | null iff `availability.starter_*` is false. `{id, name, q (Elo pts), starts (int, prior starts on record), first_start (== starts == 0), usual_starter_id (str or null), usual_starter_name (str or null), usual_starter_q (float or null; the usual starter's Q as of `league_date`, i.e. inactivity-decayed by `qb.effective_q` exactly like the listed starter's `q`), differs_from_usual (bool), source: "nflverse_listed"}` |
 | qb_elo | float | q_home - q_away, treating a null side as 0 |
 | form_home_3, form_away_3 | float or null | Elo change over the team's last 3 played games (fewer if fewer played; null if none) |
-| d_total | float | elo_gap_home + hfa_elo + rest_elo + qb_elo (the d in win_prob) |
+| d_total | float | elo_gap_home + hfa_elo + rest_elo + qb_elo + the injury term (the d in win_prob). The injury term is `official.injuries.elo` for a live game (0 while `params.injury.enabled` is false, D18) and the snapshot's `injury_elo` for a frozen one (2.6a) — so `d_total - elo_gap_home - hfa_elo - rest_elo - qb_elo` is always the term the probability carries, which is how the page labels it |
 | model_market_gap_home | float or null | p_home_model - p_home_market |
 | model_market_gap_pick | float or null | same gap from the pick's side |
 
@@ -198,6 +274,7 @@ model_accuracy, market_accuracy, model_brier, market_brier}.
 - `overall`: {n, hits, losses, pushes, accuracy (hits/(hits+losses) or null when 0), market_n, market_hits, market_accuracy or null}. n = graded picks; market_* over the same games that had a market pick (p_market != 0.5 exactly; ties excluded).
 - `by_tier`: list of 4 in TIERS order, each {tier, n, hits, losses, pushes, accuracy, market_n, market_hits, market_accuracy}.
 - `by_week`: list ordered by (season, week), each {season, week, n, hits, losses, pushes, cum_n, cum_hits, cum_accuracy, market_n, market_hits, market_cum_n, market_cum_hits, market_cum_accuracy}. Cumulative within the season.
+- `by_injury_load` (D18.5, added 2026-10-13): list of exactly 3 in order `starter_out`, `no_starter_out`, `unknown`, each {load, n, hits, losses, pushes, accuracy, market_n, market_hits, market_accuracy} (the `overall` aggregate over that bucket). Bucket = the PICKED side's `inj_*` summary frozen in the graded snapshot (4.1): `starter_out` when its `starters_out >= 1`; `no_starter_out` when its report was filed and available with `starters_out == 0` (Doubtful/Questionable alone count here); `unknown` for an unavailable or unfiled report ("no report" is not "nobody hurt") and for every snapshot written before 2026-10-13. Bucket counts sum to `overall.n`.
 - `calibration`: {n, bins (exactly 10), error, error_n}. Bin i covers `[i/10, (i+1)/10)` (last bin closed at 1.0) on the FROZEN `p_home_blend`, target = home win, ties excluded. Each bin {lo, hi, n, mean_p or null, hit_rate or null, low_sample (n < 10)}. `error` = n-weighted mean of |mean_p - hit_rate| over bins with n >= 10, `error_n` their total n; error null when error_n is 0. Bin counts sum to n.
 - `score_error`: {n, margin_mae, total_mae, market_n, market_margin_mae, market_total_mae}. Model: |pred margin - margin| and |pred total - total| using the DISPLAYED integers frozen in the snapshot (`pred_home - pred_away`, `pred_home + pred_away`; the 4.1 snapshot carries nothing unrounded, and D10 fixes its fields), so the D5 favorite nudge can bias a predicted margin by up to 1 point; market: CSV close `spread_line`/`total_line` (market_n = games with both).
 - `clv`: {n, mean_pp, share_toward_pick}. `clv_pp` per grade (see 4.2); share = fraction with clv_pp > 0. Null means when n = 0.
@@ -237,8 +314,14 @@ Every event has `"type"` and `"schema_version": "1.0.0"`. Nothing is ever edited
   "pick", "p_model" (p of the pick side), "p_market" (pick side, or null), "p_blend" (pick side), "tier",
   "pred_home", "pred_away" (display ints), "best_price" (int or null), "best_book" (str or null), "ev" (float or null),
   "market_source" ("odds_api"|"csv"|null), "qb_home_id", "qb_away_id", "qb_home", "qb_away" (names; nullable),
-  "consensus_p_pick" (market no-vig consensus for the pick side, or null) }
+  "consensus_p_pick" (market no-vig consensus for the pick side, or null),
+  "injury_elo" (float; official.injuries.elo as used, 0 while disabled — D18 amendment 2026-10-13),
+  "inj_home", "inj_away" (each {available, report_filed, starters_out, starters_doubtful, starters_questionable,
+                          qb_listed} copied from official.injuries.home/away) }
 ```
+D18 amendment: the three injury keys are INFORMATIONAL — they are not in the official-fields difference rule below
+(while the term is disabled a changed report changes nothing official; once enabled, p_model moves and the rule fires
+on its own). Readers must tolerate events written before 2026-10-13 that lack them.
 Write rule: a build appends a snapshot for a game only if there is no existing snapshot for that
 game with `build_at < kickoff_utc` OR the OFFICIAL FIELDS (`pick, p_model, p_market, p_blend, tier,
 pred_home, pred_away, best_price, best_book, ev, market_source, qb_home_id, qb_away_id,
@@ -339,8 +422,11 @@ blend(p_model: float, p_market: float|None, w: float) -> float
 expected_scores(total: float, model_spread: float) -> tuple[float, float]       (expected_home, expected_away)
 display_scores(expected_home: float, expected_away: float, favorite_is_home: bool) -> tuple[int, int]
 choose_total(market: dict|None, game: dict, params: dict) -> tuple[float, str]  (total_used, total_source) per D5
-rationale(factors: dict, official_partial: dict, game: dict, names: dict) -> tuple[list[str], list[str]]
-edge_chip(factors: dict, names: dict) -> dict|None
+rationale(factors: dict, official_partial: dict, game: dict, names: dict,
+          points_per_elo: float|None = None, term_in_number: float|None = None) -> tuple[list[str], list[str]]
+          (points_per_elo gives the injuries sentence its spread clause; term_in_number is a frozen game's snapshot term, 2.6a)
+edge_chip(factors: dict, names: dict, injuries: dict|None = None) -> dict|None
+freeze_official(official: dict, snapshot: dict, game: dict, pregame: dict, params: dict, context: dict) -> dict   (2.6a)
 predict_game(game: dict, pregame: dict, market: dict|None, params: dict, context: dict) -> dict
 ```
 `context` = `{"ranks": {code: int}, "names": {code: team_meta}, "form": {code: float|None},
@@ -383,7 +469,33 @@ reduce(events: list[dict], games: list[dict]) -> dict          {"track_record": 
 `games` in `reduce` supplies CSV close lines and tiers for score error / market comparisons; every
 aggregate is computed from frozen snapshot values, never from live data.
 
-### 6.7 `src/evaluate.py`, `src/tune.py`, `src/build.py`, `src/data.py`, `src/schema.py`
+### 6.7 `src/injuries.py` (D18; stdlib only, pure except the two `fetch_*`)
+```
+fetch_injuries(season: int, cache_dir: str, offline: bool = False, timeout: int = 60) -> list[dict] | None
+fetch_depth_charts(season: int, cache_dir: str, offline: bool = False, timeout: int = 60) -> list[dict] | None
+                                                  cache at {cache_dir}/injuries_{season}.csv and depth_charts_{season}.csv;
+                                                  rows are csv.DictReader dicts (depth rows keep only DEPTH_COLUMNS);
+                                                  on failure: one stderr line, then the cache, then None (never raises)
+starters_by_team(depth_rows: list[dict], as_of_iso: str) -> dict        {team: {gsis_id: {name, pos_abb, pos_grp}}}
+report_for(injury_rows: list[dict], starters: dict, team: str, season: int, week: int, listed_qb_id: str | None) -> dict   section 2.6b report
+unavailable_report() -> dict
+pos_group(position: str | None) -> str                                    one of OL/WR_TE/RB/DL_EDGE/LB/DB/QB/ST
+injury_elo(report: dict, params: dict) -> float                           D18.6; params is the section-2.3 object
+injuries_block(home_report, away_report, params, as_of_iso) -> dict      the section-2.6b object (elo_* filled in)
+```
+`build.py` calls the two fetches once per build (current season; `offline` from GRIDIRON_OFFLINE), computes
+`starters_by_team` once per distinct (team, `as_of`) on that team's depth rows (`build.depth_rows_by_team`; same result
+as the whole file, ~32x cheaper), and hands `predict_game` the two reports through `context["injuries"]`
+= `{game_id: {"home": report, "away": report, "as_of": iso}}` (absent entry => both unavailable), with
+`as_of = min(build.built_at, game.kickoff_utc)` (2.6b). The build also publishes `build.injuries` (2.2).
+Application mode (D18.6, decided 2026-10-13): `params.injury_tuning.mode` is `"pregame"` — the term is added to d at
+forecast time on the PLAIN replay's ratings, the mode that passed the gate — so `build.py` runs `elo.replay` without
+the `extra` hook and `predict_game` applies every game's own report term, played games included (their `as_of` is the
+kickoff, so a finished game's `p_home_model == win_prob(factors.d_total)` with that week's report). The hook-injected
+"replay" mode (ratings absorb the term) failed the gate on the same weights and is recorded only under
+`params.json["injury_tuning"]["alternative"]`; a build never uses it.
+
+### 6.8 `src/evaluate.py`, `src/tune.py`, `src/build.py`, `src/data.py`, `src/schema.py`
 - `data.load_games(path)`, `data.fetch_games(url, cache_path, offline=False, timeout=60)`,
   `data.validate_csv(path, min_rows=0)`, `data.sha256_file(path)`, `data.kickoff_utc(gameday, gametime)`,
   `data.sort_key(game)`, `data.max_result_date(games)` — implemented (this file's author).
@@ -398,7 +510,10 @@ aggregate is computed from frozen snapshot values, never from live data.
 - `build.main()` orchestration only: fetch -> load -> replay -> one odds call (or csv) -> predict ->
   simulate -> ledger -> assemble -> `validate_model` (fail loudly on any problem) -> write model.json
   and index.html atomically (temp + os.replace). Exit non-zero on any failure; never write a partial file.
-- Build uses `GRIDIRON_OFFLINE=1` (no fetch), `ODDS_API_KEY` (official odds call), nothing else.
+- Build uses `GRIDIRON_OFFLINE=1` (no fetch), `ODDS_API_KEY` (official odds call), nothing else. Under
+  `GRIDIRON_OFFLINE=1` the injury/depth-chart caches are used as-is; a missing cache degrades to `available: false`
+  (one stderr line from `build.fetch_injury_files`, `build.injuries.available == false`, every report unavailable;
+  the build still succeeds).
 
 ## 7. Open points for other builders (not contract breaks)
 - `teams[].qb` is the usual starter (D2 definition); if a team has no played games it is null.

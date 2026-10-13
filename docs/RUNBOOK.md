@@ -37,6 +37,7 @@ The build prints one line: `build <id>: 272 games (65 final), odds=csv, +207 sna
   number (`read_events`): restore it from git, do not "fix" the line.
 - `params.json` — written only by `make tune`; the build reads it. Re-tune deliberately (see below).
 - `data/games.csv` — cache, gitignored. Safe to delete; the next online build re-downloads it.
+- `data/injuries_{season}.csv`, `data/depth_charts_{season}.csv` — nflverse injury report + depth chart caches (D18), gitignored. The build refreshes the current season's pair each run (offline: used as-is); `make tune` keeps 2010-2025 for the injury-term fit. Safe to delete; a missing pair never fails the build — every card shows "injury reports unavailable this build" and `build.injuries.available` is false (with the term enabled that is a loud WARNING, see below). In Actions the pair is carried between runs by an `actions/cache` step in `daily.yml` (key `nflverse-injuries-<run id>`, restore-keys by prefix: every run saves its fresh files, the next run restores the newest earlier ones), so a nflverse outage in CI falls back to the last good files exactly as a local build does; a cache miss AND a download failure in the same run is the only way CI builds degraded. `make test` runs after `make build` in CI on the freshly downloaded files: `tests/test_injuries.py::RealDataSmokeTests` keeps only structural checks there (`GITHUB_ACTIONS` set) so a depth-chart quirk cannot block the publish; the tight bounds run locally.
 
 ## Failure modes and what they mean
 
@@ -48,6 +49,9 @@ The build prints one line: `build <id>: 272 games (65 final), odds=csv, +207 sna
 | `odds api: call failed ... falling back to CSV lines` (stderr) | key missing/invalid, quota, network | the build still succeeds with `odds_source: "csv"`; check the key and the credit headers logged on the previous successful call |
 | `reference brier ... FAIL` in `make test` | the Elo replay drifted from `params.json["reference"]` by more than 0.003 | either the data changed materially (new corrections upstream) or someone changed the math; investigate before re-tuning |
 | workflow fails at `git push` | the branch moved under us | the job fails loudly on purpose; rerun the workflow (it rebases before pushing) |
+| `injuries: injuries_2026.csv, depth_charts_2026.csv unavailable; every report degrades to available=false` (stderr) | nflverse injuries/depth-chart release unreachable and no cache | the build still succeeds; cards say "injury reports unavailable this build"; the injury term is 0 for every game that build; rerun later |
+| `injuries: WARNING the injury term is enabled but the season files are unavailable; ... N snapshot(s) were written without the reports` (stderr + build log) | the line above while `params.injury.enabled` is true | NOT cosmetic: every unfrozen model probability moved (term 0) and those N snapshots are picks made without the reports. They are superseded by the next build once the feed returns (the ledger's write rule fires on the changed `p_model`; the latest pre-kick snapshot is the graded one), and each carries `inj_home.available = false` so the track record buckets them as "unknown". In Actions this needs BOTH the download and the cache restore (below) to fail; locally, `GRIDIRON_OFFLINE=1` with no `data/` pair does it — put the files back (an online build, or copy from another checkout) and rerun |
+| cards say "no report filed yet" for the next slate | the league has not published that week's report (Wednesday-ish) or it is a bye | expected; `build.injuries.teams_with_report_for_next_slate` counts the teams that have filed |
 | page shows "Lines as of build time" | overlay off, Worker unreachable, CORS denied, degraded, or no game matched | expected whenever the Worker is not deployed; otherwise check the Worker (below) |
 
 ## The ledger (track record)
@@ -98,7 +102,7 @@ only ever changes best price / live EV / "price moved" under a LIVE label.
 ## Checks after a change
 
 ```
-make test                     # 220+ unit tests + reference check
+make test                     # 300+ unit tests + reference check
 GRIDIRON_OFFLINE=1 make build # must finish well under 30 s and print +0/+0 on a rerun
 node tests/browser_check.mjs  # page smoke test at 400 px and 1200 px (Playwright: `npm install playwright`
                               # in the repo root, or PLAYWRIGHT_MODULE=/path/to/node_modules/playwright/index.mjs;

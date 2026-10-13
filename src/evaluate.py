@@ -3,7 +3,11 @@
     metrics(pairs)                                   -> {"brier","logloss","accuracy","n"}
     no_vig_home(home_ml, away_ml)                    -> float   CSV closing lines, vig removed
     holdout_rows(games, replay_result, season)       -> list of per-game rows (p_model, p_market, s)
-    holdout(games, params, season=2025)              -> evaluation object (section 2.4)
+    holdout(games, params, season=2025, replays=None, injury_extra=None, injury_mode="pregame")
+                                                     -> evaluation object (section 2.4); with
+                                                        ``injury_extra`` ({game_id: (home, away)} Elo
+                                                        terms, D18.6) it also carries "model_with_injuries"
+    holdout_rows_with_extra(games, replay_result, seasons, extra) -> rows with p_model = win_prob(d + home - away)
     fit_blend_weight(games, params, seasons=(2015, 2024), step=0.05) -> {"model_weight", "brier", "n", "grid"}
     season_brier(games, replay_result, seasons)      -> (brier, n)   tuning objective
     previous_full_season(games)                      -> int
@@ -73,6 +77,20 @@ def holdout_rows(games: list[dict], replay_result: dict, seasons) -> list[dict]:
     return rows
 
 
+def holdout_rows_with_extra(games: list[dict], replay_result: dict, seasons, extra: dict) -> list[dict]:
+    """holdout_rows with a per-game Elo term added at forecast time: p = win_prob(d + home - away).
+
+    This is how predict.py applies the injury term (official.injuries.elo enters d_total on
+    top of ratings replayed without it), so it is the production-faithful evaluation."""
+    rows = holdout_rows(games, replay_result, seasons)
+    pregame = replay_result["pregame"]
+    for r in rows:
+        pair = extra.get(r["game_id"])
+        if pair:
+            r["p_model"] = elo.win_prob(pregame[r["game_id"]]["d"] + float(pair[0]) - float(pair[1]))
+    return rows
+
+
 def _blend(p_model: float, p_market: float, w: float) -> float:
     return w * p_model + (1.0 - w) * p_market
 
@@ -83,14 +101,23 @@ def _without_qb(params: dict) -> dict:
     return p
 
 
-def holdout(games: list[dict], params: dict, season: int = REFERENCE_SEASON, replays: dict | None = None) -> dict:
+def holdout(games: list[dict], params: dict, season: int = REFERENCE_SEASON, replays: dict | None = None,
+            injury_extra: dict | None = None, injury_mode: str = "pregame") -> dict:
     """Section 2.4 evaluation on one holdout season.
 
     ``model`` uses ``params`` as given (QB on or off per ``params.qb.enabled``); ``model_no_qb``
     is a second replay with the QB term off over the SAME rows; ``market`` is the vig-free CSV
     closing moneyline and ``blend`` uses ``params.blend.model_weight``, both over the rows that
-    have both closing moneylines. ``replays`` may pass precomputed {"model", "no_qb"} replay
-    results to avoid recomputation.
+    have both closing moneylines. ``replays`` may pass precomputed {"model", "no_qb",
+    "with_injuries"} replay results to avoid recomputation.
+
+    ``injury_extra`` (D18.6; optional) is a {game_id: (home_term, away_term)} map of Elo
+    terms. When given, the row ``model_with_injuries`` is added over the SAME rows as
+    ``model`` (which stays the plain model, the "without" side of the gate):
+    ``injury_mode="pregame"`` adds the term at forecast time on the plain replay's d (what
+    predict.py does); ``"replay"`` runs a third replay with the term injected through
+    elo.replay's ``extra`` hook (ratings then absorb it). When omitted the object has
+    exactly the section-2.4 keys, so the build's evaluation block is unchanged.
     """
     replays = replays or {}
     rep = replays.get("model") or elo.replay(games, params)
@@ -99,7 +126,7 @@ def holdout(games: list[dict], params: dict, season: int = REFERENCE_SEASON, rep
     rows_no = holdout_rows(games, rep_no, season)
     w = float(params["blend"]["model_weight"])
     comparable = [r for r in rows if r["p_market"] is not None]
-    return {
+    ev = {
         "season": season,
         "samples": {"model": len(rows), "market_comparable": len(comparable)},
         "model": _strip_n(metrics([(r["p_model"], r["s"]) for r in rows])),
@@ -107,6 +134,16 @@ def holdout(games: list[dict], params: dict, season: int = REFERENCE_SEASON, rep
         "market": _strip_n(metrics([(r["p_market"], r["s"]) for r in comparable])),
         "blend": _strip_n(metrics([(_blend(r["p_model"], r["p_market"], w), r["s"]) for r in comparable])),
     }
+    if injury_extra is not None:
+        if injury_mode == "replay":
+            rep_inj = replays.get("with_injuries") or elo.replay(games, params, extra=injury_extra)
+            rows_inj = holdout_rows(games, rep_inj, season)
+        elif injury_mode == "pregame":
+            rows_inj = holdout_rows_with_extra(games, rep, season, injury_extra)
+        else:
+            raise ValueError("injury_mode must be 'pregame' or 'replay', got %r" % (injury_mode,))
+        ev["model_with_injuries"] = _strip_n(metrics([(r["p_model"], r["s"]) for r in rows_inj]))
+    return ev
 
 
 def _strip_n(m: dict) -> dict:
@@ -167,10 +204,12 @@ def _fmt(x, nd=4) -> str:
 def format_table(ev: dict) -> str:
     """Plain-text holdout table."""
     lines = ["%d holdout  n(model)=%d  n(market)=%d" % (ev["season"], ev["samples"]["model"], ev["samples"]["market_comparable"])]
-    lines.append("%-12s %8s %8s %8s" % ("", "brier", "logloss", "acc"))
-    for k in ("model", "model_no_qb", "market", "blend"):
-        m = ev[k]
-        lines.append("%-12s %8s %8s %8s" % (k, _fmt(m["brier"]), _fmt(m["logloss"], 3), _fmt(m["accuracy"], 3)))
+    lines.append("%-20s %8s %8s %8s" % ("", "brier", "logloss", "acc"))
+    for k in ("model", "model_no_qb", "model_with_injuries", "market", "blend"):
+        m = ev.get(k)
+        if m is None:
+            continue  # model_with_injuries is present only when the caller passed injury_extra
+        lines.append("%-20s %8s %8s %8s" % (k, _fmt(m["brier"]), _fmt(m["logloss"], 3), _fmt(m["accuracy"], 3)))
     return "\n".join(lines)
 
 

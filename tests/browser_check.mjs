@@ -8,7 +8,10 @@
 // console errors, every tab fully inside the strip, tabs switch (click + arrow keys), Why?
 // expands, the parlay panel opens, the page's parlay engine reproduces
 // tests/fixtures/parlay_fixture.json (the src/parlay.py oracle) candidate for candidate, the
-// live overlay works and degrades, the empty track record shows its copy, dark mode paints the
+// live overlay works and degrades, the injuries block (D18.3) summarises both teams, expands from the
+// keyboard into a table that stays inside the card, renders a markup-looking name as text, shows the
+// three report states and the stale eyebrow, the track record splits by injury load when given and
+// says so when not, the empty track record shows its copy, dark mode paints the
 // dark token background and the theme button follows the system scheme, a keyed slate with one
 // CSV-fallback game still builds real-book parlays, and a keyless (csv) build shows nflverse
 // copy with no dead book toggles. Screenshots land in docs/screens/.
@@ -101,7 +104,39 @@ try {
     const expanded = await why.getAttribute('aria-expanded');
     const sentences = await page.locator('#slate article.game').first().locator('ol li').count();
     ok(expanded === 'true' && sentences >= 3, `${width}px: Why? expands (aria-expanded=${expanded}, ${sentences} sentences)`);
-    await page.screenshot({ path: path.join(SCREENS, `today-${width}.png`), fullPage: true });
+    // Injuries block (D18.3): two summary lines per card (home then away), toggle expands from the keyboard,
+    // the table lives in .tablewrap, chips carry their status as text, nothing overflows the card or the body.
+    const injCards = await page.locator('#slate article.game .inj').count();
+    ok(injCards === slateCount, `${width}px: every card carries an injuries block (${injCards}/${slateCount})`);
+    const injCard = page.locator('#slate article.game').filter({ has: page.locator('button[aria-controls^="inj-"]') }).first();
+    const firstInj = injCard.locator('.inj');
+    const lines = await firstInj.locator('.inj-line').allTextContents();
+    const firstGame = await injCard.getAttribute('data-game');
+    const fxGame = loadFixture().games.find((g) => g.game_id === firstGame);
+    ok(lines.length === 2 && lines[0].startsWith(fxGame.home + ' · ') && lines[1].startsWith(fxGame.away + ' · '), `${width}px: summary lines read home then away (${lines.map((l) => l.slice(0, 28)).join(' | ')})`);
+    ok(/\d+ starters? Out/.test(lines[0]) && /\d+ Doubtful · \d+ Questionable/.test(lines[0]), `${width}px: summary line carries the three counts`);
+    const injBtn = firstInj.locator('button[aria-controls^="inj-"]');
+    await injBtn.focus();
+    ok((await page.evaluate(() => document.activeElement.getAttribute('aria-controls'))).startsWith('inj-'), `${width}px: injuries toggle is focusable`);
+    await page.keyboard.press('Enter');
+    const injOpen = await injBtn.getAttribute('aria-expanded');
+    const injTable = page.locator('#' + (await injBtn.getAttribute('aria-controls')));
+    ok(injOpen === 'true' && await injTable.isVisible() && (await injTable.locator('tbody tr').count()) >= 2, `${width}px: Enter expands the injuries table (aria-expanded=${injOpen}, ${await injTable.locator('tbody tr').count()} rows)`);
+    ok(await injTable.evaluate((el) => el.classList.contains('tablewrap') && getComputedStyle(el).overflowX === 'auto'), `${width}px: injuries table scrolls inside .tablewrap`);
+    const chips = await injTable.locator('.chip').allTextContents();
+    ok(chips.length > 0 && chips.every((c) => ['Out', 'Doubtful', 'Questionable', 'Probable'].includes(c)), `${width}px: status chips carry the status word (${[...new Set(chips)].join(', ')})`);
+    const starterCells = await injTable.locator('tbody td:nth-child(5)').allTextContents();
+    ok(starterCells.some((t) => t === 'Starter'), `${width}px: starter mark is text`);
+    const injGeom = await page.evaluate(() => {
+      const inj = document.querySelector('#slate article.game .inj .tablewrap:not([hidden])').closest('.inj'), card = inj.closest('article');
+      const c = card.getBoundingClientRect(), i = inj.getBoundingClientRect();
+      return { fits: i.right <= c.right + 0.5 && i.left >= c.left - 0.5, sw: document.body.scrollWidth, dw: document.documentElement.scrollWidth, iw: window.innerWidth };
+    });
+    ok(injGeom.fits && injGeom.sw <= injGeom.iw && injGeom.dw <= injGeom.iw, `${width}px: expanded injuries block stays inside the card and the body (body ${injGeom.sw}, inner ${injGeom.iw})`);
+    const states = await page.locator('#slate .inj-line').allTextContents();
+    ok(states.some((t) => t.includes('injury reports unavailable this build')), `${width}px: an unavailable report says so (CHI@GB)`);
+    ok((await page.locator('#slate .inj .eyebrow').first().textContent()).includes('shown for context, not in the number yet'), `${width}px: disabled term is labelled on the card`);
+    await page.screenshot({ path: path.join(SCREENS, `today-injuries-${width}.png`), fullPage: true });
 
     // Parlay panel: opens, mandated copy visible, first row matches the oracle when present.
     await page.click('#parlay-btn');
@@ -128,8 +163,12 @@ try {
     const chartPx = await page.evaluate(() => { const svg = document.querySelector('#record svg.chart'); const t = svg.querySelector('.axis'); return { w: svg.getBoundingClientRect().width, eff: 10 * svg.getBoundingClientRect().width / 640, wrap: !!svg.closest('.chartwrap') }; });
     ok(chartPx.wrap && chartPx.eff >= 8.7, `${width}px: chart axis text stays >= 8.7px effective (${chartPx.eff.toFixed(2)}px at ${chartPx.w}px wide, scrolls inside .chartwrap)`);
     await page.screenshot({ path: path.join(SCREENS, `record-${width}.png`), fullPage: true });
+    const loadRowsMain = await page.locator('#record h3:has-text("By injury load") + .tablewrap tbody tr').allTextContents();
+    ok(loadRowsMain.length === 3 && loadRowsMain[0].includes('starter Out') && loadRowsMain[1].includes('no starter Out') && loadRowsMain[2].includes('No report') && !loadRowsMain.join(' ').includes('starter_out'), `${width}px: track record renders the three CONTRACT 2.12 injury-load rows with friendly labels (${loadRowsMain.map((r) => r.slice(0, 32)).join(' | ')})`);
     await page.keyboard.press('ArrowRight');
     ok(await page.locator('#panel-how').isVisible(), `${width}px: ArrowRight moves to How it works`);
+    const howTxt = await page.locator('#how').textContent();
+    ok(howTxt.includes('The injury term') && howTxt.includes('switched off in this build') && howTxt.includes('0.001') && howTxt.includes('not yet measured') && howTxt.includes('Five caveats'), `${width}px: How it works reads params.injury (gate numbers, enabled flag, caveats)`);
     await page.screenshot({ path: path.join(SCREENS, `how-${width}.png`), fullPage: true });
     const w2 = await page.evaluate(() => ({ sw: document.body.scrollWidth, iw: window.innerWidth }));
     ok(w2.sw <= w2.iw, `${width}px: still no horizontal scroll after visiting every tab`);
@@ -280,6 +319,98 @@ try {
     await ctx3.close();
   }
 
+  // Injuries (D18.3) variants: a markup-looking name is text, not markup; a frozen game shows the stale
+  // eyebrow; "no report filed yet" and the QB carve-out render; by_injury_load renders two rows with n.
+  {
+    const fx = loadFixture();
+    const victim = fx.games.find((g) => g.game_id === '2026_05_PHI_JAX');
+    const p0 = victim.official.injuries.away.players[0];
+    const HOSTILE = 'Evil <img src=x onerror=alert(1)> Guy';
+    p0.name = HOSTILE; p0.injury = '<b>Knee</b>'; p0.covered_by_qb_term = true; p0.position = 'QB'; p0.pos_group = 'QB'; victim.official.injuries.away.qb_listed = p0.status;
+    victim.frozen_snapshot = victim.game_id + '@20261010T140312Z'; // frozen (CONTRACT 2.6a): the stale eyebrow keys on frozen_snapshot alone
+    const frozen = fx.games.find((g) => g.game_id === '2026_05_CIN_MIA');
+    frozen.frozen_snapshot = frozen.game_id + '@20261010T140312Z';
+    const unfiled = fx.games.find((g) => g.game_id === '2026_05_LV_NE');
+    unfiled.official.injuries.home = { available: true, report_filed: false, players: [], starters_out: 0, starters_doubtful: 0, starters_questionable: 0, total_listed: 0, qb_listed: null };
+    const mk = (load, n, hits, losses) => ({ load, n, hits, losses, pushes: 0, accuracy: hits / (hits + losses), market_n: n, market_hits: hits, market_accuracy: hits / (hits + losses) });
+    fx.track_record.by_injury_load = [mk('starter_out', 7, 4, 3), mk('no_starter_out', 3, 2, 1), mk('unknown', 42, 22, 20)];
+    const injUrl = renderVariant('injuries', fx);
+    const ctxI = await browser.newContext({ viewport: { width: 400, height: 900 } });
+    const pageI = await ctxI.newPage();
+    const errs = [], dialogs = []; pageI.on('pageerror', (e) => errs.push(String(e))); pageI.on('dialog', (d) => { dialogs.push(d.message()); d.dismiss(); });
+    await pageI.goto(injUrl); await pageI.waitForSelector('#slate article.game');
+    const card = pageI.locator('#slate article[data-game="2026_05_PHI_JAX"]');
+    await card.locator('button[aria-controls^="inj-"]').click();
+    const nameCell = card.locator('.inj-table tbody td.wrap').filter({ hasText: 'Evil' }).first();
+    ok((await card.locator('.inj-table img, .inj-table svg, .inj-table b').count()) === 0 && (await nameCell.textContent()).includes(HOSTILE) && dialogs.length === 0, 'injuries: a markup-looking name renders as text (no img, no dialog)');
+    ok((await nameCell.textContent()).includes('(covered by the QB term)'), 'injuries: the QB row carries "(covered by the QB term)"');
+    ok((await card.locator('.inj-line').first().textContent()).startsWith('JAX') && (await card.locator('.inj-line').nth(1).textContent()).includes('QB '), 'injuries: summary names the listed QB status with the carve-out');
+    ok((await card.locator('.inj .eyebrow').allTextContents()).some((t) => t === 'latest report; the pick was frozen earlier'), 'injuries: a frozen game (PHI@JAX) shows the stale eyebrow');
+    ok((await card.locator('.inj .eyebrow').first().textContent()) === 'Injuries · shown for context, not in the number yet', 'injuries: a frozen card with the term off still reads "shown for context" (no false "in the number")');
+    ok((await pageI.locator('#slate article[data-game="2026_05_CIN_MIA"] .inj .eyebrow').allTextContents()).some((t) => t === 'latest report; the pick was frozen earlier'), 'injuries: a frozen game (frozen_snapshot set) shows the stale eyebrow');
+    ok(!(await pageI.locator('#slate article[data-game="2026_05_DEN_LAC"] .inj .eyebrow').allTextContents()).some((t) => t.includes('frozen earlier')), 'injuries: an unfrozen game shows no stale eyebrow');
+    const lvne = pageI.locator('#slate article[data-game="2026_05_LV_NE"]');
+    ok((await lvne.locator('.inj-line').first().textContent()) === 'NE · no report filed yet', 'injuries: an unfiled report reads "no report filed yet"');
+    await lvne.locator('button[aria-controls^="inj-"]').click();
+    ok((await lvne.locator('.inj-table tbody td.note').allTextContents()).includes('no report filed yet'), 'injuries: the table carries the unfiled note row');
+    const wI = await pageI.evaluate(() => ({ sw: document.body.scrollWidth, iw: window.innerWidth }));
+    ok(wI.sw <= wI.iw && errs.length === 0, 'injuries: no horizontal scroll at 400px with hostile names, no page errors');
+    await pageI.screenshot({ path: path.join(SCREENS, 'today-injuries-hostile-400.png'), fullPage: true });
+    await pageI.click('#tab-record');
+    const loadRows = await pageI.locator('#record h3:has-text("By injury load") + .tablewrap tbody tr').allTextContents();
+    ok(loadRows.length === 3 && loadRows[0].includes('starter Out') && loadRows[0].includes('7') && loadRows[1].includes('no starter Out') && loadRows[1].includes('3') && loadRows[2].includes('42'), `track record: by_injury_load renders the three buckets with n (${loadRows.map((r) => r.slice(0, 30)).join(' | ')})`);
+    await ctxI.close();
+    // Pre-D18 model (no by_injury_load): the track record says so instead of blanking.
+    const fxOld = JSON.parse(readFileSync(FIXTURE, 'utf8'));
+    delete fxOld.track_record.by_injury_load;
+    const oldUrl = renderVariant('no-injury-load', fxOld);
+    const ctxO = await browser.newContext({ viewport: { width: 1200, height: 900 } });
+    const pageO = await ctxO.newPage();
+    await pageO.goto(oldUrl); await pageO.waitForSelector('#slate article.game');
+    await pageO.click('#tab-record');
+    ok((await pageO.locator('#record').textContent()).includes('Not split by injury load yet'), 'track record: says when by_injury_load is absent (pre-D18 model)');
+    await ctxO.close();
+  }
+
+  // Enabled term (D18.3, the enabled path): How it works states the gate verdict (both Briers) and the six
+  // weights; a live card's eyebrow reads "in the number: ±N Elo"; a card frozen to a pre-term snapshot says
+  // the term is NOT in its number (the carried term is read back out of factors, CONTRACT 2.6a).
+  {
+    const fx = loadFixture();
+    const pi = fx.params.injury;
+    pi.enabled = true;
+    pi.gate = { holdout_brier_with: 0.2152, holdout_brier_without: 0.2161, improvement_required: 0.0005 };
+    pi.weights = { OL: 10, WR_TE: 20, RB: 30, DL_EDGE: 0, LB: 30, DB: 10 };
+    const term = (rep) => -rep.players.filter((p) => p.starter && !p.covered_by_qb_term).reduce((s, p) => s + (pi.weights[p.pos_group] || 0) * (pi.status_mult[p.status] || 0), 0);
+    let live = null, frozenPre = null;
+    for (const g of fx.games) {
+      const inj = g.official.injuries;
+      inj.enabled = true; inj.elo_home = term(inj.home); inj.elo_away = term(inj.away); inj.elo = inj.elo_home - inj.elo_away;
+      if (g.status !== 'scheduled' || g.league_date !== DATE || inj.elo === 0) continue;
+      if (!live) { live = g; g.official.factors.d_total += inj.elo; }  // live: the term is in d_total
+      else if (!frozenPre) { frozenPre = g; g.frozen_snapshot = g.game_id + '@20261009T100000Z'; }  // frozen before the term existed: d_total carries none
+    }
+    ok(!!live && !!frozenPre, `enabled: fixture offers a live card (${live && live.game_id}) and a pre-term frozen card (${frozenPre && frozenPre.game_id}) with a nonzero term`);
+    const onUrl = renderVariant('enabled', fx);
+    const ctxE = await browser.newContext({ viewport: { width: 400, height: 900 } });
+    const pageE = await ctxE.newPage();
+    const errs = []; pageE.on('pageerror', (e) => errs.push(String(e)));
+    await pageE.goto(onUrl); await pageE.waitForSelector('#slate article.game');
+    const elo = live.official.injuries.elo;
+    const wantLive = 'Injuries · in the number: ' + (elo < 0 ? '−' : '+') + Math.abs(elo).toFixed(0) + ' Elo toward ' + live.home;
+    const eyeLive = await pageE.locator(`#slate article[data-game="${live.game_id}"] .inj .eyebrow`).first().textContent();
+    ok(eyeLive === wantLive, `enabled: live card eyebrow reads "${wantLive}" (got "${eyeLive}")`);
+    const eyeFrozen = await pageE.locator(`#slate article[data-game="${frozenPre.game_id}"] .inj .eyebrow`).allTextContents();
+    ok(eyeFrozen[0].startsWith('Injuries · not in the frozen pick, which carried no injury term; the latest report reads ') && eyeFrozen.includes('latest report; the pick was frozen earlier'), `enabled: a pre-term frozen card says the term is not in its number (${eyeFrozen[0]})`);
+    await pageE.click('#tab-how');
+    const howE = await pageE.locator('#how').textContent();
+    ok(howE.includes('Listed injuries are in the number in this build') && howE.includes('0.2152') && howE.includes('0.2161') && howE.includes('OL 10, WR/TE 20, RB 30, DL/EDGE 0, LB 30, DB 10') && howE.includes('Five caveats'), 'enabled: How it works states the verdict, both holdout Briers and the six weights');
+    const wE = await pageE.evaluate(() => ({ sw: document.body.scrollWidth, iw: window.innerWidth }));
+    ok(wE.sw <= wE.iw && errs.length === 0, 'enabled: no horizontal scroll at 400px, no page errors');
+    await pageE.screenshot({ path: path.join(SCREENS, 'today-injuries-enabled-400.png'), fullPage: true });
+    await ctxE.close();
+  }
+
   // Empty track record: overall.n = 0 must show the empty-state copy, not NaN.
   {
     const fx = loadFixture();
@@ -317,7 +448,20 @@ try {
   await page.click('#theme-btn');
   const s1 = await btnState();
   ok(s1.bg === 'rgb(255, 255, 255)' && s1.attr === 'light' && s1.text === 'Dark mode' && s1.pressed === 'false', `dark (system): first click reaches light (${JSON.stringify(s1)})`);
-  await page.screenshot({ path: path.join(SCREENS, 'today-dark-1200.png'), fullPage: true });
+  await page.click('#theme-btn'); // back to dark for the chip contrast check
+  const contrast = await page.evaluate(() => {
+    const btn = document.querySelector('#slate article.game button[aria-controls^="inj-"]'); btn.click();
+    const lum = (rgb) => { const [r, g, b] = rgb.match(/\d+(\.\d+)?/g).map(Number).map((v) => v / 255).map((v) => v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4)); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+    const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((p, q) => q - p); return (x + 0.05) / (y + 0.05); };
+    const out = {};
+    for (const cls of ['st-out', 'st-doubtful', 'st-questionable']) {
+      const el = document.querySelector('.chip.' + cls); if (!el) { out[cls] = null; continue; }
+      const cs = getComputedStyle(el); out[cls] = Number(ratio(cs.color, cs.backgroundColor).toFixed(2));
+    }
+    return { bg: getComputedStyle(document.body).backgroundColor, ratios: out };
+  });
+  ok(contrast.bg === 'rgb(11, 15, 26)' && Object.values(contrast.ratios).every((r) => r != null && r >= 4.5), `dark: injury status chips readable, text/background contrast >= 4.5 (${JSON.stringify(contrast.ratios)})`);
+  await page.screenshot({ path: path.join(SCREENS, 'today-injuries-dark-1200.png'), fullPage: true });
   await ctx.close();
 } finally {
   await browser.close();

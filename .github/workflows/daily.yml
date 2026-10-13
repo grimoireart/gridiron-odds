@@ -35,6 +35,21 @@ jobs:
         with:
           python-version: "3.11"   # the floor we promise; stdlib only, nothing to install
 
+      # D18: data/ is gitignored, so without this step every run starts with no injury report or depth
+      # chart and a failed nflverse download degrades the whole build (every card "unavailable", the
+      # term 0 while enabled) with nothing to fall back to. The key is new every run (the post-job save
+      # always stores the freshly validated files); restore-keys hands the newest earlier run's files to
+      # `injuries.fetch_*`, which then falls back to them exactly as a local build does.
+      - name: Restore the nflverse injury report and depth chart caches (an outage reuses the last good files)
+        uses: actions/cache@v4
+        with:
+          path: |
+            data/injuries_*.csv
+            data/depth_charts_*.csv
+          key: nflverse-injuries-${{ github.run_id }}
+          restore-keys: |
+            nflverse-injuries-
+
       - name: Build (fetch -> rate -> predict -> sim -> ledger -> model.json -> index.html)
         env:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}

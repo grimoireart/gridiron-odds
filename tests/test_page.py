@@ -122,6 +122,45 @@ class PageRenderTests(unittest.TestCase):
         self.assertEqual(html.count("<script"), template.count("<script"))
         self.assertEqual(html.count("<!--"), template.count("<!--"))
 
+    def test_injury_block_renders_from_fixture(self):
+        # D18.3: every fixture game carries the 2.6b object and the page builds the block from it.
+        for g in self.model["games"]:
+            inj = g["official"]["injuries"]
+            self.assertEqual(sorted(inj), ["as_of", "away", "elo", "elo_away", "elo_home", "enabled", "home"])
+            for side in ("home", "away"):
+                self.assertEqual(sorted(inj[side]), ["available", "players", "qb_listed", "report_filed", "starters_doubtful",
+                                                     "starters_out", "starters_questionable", "total_listed"])
+        self.assertTrue(any(g["official"]["injuries"]["home"]["players"] for g in self.model["games"]))
+        self.assertEqual(sorted(self.model["params"]["injury"]), ["enabled", "gate", "status_mult", "weights"])
+        script = self.html[self.html.index("<script>\n'use strict'"):]
+        self.assertIn("append(card, [injuryBlock(g)]);", script)
+        self.assertIn("'data-injuries'", script)
+        # the embedded report round-trips byte-for-byte, names included
+        self.assertEqual(json.loads(embedded_json(self.html))["games"][0]["official"]["injuries"], self.model["games"][0]["official"]["injuries"])
+
+    def test_hostile_player_name_renders_as_text(self):
+        # D18.3: names and injury strings are untrusted; a markup-looking name must never become markup.
+        model = copy.deepcopy(self.model)
+        g = next(g for g in model["games"] if g["official"]["injuries"]["home"]["players"])
+        p = g["official"]["injuries"]["home"]["players"][0]
+        p["name"] = 'Evil <img src=x onerror=alert(1)> Guy</script>'
+        p["injury"] = "<b>Knee</b><!--"
+        p["position"] = "<svg onload=alert(2)>"
+        html = render.render_page(render.read_template(TEMPLATE), model, "")
+        template = render.read_template(TEMPLATE)
+        self.assertNotIn("<img", html)
+        self.assertNotIn("<svg onload", html)
+        self.assertEqual(html.count("<script"), template.count("<script"))
+        self.assertEqual(html.count("<!--"), template.count("<!--"))
+        got = json.loads(embedded_json(html))
+        gp = next(x for x in got["games"] if x["game_id"] == g["game_id"])["official"]["injuries"]["home"]["players"][0]
+        self.assertEqual(gp["name"], p["name"])
+        self.assertEqual(gp["injury"], p["injury"])
+        # the page builds the block with text nodes only (no innerHTML anywhere, checked below too)
+        script = html[html.index("<script>\n'use strict'"):]
+        self.assertIn("document.createTextNode", script)
+        self.assertNotIn(".innerHTML", script)
+
     def test_odds_url_from_env(self):
         old = os.environ.get(render.ODDS_URL_ENV)
         os.environ[render.ODDS_URL_ENV] = "https://odds.example/nfl"
@@ -190,6 +229,32 @@ class TemplateRequirementsTests(unittest.TestCase):
         self.assertNotIn("'Edge '", self.t)
         self.assertIn("model-only score; the pick follows the blend", self.t)
         self.assertIn("nflverse lines", self.t)
+
+    def test_injury_copy_and_markup(self):
+        # D18.3 mandated strings and structure: summary line, toggle with aria wiring, status chips as text,
+        # the three report states, the QB carve-out, the stale eyebrow, How-it-works and Track record sections.
+        for needle in ("'Injuries · '", "no report filed yet", "injury reports unavailable this build",
+                       "(covered by the QB term)", "latest report; the pick was frozen earlier",
+                       "shown for context, not in the number yet", "'aria-controls': id", "'inj-' + g.game_id",
+                       "class: 'tablewrap', id, hidden: true", "class: 'inj-table'", "statusChip(p.status)",
+                       "'Starter' : '—'", "The injury term", "By injury load", "tr.by_injury_load",
+                       "Not split by injury load yet", "gate.improvement_required", "holdout_brier_with",
+                       "Five caveats", "starters Out", "' Doubtful · '", "' Questionable'",
+                       # the enabled branch (D18.3: the verdict and the weights) and the frozen-card wording
+                       # (CONTRACT 2.6a: the carried term is read back out of factors, never claimed from the report)
+                       "Listed injuries are in the number in this build", "'OL ' + w.OL + ', WR/TE ' + w.WR_TE",
+                       "holdout_brier_without", "const stale = g.frozen_snapshot != null;",
+                       "not in the frozen pick, which carried no injury term", "'the frozen pick carried '",
+                       "'in the ' + (stale ? 'frozen ' : '') + 'number: '"):
+            self.assertIn(needle, self.t, needle)
+        self.assertNotIn("as_of_snapshot", self.t)  # a non-contract key; the stale eyebrow keys on frozen_snapshot alone
+        # chips: danger wash for Out, hyp wash for Doubtful, a line for Questionable; never color alone
+        self.assertIn(".chip.st-out { background: var(--danger-wash)", self.t)
+        self.assertIn(".chip.st-doubtful { background: var(--hyp-wash)", self.t)
+        self.assertIn(".chip.st-questionable, .chip.st-probable { background: var(--paper)", self.t)
+        self.assertIn("overflow-wrap: anywhere", self.t)
+        # no "injury news" claim anywhere in the page copy (D17)
+        self.assertNotIn("injury news", self.t)
 
     def test_no_innerhtml_and_no_hardcoded_numbers(self):
         script = self.t[self.t.index("<script>\n'use strict'"):]

@@ -44,6 +44,28 @@
     "betmgm",
     "betrivers"
   ],
+  "injury": {
+    "enabled": true,
+    "weights": {
+      "OL": 10,
+      "WR_TE": 20,
+      "RB": 30,
+      "DL_EDGE": 0,
+      "LB": 30,
+      "DB": 10
+    },
+    "status_mult": {
+      "Out": 1.0,
+      "Doubtful": 0.75,
+      "Questionable": 0.25,
+      "Probable": 0.1
+    },
+    "gate": {
+      "holdout_brier_with": 0.21515927920468206,
+      "holdout_brier_without": 0.21606345216784772,
+      "improvement_required": 0.0005
+    }
+  },
   "reference": {
     "season": 2025,
     "brier": 0.21606345216784772,
@@ -76,6 +98,11 @@
       "brier": 0.2110657855819862,
       "logloss": 0.609887321932242,
       "accuracy": 0.6584507042253521
+    },
+    "model_with_injuries": {
+      "brier": 0.21515927920468206,
+      "logloss": 0.6216035035054704,
+      "accuracy": 0.6514084507042254
     }
   },
   "qb_gate": {
@@ -1514,5 +1541,797 @@
       ]
     ]
   },
-  "tuned_at": "2026-10-09T21:37:53Z"
+  "injury_tuning": {
+    "tuned_at": "2026-10-13T20:44:42Z",
+    "available": true,
+    "mode": "pregame",
+    "seasons": [
+      2010,
+      2024
+    ],
+    "metric": "brier",
+    "grid": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      30
+    ],
+    "status_mult": {
+      "Out": 1.0,
+      "Doubtful": 0.75,
+      "Questionable": 0.25,
+      "Probable": 0.1
+    },
+    "weights": {
+      "OL": 10,
+      "WR_TE": 20,
+      "RB": 30,
+      "DL_EDGE": 0,
+      "LB": 30,
+      "DB": 10
+    },
+    "brier_with": 0.21731216288497845,
+    "brier_without": 0.2181775697035111,
+    "n": 4078,
+    "sweeps": 3,
+    "evaluations": 91,
+    "holdout": {
+      "holdout_brier_with": 0.21515927920468206,
+      "holdout_brier_without": 0.21606345216784772,
+      "improvement_required": 0.0005,
+      "enabled": true,
+      "season": 2025,
+      "n": 285,
+      "mode": "pregame"
+    },
+    "alternative": {
+      "mode": "replay",
+      "weights": {
+        "OL": 10,
+        "WR_TE": 20,
+        "RB": 30,
+        "DL_EDGE": 0,
+        "LB": 30,
+        "DB": 10
+      },
+      "brier_with": 0.21729595503668067,
+      "brier_without": 0.2181775697035111,
+      "n": 4078,
+      "sweeps": 3,
+      "evaluations": 91,
+      "holdout": {
+        "holdout_brier_with": 0.21587019863301904,
+        "holdout_brier_without": 0.21606345216784772,
+        "improvement_required": 0.0005,
+        "enabled": false,
+        "season": 2025,
+        "n": 285,
+        "mode": "replay"
+      }
+    },
+    "coverage": {
+      "2010": {
+        "depth_format": "legacy",
+        "games": 267,
+        "games_both_filed": 266,
+        "starters_per_side": 22.01,
+        "starters_out": 232,
+        "starters_doubtful": 102,
+        "starters_questionable": 673,
+        "starters_probable": 1095,
+        "unmapped_starter_slots": {}
+      },
+      "2011": {
+        "depth_format": "legacy",
+        "games": 267,
+        "games_both_filed": 267,
+        "starters_per_side": 21.99,
+        "starters_out": 316,
+        "starters_doubtful": 111,
+        "starters_questionable": 680,
+        "starters_probable": 1234,
+        "unmapped_starter_slots": {}
+      },
+      "2012": {
+        "depth_format": "legacy",
+        "games": 267,
+        "games_both_filed": 267,
+        "starters_per_side": 22.05,
+        "starters_out": 340,
+        "starters_doubtful": 100,
+        "starters_questionable": 650,
+        "starters_probable": 1679,
+        "unmapped_starter_slots": {}
+      },
+      "2013": {
+        "depth_format": "legacy",
+        "games": 267,
+        "games_both_filed": 265,
+        "starters_per_side": 22.02,
+        "starters_out": 300,
+        "starters_doubtful": 97,
+        "starters_questionable": 607,
+        "starters_probable": 1639,
+        "unmapped_starter_slots": {}
+      },
+      "2014": {
+        "depth_format": "legacy",
+        "games": 267,
+        "games_both_filed": 267,
+        "starters_per_side": 21.94,
+        "starters_out": 243,
+        "starters_doubtful": 84,
+        "starters_questionable": 583,
+        "starters_probable": 1532,
+        "unmapped_starter_slots": {}
+      },
+      "2015": {
+        "depth_format": "legacy",
+        "games": 267,
+        "games_both_filed": 267,
+        "starters_per_side": 22.03,
+        "starters_out": 415,
+        "starters_doubtful": 127,
+        "starters_questionable": 649,
+        "starters_probable": 1575,
+        "unmapped_starter_slots": {}
+      },
+      "2016": {
+        "depth_format": "legacy",
+        "games": 267,
+        "games_both_filed": 267,
+        "starters_per_side": 21.95,
+        "starters_out": 453,
+        "starters_doubtful": 113,
+        "starters_questionable": 1024,
+        "starters_probable": 0,
+        "unmapped_starter_slots": {}
+      },
+      "2017": {
+        "depth_format": "legacy",
+        "games": 267,
+        "games_both_filed": 266,
+        "starters_per_side": 22.07,
+        "starters_out": 415,
+        "starters_doubtful": 83,
+        "starters_questionable": 813,
+        "starters_probable": 0,
+        "unmapped_starter_slots": {}
+      },
+      "2018": {
+        "depth_format": "legacy",
+        "games": 267,
+        "games_both_filed": 266,
+        "starters_per_side": 21.97,
+        "starters_out": 405,
+        "starters_doubtful": 102,
+        "starters_questionable": 756,
+        "starters_probable": 0,
+        "unmapped_starter_slots": {}
+      },
+      "2019": {
+        "depth_format": "legacy",
+        "games": 267,
+        "games_both_filed": 267,
+        "starters_per_side": 22.09,
+        "starters_out": 493,
+        "starters_doubtful": 92,
+        "starters_questionable": 756,
+        "starters_probable": 0,
+        "unmapped_starter_slots": {}
+      },
+      "2020": {
+        "depth_format": "legacy",
+        "games": 269,
+        "games_both_filed": 268,
+        "starters_per_side": 22.12,
+        "starters_out": 402,
+        "starters_doubtful": 76,
+        "starters_questionable": 721,
+        "starters_probable": 0,
+        "unmapped_starter_slots": {}
+      },
+      "2021": {
+        "depth_format": "legacy",
+        "games": 285,
+        "games_both_filed": 285,
+        "starters_per_side": 22.17,
+        "starters_out": 407,
+        "starters_doubtful": 84,
+        "starters_questionable": 845,
+        "starters_probable": 0,
+        "unmapped_starter_slots": {}
+      },
+      "2022": {
+        "depth_format": "legacy",
+        "games": 284,
+        "games_both_filed": 281,
+        "starters_per_side": 22.28,
+        "starters_out": 529,
+        "starters_doubtful": 74,
+        "starters_questionable": 851,
+        "starters_probable": 0,
+        "unmapped_starter_slots": {}
+      },
+      "2023": {
+        "depth_format": "legacy",
+        "games": 285,
+        "games_both_filed": 277,
+        "starters_per_side": 22.37,
+        "starters_out": 490,
+        "starters_doubtful": 69,
+        "starters_questionable": 848,
+        "starters_probable": 0,
+        "unmapped_starter_slots": {}
+      },
+      "2024": {
+        "depth_format": "legacy",
+        "games": 285,
+        "games_both_filed": 284,
+        "starters_per_side": 22.14,
+        "starters_out": 487,
+        "starters_doubtful": 106,
+        "starters_questionable": 699,
+        "starters_probable": 0,
+        "unmapped_starter_slots": {}
+      },
+      "2025": {
+        "depth_format": "dt",
+        "games": 285,
+        "games_both_filed": 285,
+        "starters_per_side": 21.39,
+        "starters_out": 582,
+        "starters_doubtful": 66,
+        "starters_questionable": 627,
+        "starters_probable": 0,
+        "unmapped_starter_slots": {}
+      }
+    },
+    "notes": [],
+    "trace": [
+      [
+        1,
+        "OL",
+        5,
+        0.21811533307796716
+      ],
+      [
+        1,
+        "OL",
+        10,
+        0.21808237643820724
+      ],
+      [
+        1,
+        "OL",
+        15,
+        0.21807860025358738
+      ],
+      [
+        1,
+        "OL",
+        20,
+        0.2181038652498137
+      ],
+      [
+        1,
+        "OL",
+        30,
+        0.21824076279953353
+      ],
+      [
+        1,
+        "WR_TE",
+        5,
+        0.21798701988747995
+      ],
+      [
+        1,
+        "WR_TE",
+        10,
+        0.2179184805736426
+      ],
+      [
+        1,
+        "WR_TE",
+        15,
+        0.2178727882528015
+      ],
+      [
+        1,
+        "WR_TE",
+        20,
+        0.21784972143043765
+      ],
+      [
+        1,
+        "WR_TE",
+        30,
+        0.2178704511059936
+      ],
+      [
+        1,
+        "RB",
+        5,
+        0.21779791347528607
+      ],
+      [
+        1,
+        "RB",
+        10,
+        0.21775650057829668
+      ],
+      [
+        1,
+        "RB",
+        15,
+        0.21772544891807405
+      ],
+      [
+        1,
+        "RB",
+        20,
+        0.21770471449558434
+      ],
+      [
+        1,
+        "RB",
+        30,
+        0.21769397193827048
+      ],
+      [
+        1,
+        "DL_EDGE",
+        5,
+        0.21770263225375994
+      ],
+      [
+        1,
+        "DL_EDGE",
+        10,
+        0.21772934261003493
+      ],
+      [
+        1,
+        "DL_EDGE",
+        15,
+        0.21777407952124614
+      ],
+      [
+        1,
+        "DL_EDGE",
+        20,
+        0.21783679211763343
+      ],
+      [
+        1,
+        "DL_EDGE",
+        30,
+        0.218015802691574
+      ],
+      [
+        1,
+        "LB",
+        5,
+        0.217593457816686
+      ],
+      [
+        1,
+        "LB",
+        10,
+        0.2175118613550555
+      ],
+      [
+        1,
+        "LB",
+        15,
+        0.21744919176838165
+      ],
+      [
+        1,
+        "LB",
+        20,
+        0.2174054390711364
+      ],
+      [
+        1,
+        "LB",
+        30,
+        0.21737454950547846
+      ],
+      [
+        1,
+        "DB",
+        5,
+        0.21733933539301795
+      ],
+      [
+        1,
+        "DB",
+        10,
+        0.21733210367765915
+      ],
+      [
+        1,
+        "DB",
+        15,
+        0.21735277233195371
+      ],
+      [
+        1,
+        "DB",
+        20,
+        0.217401223050272
+      ],
+      [
+        1,
+        "DB",
+        30,
+        0.21758082148792915
+      ],
+      [
+        2,
+        "OL",
+        0,
+        0.2173589692471052
+      ],
+      [
+        2,
+        "OL",
+        5,
+        0.21732107837888998
+      ],
+      [
+        2,
+        "OL",
+        10,
+        0.21731216288497845
+      ],
+      [
+        2,
+        "OL",
+        20,
+        0.21738074327170795
+      ],
+      [
+        2,
+        "OL",
+        30,
+        0.21756329603493746
+      ],
+      [
+        2,
+        "WR_TE",
+        0,
+        0.21751971232392112
+      ],
+      [
+        2,
+        "WR_TE",
+        5,
+        0.21743369054276013
+      ],
+      [
+        2,
+        "WR_TE",
+        10,
+        0.21737055750068338
+      ],
+      [
+        2,
+        "WR_TE",
+        15,
+        0.21733012145230093
+      ],
+      [
+        2,
+        "WR_TE",
+        30,
+        0.21734267074621355
+      ],
+      [
+        2,
+        "RB",
+        0,
+        0.21745053815731785
+      ],
+      [
+        2,
+        "RB",
+        5,
+        0.2174015016980896
+      ],
+      [
+        2,
+        "RB",
+        10,
+        0.2173629128266677
+      ],
+      [
+        2,
+        "RB",
+        15,
+        0.21733473591540184
+      ],
+      [
+        2,
+        "RB",
+        20,
+        0.21731692471043246
+      ],
+      [
+        2,
+        "DL_EDGE",
+        5,
+        0.21732563026765242
+      ],
+      [
+        2,
+        "DL_EDGE",
+        10,
+        0.21735686489320116
+      ],
+      [
+        2,
+        "DL_EDGE",
+        15,
+        0.21740584376546354
+      ],
+      [
+        2,
+        "DL_EDGE",
+        20,
+        0.21747251806834303
+      ],
+      [
+        2,
+        "DL_EDGE",
+        30,
+        0.2176586267567918
+      ],
+      [
+        2,
+        "LB",
+        0,
+        0.2176266266890299
+      ],
+      [
+        2,
+        "LB",
+        5,
+        0.2175269115849489
+      ],
+      [
+        2,
+        "LB",
+        10,
+        0.2174461269579656
+      ],
+      [
+        2,
+        "LB",
+        15,
+        0.2173842806140041
+      ],
+      [
+        2,
+        "LB",
+        20,
+        0.2173413611916077
+      ],
+      [
+        2,
+        "DB",
+        0,
+        0.21735616932770271
+      ],
+      [
+        2,
+        "DB",
+        5,
+        0.2173201414326244
+      ],
+      [
+        2,
+        "DB",
+        15,
+        0.21733215264032246
+      ],
+      [
+        2,
+        "DB",
+        20,
+        0.21737999300991107
+      ],
+      [
+        2,
+        "DB",
+        30,
+        0.21755857704152265
+      ],
+      [
+        3,
+        "OL",
+        0,
+        0.2173589692471052
+      ],
+      [
+        3,
+        "OL",
+        5,
+        0.21732107837888998
+      ],
+      [
+        3,
+        "OL",
+        15,
+        0.21733210367765915
+      ],
+      [
+        3,
+        "OL",
+        20,
+        0.21738074327170795
+      ],
+      [
+        3,
+        "OL",
+        30,
+        0.21756329603493746
+      ],
+      [
+        3,
+        "WR_TE",
+        0,
+        0.21751971232392112
+      ],
+      [
+        3,
+        "WR_TE",
+        5,
+        0.21743369054276013
+      ],
+      [
+        3,
+        "WR_TE",
+        10,
+        0.21737055750068338
+      ],
+      [
+        3,
+        "WR_TE",
+        15,
+        0.21733012145230093
+      ],
+      [
+        3,
+        "WR_TE",
+        30,
+        0.21734267074621355
+      ],
+      [
+        3,
+        "RB",
+        0,
+        0.21745053815731785
+      ],
+      [
+        3,
+        "RB",
+        5,
+        0.2174015016980896
+      ],
+      [
+        3,
+        "RB",
+        10,
+        0.2173629128266677
+      ],
+      [
+        3,
+        "RB",
+        15,
+        0.21733473591540184
+      ],
+      [
+        3,
+        "RB",
+        20,
+        0.21731692471043246
+      ],
+      [
+        3,
+        "DL_EDGE",
+        5,
+        0.21732563026765242
+      ],
+      [
+        3,
+        "DL_EDGE",
+        10,
+        0.21735686489320116
+      ],
+      [
+        3,
+        "DL_EDGE",
+        15,
+        0.21740584376546354
+      ],
+      [
+        3,
+        "DL_EDGE",
+        20,
+        0.21747251806834303
+      ],
+      [
+        3,
+        "DL_EDGE",
+        30,
+        0.2176586267567918
+      ],
+      [
+        3,
+        "LB",
+        0,
+        0.2176266266890299
+      ],
+      [
+        3,
+        "LB",
+        5,
+        0.2175269115849489
+      ],
+      [
+        3,
+        "LB",
+        10,
+        0.2174461269579656
+      ],
+      [
+        3,
+        "LB",
+        15,
+        0.2173842806140041
+      ],
+      [
+        3,
+        "LB",
+        20,
+        0.2173413611916077
+      ],
+      [
+        3,
+        "DB",
+        0,
+        0.21735616932770271
+      ],
+      [
+        3,
+        "DB",
+        5,
+        0.2173201414326244
+      ],
+      [
+        3,
+        "DB",
+        15,
+        0.21733215264032246
+      ],
+      [
+        3,
+        "DB",
+        20,
+        0.21737999300991107
+      ],
+      [
+        3,
+        "DB",
+        30,
+        0.21755857704152265
+      ]
+    ]
+  },
+  "tuned_at": "2026-10-13T20:44:48Z"
 }

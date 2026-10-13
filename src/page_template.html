@@ -210,6 +210,23 @@ header { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: flex-end; 
 .liveline { font-family: var(--mono); font-size: 12px; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; }
 .edgeline { font-size: 13px; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
 .why { display: grid; gap: 8px; }
+/* Injury reports (D18.3): a summary line per team, a toggle, and the full report as a compact table.
+   Names and injury strings are feed values: they wrap (overflow-wrap) and the table scrolls in .tablewrap. */
+.inj { display: grid; gap: 6px; font-size: 12.5px; color: var(--ink-2); }
+.inj-head { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
+.inj-line { font-family: var(--mono); font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
+.inj-line b { color: var(--ink); font-weight: 600; }
+.inj-foot { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; }
+.inj .tablewrap { margin-top: 2px; }
+.inj-table { font-size: 12.5px; }
+.inj-table th, .inj-table td { padding: 6px 8px; text-align: left; }
+.inj-table td.wrap { white-space: normal; overflow-wrap: break-word; min-width: 13ch; }  /* whole surnames; .tablewrap scrolls */
+.inj-table td.note { white-space: normal; color: var(--ink-2); }
+.inj-table td.team { font-family: var(--display); font-weight: 600; }
+/* Status chips: Out = danger wash, Doubtful = hyp wash, Questionable/Probable = line. Ink text on every wash. */
+.chip.st-out { background: var(--danger-wash); color: var(--ink); border: 1.5px solid var(--danger); }
+.chip.st-doubtful { background: var(--hyp-wash); color: var(--ink); border: 1px dashed var(--hyp); }
+.chip.st-questionable, .chip.st-probable { background: var(--paper); color: var(--ink-2); border: 1px solid var(--line-2); }
 .why ol { margin: 0; padding-left: 20px; color: var(--ink-2); font-size: 14px; }
 .why ol li { margin: 2px 0; }
 .final-line { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-family: var(--mono); font-size: 13px; }
@@ -620,6 +637,9 @@ function gameCard(g) {
     h('span', null, 'Spread ', h('b', null, off.pick + ' ' + fmtSpread(pickSpread))),
     mktSpread == null ? h('span', null, 'market line: none at build') : h('span', null, 'Market line ', h('b', null, off.pick + ' ' + fmtSpread(mktSpread)), Math.abs(pickSpread - mktSpread) >= 3 ? ' (' + fix(Math.abs(pickSpread - mktSpread), 1) + ' pts apart)' : '')));
 
+  // Injury reports (D18.3): one line per team, home then away, and the full report on a toggle.
+  append(card, [injuryBlock(g)]); // null when the model predates D18
+
   // Edge chip (D17): amber, dashed, one measured reason.
   if (off.edge && off.edge.flag) {
     const gap = off.factors.model_market_gap_pick;
@@ -659,6 +679,80 @@ function gameCard(g) {
   if (!g.availability.starter_away) notes.push(g.away + ' starter not listed');
   card.appendChild(h('div', { class: 'why' }, h('div', { style: 'display:flex;gap:10px;align-items:center;flex-wrap:wrap' }, btn, notes.length ? h('span', { class: 'eyebrow' }, notes.join(' · ')) : null), panel));
   return card;
+}
+/* Injury reports (D18.3). Every name, position and injury string is an untrusted feed value: text nodes only. */
+const INJ_STATUSES = ['Out', 'Doubtful', 'Questionable', 'Probable'];
+/** "Sutton" from "Courtland Sutton"; a one-word name stays as it is. */
+function surname(name) { const parts = String(name || 'Unknown').trim().split(/\s+/); return parts.length > 1 ? parts.slice(1).join(' ') : parts[0]; }
+/** "DEN · 3 starters Out (WR Sutton, LT Bolles, CB Moss) · 1 Doubtful · 2 Questionable" (counts exclude the QB; D18). */
+function injurySummary(code, rep) {
+  const line = h('div', { class: 'inj-line' }, h('b', null, code), ' · ');
+  if (!rep.available) { line.appendChild(document.createTextNode('injury reports unavailable this build')); return line; }
+  if (!rep.report_filed) { line.appendChild(document.createTextNode('no report filed yet')); return line; }
+  const outNames = rep.players.filter((p) => p.starter && !p.covered_by_qb_term && p.status === 'Out').map((p) => (p.position ? p.position + ' ' : '') + surname(p.name));
+  const n = rep.starters_out;
+  line.appendChild(document.createTextNode(n + (n === 1 ? ' starter Out' : ' starters Out') + (outNames.length ? ' (' + outNames.join(', ') + ')' : '')
+    + ' · ' + rep.starters_doubtful + ' Doubtful · ' + rep.starters_questionable + ' Questionable'));
+  if (rep.qb_listed) line.appendChild(document.createTextNode(' · QB ' + rep.qb_listed + ' (covered by the QB term)'));
+  if (rep.total_listed === 0) line.appendChild(document.createTextNode(' · report filed, nobody listed'));
+  return line;
+}
+function statusChip(status) {
+  const cls = INJ_STATUSES.includes(status) ? 'st-' + status.toLowerCase() : '';
+  return h('span', { class: 'chip ' + cls }, status);
+}
+/** Table rows for one team's report: a note row when there is nothing to list, else one row per player. */
+function injuryRows(code, rep) {
+  const note = (t) => [h('tr', null, h('td', { class: 'team' }, code), h('td', { class: 'note', colspan: '5' }, t))];
+  if (!rep.available) return note('injury reports unavailable this build');
+  if (!rep.report_filed) return note('no report filed yet');
+  if (!rep.players.length) return note('report filed, nobody listed');
+  return rep.players.map((p, i) => h('tr', null,
+    h('td', { class: 'team' }, i === 0 ? code : ''),
+    h('td', null, statusChip(p.status)),
+    h('td', { class: 'num' }, p.position || '—'),
+    h('td', { class: 'wrap' }, p.name, p.covered_by_qb_term ? h('span', { class: 'eyebrow', style: 'display:block' }, '(covered by the QB term)') : null),
+    h('td', null, p.starter ? 'Starter' : '—'),
+    h('td', { class: 'wrap' }, p.injury || '—')));
+}
+function injuryBlock(g) {
+  const inj = g.official.injuries;
+  if (!inj || !inj.home || !inj.away) return null; // a model built before D18 simply has no block
+  const home = inj.home, away = inj.away;
+  const box = h('div', { class: 'inj', 'data-injuries': g.game_id });
+  // The report is rebuilt every build while a kicked-off game's pick is frozen (CONTRACT 2.6a); say so.
+  const stale = g.frozen_snapshot != null;
+  // The term the probability actually carries is read back out of factors (2.9: d_total is the other
+  // terms plus the injury term). For a live card it is inj.elo; for a frozen card it is the snapshot's
+  // term (0 when the pick predates the term), which can differ from the latest report shown here.
+  const f = g.official.factors || {};
+  const carried = f.d_total == null ? inj.elo : Math.round((f.d_total - (f.elo_gap_home || 0) - (f.hfa_elo || 0) - (f.rest_elo || 0) - (f.qb_elo || 0)) * 1000) / 1000;
+  let head;
+  if (stale && Math.abs(carried - inj.elo) > 0.005) {
+    head = carried === 0 ? 'not in the frozen pick, which carried no injury term; the latest report reads ' + signed(inj.elo, 0) + ' Elo toward ' + g.home
+      : 'the frozen pick carried ' + signed(carried, 0) + ' Elo toward ' + g.home + '; the latest report reads ' + signed(inj.elo, 0);
+  } else if (inj.enabled && carried === 0 && !(inj.home && inj.home.report_filed) && !(inj.away && inj.away.report_filed)) {
+    head = 'in the number once reports are filed: nothing listed yet';
+  } else if (inj.enabled || carried !== 0) {
+    head = 'in the ' + (stale ? 'frozen ' : '') + 'number: ' + signed(carried, 0) + ' Elo toward ' + g.home;
+  } else {
+    head = 'shown for context, not in the number yet';
+  }
+  box.appendChild(h('div', { class: 'inj-head' }, h('span', { class: 'eyebrow' }, 'Injuries · ' + head),
+    stale ? h('span', { class: 'eyebrow' }, 'latest report; the pick was frozen earlier') : null));
+  box.appendChild(injurySummary(g.home, home));
+  box.appendChild(injurySummary(g.away, away));
+  if (!home.available && !away.available) return box;
+  const id = 'inj-' + g.game_id;
+  const table = h('div', { class: 'tablewrap', id, hidden: true }, h('table', { class: 'inj-table' },
+    h('thead', null, h('tr', null, h('th', null, 'Team'), h('th', null, 'Status'), h('th', null, 'Pos'), h('th', null, 'Player'), h('th', null, 'Starter'), h('th', null, 'Injury'))),
+    h('tbody', null, injuryRows(g.home, home), injuryRows(g.away, away))));
+  const total = home.total_listed + away.total_listed;
+  const btn = h('button', { class: 'btn', type: 'button', 'aria-expanded': 'false', 'aria-controls': id }, 'Full report (' + total + ')');
+  btn.addEventListener('click', () => { const open = btn.getAttribute('aria-expanded') === 'true'; btn.setAttribute('aria-expanded', String(!open)); table.hidden = open; });
+  box.appendChild(h('div', { class: 'inj-foot' }, btn, h('span', { class: 'eyebrow' }, 'as of ' + fmtStamp(inj.as_of))));
+  box.appendChild(table);
+  return box;
 }
 /** LIVE line (overlay): shown only when the overlay matched this game. */
 function liveLine(g, officialPrice) {
@@ -933,6 +1027,17 @@ function renderRecord() {
   box.appendChild(h('h3', null, 'By tier'));
   const tbody = h('tbody', null, tr.by_tier.map((t) => h('tr', null, h('td', { class: 'l' }, t.tier), h('td', { class: 'num' }, String(t.n)), h('td', { class: 'num' }, rec(t)), h('td', { class: 'num' }, pct(t.accuracy)), h('td', { class: 'num' }, pct(t.market_accuracy) + ' (n=' + t.market_n + ')'))));
   box.appendChild(h('div', { class: 'tablewrap' }, h('table', null, h('thead', null, h('tr', null, h('th', { class: 'l' }, 'Tier'), h('th', null, 'n'), h('th', null, 'W-L'), h('th', null, 'Accuracy'), h('th', null, 'Market'))), tbody)));
+  // By injury load (D18): two rows with n when the reducer provides them, else an empty state.
+  box.appendChild(h('h3', null, 'By injury load'));
+  const byLoad = Array.isArray(tr.by_injury_load) ? tr.by_injury_load : null;
+  if (byLoad && byLoad.length) {
+    const LOAD_LABELS = { starter_out: 'Pick lists a starter Out', no_starter_out: 'Pick lists no starter Out', unknown: 'No report (unknown)' };
+    const label = (r, i) => { const k = r.load != null ? r.load : r.label != null ? r.label : r.bucket != null ? r.bucket : r.key != null ? r.key : 'group ' + (i + 1); return LOAD_LABELS[k] || String(k); };
+    box.appendChild(h('div', { class: 'tablewrap' }, h('table', null, h('thead', null, h('tr', null, h('th', { class: 'l' }, 'Load'), h('th', null, 'n'), h('th', null, 'W-L'), h('th', null, 'Accuracy'), h('th', null, 'Market'))),
+      h('tbody', null, byLoad.map((r, i) => h('tr', null, h('td', { class: 'l' }, label(r, i)), h('td', { class: 'num' }, String(r.n)), h('td', { class: 'num' }, r.hits == null ? '—' : rec(r)), h('td', { class: 'num' }, pct(r.accuracy)), h('td', { class: 'num' }, pct(r.market_accuracy) + (r.market_n == null ? '' : ' (n=' + r.market_n + ')'))))))));
+  } else {
+    box.appendChild(h('div', { class: 'empty' }, 'Not split by injury load yet: the record has no injury-load grouping in this build.'));
+  }
   // By week
   box.appendChild(h('h3', null, 'Cumulative accuracy by week'));
   box.appendChild(h('div', { class: 'chartwrap' }, weekChart(tr.by_week)));
@@ -962,6 +1067,13 @@ function renderHow() {
   box.appendChild(P('Every team starts at 1500. After each game the winner takes points from the loser; the amount depends on how surprising the result was and on the margin of victory, discounted when a heavy favorite runs up the score (K = ', code(p.elo.k), '). Home field is worth ', code(p.elo.hfa), ' Elo points (zero at neutral sites), each day of rest difference ', code(p.elo.rest_per_day), ' points, and every preseason pulls ratings ', code(pct(p.elo.reversion)), ' of the way back toward 1500. A 100-point gap is roughly a 64% favorite; 200 points roughly 76%. One point of spread is about ', code(p.score.points_per_elo), ' Elo points.'));
   box.appendChild(h('h3', null, 'The quarterback term'));
   box.appendChild(P(p.qb.enabled ? 'Each listed starter carries a rating in Elo points. A quarterback with no history starts at ' : 'The quarterback term is switched off in this build. When on, a quarterback with no history starts at ', code(p.qb.new_qb), ' and moves by ', code(p.qb.k), ' times the same surprise as the team update; between seasons it regresses ', code(pct(p.qb.annual_reversion)), ' toward zero, and a full year without a start costs ', code(p.qb.inactivity_penalty), ' points. The "usual starter" is the most frequent starter over the team’s last ', code(p.qb.usual_starter_window), ' games. Starters come only from the nflverse listing; when it is blank the card says "starter not listed" and the term is zero.'));
+  const inj = p.injury;
+  if (inj) box.appendChild(h('h3', null, 'The injury term'));
+  const gate = inj ? inj.gate : {}, w = inj ? inj.weights : {}, sm = inj ? inj.status_mult : {}, br = (x) => x == null ? 'not yet measured' : fix(x, 4);
+  if (inj) box.appendChild(P(inj.enabled ? 'Listed injuries are in the number in this build. ' : 'The injury term is switched off in this build: both teams’ reports are shown on each card for context and add nothing to the probability. ',
+    'It switches on only when it earns it: the ', code(e.season), ' holdout Brier must improve by at least ', code(gate.improvement_required), ' with the term (', code(br(gate.holdout_brier_with)), ' with, ', code(br(gate.holdout_brier_without)), ' without). ',
+    'When on, each starter listed Out costs his team ', code('OL ' + w.OL + ', WR/TE ' + w.WR_TE + ', RB ' + w.RB + ', DL/EDGE ' + w.DL_EDGE + ', LB ' + w.LB + ', DB ' + w.DB), ' Elo points by position group; Doubtful counts ', code(pct(sm.Doubtful)), ', Questionable ', code(pct(sm.Questionable)), ', Probable ', code(pct(sm.Probable)), '. ',
+    'Five caveats. The status is the league’s listed designation, not a measure of severity or of who actually plays. Starters come from the depth chart at build time, so a bye week or a build before the Wednesday report shows "no report filed yet", which is not "nobody hurt". The quarterback is never counted here; the quarterback term owns that position. Position groups follow the club’s own chart naming: an edge rusher listed as a defensive end counts as DL/EDGE and one listed as an outside linebacker as LB, and a fullback listed first in his unit counts as an RB starter. The gate rests on one holdout season of ', code(e.samples.model), ' games — the required improvement is about a quarter of the standard error of that season’s Brier difference — and that season is the only one built from the timestamped depth-chart format this build consumes; the verdict is re-run at season end. A card whose pick was frozen before a report changed says what the frozen number carried; the probability never moves after kickoff.'));
   box.appendChild(h('h3', null, 'The blend and the tiers'));
   box.appendChild(P('The headline probability is ', code(pct(p.blend.model_weight)), ' model and ', code(pct(1 - p.blend.model_weight)), ' market. That weight is held by design: a fit on ', code(p.blend.fit_seasons[0] + '–' + p.blend.fit_seasons[1]), ' against the closing market prefers ', code(p.blend.fitted_model_weight == null ? 'a smaller weight' : pct(p.blend.fitted_model_weight)), ' model, because the closing line already knows nearly everything Elo knows; at that weight the page would just echo the market. Holding ', code(pct(p.blend.model_weight)), ' costs a little accuracy against the close (the holdout table below shows the blend beside the market) and buys a visible second opinion. The predicted score is read off the blended probability, so it always agrees with the pick. Without a market line the card shows the model alone and says so. Tiers follow the favorite’s blended probability: Toss-up below ', code(pct(p.tier_bounds.lean)), ', Lean to ', code(pct(p.tier_bounds.strong)), ', Strong to ', code(pct(p.tier_bounds.lockish)), ', Lock-ish above.'));
   box.appendChild(h('h3', null, 'Scores, odds and expected value'));
@@ -975,7 +1087,7 @@ function renderHow() {
   box.appendChild(P('The remaining regular season is played ', code(p.sim.runs.toLocaleString()), ' times (seed ', code(p.sim.seed), ') with team Elo frozen, home field and rest included, no quarterback term. Division winners and wild cards are seeded by record with Elo as a stand-in for the NFL’s tiebreakers; the bracket gives home field to the higher seed and a neutral Super Bowl. Those are approximations.'));
   box.appendChild(h('h3', null, 'How good is it'));
   const m = e.model, q = e.model_no_qb, mk = e.market, bl = e.blend;
-  box.appendChild(P('On the ', code(e.season), ' season (', code(e.samples.model), ' games the model never saw) the model picked the winner ', code(pct1(m.accuracy)), ' of the time with a Brier score of ', code(fix(m.brier, 4)), ' (', code(fix(q.brier, 4)), ' without the quarterback term). The closing market on the same ', code(e.samples.market_comparable), ' games: ', code(pct1(mk.accuracy)), ' and ', code(fix(mk.brier, 4)), '. The blend: ', code(pct1(bl.accuracy)), ' and ', code(fix(bl.brier, 4)), '. Lower Brier is better; the market knows about injuries and this model does not, so treat a gap as the model missing something, not as a betting edge.'));
+  box.appendChild(P('On the ', code(e.season), ' season (', code(e.samples.model), ' games the model never saw) the model picked the winner ', code(pct1(m.accuracy)), ' of the time with a Brier score of ', code(fix(m.brier, 4)), ' (', code(fix(q.brier, 4)), ' without the quarterback term). The closing market on the same ', code(e.samples.market_comparable), ' games: ', code(pct1(mk.accuracy)), ' and ', code(fix(mk.brier, 4)), '. The blend: ', code(pct1(bl.accuracy)), ' and ', code(fix(bl.brier, 4)), '. Lower Brier is better; the market prices injuries and news that this model ', p.injury && p.injury.enabled ? 'weighs only roughly' : 'lists but does not yet count', ', so treat a gap as the model missing something, not as a betting edge.'));
   box.appendChild(h('h3', null, 'Data and timing'));
   box.appendChild(P('Game results, rest days and closing lines come from the open nflverse schedule dataset (', code(MODEL.build.data.rows), ' rows, hash ', code(MODEL.build.data.nflverse_sha256.slice(0, 7)), '). Picks are frozen at build time (', code(fmtStamp(MODEL.build.built_at)), ') and graded by the next build after the game; live prices on the page can move the best price and its EV under a LIVE label, never the pick, probability, tier or rationale.'));
 }

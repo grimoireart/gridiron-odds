@@ -1,13 +1,15 @@
 """Tests for src/predict.py: blend, scores, total source, prices/EV, the official
 object (validated with schema.validate_model), rationale rules and number
-provenance, edge chip priority."""
+provenance, edge chip priority, injury reports (D18: the 2.6b block, the
+"injuries" sentence iff rule, the term in d_total, the edge chip, a frozen card)."""
 import copy
 import json
 import os
 import re
 import unittest
+from unittest import mock
 
-from src import predict, schema
+from src import elo, injuries, predict, schema
 
 FIX = os.path.join(os.path.dirname(__file__), "fixtures")
 NUM = re.compile(r"-?\d+(?:\.\d+)?")
@@ -102,10 +104,79 @@ def wrap(game, out):
     }
 
 
-def validate_games(entries):
+def validate_games(entries, params=None):
     model = copy.deepcopy(MODEL_FIXTURE)
     model["games"] = entries
+    if params is not None:
+        model["params"] = copy.deepcopy(params)
     return schema.validate_model(model)
+
+
+# ----------------------------------------------------------------------------
+# Injury report builders (CONTRACT 2.6b shapes, hand-built so the tests do not depend on
+# the CSV fixtures; src/injuries.py has its own tests)
+# ----------------------------------------------------------------------------
+
+
+def player(name, position, status, starter=True, injury="Knee", group=None):
+    grp = group or injuries.pos_group(position)
+    return {"gsis_id": "00-" + "".join(ch for ch in name.upper() if ch.isalpha())[:8], "name": name,
+            "position": position, "pos_group": grp, "status": status, "injury": injury,
+            "starter": starter, "covered_by_qb_term": grp == "QB"}
+
+
+def make_report(*players, filed=True, qb_listed=None):
+    ps = sorted(players, key=lambda p: (0 if p["starter"] else 1, injuries.STATUS_RANK[p["status"]], p["name"]))
+    counted = [p for p in ps if p["starter"] and not p["covered_by_qb_term"]]
+    return {
+        "available": True, "report_filed": bool(filed or ps), "players": ps,
+        "starters_out": sum(1 for p in counted if p["status"] == "Out"),
+        "starters_doubtful": sum(1 for p in counted if p["status"] == "Doubtful"),
+        "starters_questionable": sum(1 for p in counted if p["status"] == "Questionable"),
+        "total_listed": len(ps), "qb_listed": qb_listed,
+    }
+
+
+def with_injuries(ctx, game, home_report, away_report, as_of=AS_OF):
+    ctx = copy.deepcopy(ctx)
+    ctx.setdefault("injuries", {})[game["game_id"]] = {"home": home_report, "away": away_report, "as_of": as_of}
+    return ctx
+
+
+def enabled_params():
+    """params with the injury term switched on and its gate satisfied (CONTRACT 2.3)."""
+    params = copy.deepcopy(PARAMS)
+    params["injury"]["enabled"] = True
+    params["injury"]["gate"] = {"holdout_brier_with": 0.2150, "holdout_brier_without": 0.2173, "improvement_required": 0.001}
+    return params
+
+
+DEN_REPORT = make_report(
+    player("Courtland Sutton", "WR", "Out"), player("Garett Bolles", "LT", "Out"),
+    player("Pat Surtain", "CB", "Out"), player("Brandon Jones", "S", "Out"),
+    player("J.K. Dobbins", "RB", "Doubtful"), player("Zach Allen", "DE", "Questionable"),
+    player("Backup Guard", "G", "Out", starter=False),
+)
+LAC_FILED_NONE = make_report(player("Deep Reserve", "LB", "Out", starter=False), player("Rotation End", "DE", "Questionable"))
+
+
+def scenario_injuries(params=None):
+    """LAC at DEN: Denver lists four starters Out and one Doubtful, the Chargers file a quiet
+    report; no starter change, equal rest, small form moves, a market gap >= 0.08."""
+    game = make_game("2026_07_LAC_DEN", "DEN", "LAC",
+                     home_qb_id="00-NIX", home_qb_name="Bo Nix", away_qb_id="00-HERB", away_qb_name="Justin Herbert",
+                     total_line=44.5, spread_line=-2.5, home_moneyline=-130, away_moneyline=110)
+    pregame = make_pregame(1550.0, 1500.0, q_home=10.0, q_away=12.0, starts_home=30, starts_away=90)
+    books = [book("draftkings", 120, -140), book("fanduel", 118, -138), book("betmgm", 125, -145), book("betrivers", 120, -142)]
+    market = make_market(books, total=44.5, spread=2.5)
+    context = make_context(
+        form={"DEN": 12.0, "LAC": -8.0},
+        usual={"DEN": {"id": "00-NIX", "name": "Bo Nix"}, "LAC": {"id": "00-HERB", "name": "Justin Herbert"}},
+        qb={"00-NIX": {"q": 10.0, "name": "Bo Nix", "team": "DEN", "starts": 30, "last_start_date": "2026-10-11"},
+            "00-HERB": {"q": 12.0, "name": "Justin Herbert", "team": "LAC", "starts": 90, "last_start_date": "2026-10-11"}},
+    )
+    context = with_injuries(context, game, DEN_REPORT, LAC_FILED_NONE)
+    return game, pregame, market, context, (params or PARAMS)
 
 
 # ----------------------------------------------------------------------------
@@ -320,10 +391,20 @@ class OfficialObjectTests(unittest.TestCase):
         entries.append(wrap(g, predict.predict_game(g, pg, mk, PARAMS, ctx)))
         g, pg, mk, ctx = scenario_starter_missing()
         entries.append(wrap(g, predict.predict_game(g, pg, mk, PARAMS, ctx)))
+        g, pg, mk, ctx, params = scenario_injuries()
+        entries.append(wrap(g, predict.predict_game(g, pg, mk, params, ctx)))
         self.assertEqual(validate_games(entries), [])
         for e in entries:
             self.assertEqual(set(e["official"]), schema.OFFICIAL_KEYS)
             self.assertEqual(set(e["official"]["factors"]), schema.FACTOR_KEYS)
+            self.assertEqual(set(e["official"]["injuries"]), schema.INJURIES_KEYS)
+        # the same scenarios with the injury term ON validate against params that enable it
+        params = enabled_params()
+        g, pg, mk, ctx, _ = scenario_injuries()
+        entries = [wrap(g, predict.predict_game(g, pg, mk, params, ctx))]
+        g, pg, mk, ctx = scenario_starter_change()
+        entries.append(wrap(g, predict.predict_game(g, pg, mk, params, ctx)))
+        self.assertEqual(validate_games(entries, params), [])
 
     def test_starter_change_scenario(self):
         g, pg, mk, ctx = scenario_starter_change()
@@ -511,6 +592,11 @@ def allowed_numbers(official):
         qb = f[side]
         if qb and qb["usual_starter_q"] is not None:
             base.append(qb["q"] - qb["usual_starter_q"])
+    inj = official.get("injuries") or {}
+    base.extend(numeric_leaves({k: v for k, v in inj.items() if k != "as_of"}))
+    for side in ("home", "away"):
+        for k in ("starters_out", "starters_doubtful"):  # "... and N more" after the 3 named positions
+            base.append(float(max(0, int((inj.get(side) or {}).get(k) or 0) - predict.INJURY_NAMED_POSITIONS)))
     allowed = set()
     for v in base:
         for x in (v, abs(v)):
@@ -536,6 +622,9 @@ class RationaleTests(unittest.TestCase):
         outs.append((g, predict.predict_game(g, pg, mk, PARAMS, ctx)["official"]))
         g, pg, mk, ctx = scenario_starter_missing()
         outs.append((g, predict.predict_game(g, pg, mk, PARAMS, ctx)["official"]))
+        g, pg, mk, ctx, params = scenario_injuries()
+        outs.append((g, predict.predict_game(g, pg, mk, params, ctx)["official"]))
+        outs.append((g, predict.predict_game(g, pg, mk, enabled_params(), ctx)["official"]))
         return outs
 
     def test_every_number_in_every_sentence_is_in_factors_or_official(self):
@@ -559,7 +648,13 @@ class RationaleTests(unittest.TestCase):
             self.assertTrue(all(k in schema.RATIONALE_KEYS for k in keys))
             self.assertEqual(len(set(keys)), len(keys))
             text = " ".join(sents)
-            self.assertNotIn("injur", text.lower())
+            # D17/D18: injuries are mentioned ONLY by the injuries sentence, and only as listed statuses
+            for key, sent in zip(keys, sents):
+                if key != "injuries":
+                    self.assertNotIn("injur", sent.lower(), sent)
+                else:
+                    self.assertIn("lists", sent)
+            self.assertNotIn("injury news", text.lower())
             self.assertNotIn("edge", text.lower())
             if "quarterback" in keys:
                 self.assertIn("listed starter", sents[keys.index("quarterback")])
@@ -589,12 +684,15 @@ class RationaleTests(unittest.TestCase):
         self.assertEqual(o["rationale_sentences"][2], "Denver's listed starter, Jarrett Stidham, rates 35 points below their usual starter, Bo Nix.")
         self.assertEqual(o["rationale_sentences"][3], "Kansas City has gained 46 points of rating over its last three games.")
         self.assertTrue(o["rationale_sentences"][4].startswith("The books have Kansas City at "))
-        # all seven keys at once: add a rest gap to the same scenario
+        # all eight keys at once: add a rest gap and a listed starter to the same scenario
         g = dict(g, home_rest=10, away_rest=6)
         pg = dict(pg, rest_elo=8.0)
+        ctx = with_injuries(ctx, g, make_report(player("Lineman", "T", "Out")), make_report())
         o = predict.predict_game(g, pg, mk, PARAMS, ctx)["official"]
         self.assertEqual(o["rationale"], list(schema.RATIONALE_KEYS))
-        self.assertEqual(len(o["rationale_sentences"]), 7)
+        self.assertEqual(len(o["rationale_sentences"]), 8)
+        self.assertEqual(o["rationale_sentences"][4],
+                         "Denver lists 1 starter out (T); Kansas City lists none; shown for context, not in the number yet.")
 
     def test_expected_rationale_keys_matches_triggers(self):
         g, pg, mk, ctx = scenario_csv_market()  # rest gap 4, nothing else
@@ -651,6 +749,8 @@ class LiveModelTests(unittest.TestCase):
     def test_verdict_matches_the_displayed_score_for_every_game(self):
         if self.model is None:
             self.skipTest("model.json not built")
+        if "injury" not in (self.model.get("params") or {}):
+            self.skipTest("model.json predates D18 (no params.injury); rebuild it")
         self.assertEqual(schema.validate_model(self.model)[:5], [])
         disagree = 0
         for g in self.model["games"]:
@@ -705,6 +805,290 @@ class EdgeChipTests(unittest.TestCase):
         e = predict.edge_chip(factors_for_edge(rest_diff=2, form_home=39.9), self.names)
         self.assertEqual(e, {"flag": True, "reason_key": "unknown", "reason_text": "may reflect information this model lacks"})
         self.assertNotIn("injur", json.dumps(e))
+
+    def test_injuries_reason_sits_between_starter_change_and_rest_gap(self):
+        inj = injuries.injuries_block(DEN_REPORT, LAC_FILED_NONE, PARAMS, AS_OF)
+        allowed = schema.EDGE_REASON_KEYS + ("injuries",)
+        with mock.patch.object(schema, "EDGE_REASON_KEYS", allowed):
+            self.assertTrue(predict.edge_reason_allowed("injuries"))
+            # a starter change still wins
+            e = predict.edge_chip(factors_for_edge(differs_home=True, rest_diff=5), self.names, inj)
+            self.assertEqual(e["reason_key"], "starter_change")
+            # then injuries, ahead of a rest gap and a form move
+            e = predict.edge_chip(factors_for_edge(rest_diff=5, form_away=-60.0), self.names, inj)
+            self.assertEqual(e, {"flag": True, "reason_key": "injuries",
+                                 "reason_text": "Denver lists 4 starters Out (S, WR, LT and 1 more) and 1 Doubtful (RB)"})
+            # the side with more listed starters is named; Doubtful alone reads as such
+            inj2 = injuries.injuries_block(make_report(), make_report(player("Edge", "DE", "Doubtful")), PARAMS, AS_OF)
+            e = predict.edge_chip(factors_for_edge(rest_diff=5), self.names, inj2)
+            self.assertEqual(e["reason_text"], "Kansas City lists 1 starter Doubtful (DE)")
+            # Questionable alone, an unfiled or an unavailable report never earn the chip
+            for quiet in (injuries.injuries_block(make_report(player("CB", "CB", "Questionable")), make_report(filed=False), PARAMS, AS_OF),
+                          injuries.injuries_block(injuries.unavailable_report(), injuries.unavailable_report(), PARAMS, AS_OF)):
+                e = predict.edge_chip(factors_for_edge(rest_diff=5), self.names, quiet)
+                self.assertEqual(e["reason_key"], "rest_gap")
+            self.assertIsNone(predict.edge_chip(factors_for_edge(gap=0.05), self.names, inj))
+        # while the schema does not admit the key (the contract's EDGE_REASON_KEYS today) the chip
+        # falls through to the next measured factor so validate_model never sees an unknown key
+        if "injuries" not in schema.EDGE_REASON_KEYS:
+            e = predict.edge_chip(factors_for_edge(rest_diff=5), self.names, inj)
+            self.assertEqual(e["reason_key"], "rest_gap")
+            e = predict.edge_chip(factors_for_edge(), self.names, inj)
+            self.assertEqual(e["reason_key"], "unknown")
+        for key in ("starter_change", "rest_gap", "form_move", "unknown"):
+            self.assertTrue(predict.edge_reason_allowed(key))
+
+
+# ----------------------------------------------------------------------------
+# Injury reports (D18)
+# ----------------------------------------------------------------------------
+
+
+class InjuryTests(unittest.TestCase):
+    def test_no_context_entry_means_unavailable_reports_and_zero_term(self):
+        g, pg, mk, ctx = scenario_starter_change()
+        o = predict.predict_game(g, pg, mk, PARAMS, ctx)["official"]
+        inj = o["injuries"]
+        self.assertEqual(set(inj), schema.INJURIES_KEYS)
+        self.assertEqual(inj["home"], injuries.unavailable_report())
+        self.assertEqual(inj["away"], injuries.unavailable_report())
+        self.assertEqual((inj["enabled"], inj["elo_home"], inj["elo_away"], inj["elo"]), (False, 0.0, 0.0, 0.0))
+        self.assertEqual(inj["as_of"], g["kickoff_utc"])  # fallback: a valid, stable ISO time
+        self.assertNotIn("injuries", o["rationale"])
+        self.assertEqual(o["p_home_model"], pg["p_home"])
+        # the contract's as_of travels through the context entry
+        ctx2 = with_injuries(ctx, g, injuries.unavailable_report(), injuries.unavailable_report(), as_of="2026-10-17T12:00:00Z")
+        self.assertEqual(predict.predict_game(g, pg, mk, PARAMS, ctx2)["official"]["injuries"]["as_of"], "2026-10-17T12:00:00Z")
+
+    def test_block_carries_the_reports_and_disabled_term_is_zero(self):
+        g, pg, mk, ctx, params = scenario_injuries()
+        o = predict.predict_game(g, pg, mk, params, ctx)["official"]
+        inj = o["injuries"]
+        self.assertIs(inj["enabled"], False)
+        self.assertEqual(inj["as_of"], AS_OF)
+        self.assertEqual(inj["home"], DEN_REPORT)
+        self.assertEqual(inj["away"], LAC_FILED_NONE)
+        self.assertEqual((inj["home"]["starters_out"], inj["home"]["starters_doubtful"], inj["home"]["starters_questionable"]), (4, 1, 1))
+        self.assertEqual((inj["elo_home"], inj["elo_away"], inj["elo"]), (0.0, 0.0, 0.0))
+        # disabled: the replay's probability and d are untouched, bit for bit
+        self.assertEqual(o["p_home_model"], pg["p_home"])
+        self.assertEqual(o["factors"]["d_total"], pg["d"])
+        self.assertEqual(o["model_spread"], pg["d"] / 25.0)
+
+    def test_injuries_sentence_iff_a_starter_is_out_or_doubtful(self):
+        g, pg, mk, ctx, params = scenario_injuries()
+        cases = [
+            (make_report(player("A", "WR", "Out")), make_report(), True),
+            (make_report(), make_report(player("B", "CB", "Doubtful")), True),
+            (make_report(player("A", "WR", "Questionable")), make_report(player("B", "CB", "Questionable")), False),
+            (make_report(player("A", "WR", "Out", starter=False)), make_report(), False),  # depth player
+            (make_report(player("Bo Nix", "QB", "Out")), make_report(), False),  # the QB term owns the quarterback
+            (make_report(filed=False), make_report(filed=False), False),
+            (injuries.unavailable_report(), injuries.unavailable_report(), False),
+        ]
+        for home_rep, away_rep, expect in cases:
+            c = with_injuries(ctx, g, home_rep, away_rep)
+            out = predict.predict_game(g, pg, mk, params, c)
+            entry = wrap(g, out)
+            keys = out["official"]["rationale"]
+            self.assertEqual("injuries" in keys, expect, (home_rep, away_rep))
+            self.assertEqual(keys, schema.expected_rationale_keys(entry))
+            self.assertEqual(validate_games([entry]), [])
+            self.assertEqual("injuries" in keys, schema.injury_rationale_triggers(out["official"]["injuries"]))
+
+    def sentence(self, home_rep, away_rep, params=None):
+        g, pg, mk, ctx, params = scenario_injuries(params)
+        o = predict.predict_game(g, pg, mk, params, with_injuries(ctx, g, home_rep, away_rep))["official"]
+        return o, o["rationale_sentences"][o["rationale"].index("injuries")]
+
+    def test_sentence_wording_positions_and_the_quiet_side(self):
+        o, s = self.sentence(DEN_REPORT, LAC_FILED_NONE)
+        self.assertEqual(s, "Denver lists 4 starters out (S, WR, LT and 1 more) and 1 doubtful (RB); "  # 2.6b order: Out, then name
+                            "Los Angeles lists none; shown for context, not in the number yet.")
+        # the quiet side only "lists none" when its report is filed
+        _, s = self.sentence(make_report(player("A", "WR", "Out")), make_report(filed=False))
+        self.assertEqual(s, "Denver lists 1 starter out (WR); Los Angeles has not filed a report yet; shown for context, not in the number yet.")
+        _, s = self.sentence(make_report(player("A", "WR", "Out")), injuries.unavailable_report())
+        self.assertEqual(s, "Denver lists 1 starter out (WR); Los Angeles's report is unavailable; shown for context, not in the number yet.")
+        # the side with more listed starters goes first; doubtful alone reads as "starter doubtful"
+        _, s = self.sentence(make_report(player("A", "WR", "Doubtful")), make_report(player("B", "T", "Out"), player("C", "G", "Out")))
+        self.assertEqual(s, "Los Angeles lists 2 starters out (T, G); Denver lists 1 starter doubtful (WR); shown for context, not in the number yet.")
+        # exactly three positions are named in full; a quarterback on the report is never counted
+        _, s = self.sentence(make_report(player("A", "WR", "Out"), player("B", "TE", "Out"), player("C", "C", "Out"), player("Bo Nix", "QB", "Out")),
+                             make_report())
+        self.assertEqual(s, "Denver lists 3 starters out (WR, TE, C); Los Angeles lists none; shown for context, not in the number yet.")
+        self.assertNotIn("QB", s)
+        self.assertNotIn("Nix", s)
+        # a position missing from the report falls back to the group
+        _, s = self.sentence(make_report(player("A", None, "Out", group="DB")), make_report())
+        self.assertIn("(DB)", s)
+
+    def test_enabled_term_enters_the_probability_and_the_sentence(self):
+        params = enabled_params()
+        g, pg, mk, ctx, _ = scenario_injuries()
+        o = predict.predict_game(g, pg, mk, params, ctx)["official"]
+        inj = o["injuries"]
+        self.assertIs(inj["enabled"], True)
+        # D18.6: WR 7 + LT 6 + CB 5 + S 5 Out, RB 4 * 0.75 Doubtful, Questionable DE 6 * 0.25; depth and QB add nothing
+        self.assertAlmostEqual(inj["elo_home"], -(7 + 6 + 5 + 5 + 3 + 1.5))
+        self.assertAlmostEqual(inj["elo_away"], -1.5)  # the Chargers' Questionable DE: 6 * 0.25; the depth LB adds nothing
+        self.assertAlmostEqual(inj["elo"], inj["elo_home"] - inj["elo_away"])
+        self.assertAlmostEqual(o["factors"]["d_total"], pg["d"] + inj["elo"])
+        self.assertAlmostEqual(o["p_home_model"], elo.win_prob(o["factors"]["d_total"]))
+        self.assertLess(o["p_home_model"], pg["p_home"])
+        self.assertAlmostEqual(o["model_spread"], o["factors"]["d_total"] / 25.0)
+        s = o["rationale_sentences"][o["rationale"].index("injuries")]
+        # in the number: the Questionable starters are listed too (they move it), the value is given in
+        # Elo points AND on the spread (26 / 25 = 1.04 -> "1 point"), never bare "points"
+        self.assertEqual(s, "Denver lists 4 starters out (S, WR, LT and 1 more), 1 doubtful (RB) and 1 questionable (DE); "
+                            "Los Angeles lists 1 starter questionable (DE); worth about 26 Elo points to Los Angeles, or 1 point on the spread.")
+        self.assertEqual(inj["elo"], -26.0)
+        self.assertNotIn("shown for context", s)
+        entry = wrap(g, {"official": o, "availability": {"starter_home": True, "starter_away": True, "market": True, "csv_lines": True}})
+        self.assertEqual(validate_games([entry], params), [])
+        # a net of one point is singular
+        c = with_injuries(ctx, g, make_report(player("A", "T", "Out")), make_report(player("B", "WR", "Out")))
+        o1 = predict.predict_game(g, pg, mk, params, c)["official"]
+        self.assertEqual(o1["injuries"]["elo"], 1.0)  # home loses an OL (6), away a WR (7): +1 to Denver
+        self.assertTrue(o1["rationale_sentences"][o1["rationale"].index("injuries")].endswith("; worth about 1 Elo point to Denver, or 0.04 points on the spread."))
+        # the two sides cancelling out is said as such, never "worth about 0 points"
+        c = with_injuries(ctx, g, make_report(player("A", "WR", "Out")), make_report(player("B", "TE", "Out")))
+        o2 = predict.predict_game(g, pg, mk, params, c)["official"]
+        self.assertEqual(o2["injuries"]["elo"], 0.0)
+        self.assertTrue(o2["rationale_sentences"][o2["rationale"].index("injuries")].endswith("; the two reports cancel out in the number."))
+        self.assertEqual(o2["p_home_model"], pg["p_home"])
+
+    def test_replay_carried_term_is_not_counted_twice(self):
+        params = enabled_params()
+        g, pg, mk, ctx, _ = scenario_injuries()
+        fresh = predict.predict_game(g, pg, mk, params, ctx)["official"]
+        term = fresh["injuries"]["elo"]
+        # a played game: the replay already folded the same term into d / p_home and says so
+        carried = dict(pg, d=pg["d"] + term, p_home=elo.win_prob(pg["d"] + term), injury_elo=term)
+        o = predict.predict_game(g, carried, mk, params, ctx)["official"]
+        self.assertAlmostEqual(o["p_home_model"], fresh["p_home_model"])
+        self.assertAlmostEqual(o["factors"]["d_total"], fresh["factors"]["d_total"])
+        self.assertAlmostEqual(o["p_home_model"], carried["p_home"])
+        # the report-derived term wins over a stale carried one, and the term is removed when disabled
+        stale = dict(carried, injury_elo=-5.0, d=pg["d"] - 5.0, p_home=elo.win_prob(pg["d"] - 5.0))
+        o = predict.predict_game(g, stale, mk, params, ctx)["official"]
+        self.assertAlmostEqual(o["p_home_model"], fresh["p_home_model"])
+        o = predict.predict_game(g, carried, mk, PARAMS, ctx)["official"]
+        self.assertAlmostEqual(o["p_home_model"], pg["p_home"])
+        # model_probability without a d recomputes it from the components
+        no_d = {k: v for k, v in carried.items() if k != "d"}
+        self.assertAlmostEqual(predict.model_probability(no_d, term, params), fresh["p_home_model"])
+
+    def test_frozen_official_keeps_the_rebuilt_report_and_the_snapshot_numbers(self):
+        params = enabled_params()
+        g, pg, mk, ctx, _ = scenario_injuries()
+        live = predict.predict_game(g, pg, mk, params, ctx)["official"]
+        snap = {"id": g["game_id"] + "@20261017T140000Z-abc1234", "game_id": g["game_id"], "kickoff_utc": g["kickoff_utc"],
+                "build_at": "2026-10-17T14:00:00Z", "pick": "LAC", "p_model": 0.47, "p_market": 0.57, "p_blend": 0.535,
+                "tier": "Toss-up", "pred_home": 21, "pred_away": 23, "best_price": -125, "best_book": "fanduel", "ev": -0.03,
+                "market_source": "odds_api", "total_used": 44.0, "total_source": "odds_api",
+                "injury_elo": -20.0, "inj_home": {"available": True, "report_filed": True, "starters_out": 3,
+                                                  "starters_doubtful": 0, "starters_questionable": 0, "qb_listed": None},
+                "inj_away": {"available": True, "report_filed": False, "starters_out": 0, "starters_doubtful": 0,
+                             "starters_questionable": 0, "qb_listed": None}}
+        o = predict.freeze_official(live, snap, g, pg, params, ctx)
+        # 2.6a: the numbers are the snapshot's ...
+        self.assertEqual((o["pick"], o["p_pick_blend"], o["tier"], o["display_home"], o["display_away"]), ("LAC", 0.535, "Toss-up", 21, 23))
+        self.assertAlmostEqual(o["p_home_model"], 1 - 0.47)
+        self.assertEqual(o["best_price"], {"book": "fanduel", "side": "LAC", "american": -125})
+        self.assertIs(o["parlay_eligible"], False)
+        # ... while the injuries block is the one rebuilt from the season files (2.6b), not the snapshot counts
+        self.assertEqual(o["injuries"], live["injuries"])
+        self.assertEqual(o["injuries"]["home"]["starters_out"], 4)
+        # ... and d_total carries the SNAPSHOT's term (-20), not the latest report's (-26): the frozen
+        # probability was made with the former, and the sentence says both (CONTRACT 2.6a)
+        self.assertAlmostEqual(o["factors"]["d_total"], pg["d"] + snap["injury_elo"])
+        self.assertAlmostEqual(o["model_spread"], o["factors"]["d_total"] / 25.0)
+        self.assertIn("injuries", o["rationale"])
+        s = o["rationale_sentences"][o["rationale"].index("injuries")]
+        self.assertTrue(s.endswith("; the frozen pick carried about 20 Elo points to Los Angeles, or 0.8 points on the spread; "
+                                   "the latest report reads about 26 Elo points to Los Angeles."), s)
+        self.assertEqual(o["rationale"], schema.expected_rationale_keys(wrap(g, {"official": o, "availability": {}})))
+        entry = wrap(g, {"official": o, "availability": {"starter_home": True, "starter_away": True, "market": True, "csv_lines": True}})
+        entry["frozen_snapshot"] = snap["id"]
+        self.assertEqual(validate_games([entry], params), [])
+        # a legacy official without the block (pre-D18 build) gets one rebuilt from the context
+        legacy = {k: v for k, v in live.items() if k != "injuries"}
+        o2 = predict.freeze_official(legacy, snap, g, pg, params, ctx)
+        self.assertEqual(o2["injuries"], live["injuries"])
+
+    def test_frozen_pick_carries_the_snapshot_term_so_p_model_matches_d_total(self):
+        """CONTRACT 2.6a: a frozen card's p_home_model is win_prob(factors.d_total) whatever the snapshot
+        carried — the latest report's term (same as live), a different one, or none (pre-D18 snapshot)."""
+        params = enabled_params()
+        g, pg, mk, ctx, _ = scenario_injuries()
+        live = predict.predict_game(g, pg, mk, params, ctx)["official"]
+        latest = live["injuries"]["elo"]
+        self.assertEqual(latest, -26.0)
+
+        def snap(term, p_home, **extra):
+            s = {"id": g["game_id"] + "@20261017T140000Z-abc1234", "game_id": g["game_id"], "kickoff_utc": g["kickoff_utc"],
+                 "build_at": "2026-10-17T14:00:00Z", "pick": "DEN", "p_model": p_home, "p_market": 0.57, "p_blend": 0.6,
+                 "tier": "Lean", "pred_home": 24, "pred_away": 21, "best_price": -125, "best_book": "fanduel", "ev": -0.03,
+                 "market_source": "odds_api", "total_used": 44.0, "total_source": "odds_api"}
+            if term is not None:
+                s["injury_elo"] = term
+            s.update(extra)
+            return s
+
+        def check(o, expect_d):
+            self.assertAlmostEqual(o["factors"]["d_total"], expect_d)
+            self.assertAlmostEqual(o["p_home_model"], elo.win_prob(o["factors"]["d_total"]), places=12)
+            self.assertAlmostEqual(o["model_spread"], o["factors"]["d_total"] / 25.0)
+            self.assertEqual(o["injuries"], live["injuries"])  # the block shown is always the latest report
+            entry = wrap(g, {"official": o, "availability": {"starter_home": True, "starter_away": True, "market": True, "csv_lines": True}})
+            entry["frozen_snapshot"] = o.get("_snap_id")
+            self.assertEqual(validate_games([entry], params), [])
+            return o["rationale_sentences"][o["rationale"].index("injuries")]
+
+        # (a) snapshotted after D18 with the same report: identical to the live card's wording
+        o = predict.freeze_official(live, snap(latest, live["p_home_model"]), g, pg, params, ctx)
+        s = check(o, pg["d"] + latest)
+        self.assertEqual(s, live["rationale_sentences"][live["rationale"].index("injuries")])
+        self.assertIn("worth about 26 Elo points to Los Angeles", s)
+        # (b) a pre-D18 snapshot (no injury_elo key): no term in the number, and the card says so
+        o = predict.freeze_official(live, snap(None, elo.win_prob(pg["d"])), g, pg, params, ctx)
+        s = check(o, pg["d"])
+        self.assertTrue(s.endswith("; not in the frozen pick, which carried no injury term."), s)
+        self.assertNotIn("worth about", s)
+        # (c) the report changed after the snapshot: what was carried, then what the latest report reads
+        o = predict.freeze_official(live, snap(-10.0, elo.win_prob(pg["d"] - 10.0)), g, pg, params, ctx)
+        s = check(o, pg["d"] - 10.0)
+        self.assertTrue(s.endswith("; the frozen pick carried about 10 Elo points to Los Angeles, or 0.4 points on the spread; "
+                                   "the latest report reads about 26 Elo points to Los Angeles."), s)
+        # (d) the term carried in the number while the build has since switched it off
+        off = predict.predict_game(g, pg, mk, PARAMS, ctx)["official"]
+        o = predict.freeze_official(off, snap(latest, elo.win_prob(pg["d"] + latest)), g, pg, PARAMS, ctx)
+        self.assertAlmostEqual(o["factors"]["d_total"], pg["d"] + latest)
+        self.assertAlmostEqual(o["p_home_model"], elo.win_prob(o["factors"]["d_total"]), places=12)
+        s = o["rationale_sentences"][o["rationale"].index("injuries")]
+        self.assertTrue(s.endswith("; the frozen pick carried about 26 Elo points to Los Angeles, or 1 point on the spread; "
+                                   "the term is switched off in this build."), s)
+        # (e) a live (unfrozen) sentence while the term is off is unchanged: no spread clause, no questionable count
+        s = off["rationale_sentences"][off["rationale"].index("injuries")]
+        self.assertTrue(s.endswith("; shown for context, not in the number yet."), s)
+        self.assertNotIn("questionable", s)
+
+    def test_injury_sentence_edge_cases_cancel_and_questionable_only_sides(self):
+        params = enabled_params()
+        g, pg, mk, ctx, _ = scenario_injuries()
+        # a Questionable-only quiet side is named once the term is in the number (it moves it)
+        c = with_injuries(ctx, g, make_report(player("A", "WR", "Out")), make_report(player("B", "RB", "Questionable")))
+        o = predict.predict_game(g, pg, mk, params, c)["official"]
+        s = o["rationale_sentences"][o["rationale"].index("injuries")]
+        self.assertEqual(o["injuries"]["elo"], -(7.0) + 4 * 0.25)  # WR 7 out at home; RB 4 * 0.25 away
+        self.assertEqual(s, "Denver lists 1 starter out (WR); Los Angeles lists 1 starter questionable (RB); "
+                            "worth about 6 Elo points to Los Angeles, or 0.2 points on the spread.")  # 6 / 25 = 0.24 -> one decimal
+        # Questionable alone still never triggers the sentence (D18.4), whatever the term
+        c = with_injuries(ctx, g, make_report(player("A", "WR", "Questionable")), make_report())
+        o = predict.predict_game(g, pg, mk, params, c)["official"]
+        self.assertNotIn("injuries", o["rationale"])
+        self.assertNotEqual(o["injuries"]["elo"], 0.0)
 
 
 if __name__ == "__main__":

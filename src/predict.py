@@ -2,16 +2,30 @@
 
 Implements docs/CONTRACT.md section 2.6 ("official") and 2.9 ("factors") plus
 DECISIONS D2 (QB wording), D3 (blend), D4 (tiers), D5 (scores and total
-source), D8 (EV label threshold lives in schema), D17 (edge chip).
+source), D8 (EV label threshold lives in schema), D17 (edge chip), D18 (injury
+reports: CONTRACT 2.6b `official.injuries`, the "injuries" rationale sentence and
+the injury term in `factors.d_total` while `params.injury.enabled` is true).
 
 Public surface (CONTRACT 6.3):
     blend(p_model, p_market, w) -> float
     expected_scores(total, model_spread) -> (expected_home, expected_away)
     display_scores(expected_home, expected_away, favorite_is_home) -> (int, int)
     choose_total(market, game, params) -> (total_used, total_source)
-    rationale(factors, official_partial, game, names) -> (keys, sentences)
-    edge_chip(factors, names) -> dict | None
+    rationale(factors, official_partial, game, names, points_per_elo=None, term_in_number=None) -> (keys, sentences)
+    edge_chip(factors, names, injuries=None) -> dict | None
     predict_game(game, pregame, market, params, context) -> {"official", "availability"}
+
+Injury reports (D18). `context["injuries"]` is `{game_id: {"home": report, "away": report,
+"as_of": iso}}` (CONTRACT 6.7); a missing entry means both reports are
+`injuries.unavailable_report()` and `as_of` falls back to the kickoff. The term
+`official.injuries.elo` enters `factors.d_total` and `p_home_model` ONLY while
+`params.injury.enabled` is true. The replay may already have folded a term into
+`pregame["p_home"]`/`pregame["d"]` for played games; it declares that as
+`pregame["injury_elo"]` and predict replaces it with the report-derived term, so
+nothing is ever counted twice (`model_probability`). A frozen official (CONTRACT 2.6a,
+`freeze_official`) folds the SNAPSHOT's `injury_elo` into `factors.d_total` (0 for a snapshot
+written before the term existed) so `p_home_model == win_prob(d_total)` still holds, and the
+injuries sentence says so when the latest report is not what the frozen number carried.
 
 Everything is pure. Every number that appears in a rationale sentence is a
 value in `factors` or `official` (or a rounding / absolute value / percent /
@@ -25,7 +39,7 @@ from __future__ import annotations
 
 import math
 
-from . import qb, schema
+from . import elo, injuries, qb, schema
 
 # Rationale triggers (CONTRACT 2.6); the values live in schema so validate_model can enforce
 # the "emitted iff the trigger fires" rule with the same numbers.
@@ -33,6 +47,7 @@ QB_GAP_THRESHOLD = schema.RATIONALE_QB_GAP  # Elo points: QB sentence when |qb_e
 REST_GAP_THRESHOLD = schema.RATIONALE_REST_GAP  # days: rest sentence / edge reason when |rest_diff| >= this
 FORM_THRESHOLD = schema.RATIONALE_FORM_MOVE  # Elo points over last 3 games: form sentence / edge reason
 MARKET_SENTENCE_THRESHOLD = schema.RATIONALE_MARKET_GAP  # |p_model - p_market| on the pick side
+INJURY_NAMED_POSITIONS = 3  # D18.4: at most this many positions are named, then "and N more"
 
 
 # ----------------------------------------------------------------------------
@@ -261,9 +276,12 @@ def _qb_factor(qb_id, qb_name, q, starts, team: str, context: dict, today: str |
 
 
 def build_factors(game: dict, pregame: dict, params: dict, context: dict,
-                  p_home_model: float, p_home_market: float | None, pick_is_home: bool) -> dict:
+                  p_home_model: float, p_home_market: float | None, pick_is_home: bool,
+                  injury_elo: float = 0.0) -> dict:
     """CONTRACT 2.9: exactly the 19 factor keys, computed from the replay's pregame
-    numbers, the game row and the build context."""
+    numbers, the game row and the build context. ``injury_elo`` is
+    ``official.injuries.elo`` (home-positive, 0 while the term is disabled) and is the
+    last addend of ``d_total``."""
     ppe = float(params["score"]["points_per_elo"])
     elo_home = float(pregame["elo_home"])
     elo_away = float(pregame["elo_away"])
@@ -299,10 +317,206 @@ def build_factors(game: dict, pregame: dict, params: dict, context: dict,
         "qb_elo": q_h - q_a,
         "form_home_3": form.get(game["home"]),
         "form_away_3": form.get(game["away"]),
-        "d_total": (elo_home - elo_away) + hfa_elo + rest_elo + (q_h - q_a),
+        "d_total": (elo_home - elo_away) + hfa_elo + rest_elo + (q_h - q_a) + float(injury_elo or 0.0),
         "model_market_gap_home": gap_home,
         "model_market_gap_pick": None if gap_home is None else (gap_home if pick_is_home else -gap_home),
     }
+
+
+# ----------------------------------------------------------------------------
+# Injury reports (D18, CONTRACT 2.6b)
+# ----------------------------------------------------------------------------
+
+
+def injury_reports(game: dict, context: dict) -> tuple[dict, dict, str]:
+    """(home report, away report, as_of) for a game from ``context["injuries"]``.
+
+    The context entry is ``{"home": report, "away": report, "as_of": iso}`` keyed by
+    game_id (CONTRACT 6.7); a side may also be keyed by its team code. Anything missing
+    degrades to ``injuries.unavailable_report()``; a missing ``as_of`` falls back to
+    ``context["injuries_as_of"]`` and then the game's kickoff (a stable, valid ISO time)."""
+    entry = (context.get("injuries") or {}).get(game["game_id"]) or {}
+    home = entry.get("home") or entry.get(game["home"]) or injuries.unavailable_report()
+    away = entry.get("away") or entry.get(game["away"]) or injuries.unavailable_report()
+    as_of = entry.get("as_of") or context.get("injuries_as_of") or game["kickoff_utc"]
+    return home, away, as_of
+
+
+def injury_term_enabled(params: dict) -> bool:
+    return bool(((params or {}).get("injury") or {}).get("enabled"))
+
+
+def model_probability(pregame: dict, injury_elo: float, params: dict) -> float:
+    """``p_home_model``: the replay's ``p_home`` with the injury term applied when enabled.
+
+    ``pregame["injury_elo"]`` (optional) is the term the replay already folded into
+    ``pregame["d"]``/``["p_home"]`` for a played game; it is removed and the report-derived
+    ``injury_elo`` applied instead, so the term is never counted twice and
+    ``p_home_model == win_prob(factors.d_total)`` holds whenever the term is on. While the
+    term is disabled (and the replay applied none) the replay's probability is returned
+    untouched, bit for bit."""
+    applied = float(pregame.get("injury_elo") or 0.0)
+    term = float(injury_elo or 0.0) if injury_term_enabled(params) else 0.0
+    if applied == 0.0 and term == 0.0:
+        return float(pregame["p_home"])
+    d = pregame.get("d")
+    if d is None:
+        d = elo.pregame_d(float(pregame["elo_home"]), float(pregame["elo_away"]), float(pregame.get("hfa_elo") or 0.0),
+                          float(pregame.get("rest_elo") or 0.0), float(pregame.get("q_home") or 0.0),
+                          float(pregame.get("q_away") or 0.0)) + applied
+    return elo.win_prob(float(d) - applied + term)
+
+
+def _counted_positions(report: dict, status: str) -> list[str]:
+    """Position abbreviations (report position, else the group) of the starters listed
+    with ``status`` that the counts include (never a quarterback, D2 owns that)."""
+    out = []
+    for p in report.get("players") or []:
+        if p.get("starter") and not p.get("covered_by_qb_term") and p.get("status") == status:
+            out.append(str(p.get("position") or p.get("pos_group") or "?").upper())
+    return out
+
+
+def _position_list(positions: list[str]) -> str:
+    """"WR, LT, CB" naming at most INJURY_NAMED_POSITIONS, then "and N more" (D18.4)."""
+    shown = positions[:INJURY_NAMED_POSITIONS]
+    text = ", ".join(shown)
+    extra = len(positions) - len(shown)
+    if extra > 0:
+        text += " and %d more" % extra
+    return text
+
+
+def _plural(n: int, word: str) -> str:
+    return "%d %s%s" % (n, word, "" if n == 1 else "s")
+
+
+def _join_clauses(parts: list[str]) -> str:
+    """"a", "a and b", "a, b and c"."""
+    if len(parts) <= 1:
+        return "".join(parts)
+    return ", ".join(parts[:-1]) + " and " + parts[-1]
+
+
+def _injury_side_clause(report: dict, label: str, with_questionable: bool = False) -> str | None:
+    """"{City} lists 2 starters out (WR, LB) and 1 doubtful (CB)", or None when the
+    side has no starter Out or Doubtful. With ``with_questionable`` (the term is in the
+    number, so Questionable starters move it too) a questionable count is appended and a
+    side with only Questionable starters is still a clause."""
+    n_out = int(report.get("starters_out") or 0)
+    n_dbt = int(report.get("starters_doubtful") or 0)
+    n_q = int(report.get("starters_questionable") or 0) if with_questionable else 0
+    if n_out + n_dbt + n_q < 1:
+        return None
+    parts = []
+    if n_out:
+        parts.append("%s out (%s)" % (_plural(n_out, "starter"), _position_list(_counted_positions(report, "Out"))))
+    if n_dbt:
+        head = ("%d" % n_dbt) if parts else _plural(n_dbt, "starter")
+        parts.append("%s doubtful (%s)" % (head, _position_list(_counted_positions(report, "Doubtful"))))
+    if n_q:
+        head = ("%d" % n_q) if parts else _plural(n_q, "starter")
+        parts.append("%s questionable (%s)" % (head, _position_list(_counted_positions(report, "Questionable"))))
+    return "%s lists %s" % (label, _join_clauses(parts))
+
+
+def _injury_none_clause(report: dict, label: str) -> str:
+    """The quiet side: "lists none" only when a report is actually filed (CONTRACT 2.6b:
+    an unfiled report is "no report yet", not "nobody hurt")."""
+    if not report.get("available"):
+        return "%s's report is unavailable" % label
+    if not report.get("report_filed"):
+        return "%s has not filed a report yet" % label
+    return "%s lists none" % label
+
+
+def _elo_and_spread(term: float, lab: dict, points_per_elo: float | None) -> str:
+    """"about 70 Elo points to Cleveland, or 2.8 points on the spread" (the spread clause
+    only when points_per_elo is known; a term under half a spread point shows two decimals
+    rather than reading as 0)."""
+    n = round_half_away(abs(term))
+    text = "about %s to %s" % (_plural(n, "Elo point"), lab["home" if term > 0 else "away"])
+    if points_per_elo:
+        pts = abs(term) / float(points_per_elo)
+        s = fmt_num(pts, 1)
+        if s == "0":
+            s = fmt_num(pts, 2)
+        text += ", or %s point%s on the spread" % (s, "" if s == "1" else "s")
+    return text
+
+
+def injuries_sentence(inj: dict | None, lab: dict, points_per_elo: float | None = None,
+                      term_in_number: float | None = None) -> str | None:
+    """The "injuries" sentence (CONTRACT 2.6): None unless a starter is Out or Doubtful on
+    either side (`schema.injury_rationale_triggers`). Listed statuses only, position
+    abbreviations in parentheses, the side with more listed starters first; ends with
+    "shown for context, not in the number yet" while the term is disabled, else
+    "worth about N Elo points to {City}, or S points on the spread" with
+    N = round(|injuries.elo|) and S = N / points_per_elo (the spread clause only when
+    ``points_per_elo`` is given). When the term is in the number the Questionable starters
+    are listed too, since they move it.
+
+    ``term_in_number`` is the term the probability actually carries — a frozen game's
+    snapshot ``injury_elo`` (CONTRACT 2.6a); when it differs from the rebuilt block's
+    ``elo`` the sentence says what the frozen pick carried and what the latest report reads,
+    never claiming the latest report is in a number it is not."""
+    if not schema.injury_rationale_triggers(inj):
+        return None
+    latest = float(inj.get("elo") or 0.0)
+    used = latest if term_in_number is None else float(term_in_number or 0.0)
+    enabled = bool(inj.get("enabled"))
+    in_number = enabled or used != 0.0
+    sides = []
+    for side in ("home", "away"):
+        rep_ = inj[side]
+        load = int(rep_.get("starters_out") or 0) + int(rep_.get("starters_doubtful") or 0)
+        sides.append((-load, 0 if side == "home" else 1, side))
+    clauses = []
+    for _, _, side in sorted(sides):
+        rep_ = inj[side]
+        clause = _injury_side_clause(rep_, lab[side], with_questionable=in_number)
+        clauses.append(clause if clause is not None else _injury_none_clause(rep_, lab[side]))
+    body = "; ".join(clauses)
+    if not in_number:
+        return "%s; shown for context, not in the number yet." % body
+    if abs(used - latest) > 1e-9:
+        # frozen to a snapshot whose term is not the latest report's (2.6a)
+        if used == 0.0:
+            return "%s; not in the frozen pick, which carried no injury term." % body
+        if not enabled:
+            tail = "the term is switched off in this build"
+        elif round_half_away(abs(latest)) == 0:
+            tail = "the two reports now cancel out"
+        else:
+            tail = "the latest report reads %s" % _elo_and_spread(latest, lab, None)
+        return "%s; the frozen pick carried %s; %s." % (body, _elo_and_spread(used, lab, points_per_elo), tail)
+    if round_half_away(abs(used)) == 0:
+        return "%s; the two reports cancel out in the number." % body
+    return "%s; worth %s." % (body, _elo_and_spread(used, lab, points_per_elo))
+
+
+def _injury_edge_text(inj: dict, lab: dict) -> str | None:
+    """"Denver lists 3 starters Out (WR, LT, CB)" for the side with more listed starters
+    (ties -> home); None when neither side has a starter Out or Doubtful."""
+    if not schema.injury_rationale_triggers(inj):
+        return None
+    best = None
+    for side in ("home", "away"):
+        rep_ = inj[side]
+        load = int(rep_.get("starters_out") or 0) + int(rep_.get("starters_doubtful") or 0)
+        if best is None or load > best[0]:
+            best = (load, side)
+    side = best[1]
+    rep_ = inj[side]
+    n_out = int(rep_.get("starters_out") or 0)
+    n_dbt = int(rep_.get("starters_doubtful") or 0)
+    parts = []
+    if n_out:
+        parts.append("%s Out (%s)" % (_plural(n_out, "starter"), _position_list(_counted_positions(rep_, "Out"))))
+    if n_dbt:
+        head = ("%d" % n_dbt) if n_out else _plural(n_dbt, "starter")
+        parts.append("%s Doubtful (%s)" % (head, _position_list(_counted_positions(rep_, "Doubtful"))))
+    return "%s lists %s" % (lab[side], " and ".join(parts))
 
 
 # ----------------------------------------------------------------------------
@@ -416,21 +630,28 @@ def verdict_sentence(official: dict, lab: dict, pick_is_home: bool) -> str:
     return "Blended, that comes to %s at %d%%: %s" % (lab[side], p, tail)
 
 
-def rationale(factors: dict, official_partial: dict, game: dict, names: dict) -> tuple[list[str], list[str]]:
+def rationale(factors: dict, official_partial: dict, game: dict, names: dict,
+              points_per_elo: float | None = None, term_in_number: float | None = None) -> tuple[list[str], list[str]]:
     """(keys, sentences) for the Why? button (CONTRACT 2.6).
 
     `official_partial` needs pick, p_home_model, p_home_market, p_pick_blend, tier,
     display_home, display_away. `names` is {code: team_meta} (or {"home","away"} labels).
     Every key is emitted iff its trigger fires (no budget: a factor the model used is
     never dropped), in the fixed contract order rating, home_field, quarterback, rest,
-    form, market, verdict; 2 (neutral site, nothing else) to 7 sentences."""
+    injuries, form, market, verdict; 2 (neutral site, nothing else) to 8 sentences.
+    `official_partial["injuries"]` (CONTRACT 2.6b) drives the injuries sentence; absent
+    means no reports (no sentence). `points_per_elo` lets the injuries sentence give the
+    term on the spread; `term_in_number` is the frozen term for a 2.6a game (see
+    `injuries_sentence`)."""
     lab = _labels(game, names)
     f = factors
     pick_is_home = official_partial["pick"] == game["home"]
     middle = []
     if not game.get("neutral"):
         middle.append(("home_field", _home_field_sentence(f)))
-    for key, text in (("quarterback", qb_sentence(f, lab)), ("rest", rest_sentence(f, lab)), ("form", form_sentence(f, lab)),
+    for key, text in (("quarterback", qb_sentence(f, lab)), ("rest", rest_sentence(f, lab)),
+                      ("injuries", injuries_sentence(official_partial.get("injuries"), lab, points_per_elo, term_in_number)),
+                      ("form", form_sentence(f, lab)),
                       ("market", market_sentence(f, official_partial, lab, pick_is_home))):
         if text is not None:
             middle.append((key, text))
@@ -444,9 +665,19 @@ def rationale(factors: dict, official_partial: dict, game: dict, names: dict) ->
 # ----------------------------------------------------------------------------
 
 
-def edge_chip(factors: dict, names: dict) -> dict | None:
+def edge_reason_allowed(reason_key: str) -> bool:
+    """True when the schema admits this reason_key (the contract's EDGE_REASON_KEYS)."""
+    return reason_key in schema.EDGE_REASON_KEYS
+
+
+def edge_chip(factors: dict, names: dict, injuries: dict | None = None) -> dict | None:
     """Amber chip when |model - market| >= EDGE_THRESHOLD on the pick side, naming
-    only a measured factor. `names` = {"home": label, "away": label}."""
+    only a measured factor. `names` = {"home": label, "away": label}.
+
+    Priority (D17 + D18.4): starter_change, injuries (a starter listed Out or Doubtful,
+    `official.injuries` given), rest_gap, form_move, else unknown. The "injuries" reason is
+    emitted only while `schema.EDGE_REASON_KEYS` admits it (validate_model rejects any
+    other key); until then a listed starter falls through to the next measured factor."""
     gap = factors["model_market_gap_pick"]
     if gap is None or abs(gap) < schema.EDGE_THRESHOLD:
         return None
@@ -457,6 +688,10 @@ def edge_chip(factors: dict, names: dict) -> dict | None:
         if qb is not None and qb["differs_from_usual"]:
             return {"flag": True, "reason_key": "starter_change",
                     "reason_text": "%s's listed starter differs from the usual starter" % lab[side]}
+    if injuries is not None and edge_reason_allowed("injuries"):
+        text = _injury_edge_text(injuries, lab)
+        if text is not None:
+            return {"flag": True, "reason_key": "injuries", "reason_text": text}
     if f["rest_diff"] is not None and abs(f["rest_diff"]) >= REST_GAP_THRESHOLD:
         side = "home" if f["rest_diff"] > 0 else "away"
         return {"flag": True, "reason_key": "rest_gap",
@@ -510,11 +745,36 @@ def freeze_official(official: dict, snapshot: dict, game: dict, pregame: dict, p
     o["best_price"] = None if snapshot.get("best_price") is None else {"book": snapshot["best_book"], "side": pick, "american": snapshot["best_price"]}
     o["estimated_ev_per_dollar"] = snapshot.get("ev")
     o["best_prices"] = prices_for_pick(o["market"], pick_is_home, pick, list(context.get("books") or params["books"]))
-    o["factors"] = build_factors(game, pregame, params, context, o["p_home_model"], o["p_home_market"], pick_is_home)
+    # Injury reports (2.6a/2.6b): the block is the one rebuilt from the season files for display
+    # (the week's report is stable once the game has kicked off); the frozen numbers live in the
+    # snapshot's injury_elo / inj_home / inj_away. The term folded into d_total is the SNAPSHOT's
+    # (0 for a snapshot written before D18), so p_home_model == win_prob(d_total) holds for the
+    # frozen pick exactly as it does for a live one; the sentence (and the page, which reads the
+    # term back out of factors) say when the latest report is not what the frozen number carried.
+    if "injuries" not in o:
+        home_rep, away_rep, as_of = injury_reports(game, context)
+        o["injuries"] = injuries.injuries_block(home_rep, away_rep, params, as_of)
+    frozen_term = float(snapshot.get("injury_elo") or 0.0)
+    o["factors"] = build_factors(game, pregame, params, context, o["p_home_model"], o["p_home_market"], pick_is_home,
+                                 injury_elo=frozen_term)
+    # Reconcile with the snapshot: the frozen probability implies a rating difference; if the
+    # game's conditions changed after the snapshot (a neutral-site flag flipping, a corrected
+    # rest day) the current factors would not add up to it. Fold the residual into the
+    # home-field term so p_home_model == win_prob(d_total) holds for every frozen card.
+    pm = min(max(float(o["p_home_model"]), 1e-9), 1 - 1e-9)
+    d_snapshot = 400.0 * math.log10(pm / (1.0 - pm))
+    residual = d_snapshot - o["factors"]["d_total"]
+    if abs(residual) > 1e-6:
+        ppe0 = float(params["score"]["points_per_elo"])
+        o["factors"]["hfa_elo"] = o["factors"]["hfa_elo"] + residual
+        o["factors"]["hfa_spread_pts"] = o["factors"]["hfa_elo"] / ppe0
+        o["factors"]["d_total"] = d_snapshot
+    ppe = float(params["score"]["points_per_elo"])
+    o["model_spread"] = o["factors"]["d_total"] / ppe
     names = context["names"]
-    keys, sentences = rationale(o["factors"], o, game, names)
+    keys, sentences = rationale(o["factors"], o, game, names, points_per_elo=ppe, term_in_number=frozen_term)
     o["rationale"], o["rationale_sentences"] = keys, sentences
-    o["edge"] = None if o["market"] is None else edge_chip(o["factors"], _labels(game, names))
+    o["edge"] = None if o["market"] is None else edge_chip(o["factors"], _labels(game, names), o["injuries"])
     o["parlay_eligible"] = False
     return o
 
@@ -526,10 +786,12 @@ def predict_game(game: dict, pregame: dict, market: dict | None, params: dict, c
     pregame  replay["pregame"][game_id]
     market   CONTRACT 2.8 object or None
     params   CONTRACT 2.3
-    context  {"ranks", "names", "form", "usual_starter", "qb", "books"}
+    context  {"ranks", "names", "form", "usual_starter", "qb", "books", "injuries" (optional, 6.7)}
     """
     books = list(context.get("books") or params["books"])
-    p_home_model = float(pregame["p_home"])
+    home_rep, away_rep, as_of = injury_reports(game, context)
+    inj = injuries.injuries_block(home_rep, away_rep, params, as_of)
+    p_home_model = model_probability(pregame, inj["elo"], params)
     p_home_market = None if market is None else market.get("consensus_p_home")
     p_home_blend = blend(p_home_model, p_home_market, float(params["blend"]["model_weight"]))
     pick_is_home = p_home_blend >= 0.5
@@ -537,7 +799,8 @@ def predict_game(game: dict, pregame: dict, market: dict | None, params: dict, c
     p_pick_blend = p_home_blend if pick_is_home else 1.0 - p_home_blend
     tier = schema.tier_for(p_pick_blend, params["tier_bounds"])
 
-    factors = build_factors(game, pregame, params, context, p_home_model, p_home_market, pick_is_home)
+    factors = build_factors(game, pregame, params, context, p_home_model, p_home_market, pick_is_home,
+                            injury_elo=inj["elo"])
     model_spread = factors["d_total"] / float(params["score"]["points_per_elo"])
     blend_spread = spread_from_prob(p_home_blend, params["score"]["points_per_elo"])
     total_used, total_source = choose_total(market, game, params)
@@ -573,12 +836,13 @@ def predict_game(game: dict, pregame: dict, market: dict | None, params: dict, c
         "best_price": best_price,
         "estimated_ev_per_dollar": ev,
         "factors": factors,
+        "injuries": inj,
     }
     names = context["names"]
-    keys, sentences = rationale(factors, official, game, names)
+    keys, sentences = rationale(factors, official, game, names, points_per_elo=float(params["score"]["points_per_elo"]))
     official["rationale"] = keys
     official["rationale_sentences"] = sentences
-    official["edge"] = None if market is None else edge_chip(factors, _labels(game, names))
+    official["edge"] = None if market is None else edge_chip(factors, _labels(game, names), inj)
     official["parlay_eligible"] = market is not None and p_pick_blend >= schema.PARLAY_MIN_P and best_price is not None
 
     availability = {

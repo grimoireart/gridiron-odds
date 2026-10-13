@@ -1,4 +1,4 @@
-"""Tests for src/ledger.py (D10, CONTRACT 2.12 / 4 / 6.6)."""
+"""Tests for src/ledger.py (D10, CONTRACT 2.12 / 4 / 6.6; D18 injury keys and by_injury_load)."""
 
 import copy
 import json
@@ -6,7 +6,7 @@ import os
 import tempfile
 import unittest
 
-from src import ledger
+from src import ledger, schema
 from src.schema import TIERS, _check_track_record
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -16,8 +16,10 @@ W = 0.35
 
 def make_game(game_id, kickoff, home, away, pick_home, p_home_model, p_home_market, tier,
               disp_home, disp_away, scores=None, close=(-110, -110), spread_line=0.0,
-              total_line=44.0, best_price=-110, market=True):
-    """A model.json games[] entry extended with the CSV close fields the ledger reads."""
+              total_line=44.0, best_price=-110, market=True, injuries=None):
+    """A model.json games[] entry extended with the CSV close fields the ledger reads.
+    ``injuries`` (a 2.6b block from ``inj_block``) is attached to official when given; without
+    it the official looks like a pre-D18 build."""
     p_blend = W * p_home_model + (1 - W) * p_home_market if market else p_home_model
     pick = home if pick_home else away
     p_pick = p_blend if pick_home else 1 - p_blend
@@ -47,6 +49,8 @@ def make_game(game_id, kickoff, home, away, pick_home, p_home_model, p_home_mark
                     "qb_away": {"id": "00-" + away, "name": "QB " + away}},
         "rationale": [], "rationale_sentences": [], "edge": None, "parlay_eligible": True,
     }
+    if injuries is not None:
+        official["injuries"] = injuries
     game = {
         "game_id": game_id, "season": int(game_id[:4]), "game_type": "REG", "week": int(game_id[5:7]),
         "league_date": kickoff[:10], "kickoff_utc": kickoff, "time_known": True,
@@ -67,6 +71,23 @@ def make_game(game_id, kickoff, home, away, pick_home, p_home_model, p_home_mark
                           "pred_margin_error": float(disp_home - disp_away - margin),
                           "pred_total_error": float(total_line - hs - as_)}
     return game
+
+
+def inj_report(out=0, doubtful=0, questionable=0, filed=True, available=True, qb_listed=None):
+    """The fields of a CONTRACT 2.6b report that the ledger reads (players omitted)."""
+    if not available:
+        return {"available": False, "report_filed": False, "players": [], "starters_out": 0, "starters_doubtful": 0,
+                "starters_questionable": 0, "total_listed": 0, "qb_listed": None}
+    return {"available": True, "report_filed": bool(filed or out or doubtful or questionable), "players": [],
+            "starters_out": out, "starters_doubtful": doubtful, "starters_questionable": questionable,
+            "total_listed": out + doubtful + questionable, "qb_listed": qb_listed}
+
+
+def inj_block(home=None, away=None, elo_home=0.0, elo_away=0.0, enabled=False):
+    home = home if home is not None else inj_report()
+    away = away if away is not None else inj_report()
+    return {"enabled": enabled, "as_of": "2026-09-09T14:00:00Z", "home": home, "away": away,
+            "elo_home": elo_home, "elo_away": elo_away, "elo": elo_home - elo_away}
 
 
 BUILD_1 = {"id": "20260909T140000Z-abc1234", "built_at": "2026-09-09T14:00:00Z"}
@@ -491,6 +512,129 @@ class ReduceTests(unittest.TestCase):
                 ev["game_id"] = "2025_18_A01_H01"
         weeks = ledger.reduce(events, games)["track_record"]["by_week"]
         self.assertEqual([(w["season"], w["week"], w["cum_n"]) for w in weeks], [(2025, 18, 1), (2026, 1, 1)])
+
+
+class InjuryKeysTests(unittest.TestCase):
+    """CONTRACT 4.1 D18 amendment: injury_elo / inj_home / inj_away on snapshots."""
+
+    def test_snapshot_copies_the_injury_context(self):
+        block = inj_block(inj_report(out=2, doubtful=1, questionable=3, qb_listed="Questionable"),
+                          inj_report(filed=False), elo_home=-13.0, elo_away=0.0, enabled=True)
+        ev = ledger.snapshot_event(scheduled(injuries=block), BUILD_1)
+        self.assertEqual(ev["injury_elo"], -13.0)
+        self.assertEqual(ev["inj_home"], {"available": True, "report_filed": True, "starters_out": 2, "starters_doubtful": 1,
+                                          "starters_questionable": 3, "qb_listed": "Questionable"})
+        self.assertEqual(ev["inj_away"], {"available": True, "report_filed": False, "starters_out": 0, "starters_doubtful": 0,
+                                          "starters_questionable": 0, "qb_listed": None})
+        for k in ledger.SNAPSHOT_INJURY_FIELDS:
+            self.assertIn(k, ev)
+        self.assertEqual(set(ev["inj_home"]), set(ledger.INJURY_SUMMARY_KEYS))
+        self.assertEqual(set(ev["inj_away"]), set(ledger.INJURY_SUMMARY_KEYS))
+        json.dumps(ev, allow_nan=False)
+
+    def test_pre_d18_official_summarizes_as_unavailable(self):
+        ev = ledger.snapshot_event(scheduled(), BUILD_1)
+        self.assertEqual(ev["injury_elo"], 0.0)
+        unavailable = {"available": False, "report_filed": False, "starters_out": 0, "starters_doubtful": 0,
+                       "starters_questionable": 0, "qb_listed": None}
+        self.assertEqual(ev["inj_home"], unavailable)
+        self.assertEqual(ev["inj_away"], unavailable)
+        self.assertEqual(ledger.injury_summary(None), unavailable)
+        self.assertEqual(ledger.injury_summary(inj_report(available=False)), unavailable)
+        # an unavailable report with stray counts is still summarized as all-zero
+        self.assertEqual(ledger.injury_summary(dict(inj_report(available=False), starters_out=3)), unavailable)
+
+    def test_report_change_alone_does_not_create_a_snapshot(self):
+        self.assertFalse(set(ledger.SNAPSHOT_INJURY_FIELDS) & set(ledger.SNAPSHOT_OFFICIAL_FIELDS))
+        quiet = scheduled(injuries=inj_block(inj_report(), inj_report()))
+        events = ledger.append_snapshots([], [quiet], BUILD_1)
+        self.assertEqual(len(events), 1)
+        # Thursday: two starters go Out while the term is disabled -> nothing official changed
+        loud = scheduled(injuries=inj_block(inj_report(out=2), inj_report(doubtful=1)))
+        self.assertEqual(ledger.append_snapshots(events, [loud], BUILD_2), [])
+        # a pre-D18 ledger line vs a D18 build: still the same official fields -> no new snapshot
+        legacy = [{k: v for k, v in events[0].items() if k not in ledger.SNAPSHOT_INJURY_FIELDS}]
+        self.assertEqual(ledger.append_snapshots(legacy, [loud], BUILD_2), [])
+        # once the term moves p_model (enabled), the existing rule writes the new context
+        moved = scheduled(p_home_model=0.41, injuries=inj_block(inj_report(out=2), inj_report(doubtful=1), elo_home=-13.0, enabled=True))
+        new = ledger.append_snapshots(events, [moved], BUILD_2)
+        self.assertEqual(len(new), 1)
+        self.assertEqual((new[0]["injury_elo"], new[0]["inj_home"]["starters_out"], new[0]["inj_away"]["starters_doubtful"]), (-13.0, 2, 1))
+
+    def test_injury_load_buckets(self):
+        self.assertEqual(ledger.injury_load(None), "unknown")
+        self.assertEqual(ledger.injury_load(ledger.injury_summary(inj_report(available=False))), "unknown")
+        self.assertEqual(ledger.injury_load(ledger.injury_summary(inj_report(filed=False))), "unknown")  # no report is not "nobody hurt"
+        self.assertEqual(ledger.injury_load(ledger.injury_summary(inj_report())), "no_starter_out")
+        self.assertEqual(ledger.injury_load(ledger.injury_summary(inj_report(doubtful=2, questionable=1))), "no_starter_out")
+        self.assertEqual(ledger.injury_load(ledger.injury_summary(inj_report(out=1))), "starter_out")
+        self.assertEqual(ledger.INJURY_LOADS, ("starter_out", "no_starter_out", "unknown"))
+
+
+class InjuryLoadReduceTests(unittest.TestCase):
+    """D18.5 track record split by the PICKED side's starters Out at snapshot time."""
+
+    def _graded(self, specs):
+        """specs: list of (pick_home, scores, inj_home, inj_away)."""
+        events, games = [], []
+        for i, (pick_home, scores, inj_home, inj_away) in enumerate(specs):
+            gid = "2026_02_A%02d_H%02d" % (i, i)
+            block = None if (inj_home is None and inj_away is None) else inj_block(inj_home, inj_away)
+            kw = dict(game_id=gid, kickoff=KICK, home="H%02d" % i, away="A%02d" % i, pick_home=pick_home,
+                      p_home_model=0.6 if pick_home else 0.4, p_home_market=0.6 if pick_home else 0.4,
+                      tier="Lean", disp_home=24, disp_away=20, injuries=block)
+            events += ledger.append_snapshots(events, [make_game(**kw)], BUILD_1)
+            g = make_game(scores=scores, **kw)
+            events += ledger.append_grades(events, [g], "2026-09-16T14:00:00Z")
+            games.append(g)
+        return events, games
+
+    def test_split_follows_the_picked_side(self):
+        events, games = self._graded([
+            (True, (24, 20), inj_report(out=2), inj_report()),            # home pick, home has 2 Out -> starter_out, hit
+            (True, (17, 20), inj_report(out=1), inj_report(out=3)),       # home pick, 1 Out -> starter_out, miss
+            (False, (24, 20), inj_report(out=3), inj_report()),           # away pick, AWAY lists none -> no_starter_out, miss
+            (False, (20, 24), inj_report(), inj_report(doubtful=1)),      # away pick, doubtful only -> no_starter_out, hit
+            (True, (20, 20), inj_report(), inj_report()),                 # push -> no_starter_out
+            (True, (24, 20), inj_report(filed=False), inj_report()),      # no report yet -> unknown
+            (False, (24, 20), inj_report(), inj_report(available=False)),  # unavailable -> unknown, miss
+            (True, (24, 20), None, None),                                 # pre-D18 snapshot -> unknown
+        ])
+        out = ledger.reduce(events, games)
+        split = out["by_injury_load"]
+        self.assertEqual([b["load"] for b in split], list(ledger.INJURY_LOADS))
+        by = {b["load"]: b for b in split}
+        self.assertEqual((by["starter_out"]["n"], by["starter_out"]["hits"], by["starter_out"]["losses"], by["starter_out"]["pushes"]), (2, 1, 1, 0))
+        self.assertAlmostEqual(by["starter_out"]["accuracy"], 0.5)
+        self.assertEqual((by["no_starter_out"]["n"], by["no_starter_out"]["hits"], by["no_starter_out"]["losses"], by["no_starter_out"]["pushes"]), (3, 1, 1, 1))
+        self.assertEqual((by["unknown"]["n"], by["unknown"]["hits"], by["unknown"]["losses"]), (3, 2, 1))
+        self.assertEqual(sum(b["n"] for b in split), out["track_record"]["overall"]["n"])
+        for b in split:
+            for k in ("n", "hits", "losses", "pushes", "accuracy", "market_n", "market_hits", "market_accuracy"):
+                self.assertIn(k, b)
+            self.assertEqual(b["hits"] + b["losses"] + b["pushes"], b["n"])
+            # market picks agree with the model here, so the market record mirrors it over non-pushes
+            self.assertEqual(b["market_n"], b["hits"] + b["losses"])
+        # published inside track_record exactly when the schema admits the key (CONTRACT 2.12)
+        tr = out["track_record"]
+        self.assertEqual("by_injury_load" in tr, "by_injury_load" in schema.TRACK_RECORD_KEYS)
+        if "by_injury_load" in tr:
+            self.assertEqual(tr["by_injury_load"], split)
+        problems = []
+        _check_track_record(tr, problems)
+        self.assertEqual(problems, [])
+
+    def test_empty_ledger_has_three_zero_buckets(self):
+        split = ledger.reduce([], [])["by_injury_load"]
+        self.assertEqual([(b["load"], b["n"], b["accuracy"]) for b in split],
+                         [("starter_out", 0, None), ("no_starter_out", 0, None), ("unknown", 0, None)])
+
+    def test_fixture_ledger_predates_d18_so_every_pick_is_unknown(self):
+        events = ledger.read_events(FIXTURE)
+        split = ledger.reduce(events, [])["by_injury_load"]
+        by = {b["load"]: b for b in split}
+        self.assertEqual(by["unknown"]["n"], 10)
+        self.assertEqual(by["starter_out"]["n"] + by["no_starter_out"]["n"], 0)
 
 
 class OddsMathTests(unittest.TestCase):
