@@ -726,7 +726,7 @@ function injuryBlock(g) {
   // terms plus the injury term). For a live card it is inj.elo; for a frozen card it is the snapshot's
   // term (0 when the pick predates the term), which can differ from the latest report shown here.
   const f = g.official.factors || {};
-  const carried = f.d_total == null ? inj.elo : Math.round((f.d_total - (f.elo_gap_home || 0) - (f.hfa_elo || 0) - (f.rest_elo || 0) - (f.qb_elo || 0)) * 1000) / 1000;
+  const carried = f.d_total == null ? inj.elo : Math.round((f.d_total - (f.elo_gap_home || 0) - (f.hfa_elo || 0) - (f.rest_elo || 0) - (f.qb_elo || 0) - (f.frozen_adjust || 0)) * 1000) / 1000;
   let head;
   if (stale && Math.abs(carried - inj.elo) > 0.005) {
     head = carried === 0 ? 'not in the frozen pick, which carried no injury term; the latest report reads ' + signed(inj.elo, 0) + ' Elo toward ' + g.home

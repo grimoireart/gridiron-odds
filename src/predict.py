@@ -317,6 +317,7 @@ def build_factors(game: dict, pregame: dict, params: dict, context: dict,
         "qb_elo": q_h - q_a,
         "form_home_3": form.get(game["home"]),
         "form_away_3": form.get(game["away"]),
+        "frozen_adjust": 0.0,
         "d_total": (elo_home - elo_away) + hfa_elo + rest_elo + (q_h - q_a) + float(injury_elo or 0.0),
         "model_market_gap_home": gap_home,
         "model_market_gap_pick": None if gap_home is None else (gap_home if pick_is_home else -gap_home),
@@ -765,9 +766,7 @@ def freeze_official(official: dict, snapshot: dict, game: dict, pregame: dict, p
     d_snapshot = 400.0 * math.log10(pm / (1.0 - pm))
     residual = d_snapshot - o["factors"]["d_total"]
     if abs(residual) > 1e-6:
-        ppe0 = float(params["score"]["points_per_elo"])
-        o["factors"]["hfa_elo"] = o["factors"]["hfa_elo"] + residual
-        o["factors"]["hfa_spread_pts"] = o["factors"]["hfa_elo"] / ppe0
+        o["factors"]["frozen_adjust"] = residual
         o["factors"]["d_total"] = d_snapshot
     ppe = float(params["score"]["points_per_elo"])
     o["model_spread"] = o["factors"]["d_total"] / ppe

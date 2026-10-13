@@ -243,6 +243,7 @@ FACTOR_KEYS = frozenset(
         "form_home_3",
         "form_away_3",
         "d_total",
+        "frozen_adjust",
         "model_market_gap_home",
         "model_market_gap_pick",
     ]
@@ -656,7 +657,7 @@ def _check_game(g, i: int, problems: list[str], tier_bounds: dict, default_books
     f = o["factors"]
     fw = ow + ".factors"
     if _check_keys(f, FACTOR_KEYS, fw, problems):
-        for k in ("team_elo_home", "team_elo_away", "elo_gap_home", "hfa_elo", "hfa_spread_pts", "rest_elo", "qb_elo", "d_total"):
+        for k in ("team_elo_home", "team_elo_away", "elo_gap_home", "hfa_elo", "hfa_spread_pts", "rest_elo", "qb_elo", "d_total", "frozen_adjust"):
             if not _is_num(f[k]):
                 problems.append("%s.%s: number" % (fw, k))
         for k in ("home_rank", "away_rank"):

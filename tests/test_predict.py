@@ -983,8 +983,11 @@ class InjuryTests(unittest.TestCase):
         params = enabled_params()
         g, pg, mk, ctx, _ = scenario_injuries()
         live = predict.predict_game(g, pg, mk, params, ctx)["official"]
+        # the snapshot's p_model must be consistent with the pregame d plus its own term (-20): a
+        # frozen card reconciles any residual into factors.frozen_adjust, which this test wants at 0
+        p_model_snap = 1 - (1.0 / (1.0 + 10 ** (-(pg["d"] - 20.0) / 400.0)))  # LAC is the away pick
         snap = {"id": g["game_id"] + "@20261017T140000Z-abc1234", "game_id": g["game_id"], "kickoff_utc": g["kickoff_utc"],
-                "build_at": "2026-10-17T14:00:00Z", "pick": "LAC", "p_model": 0.47, "p_market": 0.57, "p_blend": 0.535,
+                "build_at": "2026-10-17T14:00:00Z", "pick": "LAC", "p_model": p_model_snap, "p_market": 0.57, "p_blend": 0.535,
                 "tier": "Toss-up", "pred_home": 21, "pred_away": 23, "best_price": -125, "best_book": "fanduel", "ev": -0.03,
                 "market_source": "odds_api", "total_used": 44.0, "total_source": "odds_api",
                 "injury_elo": -20.0, "inj_home": {"available": True, "report_filed": True, "starters_out": 3,
@@ -994,7 +997,8 @@ class InjuryTests(unittest.TestCase):
         o = predict.freeze_official(live, snap, g, pg, params, ctx)
         # 2.6a: the numbers are the snapshot's ...
         self.assertEqual((o["pick"], o["p_pick_blend"], o["tier"], o["display_home"], o["display_away"]), ("LAC", 0.535, "Toss-up", 21, 23))
-        self.assertAlmostEqual(o["p_home_model"], 1 - 0.47)
+        self.assertAlmostEqual(o["p_home_model"], 1 - p_model_snap)
+        self.assertAlmostEqual(o["factors"]["frozen_adjust"], 0.0, places=6)
         self.assertEqual(o["best_price"], {"book": "fanduel", "side": "LAC", "american": -125})
         self.assertIs(o["parlay_eligible"], False)
         # ... while the injuries block is the one rebuilt from the season files (2.6b), not the snapshot counts
