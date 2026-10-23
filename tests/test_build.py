@@ -20,6 +20,33 @@ HAVE_DATA = os.path.exists(GAMES) and os.path.exists(PARAMS)
 NOW = datetime(2026, 10, 9, 20, 0, 0, tzinfo=timezone.utc)
 
 
+def _frozen_games_csv() -> str:
+    """A copy of data/games.csv as it looked on NOW's date: every game after that date has its
+    result fields blanked. The end-to-end tests pin ``now=NOW`` and use the Oct 9 odds sample, so
+    the schedule they build from must be frozen at the same date too; otherwise they rot as the
+    season advances (this blocked the daily publish for four days on 2026-10-20..23)."""
+    import csv
+    if not os.path.exists(GAMES):
+        return GAMES
+    cutoff = NOW.date().isoformat()
+    d = tempfile.mkdtemp(prefix="gridiron-frozen-games-")
+    out = os.path.join(d, "games.csv")
+    with open(GAMES, encoding="utf-8", newline="") as src, open(out, "w", encoding="utf-8", newline="") as dst:
+        reader = csv.DictReader(src)
+        writer = csv.DictWriter(dst, fieldnames=reader.fieldnames)
+        writer.writeheader()
+        for row in reader:
+            if row.get("gameday", "") > cutoff:
+                for k in ("home_score", "away_score", "result", "total", "overtime"):
+                    if k in row:
+                        row[k] = ""
+            writer.writerow(row)
+    return out
+
+
+FROZEN_GAMES = _frozen_games_csv()
+
+
 class HelperTests(unittest.TestCase):
     def test_build_id_is_compact_timestamp_plus_short_sha(self):
         self.assertEqual(build.build_id("2026-10-10T14:03:12Z", "3f2a9c1e5b7d"), "20261010T140312Z-3f2a9c1")
@@ -170,7 +197,7 @@ class HelperTests(unittest.TestCase):
                 json.dump(params, fh)
             lines = []
             with contextlib.redirect_stderr(io.StringIO()) as err:
-                s = build.run(GAMES, pfile, os.path.join(d, "picks.jsonl"), os.path.join(d, "model.json"), os.path.join(d, "index.html"),
+                s = build.run(FROZEN_GAMES, pfile, os.path.join(d, "picks.jsonl"), os.path.join(d, "model.json"), os.path.join(d, "index.html"),
                               offline=True, api_key="", odds_url="", now=NOW, log=lines.append, injury_cache_dir=empty)
             self.assertFalse(s["injuries_available"])
             self.assertTrue(s["injury_term_enabled"])
@@ -185,7 +212,7 @@ class HelperTests(unittest.TestCase):
             self.assertFalse(model["build"]["injuries"]["available"])
             self.assertTrue(all(g["official"]["injuries"]["elo"] == 0 for g in model["games"]))
             # a healthy build never carries the flag
-            s2 = build.run(GAMES, PARAMS, os.path.join(d, "picks2.jsonl"), os.path.join(d, "model2.json"), os.path.join(d, "index2.html"),
+            s2 = build.run(FROZEN_GAMES, PARAMS, os.path.join(d, "picks2.jsonl"), os.path.join(d, "model2.json"), os.path.join(d, "index2.html"),
                            offline=True, api_key="", odds_url="", now=NOW, log=lambda _s: None)
             self.assertFalse(s2["injury_term_degraded"])
         finally:
@@ -212,7 +239,7 @@ class EndToEndTests(unittest.TestCase):
         shutil.rmtree(self.dir, ignore_errors=True)
 
     def _run(self, api_key: str = "", **kw):
-        return build.run(GAMES, PARAMS, self.picks, self.model, self.index, offline=True, api_key=api_key,
+        return build.run(FROZEN_GAMES, PARAMS, self.picks, self.model, self.index, offline=True, api_key=api_key,
                          odds_url="", now=NOW, log=lambda s: None, **kw)
 
     def test_offline_build_twice_is_idempotent_and_valid(self):
@@ -221,7 +248,7 @@ class EndToEndTests(unittest.TestCase):
         with open(self.model, encoding="utf-8") as fh:
             model = json.load(fh)
         self.assertEqual(schema.validate_model(model), [])
-        games = data.load_games(GAMES)
+        games = data.load_games(FROZEN_GAMES)
         season = max(g["season"] for g in games)
         rows = [g for g in games if g["season"] == season]
         self.assertEqual(s1["games"], len(rows))
@@ -316,7 +343,7 @@ class EndToEndTests(unittest.TestCase):
         bogus = os.path.join(self.dir, "params_bogus.json")
         with open(bogus, "w", encoding="utf-8") as fh:
             json.dump(pf, fh)
-        build.run(GAMES, bogus, self.picks, self.model, self.index, offline=True, api_key="", odds_url="", now=NOW, log=lambda s: None)
+        build.run(FROZEN_GAMES, bogus, self.picks, self.model, self.index, offline=True, api_key="", odds_url="", now=NOW, log=lambda s: None)
         with open(self.model, encoding="utf-8") as fh:
             ev = json.load(fh)["evaluation"]
         self.assertEqual(ev["season"], 2025)
@@ -332,7 +359,7 @@ class EndToEndTests(unittest.TestCase):
         with open(bad_params, "w", encoding="utf-8") as fh:
             json.dump(p, fh)
         with self.assertRaises(build.BuildError):
-            build.run(GAMES, bad_params, self.picks, self.model, self.index, offline=True, api_key="", odds_url="", now=NOW, log=lambda s: None)
+            build.run(FROZEN_GAMES, bad_params, self.picks, self.model, self.index, offline=True, api_key="", odds_url="", now=NOW, log=lambda s: None)
         self.assertFalse(os.path.exists(self.picks))
         self.assertFalse(os.path.exists(self.model))
         self.assertFalse(os.path.exists(self.index))
