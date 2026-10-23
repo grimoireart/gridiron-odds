@@ -15,6 +15,11 @@ on:
     - cron: "23 8 * 1,2,9,10,11,12 *"   # 08:23 UTC, Sep-Feb (off the hour: GitHub delays :00 crons by hours)
     - cron: "23 2 * 1,2,9,10,11,12 *"   # 02:23 UTC: grades Sunday/Monday night games before the morning
   workflow_dispatch:
+    inputs:
+      simulate_failure:
+        description: "Fail the build on purpose to test the failure alert"
+        type: boolean
+        default: false
 
 concurrency:
   group: gridiron-build
@@ -22,11 +27,17 @@ concurrency:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Simulated failure (manual test of the alert)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.simulate_failure }}
+        run: |
+          echo "::error::simulate_failure=true: failing on purpose to test the alert"
+          exit 1
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0   # full history so `git pull --rebase` can always replay our commit
@@ -100,3 +111,42 @@ jobs:
 
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Alert the owner by email when anything above fails: an assigned GitHub issue always emails the
+  # assignee, unlike workflow-failure mail (which depends on who last edited this file and on their
+  # notification settings). One open issue per outage; it is closed automatically by the next success.
+  alert:
+    needs: [build, deploy]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      BUILD_RESULT: ${{ needs.build.result }}
+      DEPLOY_RESULT: ${{ needs.deploy.result }}
+    steps:
+      - name: Open or update the outage issue on failure, close it on success
+        run: |
+          set -euo pipefail
+          open_issue=$(gh issue list --repo "$REPO" --label build-failure --state open --json number --jq '.[0].number // empty')
+          if [ "$BUILD_RESULT" = "success" ] && [ "$DEPLOY_RESULT" = "success" ]; then
+            if [ -n "$open_issue" ]; then
+              gh issue comment "$open_issue" --repo "$REPO" --body "Recovered: build and deploy succeeded at $(date -u +%Y-%m-%dT%H:%MZ). $RUN_URL"
+              gh issue close "$open_issue" --repo "$REPO" --reason completed
+            fi
+            exit 0
+          fi
+          gh label create build-failure --repo "$REPO" --color d73a4a --description "The daily build or deploy failed" --force >/dev/null 2>&1 || true
+          body="The daily build failed at $(date -u +%Y-%m-%dT%H:%MZ) (build: $BUILD_RESULT, deploy: $DEPLOY_RESULT).
+
+Run log: $RUN_URL
+
+Until this is fixed the page keeps serving the last good build. See docs/RUNBOOK.md."
+          if [ -n "$open_issue" ]; then
+            gh issue comment "$open_issue" --repo "$REPO" --body "$body"
+          else
+            gh issue create --repo "$REPO" --title "Daily build failed ($(date -u +%Y-%m-%d))" --label build-failure --assignee "${{ github.repository_owner }}" --body "$body"
+          fi
