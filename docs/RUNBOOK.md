@@ -109,3 +109,7 @@ node tests/browser_check.mjs  # page smoke test at 400 px and 1200 px (Playwrigh
                               # exits 2 with a message when it is not installed)
 cd proxy && node test_odds.mjs
 ```
+
+## Failure alerts (added 2026-10-23)
+
+The `alert` job in `.github/workflows/daily.yml` runs after every build. On failure it opens (or updates) a GitHub issue labelled `build-failure`, assigned to the repository owner, with the run link; the next successful run comments "Recovered" and closes it. An assigned issue emails the assignee through GitHub's normal notification mail, which goes to the address and settings at https://github.com/settings/notifications (the "Participating" email toggle must be on; the "Actions" toggle is separate and only covers workflow-failure mail). Test the path any time with `gh workflow run daily.yml -f simulate_failure=true` (costs no Odds API credits: it fails before the fetch) and a normal run afterwards to close the issue. Verified 2026-10-23: issue #1 opened and auto-closed.
