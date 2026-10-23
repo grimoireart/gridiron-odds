@@ -140,11 +140,7 @@ jobs:
             exit 0
           fi
           gh label create build-failure --repo "$REPO" --color d73a4a --description "The daily build or deploy failed" --force >/dev/null 2>&1 || true
-          body="The daily build failed at $(date -u +%Y-%m-%dT%H:%MZ) (build: $BUILD_RESULT, deploy: $DEPLOY_RESULT).
-
-Run log: $RUN_URL
-
-Until this is fixed the page keeps serving the last good build. See docs/RUNBOOK.md."
+          body=$(printf 'The daily build failed at %s (build: %s, deploy: %s).\n\nRun log: %s\n\nUntil this is fixed the page keeps serving the last good build. See docs/RUNBOOK.md.' "$(date -u +%Y-%m-%dT%H:%MZ)" "$BUILD_RESULT" "$DEPLOY_RESULT" "$RUN_URL")
           if [ -n "$open_issue" ]; then
             gh issue comment "$open_issue" --repo "$REPO" --body "$body"
           else
