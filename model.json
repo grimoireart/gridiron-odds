@@ -1,15 +1,15 @@
 {
  "schema_version": "1.0.0",
  "build": {
-  "id": "20261107T085822Z-fe28eaf",
-  "built_at": "2026-11-07T08:58:22Z",
-  "official_odds_at": "2026-11-07T08:58:23Z",
+  "id": "20261107T145759Z-422df0f",
+  "built_at": "2026-11-07T14:57:59Z",
+  "official_odds_at": "2026-11-07T14:58:00Z",
   "league_date": "2026-11-07",
   "next_league_date": "2026-11-08",
   "odds_source": "odds_api",
   "data": {
    "source_url": "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.csv",
-   "nflverse_sha256": "fe28eafccfc56b69d9219e00b019dc9a8478ef24587d6c76eade9a0e34e764e5",
+   "nflverse_sha256": "422df0f28511d304129a43a558b030d6da1e26ec508b927814f97b216615017b",
    "rows": 7548,
    "max_result_date": "2026-11-05",
    "fetched": true
@@ -17,7 +17,7 @@
   "injuries": {
    "available": true,
    "injuries_rows": 2819,
-   "depth_chart_as_of": "2026-11-07T07:02:05Z",
+   "depth_chart_as_of": "2026-11-07T13:54:10Z",
    "teams_with_report_for_next_slate": 30
   }
  },
@@ -154,7 +154,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5996387718242023,
      "consensus_total": 44.5,
      "consensus_home_spread": -3.0,
@@ -369,7 +369,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6574752261956054,
      "consensus_total": 47.5,
      "consensus_home_spread": -3.5,
@@ -564,7 +564,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7179705215419501,
      "consensus_total": 40.5,
      "consensus_home_spread": -6.5,
@@ -789,7 +789,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.4066302458405761,
      "consensus_total": 48.5,
      "consensus_home_spread": 3.0,
@@ -1000,7 +1000,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.4956702459300312,
      "consensus_total": 44.5,
      "consensus_home_spread": 1.5,
@@ -1190,7 +1190,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.4003612281757977,
      "consensus_total": 47.5,
      "consensus_home_spread": 3.0,
@@ -1403,7 +1403,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7913616398243045,
      "consensus_total": 40.5,
      "consensus_home_spread": -8.5,
@@ -1596,7 +1596,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7335423197492164,
      "consensus_total": 49.5,
      "consensus_home_spread": -7.0,
@@ -1811,7 +1811,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5173641257162701,
      "consensus_total": 39.5,
      "consensus_home_spread": -1.5,
@@ -2022,7 +2022,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.644729178800233,
      "consensus_total": 50.5,
      "consensus_home_spread": -3.5,
@@ -2233,7 +2233,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7867435158501441,
      "consensus_total": 47.5,
      "consensus_home_spread": -8.5,
@@ -2454,7 +2454,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5324675324675325,
      "consensus_total": 46.5,
      "consensus_home_spread": -1.5,
@@ -2654,7 +2654,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6037569709421778,
      "consensus_total": 40.5,
      "consensus_home_spread": -3.0,
@@ -2832,7 +2832,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6805555555555556,
      "consensus_total": 43.5,
      "consensus_home_spread": -6.0,
@@ -3018,7 +3018,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.4003612281757977,
      "consensus_total": 47.5,
      "consensus_home_spread": 3.0,
@@ -3205,7 +3205,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5427435387673957,
      "consensus_total": 42.5,
      "consensus_home_spread": -2.5,
@@ -3391,7 +3391,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6750312469954812,
      "consensus_total": 54.5,
      "consensus_home_spread": -5.5,
@@ -3612,7 +3612,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.4170073589533933,
      "consensus_total": 43.5,
      "consensus_home_spread": 2.5,
@@ -3851,7 +3851,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5720596355604638,
      "consensus_total": 45.5,
      "consensus_home_spread": -3.0,
@@ -4074,7 +4074,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7768331562167907,
      "consensus_total": 41.5,
      "consensus_home_spread": -8.5,
@@ -4305,7 +4305,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.3775334481388264,
      "consensus_total": 44.5,
      "consensus_home_spread": 3.5,
@@ -4576,7 +4576,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6574752261956054,
      "consensus_total": 46.5,
      "consensus_home_spread": -4.5,
@@ -4774,7 +4774,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7571884984025559,
      "consensus_total": 45.5,
      "consensus_home_spread": -8.5,
@@ -5061,7 +5061,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.26645768025078376,
      "consensus_total": 39.5,
      "consensus_home_spread": 7.0,
@@ -5276,7 +5276,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6636481241914618,
      "consensus_total": 41.5,
      "consensus_home_spread": -4.5,
@@ -5511,7 +5511,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5720596355604638,
      "consensus_total": 45.5,
      "consensus_home_spread": -2.5,
@@ -5691,7 +5691,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7335423197492164,
      "consensus_total": 43.5,
      "consensus_home_spread": -6.5,
@@ -5928,7 +5928,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.863013698630137,
      "consensus_total": 44.5,
      "consensus_home_spread": -12.5,
@@ -6153,7 +6153,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.34252477380439467,
      "consensus_total": 40.5,
      "consensus_home_spread": 3.5,
@@ -6426,7 +6426,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6574752261956054,
      "consensus_total": 51.5,
      "consensus_home_spread": -3.5,
@@ -6643,7 +6643,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6957699520733487,
      "consensus_total": 46.5,
      "consensus_home_spread": -6.0,
@@ -6868,7 +6868,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7179705215419501,
      "consensus_total": 47.5,
      "consensus_home_spread": -6.5,
@@ -7083,7 +7083,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6690070210631895,
      "consensus_total": 43.5,
      "consensus_home_spread": -4.5,
@@ -7326,7 +7326,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.448558885283451,
      "consensus_total": 41.5,
      "consensus_home_spread": 2.5,
@@ -7573,7 +7573,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.3835616438356164,
      "consensus_total": 42.5,
      "consensus_home_spread": 3.5,
@@ -7820,7 +7820,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.4675324675324675,
      "consensus_total": 41.5,
      "consensus_home_spread": 1.5,
@@ -8073,7 +8073,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.17766497461928932,
      "consensus_total": 45.5,
      "consensus_home_spread": 10.0,
@@ -8312,7 +8312,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7335423197492164,
      "consensus_total": 50.5,
      "consensus_home_spread": -7.0,
@@ -8623,7 +8623,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.593369754159424,
      "consensus_total": 46.5,
      "consensus_home_spread": -3.0,
@@ -8846,7 +8846,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7335423197492164,
      "consensus_total": 49.5,
      "consensus_home_spread": -7.0,
@@ -9095,7 +9095,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.22849462365591394,
      "consensus_total": 40.5,
      "consensus_home_spread": 8.5,
@@ -9336,7 +9336,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5427435387673957,
      "consensus_total": 37.5,
      "consensus_home_spread": -2.5,
@@ -9551,7 +9551,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7659021045164341,
      "consensus_total": 48.5,
      "consensus_home_spread": -7.5,
@@ -9794,7 +9794,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.4956702459300312,
      "consensus_total": 42.5,
      "consensus_home_spread": 1.5,
@@ -10003,7 +10003,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.3962430290578221,
      "consensus_total": 53.5,
      "consensus_home_spread": 3.0,
@@ -10228,7 +10228,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6309403437815976,
      "consensus_total": 43.5,
      "consensus_home_spread": -3.5,
@@ -10461,7 +10461,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5043297540699688,
      "consensus_total": 43.5,
      "consensus_home_spread": -1.5,
@@ -10678,7 +10678,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.3630958183058778,
      "consensus_total": 42.5,
      "consensus_home_spread": 3.5,
@@ -10929,7 +10929,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.42794036443953615,
      "consensus_total": 38.5,
      "consensus_home_spread": 2.5,
@@ -11164,7 +11164,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.33099297893681046,
      "consensus_total": 46.5,
      "consensus_home_spread": 4.5,
@@ -11413,7 +11413,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.448558885283451,
      "consensus_total": 44.5,
      "consensus_home_spread": 2.5,
@@ -11599,7 +11599,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5829926410466066,
      "consensus_total": 48.5,
      "consensus_home_spread": -3.0,
@@ -11842,7 +11842,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.4170073589533933,
      "consensus_total": 38.5,
      "consensus_home_spread": 3.0,
@@ -12139,7 +12139,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5720596355604638,
      "consensus_total": 51.5,
      "consensus_home_spread": -2.5,
@@ -12396,7 +12396,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.3630958183058778,
      "consensus_total": 42.5,
      "consensus_home_spread": 3.5,
@@ -12669,7 +12669,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7440690150970525,
      "consensus_total": 49.5,
      "consensus_home_spread": -7.0,
@@ -12962,7 +12962,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6309403437815976,
      "consensus_total": 43.5,
      "consensus_home_spread": -3.5,
@@ -13263,7 +13263,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.8524590163934427,
      "consensus_total": 42.5,
      "consensus_home_spread": -11.5,
@@ -13508,7 +13508,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.8081570996978852,
      "consensus_total": 38.5,
      "consensus_home_spread": -10.0,
@@ -13731,7 +13731,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5996387718242023,
      "consensus_total": 48.5,
      "consensus_home_spread": -3.0,
@@ -13972,7 +13972,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.33635187580853815,
      "consensus_total": 47.5,
      "consensus_home_spread": 4.5,
@@ -14169,7 +14169,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7440690150970525,
      "consensus_total": 42.5,
      "consensus_home_spread": -7.0,
@@ -14464,7 +14464,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.33635187580853815,
      "consensus_total": 52.5,
      "consensus_home_spread": 4.5,
@@ -14709,7 +14709,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5173641257162701,
      "consensus_total": 47.5,
      "consensus_home_spread": -1.5,
@@ -14952,7 +14952,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.8081570996978852,
      "consensus_total": 49.5,
      "consensus_home_spread": -9.5,
@@ -15213,7 +15213,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7600000000000001,
      "consensus_total": 41.5,
      "consensus_home_spread": -7.5,
@@ -15454,7 +15454,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.4675324675324675,
      "consensus_total": 46.5,
      "consensus_home_spread": 1.5,
@@ -15749,7 +15749,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.2522172949002217,
      "consensus_total": 44.5,
      "consensus_home_spread": 7.0,
@@ -16054,7 +16054,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5634920634920635,
      "consensus_total": 38.5,
      "consensus_home_spread": -2.5,
@@ -16363,7 +16363,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.27424749163879597,
      "consensus_total": 37.5,
      "consensus_home_spread": 6.5,
@@ -16636,7 +16636,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.593369754159424,
      "consensus_total": 41.5,
      "consensus_home_spread": -3.0,
@@ -16921,7 +16921,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6164383561643836,
      "consensus_total": 45.5,
      "consensus_home_spread": -3.5,
@@ -17258,7 +17258,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.43650793650793646,
      "consensus_total": 41.5,
      "consensus_home_spread": 2.5,
@@ -17587,7 +17587,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6164383561643836,
      "consensus_total": 41.5,
      "consensus_home_spread": -3.5,
@@ -17874,7 +17874,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.3690596562184025,
      "consensus_total": 42.5,
      "consensus_home_spread": 3.5,
@@ -18185,7 +18185,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.30423004792665137,
      "consensus_total": 55.5,
      "consensus_home_spread": 5.5,
@@ -18440,7 +18440,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5996387718242023,
      "consensus_total": 46.5,
      "consensus_home_spread": -3.0,
@@ -18715,7 +18715,7 @@
     "total_source": "csv",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6092362344582594,
      "consensus_total": 44.5,
      "consensus_home_spread": -3.5,
@@ -18996,7 +18996,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6224665518611737,
      "consensus_total": 55.5,
      "consensus_home_spread": -3.5,
@@ -19223,7 +19223,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.4170073589533933,
      "consensus_total": 40.5,
      "consensus_home_spread": 2.5,
@@ -19452,7 +19452,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5634920634920635,
      "consensus_total": 42.5,
      "consensus_home_spread": -2.5,
@@ -19697,7 +19697,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.3962430290578221,
      "consensus_total": 39.5,
      "consensus_home_spread": 3.0,
@@ -20024,7 +20024,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.4066302458405761,
      "consensus_total": 39.5,
      "consensus_home_spread": 3.0,
@@ -20377,7 +20377,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.4826358742837298,
      "consensus_total": 51.5,
      "consensus_home_spread": 1.5,
@@ -20630,7 +20630,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5043297540699688,
      "consensus_total": 46.5,
      "consensus_home_spread": 1.5,
@@ -20927,7 +20927,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7440690150970525,
      "consensus_total": 43.5,
      "consensus_home_spread": -7.5,
@@ -21256,7 +21256,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.43650793650793646,
      "consensus_total": 38.5,
      "consensus_home_spread": 2.5,
@@ -21585,7 +21585,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7179705215419501,
      "consensus_total": 43.5,
      "consensus_home_spread": -6.5,
@@ -21820,7 +21820,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.84,
      "consensus_total": 51.5,
      "consensus_home_spread": -12.5,
@@ -22073,7 +22073,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.3249687530045188,
      "consensus_total": 53.5,
      "consensus_home_spread": 5.5,
@@ -22324,7 +22324,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7867435158501441,
      "consensus_total": 41.5,
      "consensus_home_spread": -7.5,
@@ -22639,7 +22639,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.4891657638136511,
      "consensus_total": 53.5,
      "consensus_home_spread": 1.5,
@@ -22966,7 +22966,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7659021045164341,
      "consensus_total": 51.5,
      "consensus_home_spread": -7.5,
@@ -23361,7 +23361,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5829926410466066,
      "consensus_total": 50.5,
      "consensus_home_spread": -3.0,
@@ -23670,7 +23670,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.4066302458405761,
      "consensus_total": 43.5,
      "consensus_home_spread": 3.0,
@@ -23893,7 +23893,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.4066302458405761,
      "consensus_total": 46.5,
      "consensus_home_spread": 3.0,
@@ -24115,7 +24115,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.4572564612326044,
      "consensus_total": 36.5,
      "consensus_home_spread": 1.5,
@@ -24390,7 +24390,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7335423197492164,
      "consensus_total": 41.5,
      "consensus_home_spread": -6.5,
@@ -24633,7 +24633,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6574752261956054,
      "consensus_total": 39.5,
      "consensus_home_spread": -3.5,
@@ -24898,7 +24898,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.8042929292929294,
      "consensus_total": 42.5,
      "consensus_home_spread": -10.0,
@@ -25197,7 +25197,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.4170073589533933,
      "consensus_total": 49.5,
      "consensus_home_spread": 2.5,
@@ -25596,7 +25596,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5996387718242023,
      "consensus_total": 44.5,
      "consensus_home_spread": -3.0,
@@ -25845,7 +25845,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.33099297893681046,
      "consensus_total": 44.5,
      "consensus_home_spread": 4.5,
@@ -26146,7 +26146,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6309403437815976,
      "consensus_total": 55.5,
      "consensus_home_spread": -3.5,
@@ -26381,7 +26381,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.3835616438356164,
      "consensus_total": 49.5,
      "consensus_home_spread": 3.5,
@@ -26614,7 +26614,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.593369754159424,
      "consensus_total": 43.5,
      "consensus_home_spread": -3.0,
@@ -26911,7 +26911,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.33635187580853815,
      "consensus_total": 43.5,
      "consensus_home_spread": 4.5,
@@ -27240,7 +27240,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6309403437815976,
      "consensus_total": 47.5,
      "consensus_home_spread": -3.5,
@@ -27521,7 +27521,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.740871613663133,
      "consensus_total": 54.5,
      "consensus_home_spread": -7.0,
@@ -27816,7 +27816,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5427435387673957,
      "consensus_total": 42.5,
      "consensus_home_spread": -2.5,
@@ -28099,7 +28099,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.593369754159424,
      "consensus_total": 54.5,
      "consensus_home_spread": -3.0,
@@ -28380,7 +28380,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6369041816941223,
      "consensus_total": 38.5,
      "consensus_home_spread": -3.5,
@@ -28605,7 +28605,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7957758771164253,
      "consensus_total": 45.5,
      "consensus_home_spread": -10.0,
@@ -28832,7 +28832,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5324675324675325,
      "consensus_total": 46.5,
      "consensus_home_spread": -1.5,
@@ -29101,7 +29101,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.6037569709421778,
      "consensus_total": 46.5,
      "consensus_home_spread": -3.0,
@@ -29298,7 +29298,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.863013698630137,
      "consensus_total": 45.5,
      "consensus_home_spread": -13.5,
@@ -29553,7 +29553,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.7095435684647302,
      "consensus_total": 46.5,
      "consensus_home_spread": -6.5,
@@ -29830,7 +29830,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5043297540699688,
      "consensus_total": 41.5,
      "consensus_home_spread": -1.5,
@@ -30099,7 +30099,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.2559309849029475,
      "consensus_total": 41.5,
      "consensus_home_spread": 7.0,
@@ -30332,7 +30332,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.705033164260632,
      "consensus_total": 40.5,
      "consensus_home_spread": -6.0,
@@ -30611,7 +30611,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.5996387718242023,
      "consensus_total": 46.5,
      "consensus_home_spread": -3.0,
@@ -30888,7 +30888,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "csv",
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "consensus_p_home": 0.2132564841498559,
      "consensus_total": 40.5,
      "consensus_home_spread": 8.5,
@@ -31115,30 +31115,30 @@
    "official": {
     "pick": "CIN",
     "p_home_model": 0.30516340583627277,
-    "p_home_market": 0.3930932067490986,
-    "p_home_blend": 0.36231777642960955,
-    "p_pick_blend": 0.6376822235703905,
+    "p_home_market": 0.3915861578249011,
+    "p_home_blend": 0.36133819462888117,
+    "p_pick_blend": 0.6386618053711188,
     "tier": "Lean",
     "model_spread": -5.7176036734143425,
-    "blend_spread": -3.9282346896671085,
-    "expected_home": 24.285882655166446,
-    "expected_away": 28.214117344833554,
+    "blend_spread": -3.957713183665737,
+    "expected_home": 24.27114340816713,
+    "expected_away": 28.22885659183287,
     "display_home": 24,
     "display_away": 28,
     "total_used": 52.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
-     "consensus_p_home": 0.3930932067490986,
+     "as_of": "2026-11-07T14:58:00Z",
+     "consensus_p_home": 0.3915861578249011,
      "consensus_total": 52.5,
      "consensus_home_spread": 3.0,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
-       "home_ml": 150,
-       "away_ml": -180,
+       "home_ml": 154,
+       "away_ml": -185,
        "home_spread": 3.0,
        "total": 52.5
       },
@@ -31153,7 +31153,7 @@
        "key": "betmgm",
        "home_ml": 145,
        "away_ml": -175,
-       "home_spread": 3.0,
+       "home_spread": 3.5,
        "total": 52.5
       },
       {
@@ -31169,7 +31169,7 @@
      "draftkings": {
       "book": "draftkings",
       "side": "CIN",
-      "american": -180
+      "american": -185
      },
      "fanduel": {
       "book": "fanduel",
@@ -31192,7 +31192,7 @@
      "side": "CIN",
      "american": -166
     },
-    "estimated_ev_per_dollar": 0.021828141383878785,
+    "estimated_ev_per_dollar": 0.023397832703118182,
     "factors": {
      "team_elo_home": 1466.693012217216,
      "team_elo_away": 1543.1255082560144,
@@ -31234,12 +31234,12 @@
      "form_away_3": 50.49743068532439,
      "frozen_adjust": 0.0,
      "d_total": -142.94009183535857,
-     "model_market_gap_home": -0.08792980091282582,
-     "model_market_gap_pick": 0.08792980091282582
+     "model_market_gap_home": -0.08642275198862831,
+     "model_market_gap_pick": 0.08642275198862831
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": true,
@@ -31401,30 +31401,30 @@
    "official": {
     "pick": "NO",
     "p_home_model": 0.5192277044201815,
-    "p_home_market": 0.6011486017432219,
-    "p_home_blend": 0.5724762876801578,
-    "p_pick_blend": 0.5724762876801578,
+    "p_home_market": 0.6088474761738325,
+    "p_home_blend": 0.5774805560600547,
+    "p_pick_blend": 0.5774805560600547,
     "tier": "Lean",
     "model_spread": 0.5346947756690531,
-    "blend_spread": 2.0287567208266317,
-    "expected_home": 22.264378360413318,
-    "expected_away": 20.235621639586682,
+    "blend_spread": 2.1710506628173523,
+    "expected_home": 22.335525331408675,
+    "expected_away": 20.164474668591325,
     "display_home": 22,
     "display_away": 20,
     "total_used": 42.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
-     "consensus_p_home": 0.6011486017432219,
+     "as_of": "2026-11-07T14:58:00Z",
+     "consensus_p_home": 0.6088474761738325,
      "consensus_total": 42.5,
      "consensus_home_spread": -3.0,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
-       "home_ml": -170,
-       "away_ml": 142,
+       "home_ml": -175,
+       "away_ml": 145,
        "home_spread": -3.5,
        "total": 42.5
       },
@@ -31437,8 +31437,8 @@
       },
       {
        "key": "betrivers",
-       "home_ml": -165,
-       "away_ml": 133,
+       "home_ml": -186,
+       "away_ml": 148,
        "home_spread": -3.0,
        "total": 42.5
       },
@@ -31455,7 +31455,7 @@
      "draftkings": {
       "book": "draftkings",
       "side": "NO",
-      "american": -170
+      "american": -175
      },
      "fanduel": {
       "book": "fanduel",
@@ -31470,15 +31470,15 @@
      "betrivers": {
       "book": "betrivers",
       "side": "NO",
-      "american": -165
+      "american": -186
      }
     },
     "best_price": {
-     "book": "betrivers",
+     "book": "fanduel",
      "side": "NO",
-     "american": -165
+     "american": -166
     },
-    "estimated_ev_per_dollar": -0.0805683864530799,
+    "estimated_ev_per_dollar": -0.07463959089171962,
     "factors": {
      "team_elo_home": 1434.0185231198755,
      "team_elo_away": 1470.3587549077267,
@@ -31520,12 +31520,12 @@
      "form_away_3": 9.178051658213008,
      "frozen_adjust": 0.0,
      "d_total": 13.367369391726328,
-     "model_market_gap_home": -0.08192089732304042,
-     "model_market_gap_pick": -0.08192089732304042
+     "model_market_gap_home": -0.08961977175365099,
+     "model_market_gap_pick": -0.08961977175365099
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": true,
@@ -31637,8 +31637,8 @@
      "Cleveland's listed starter, Shedeur Sanders, rates 6 points above their usual starter, Deshaun Watson.",
      "New Orleans has 14 days of rest to Cleveland's 7, worth 14 Elo points to New Orleans.",
      "Cleveland lists 1 starter out (DT); New Orleans lists 2 starters questionable (T, CB); worth about 5 Elo points to Cleveland, or 0.2 points on the spread.",
-     "The books have New Orleans at 60%, further than the model's 52%; the gap may reflect information this model lacks.",
-     "Blended, that comes to New Orleans at 57%: a Lean pick, predicted 22 to 20."
+     "The books have New Orleans at 61%, further than the model's 52%; the gap may reflect information this model lacks.",
+     "Blended, that comes to New Orleans at 58%: a Lean pick, predicted 22 to 20."
     ],
     "edge": {
      "flag": true,
@@ -31685,10 +31685,10 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
+     "as_of": "2026-11-07T14:58:00Z",
      "consensus_p_home": 0.3300041050337755,
      "consensus_total": 51.5,
-     "consensus_home_spread": 5.0,
+     "consensus_home_spread": 4.75,
      "n_books": 4,
      "books": [
       {
@@ -31716,7 +31716,7 @@
        "key": "betmgm",
        "home_ml": 190,
        "away_ml": -235,
-       "home_spread": 5.0,
+       "home_spread": 4.5,
        "total": 51.5
       }
      ]
@@ -31795,7 +31795,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": true,
@@ -31999,30 +31999,30 @@
    "official": {
     "pick": "DEN",
     "p_home_model": 0.2053785489613375,
-    "p_home_market": 0.42868909123880994,
-    "p_home_blend": 0.3505304014416946,
-    "p_pick_blend": 0.6494695985583054,
+    "p_home_market": 0.4314223426103457,
+    "p_home_blend": 0.3523070148331928,
+    "p_pick_blend": 0.6476929851668072,
     "tier": "Lean",
     "model_spread": -9.40168325800527,
-    "blend_spread": -4.285330183869752,
-    "expected_home": 20.107334908065123,
-    "expected_away": 24.392665091934877,
+    "blend_spread": -4.2311664462813585,
+    "expected_home": 20.13441677685932,
+    "expected_away": 24.36558322314068,
     "display_home": 20,
     "display_away": 24,
     "total_used": 44.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
-     "consensus_p_home": 0.42868909123880994,
+     "as_of": "2026-11-07T14:58:00Z",
+     "consensus_p_home": 0.4314223426103457,
      "consensus_total": 44.5,
      "consensus_home_spread": 2.5,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
-       "home_ml": 130,
-       "away_ml": -155,
+       "home_ml": 124,
+       "away_ml": -148,
        "home_spread": 3.0,
        "total": 44.5
       },
@@ -32053,7 +32053,7 @@
      "draftkings": {
       "book": "draftkings",
       "side": "DEN",
-      "american": -155
+      "american": -148
      },
      "fanduel": {
       "book": "fanduel",
@@ -32076,7 +32076,7 @@
      "side": "DEN",
      "american": -142
     },
-    "estimated_ev_per_dollar": 0.10684255528950642,
+    "estimated_ev_per_dollar": 0.10381480570681217,
     "factors": {
      "team_elo_home": 1450.9984662641973,
      "team_elo_away": 1617.997419812163,
@@ -32118,12 +32118,12 @@
      "form_away_3": 35.89457527754735,
      "frozen_adjust": 0.0,
      "d_total": -235.04208145013175,
-     "model_market_gap_home": -0.22331054227747243,
-     "model_market_gap_pick": 0.22331054227747243
+     "model_market_gap_home": -0.22604379364900817,
+     "model_market_gap_pick": 0.22604379364900817
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": true,
@@ -32328,31 +32328,31 @@
    },
    "official": {
     "pick": "DET",
-    "p_home_model": 0.3128843461863246,
-    "p_home_market": 0.27497214336704834,
-    "p_home_blend": 0.288241414353795,
-    "p_pick_blend": 0.711758585646205,
+    "p_home_model": 0.3006438824183343,
+    "p_home_market": 0.2711690297058955,
+    "p_home_blend": 0.28148522815524907,
+    "p_pick_blend": 0.7185147718447509,
     "tier": "Strong",
-    "model_spread": -5.466336113121936,
-    "blend_spread": -6.281221350897885,
-    "expected_home": 21.734389324551056,
-    "expected_away": 28.015610675448944,
+    "model_spread": -5.866336113121935,
+    "blend_spread": -6.5116814780664045,
+    "expected_home": 21.619159260966796,
+    "expected_away": 28.130840739033204,
     "display_home": 22,
     "display_away": 28,
     "total_used": 49.75,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
-     "consensus_p_home": 0.27497214336704834,
+     "as_of": "2026-11-07T14:58:00Z",
+     "consensus_p_home": 0.2711690297058955,
      "consensus_total": 49.75,
      "consensus_home_spread": 6.5,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
-       "home_ml": 235,
-       "away_ml": -290,
+       "home_ml": 245,
+       "away_ml": -305,
        "home_spread": 6.5,
        "total": 49.5
       },
@@ -32372,8 +32372,8 @@
       },
       {
        "key": "betmgm",
-       "home_ml": 240,
-       "away_ml": -295,
+       "home_ml": 250,
+       "away_ml": -300,
        "home_spread": 6.5,
        "total": 50.0
       }
@@ -32383,7 +32383,7 @@
      "draftkings": {
       "book": "draftkings",
       "side": "DET",
-      "american": -290
+      "american": -305
      },
      "fanduel": {
       "book": "fanduel",
@@ -32393,7 +32393,7 @@
      "betmgm": {
       "book": "betmgm",
       "side": "DET",
-      "american": -295
+      "american": -300
      },
      "betrivers": {
       "book": "betrivers",
@@ -32402,11 +32402,11 @@
      }
     },
     "best_price": {
-     "book": "draftkings",
+     "book": "betmgm",
      "side": "DET",
-     "american": -290
+     "american": -300
     },
-    "estimated_ev_per_dollar": -0.0428074193033795,
+    "estimated_ev_per_dollar": -0.04198030420699883,
     "factors": {
      "team_elo_home": 1405.7249343289084,
      "team_elo_away": 1543.2530584979309,
@@ -32447,13 +32447,13 @@
      "form_home_3": -3.1154585301799216,
      "form_away_3": 50.76260817209936,
      "frozen_adjust": 0.0,
-     "d_total": -136.6584028280484,
-     "model_market_gap_home": 0.037912202819276264,
-     "model_market_gap_pick": -0.037912202819276264
+     "d_total": -146.6584028280484,
+     "model_market_gap_home": 0.02947485271243877,
+     "model_market_gap_pick": -0.02947485271243877
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": true,
@@ -32500,16 +32500,6 @@
       "report_filed": true,
       "players": [
        {
-        "gsis_id": "00-0037297",
-        "name": "Cade Mays",
-        "position": "C",
-        "pos_group": "OL",
-        "status": "Out",
-        "injury": "Ankle",
-        "starter": true,
-        "covered_by_qb_term": false
-       },
-       {
         "gsis_id": "00-0034384",
         "name": "D.J. Reed",
         "position": "CB",
@@ -32537,6 +32527,16 @@
         "status": "Questionable",
         "injury": "Rib",
         "starter": true,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0037297",
+        "name": "Cade Mays",
+        "position": "C",
+        "pos_group": "OL",
+        "status": "Out",
+        "injury": "Ankle",
+        "starter": false,
         "covered_by_qb_term": false
        },
        {
@@ -32580,15 +32580,15 @@
         "covered_by_qb_term": false
        }
       ],
-      "starters_out": 3,
+      "starters_out": 2,
       "starters_doubtful": 0,
       "starters_questionable": 1,
       "total_listed": 8,
       "qb_listed": null
      },
      "elo_home": 0.0,
-     "elo_away": -55.0,
-     "elo": 55.0
+     "elo_away": -45.0,
+     "elo": 45.0
     },
     "rationale": [
      "rating",
@@ -32602,9 +32602,9 @@
      "Detroit rates 138 Elo points above Miami, 11th in the league against 28th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Detroit's listed starter, Jared Goff, rates 94 points above the other listed starter.",
-     "Detroit lists 3 starters out (C, CB, LB) and 1 questionable (WR); Miami lists none; worth about 55 Elo points to Miami, or 2.2 points on the spread.",
+     "Detroit lists 2 starters out (CB, LB) and 1 questionable (WR); Miami lists none; worth about 45 Elo points to Miami, or 1.8 points on the spread.",
      "Detroit has gained 51 points of rating over its last three games.",
-     "Blended, that comes to Detroit at 71%: a Strong pick, predicted 28 to 22."
+     "Blended, that comes to Detroit at 72%: a Strong pick, predicted 28 to 22."
     ],
     "edge": null,
     "parlay_eligible": true
@@ -32633,30 +32633,30 @@
    "official": {
     "pick": "LA",
     "p_home_model": 0.35705385577302706,
-    "p_home_market": 0.33448530616142563,
-    "p_home_blend": 0.34238429852548613,
-    "p_pick_blend": 0.6576157014745139,
+    "p_home_market": 0.33121793717657877,
+    "p_home_blend": 0.3402605086853357,
+    "p_pick_blend": 0.6597394913146644,
     "tier": "Strong",
     "model_spread": -4.087053901815901,
-    "blend_spread": -4.53533334355355,
-    "expected_home": 21.482333328223227,
-    "expected_away": 26.017666671776773,
+    "blend_spread": -4.600974949376886,
+    "expected_home": 21.449512525311558,
+    "expected_away": 26.050487474688442,
     "display_home": 21,
     "display_away": 26,
     "total_used": 47.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
-     "consensus_p_home": 0.33448530616142563,
+     "as_of": "2026-11-07T14:58:00Z",
+     "consensus_p_home": 0.33121793717657877,
      "consensus_total": 47.5,
      "consensus_home_spread": 4.5,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
-       "home_ml": 180,
-       "away_ml": -218,
+       "home_ml": 190,
+       "away_ml": -230,
        "home_spread": 4.5,
        "total": 47.5
       },
@@ -32676,7 +32676,7 @@
       },
       {
        "key": "betmgm",
-       "home_ml": 188,
+       "home_ml": 190,
        "away_ml": -225,
        "home_spread": 4.5,
        "total": 47.5
@@ -32687,7 +32687,7 @@
      "draftkings": {
       "book": "draftkings",
       "side": "LA",
-      "american": -218
+      "american": -230
      },
      "fanduel": {
       "book": "fanduel",
@@ -32706,11 +32706,11 @@
      }
     },
     "best_price": {
-     "book": "draftkings",
+     "book": "betmgm",
      "side": "LA",
-     "american": -218
+     "american": -225
     },
-    "estimated_ev_per_dollar": -0.040725719867452215,
+    "estimated_ev_per_dollar": -0.047042956989929274,
     "factors": {
      "team_elo_home": 1448.43205162378,
      "team_elo_away": 1556.445265037632,
@@ -32752,12 +32752,12 @@
      "form_away_3": 12.843738708982755,
      "frozen_adjust": 0.0,
      "d_total": -102.17634754539752,
-     "model_market_gap_home": 0.02256854961160143,
-     "model_market_gap_pick": -0.02256854961160143
+     "model_market_gap_home": 0.025835918596448293,
+     "model_market_gap_pick": -0.025835918596448293
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": true,
@@ -32933,30 +32933,30 @@
    "official": {
     "pick": "NYG",
     "p_home_model": 0.3465882757014945,
-    "p_home_market": 0.3996663542323881,
-    "p_home_blend": 0.3810890267465753,
-    "p_pick_blend": 0.6189109732534247,
+    "p_home_market": 0.3988810286703749,
+    "p_home_blend": 0.38057856513126676,
+    "p_pick_blend": 0.6194214348687332,
     "tier": "Lean",
     "model_spread": -4.4059688866862246,
-    "blend_spread": -3.3696278255863734,
-    "expected_home": 17.565186087206815,
-    "expected_away": 20.934813912793185,
+    "blend_spread": -3.384670488000004,
+    "expected_home": 17.557664755999998,
+    "expected_away": 20.942335244000002,
     "display_home": 18,
     "display_away": 21,
     "total_used": 38.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
-     "consensus_p_home": 0.3996663542323881,
+     "as_of": "2026-11-07T14:58:00Z",
+     "consensus_p_home": 0.3988810286703749,
      "consensus_total": 38.5,
      "consensus_home_spread": 3.0,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
-       "home_ml": 130,
-       "away_ml": -155,
+       "home_ml": 136,
+       "away_ml": -162,
        "home_spread": 3.0,
        "total": 38.5
       },
@@ -32976,8 +32976,8 @@
       },
       {
        "key": "betmgm",
-       "home_ml": 140,
-       "away_ml": -175,
+       "home_ml": 138,
+       "away_ml": -165,
        "home_spread": 3.0,
        "total": 38.5
       }
@@ -32987,7 +32987,7 @@
      "draftkings": {
       "book": "draftkings",
       "side": "NYG",
-      "american": -155
+      "american": -162
      },
      "fanduel": {
       "book": "fanduel",
@@ -32997,7 +32997,7 @@
      "betmgm": {
       "book": "betmgm",
       "side": "NYG",
-      "american": -175
+      "american": -165
      },
      "betrivers": {
       "book": "betrivers",
@@ -33008,9 +33008,9 @@
     "best_price": {
      "book": "draftkings",
      "side": "NYG",
-     "american": -155
+     "american": -162
     },
-    "estimated_ev_per_dollar": 0.01820837535240838,
+    "estimated_ev_per_dollar": 0.0017803452815315368,
     "factors": {
      "team_elo_home": 1391.9983392283475,
      "team_elo_away": 1477.0895547041928,
@@ -33052,12 +33052,12 @@
      "form_away_3": 1.0941864031433397,
      "frozen_adjust": 0.0,
      "d_total": -110.14922216715561,
-     "model_market_gap_home": -0.053078078530893635,
-     "model_market_gap_pick": 0.053078078530893635
+     "model_market_gap_home": -0.05229275296888042,
+     "model_market_gap_pick": 0.05229275296888042
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": true,
@@ -33227,26 +33227,26 @@
     "tier": "Lock-ish",
     "model_spread": 12.718989627169785,
     "blend_spread": 10.578655582950013,
-    "expected_home": 29.164327791475007,
-    "expected_away": 18.585672208524993,
+    "expected_home": 29.039327791475007,
+    "expected_away": 18.460672208524993,
     "display_home": 29,
-    "display_away": 19,
-    "total_used": 47.75,
+    "display_away": 18,
+    "total_used": 47.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
+     "as_of": "2026-11-07T14:58:00Z",
      "consensus_p_home": 0.7988563063662245,
-     "consensus_total": 47.75,
-     "consensus_home_spread": -9.5,
+     "consensus_total": 47.5,
+     "consensus_home_spread": -9.0,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
        "home_ml": -470,
        "away_ml": 360,
-       "home_spread": -9.5,
-       "total": 48.5
+       "home_spread": -8.5,
+       "total": 47.5
       },
       {
        "key": "fanduel",
@@ -33266,7 +33266,7 @@
        "key": "betmgm",
        "home_ml": -500,
        "away_ml": 380,
-       "home_spread": -9.0,
+       "home_spread": -8.5,
        "total": 48.0
       }
      ]
@@ -33345,7 +33345,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": true,
@@ -33486,7 +33486,7 @@
      "Kansas City's listed starter, Patrick Mahomes, rates 87 points above the other listed starter.",
      "New York lists 2 starters out (WR, LB); Kansas City lists 1 starter out (CB); worth about 40 Elo points to Kansas City, or 1.6 points on the spread.",
      "The books have Kansas City at 80%, closer than the model's 86%; the gap may reflect information this model lacks.",
-     "Blended, that comes to Kansas City at 82%: a Lock-ish pick, predicted 29 to 19."
+     "Blended, that comes to Kansas City at 82%: a Lock-ish pick, predicted 29 to 18."
     ],
     "edge": null,
     "parlay_eligible": true
@@ -33514,31 +33514,31 @@
    },
    "official": {
     "pick": "HOU",
-    "p_home_model": 0.3515693488629292,
-    "p_home_market": 0.32098827709144157,
-    "p_home_blend": 0.33169165221146224,
-    "p_pick_blend": 0.6683083477885378,
+    "p_home_model": 0.3614734631948759,
+    "p_home_market": 0.31960719995142295,
+    "p_home_blend": 0.3342603920866315,
+    "p_pick_blend": 0.6657396079133685,
     "tier": "Strong",
-    "model_spread": -4.253640496228899,
-    "blend_spread": -4.8678775082577745,
-    "expected_home": 17.81606124587111,
-    "expected_away": 22.68393875412889,
+    "model_spread": -3.9536404962288985,
+    "blend_spread": -4.787511642050266,
+    "expected_home": 17.85624417897487,
+    "expected_away": 22.64375582102513,
     "display_home": 18,
     "display_away": 23,
     "total_used": 40.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
-     "consensus_p_home": 0.32098827709144157,
+     "as_of": "2026-11-07T14:58:00Z",
+     "consensus_p_home": 0.31960719995142295,
      "consensus_total": 40.5,
      "consensus_home_spread": 5.75,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
-       "home_ml": 195,
-       "away_ml": -238,
+       "home_ml": 200,
+       "away_ml": -245,
        "home_spread": 6.0,
        "total": 40.5
       },
@@ -33569,7 +33569,7 @@
      "draftkings": {
       "book": "draftkings",
       "side": "HOU",
-      "american": -238
+      "american": -245
      },
      "fanduel": {
       "book": "fanduel",
@@ -33592,7 +33592,7 @@
      "side": "HOU",
      "american": -235
     },
-    "estimated_ev_per_dollar": -0.04730512123761638,
+    "estimated_ev_per_dollar": -0.05096694191072998,
     "factors": {
      "team_elo_home": 1389.3461639845902,
      "team_elo_away": 1503.796051501532,
@@ -33633,27 +33633,17 @@
      "form_home_3": -34.06329297092884,
      "form_away_3": 6.917451150262423,
      "frozen_adjust": 0.0,
-     "d_total": -106.34101240572247,
-     "model_market_gap_home": 0.03058107177148761,
-     "model_market_gap_pick": -0.03058107177148761
+     "d_total": -98.84101240572247,
+     "model_market_gap_home": 0.04186626324345294,
+     "model_market_gap_pick": -0.04186626324345294
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": true,
       "players": [
-       {
-        "gsis_id": "00-0036736",
-        "name": "Kayode Awosika",
-        "position": "G",
-        "pos_group": "OL",
-        "status": "Doubtful",
-        "injury": "Fibula",
-        "starter": true,
-        "covered_by_qb_term": false
-       },
        {
         "gsis_id": "00-0037320",
         "name": "Deane Leonard",
@@ -33703,10 +33693,20 @@
         "injury": "Pectoral",
         "starter": false,
         "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0036736",
+        "name": "Kayode Awosika",
+        "position": "G",
+        "pos_group": "OL",
+        "status": "Doubtful",
+        "injury": "Fibula",
+        "starter": false,
+        "covered_by_qb_term": false
        }
       ],
       "starters_out": 0,
-      "starters_doubtful": 1,
+      "starters_doubtful": 0,
       "starters_questionable": 0,
       "total_listed": 6,
       "qb_listed": null
@@ -33721,22 +33721,20 @@
       "total_listed": 0,
       "qb_listed": null
      },
-     "elo_home": -7.5,
+     "elo_home": 0.0,
      "elo_away": 0.0,
-     "elo": -7.5
+     "elo": 0.0
     },
     "rationale": [
      "rating",
      "home_field",
      "rest",
-     "injuries",
      "verdict"
     ],
     "rationale_sentences": [
      "Houston rates 114 Elo points above Los Angeles, 15th in the league against 30th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Houston has 14 days of rest to Los Angeles's 7, worth 14 Elo points to Houston.",
-     "Los Angeles lists 1 starter doubtful (G); Houston lists none; worth about 8 Elo points to Houston, or 0.3 points on the spread.",
      "Blended, that comes to Houston at 67%: a Strong pick, predicted 23 to 18."
     ],
     "edge": null,
@@ -33780,7 +33778,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
+     "as_of": "2026-11-07T14:58:00Z",
      "consensus_p_home": 0.798413452250528,
      "consensus_total": 51.75,
      "consensus_home_spread": -9.5,
@@ -33890,7 +33888,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": true,
@@ -34048,22 +34046,22 @@
    "official": {
     "pick": "SEA",
     "p_home_model": 0.7434122670534081,
-    "p_home_market": 0.7820224238867142,
-    "p_home_blend": 0.7685088689950571,
-    "p_pick_blend": 0.7685088689950571,
+    "p_home_market": 0.7815150980448797,
+    "p_home_blend": 0.7681791071978646,
+    "p_pick_blend": 0.7681791071978646,
     "tier": "Strong",
     "model_spread": 7.3919013362098385,
-    "blend_spread": 8.337832433096342,
-    "expected_home": 23.91891621654817,
-    "expected_away": 15.58108378345183,
+    "blend_spread": 8.324958672747748,
+    "expected_home": 23.912479336373874,
+    "expected_away": 15.587520663626126,
     "display_home": 24,
     "display_away": 16,
     "total_used": 39.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
-     "consensus_p_home": 0.7820224238867142,
+     "as_of": "2026-11-07T14:58:00Z",
+     "consensus_p_home": 0.7815150980448797,
      "consensus_total": 39.5,
      "consensus_home_spread": -8.5,
      "n_books": 4,
@@ -34085,7 +34083,7 @@
       {
        "key": "betrivers",
        "home_ml": -435,
-       "away_ml": 330,
+       "away_ml": 325,
        "home_spread": -8.5,
        "total": 39.5
       },
@@ -34125,7 +34123,7 @@
      "side": "SEA",
      "american": -425
     },
-    "estimated_ev_per_dollar": -0.050665514770811826,
+    "estimated_ev_per_dollar": -0.051072867579108394,
     "factors": {
      "team_elo_home": 1605.9103058987992,
      "team_elo_away": 1436.6308957123729,
@@ -34167,26 +34165,16 @@
      "form_away_3": 30.131057058117904,
      "frozen_adjust": 0.0,
      "d_total": 184.79753340524596,
-     "model_market_gap_home": -0.03861015683330604,
-     "model_market_gap_pick": -0.03861015683330604
+     "model_market_gap_home": -0.0381028309914716,
+     "model_market_gap_pick": -0.0381028309914716
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": true,
       "players": [
-       {
-        "gsis_id": "00-0037821",
-        "name": "Charles Cross",
-        "position": "T",
-        "pos_group": "OL",
-        "status": "Out",
-        "injury": "Ankle",
-        "starter": true,
-        "covered_by_qb_term": false
-       },
        {
         "gsis_id": "00-0031933",
         "name": "Leonard Williams",
@@ -34194,16 +34182,6 @@
         "pos_group": "DL_EDGE",
         "status": "Out",
         "injury": "Stinger",
-        "starter": true,
-        "covered_by_qb_term": false
-       },
-       {
-        "gsis_id": "00-0034342",
-        "name": "Quenton Nelson",
-        "position": "G",
-        "pos_group": "OL",
-        "status": "Out",
-        "injury": "Knee",
         "starter": true,
         "covered_by_qb_term": false
        },
@@ -34238,6 +34216,26 @@
         "covered_by_qb_term": false
        },
        {
+        "gsis_id": "00-0037821",
+        "name": "Charles Cross",
+        "position": "T",
+        "pos_group": "OL",
+        "status": "Out",
+        "injury": "Ankle",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0034342",
+        "name": "Quenton Nelson",
+        "position": "G",
+        "pos_group": "OL",
+        "status": "Out",
+        "injury": "Knee",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
         "gsis_id": "00-0037545",
         "name": "Rashid Shaheed",
         "position": "WR",
@@ -34258,7 +34256,7 @@
         "covered_by_qb_term": false
        }
       ],
-      "starters_out": 4,
+      "starters_out": 2,
       "starters_doubtful": 0,
       "starters_questionable": 0,
       "total_listed": 8,
@@ -34268,26 +34266,6 @@
       "available": true,
       "report_filed": true,
       "players": [
-       {
-        "gsis_id": "00-0041113",
-        "name": "Jayden Williams",
-        "position": "T",
-        "pos_group": "OL",
-        "status": "Out",
-        "injury": "Knee",
-        "starter": true,
-        "covered_by_qb_term": false
-       },
-       {
-        "gsis_id": "00-0038571",
-        "name": "Jon Gaines II",
-        "position": "G",
-        "pos_group": "OL",
-        "status": "Out",
-        "injury": "Ankle",
-        "starter": true,
-        "covered_by_qb_term": false
-       },
        {
         "gsis_id": "00-0039807",
         "name": "Max Melton",
@@ -34319,6 +34297,26 @@
         "covered_by_qb_term": false
        },
        {
+        "gsis_id": "00-0041113",
+        "name": "Jayden Williams",
+        "position": "T",
+        "pos_group": "OL",
+        "status": "Out",
+        "injury": "Knee",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
+        "gsis_id": "00-0038571",
+        "name": "Jon Gaines II",
+        "position": "G",
+        "pos_group": "OL",
+        "status": "Out",
+        "injury": "Ankle",
+        "starter": false,
+        "covered_by_qb_term": false
+       },
+       {
         "gsis_id": "00-0039808",
         "name": "Isaiah Adams",
         "position": "G",
@@ -34329,14 +34327,14 @@
         "covered_by_qb_term": false
        }
       ],
-      "starters_out": 2,
+      "starters_out": 0,
       "starters_doubtful": 0,
       "starters_questionable": 2,
       "total_listed": 6,
       "qb_listed": null
      },
-     "elo_home": -50.0,
-     "elo_away": -22.5,
+     "elo_home": -30.0,
+     "elo_away": -2.5,
      "elo": -27.5
     },
     "rationale": [
@@ -34350,7 +34348,7 @@
      "Seattle rates 169 Elo points above Arizona, 6th in the league against 24th.",
      "Home field is worth about 40 points, or 1.6 points on the spread.",
      "Arizona's listed starter, Gardner Minshew, rates 13 points above their usual starter, Jacoby Brissett.",
-     "Seattle lists 4 starters out (T, DT, G and 1 more); Arizona lists 2 starters out (T, G) and 2 questionable (CB, DT); worth about 28 Elo points to Arizona, or 1.1 points on the spread.",
+     "Seattle lists 2 starters out (DT, LB); Arizona lists 2 starters questionable (CB, DT); worth about 28 Elo points to Arizona, or 1.1 points on the spread.",
      "Blended, that comes to Seattle at 77%: a Strong pick, predicted 24 to 16."
     ],
     "edge": null,
@@ -34394,7 +34392,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
+     "as_of": "2026-11-07T14:58:00Z",
      "consensus_p_home": 0.6017011434866298,
      "consensus_total": 44.5,
      "consensus_home_spread": -3.0,
@@ -34504,7 +34502,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": true,
@@ -34744,30 +34742,30 @@
    "official": {
     "pick": "CHI",
     "p_home_model": 0.768110225920576,
-    "p_home_market": 0.7030240203165092,
-    "p_home_blend": 0.7258041922779326,
-    "p_pick_blend": 0.7258041922779326,
+    "p_home_market": 0.7006786468389004,
+    "p_home_blend": 0.7242796995174868,
+    "p_pick_blend": 0.7242796995174868,
     "tier": "Strong",
     "model_spread": 8.322271191898228,
-    "blend_spread": 6.76413859129709,
-    "expected_home": 27.132069295648545,
-    "expected_away": 20.367930704351455,
+    "blend_spread": 6.711001113960466,
+    "expected_home": 27.105500556980232,
+    "expected_away": 20.394499443019768,
     "display_home": 27,
     "display_away": 20,
     "total_used": 47.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
-     "consensus_p_home": 0.7030240203165092,
+     "as_of": "2026-11-07T14:58:00Z",
+     "consensus_p_home": 0.7006786468389004,
      "consensus_total": 47.5,
      "consensus_home_spread": -6.0,
      "n_books": 4,
      "books": [
       {
        "key": "draftkings",
-       "home_ml": -285,
-       "away_ml": 230,
+       "home_ml": -270,
+       "away_ml": 220,
        "home_spread": -6.0,
        "total": 47.5
       },
@@ -34798,7 +34796,7 @@
      "draftkings": {
       "book": "draftkings",
       "side": "CHI",
-      "american": -285
+      "american": -270
      },
      "fanduel": {
       "book": "fanduel",
@@ -34817,11 +34815,11 @@
      }
     },
     "best_price": {
-     "book": "fanduel",
+     "book": "draftkings",
      "side": "CHI",
      "american": -270
     },
-    "estimated_ev_per_dollar": -0.005379440211722042,
+    "estimated_ev_per_dollar": -0.0074685599204810105,
     "factors": {
      "team_elo_home": 1636.1102118188032,
      "team_elo_away": 1499.6235378339206,
@@ -34863,12 +34861,12 @@
      "form_away_3": 58.83413343316647,
      "frozen_adjust": 0.0,
      "d_total": 208.0567797974557,
-     "model_market_gap_home": 0.06508620560406675,
-     "model_market_gap_pick": 0.06508620560406675
+     "model_market_gap_home": 0.06743157908167563,
+     "model_market_gap_pick": 0.06743157908167563
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": true,
@@ -34959,7 +34957,7 @@
      "Tampa Bay lists 1 starter out (LB) and 1 questionable (WR); Chicago lists 1 starter questionable (CB); worth about 33 Elo points to Chicago, or 1.3 points on the spread.",
      "Chicago has gained 83 points of rating over its last three games; Tampa Bay has gained 59 points of rating over its last three games.",
      "The books have Chicago at 70%, closer than the model's 77%; the gap may reflect information this model lacks.",
-     "Blended, that comes to Chicago at 73%: a Strong pick, predicted 27 to 20."
+     "Blended, that comes to Chicago at 72%: a Strong pick, predicted 27 to 20."
     ],
     "edge": null,
     "parlay_eligible": true
@@ -35002,7 +35000,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
+     "as_of": "2026-11-07T14:58:00Z",
      "consensus_p_home": 0.3911962467941145,
      "consensus_total": 44.25,
      "consensus_home_spread": 3.0,
@@ -35112,7 +35110,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": true,
@@ -35196,7 +35194,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
+     "as_of": "2026-11-07T14:58:00Z",
      "consensus_p_home": 0.5214212549162026,
      "consensus_total": 45.5,
      "consensus_home_spread": -1.5,
@@ -35295,7 +35293,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -35375,7 +35373,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
+     "as_of": "2026-11-07T14:58:00Z",
      "consensus_p_home": 0.49462117905196806,
      "consensus_total": 49.5,
      "consensus_home_spread": 1.0,
@@ -35474,7 +35472,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -35550,7 +35548,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
+     "as_of": "2026-11-07T14:58:00Z",
      "consensus_p_home": 0.21357243449844665,
      "consensus_total": 50.5,
      "consensus_home_spread": 7.5,
@@ -35649,7 +35647,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -35729,7 +35727,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
+     "as_of": "2026-11-07T14:58:00Z",
      "consensus_p_home": 0.4786482673669803,
      "consensus_total": 46.5,
      "consensus_home_spread": 1.5,
@@ -35828,7 +35826,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -35906,7 +35904,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
+     "as_of": "2026-11-07T14:58:00Z",
      "consensus_p_home": 0.37200091963849063,
      "consensus_total": 39.5,
      "consensus_home_spread": 4.5,
@@ -36005,7 +36003,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -36087,7 +36085,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
+     "as_of": "2026-11-07T14:58:00Z",
      "consensus_p_home": 0.18736211271945366,
      "consensus_total": 45.0,
      "consensus_home_spread": 10.0,
@@ -36186,7 +36184,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -36266,7 +36264,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
+     "as_of": "2026-11-07T14:58:00Z",
      "consensus_p_home": 0.38779499114562616,
      "consensus_total": 46.5,
      "consensus_home_spread": 3.0,
@@ -36365,7 +36363,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -36443,7 +36441,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
+     "as_of": "2026-11-07T14:58:00Z",
      "consensus_p_home": 0.5405487566609305,
      "consensus_total": 42.5,
      "consensus_home_spread": -2.5,
@@ -36542,7 +36540,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -36628,7 +36626,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
+     "as_of": "2026-11-07T14:58:00Z",
      "consensus_p_home": 0.5813233145459428,
      "consensus_total": 41.5,
      "consensus_home_spread": -3.0,
@@ -36727,7 +36725,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -36809,7 +36807,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
+     "as_of": "2026-11-07T14:58:00Z",
      "consensus_p_home": 0.25003739819156395,
      "consensus_total": 47.5,
      "consensus_home_spread": 7.5,
@@ -36908,7 +36906,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -37039,7 +37037,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -37117,7 +37115,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
+     "as_of": "2026-11-07T14:58:00Z",
      "consensus_p_home": 0.3530510827413375,
      "consensus_total": 54.5,
      "consensus_home_spread": 4.0,
@@ -37216,7 +37214,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -37280,22 +37278,22 @@
    "official": {
     "pick": "CIN",
     "p_home_model": 0.5340372820313529,
-    "p_home_market": 0.609135655807102,
-    "p_home_blend": 0.5828512249855898,
-    "p_pick_blend": 0.5828512249855898,
+    "p_home_market": 0.6060242455869985,
+    "p_home_blend": 0.5808288083425226,
+    "p_pick_blend": 0.5808288083425226,
     "tier": "Lean",
     "model_spread": 0.9475265129450812,
-    "blend_spread": 2.324267855730115,
-    "expected_home": 24.912133927865057,
-    "expected_away": 22.587866072134943,
+    "blend_spread": 2.2665075420450904,
+    "expected_home": 24.883253771022545,
+    "expected_away": 22.616746228977455,
     "display_home": 25,
     "display_away": 23,
     "total_used": 47.5,
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
-     "consensus_p_home": 0.609135655807102,
+     "as_of": "2026-11-07T14:58:00Z",
+     "consensus_p_home": 0.6060242455869985,
      "consensus_total": 47.5,
      "consensus_home_spread": -3.5,
      "n_books": 3,
@@ -37309,9 +37307,9 @@
       },
       {
        "key": "fanduel",
-       "home_ml": -168,
-       "away_ml": 142,
-       "home_spread": -3.5,
+       "home_ml": -162,
+       "away_ml": 136,
+       "home_spread": -3.0,
        "total": 47.5
       },
       {
@@ -37332,7 +37330,7 @@
      "fanduel": {
       "book": "fanduel",
       "side": "CIN",
-      "american": -168
+      "american": -162
      },
      "betmgm": null,
      "betrivers": {
@@ -37344,9 +37342,9 @@
     "best_price": {
      "book": "fanduel",
      "side": "CIN",
-     "american": -168
+     "american": -162
     },
-    "estimated_ev_per_dollar": -0.07021352204679715,
+    "estimated_ev_per_dollar": -0.060634890211475834,
     "factors": {
      "team_elo_home": 1543.1255082560144,
      "team_elo_away": 1558.0121526864189,
@@ -37388,12 +37386,12 @@
      "form_away_3": 45.6898384138201,
      "frozen_adjust": 0.0,
      "d_total": 23.688162823627028,
-     "model_market_gap_home": -0.07509837377574913,
-     "model_market_gap_pick": -0.07509837377574913
+     "model_market_gap_home": -0.0719869635556456,
+     "model_market_gap_pick": -0.0719869635556456
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -37475,7 +37473,7 @@
     "total_source": "odds_api",
     "market": {
      "source": "odds_api",
-     "as_of": "2026-11-07T08:58:23Z",
+     "as_of": "2026-11-07T14:58:00Z",
      "consensus_p_home": 0.525667821790202,
      "consensus_total": 38.0,
      "consensus_home_spread": -1.5,
@@ -37574,7 +37572,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -37693,7 +37691,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -37802,7 +37800,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -37909,7 +37907,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -38018,7 +38016,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -38127,7 +38125,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -38234,7 +38232,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -38345,7 +38343,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -38456,7 +38454,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -38563,7 +38561,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -38670,7 +38668,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -38779,7 +38777,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -38890,7 +38888,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -38995,7 +38993,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -39106,7 +39104,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -39213,7 +39211,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -39322,7 +39320,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -39431,7 +39429,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -39538,7 +39536,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -39647,7 +39645,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -39756,7 +39754,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -39867,7 +39865,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -39976,7 +39974,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -40085,7 +40083,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -40196,7 +40194,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -40303,7 +40301,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -40410,7 +40408,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -40519,7 +40517,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -40626,7 +40624,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -40735,7 +40733,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -40844,7 +40842,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -40951,7 +40949,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -41060,7 +41058,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -41171,7 +41169,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -41280,7 +41278,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -41391,7 +41389,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -41500,7 +41498,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -41607,7 +41605,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -41714,7 +41712,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -41821,7 +41819,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -41932,7 +41930,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -42041,7 +42039,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -42148,7 +42146,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -42257,7 +42255,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -42366,7 +42364,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -42473,7 +42471,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -42580,7 +42578,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -42689,7 +42687,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -42798,7 +42796,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -42905,7 +42903,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -43016,7 +43014,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -43123,7 +43121,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -43234,7 +43232,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -43343,7 +43341,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -43452,7 +43450,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -43563,7 +43561,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -43672,7 +43670,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -43779,7 +43777,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -43886,7 +43884,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -43995,7 +43993,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -44102,7 +44100,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -44211,7 +44209,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -44320,7 +44318,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -44427,7 +44425,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -44536,7 +44534,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -44645,7 +44643,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -44752,7 +44750,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -44861,7 +44859,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -44968,7 +44966,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -45075,7 +45073,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -45184,7 +45182,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -45293,7 +45291,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -45402,7 +45400,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -45509,7 +45507,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -45620,7 +45618,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -45729,7 +45727,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -45838,7 +45836,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -45947,7 +45945,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -46054,7 +46052,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -46161,7 +46159,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -46268,7 +46266,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -46377,7 +46375,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -46486,7 +46484,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -46595,7 +46593,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -46704,7 +46702,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -46811,7 +46809,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -46920,7 +46918,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -47027,7 +47025,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -47134,7 +47132,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -47243,7 +47241,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -47350,7 +47348,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -47459,7 +47457,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -47568,7 +47566,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -47675,7 +47673,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -47782,7 +47780,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -47891,7 +47889,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -47998,7 +47996,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -48107,7 +48105,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -48214,7 +48212,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -48321,7 +48319,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -48428,7 +48426,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -48537,7 +48535,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -48644,7 +48642,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -48751,7 +48749,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -48858,7 +48856,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -48969,7 +48967,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -49080,7 +49078,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -49187,7 +49185,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -49294,7 +49292,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -49403,7 +49401,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -49514,7 +49512,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -49621,7 +49619,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -49730,7 +49728,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -49839,7 +49837,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -49946,7 +49944,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -50053,7 +50051,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -50160,7 +50158,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -50267,7 +50265,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -50376,7 +50374,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -50487,7 +50485,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -50594,7 +50592,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -50701,7 +50699,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
@@ -50810,7 +50808,7 @@
     },
     "injuries": {
      "enabled": true,
-     "as_of": "2026-11-07T08:58:22Z",
+     "as_of": "2026-11-07T14:57:59Z",
      "home": {
       "available": true,
       "report_filed": false,
